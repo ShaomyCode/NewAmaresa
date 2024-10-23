@@ -464,7 +464,7 @@
 				</form>
 			</dialog>
 		</section>
-asdada
+
 		<!-- Section: Footer -->
 		<footer class="footer">
 			<div class="footer-top">

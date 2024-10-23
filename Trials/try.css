@@ -1,0 +1,18 @@
+/* Basic styling for the input dropdown */
+.dropdown-input {
+    margin: 20px;
+    font-family: Arial, sans-serif;
+}
+
+label {
+    margin-right: 10px;
+    font-size: 16px;
+}
+
+input {
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 200px;
+}

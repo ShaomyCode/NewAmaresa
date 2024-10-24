@@ -266,31 +266,32 @@
 									$Bed = $row['Bedrooms'];
 									$Bath = $row['Bathrooms'];
 									$Property = $row['Property'];
+									$Area = $row['Area_sqft'];
 									$ID = $row['PropertyID'];
 	    							// $_SESSION['HouseID'] = $ID;
 									$BathList = [
-										1 => "One Bath",
-										2 => "Two Baths",
-										3 => "Three Baths",
-										4 => "Four Baths",
-										5 => "Five Baths",
-										6 => "Six Baths",
-										7 => "Seven Baths",
-										8 => "Eight Baths",
-										9 => "Nine Baths",
-										10 => "Ten Baths"
+										1 => "One Bathroom",
+										2 => "Two Bathrooms",
+										3 => "Three Bathrooms",
+										4 => "Four Bathrooms",
+										5 => "Five Bathrooms",
+										6 => "Six Bathrooms",
+										7 => "Seven Bathrooms",
+										8 => "Eight Bathrooms",
+										9 => "Nine Bathrooms",
+										10 => "Ten Bathrooms"
 									];									
 									$BedList = [
-										1 => "One Bed",
-										2 => "Two Beds",
-										3 => "Three Beds",
-										4 => "Four Beds",
-										5 => "Five Beds",
-										6 => "Six Beds",
-										7 => "Seven Beds",
-										8 => "Eight Beds",
-										9 => "Nine Beds",
-										10 => "Ten Beds"
+										1 => "One Bedroom",
+										2 => "Two Bedrooms",
+										3 => "Three Bedrooms",
+										4 => "Four Bedrooms",
+										5 => "Five Bedrooms",
+										6 => "Six Bedrooms",
+										7 => "Seven Bedrooms",
+										8 => "Eight Bedrooms",
+										9 => "Nine Bedrooms",
+										10 => "Ten Bedrooms"
 									];
 									$Bath = $BathList[$Bath] ?? $Bath;
 									$Bed = $BedList[$Bed] ?? $Bed;   							
@@ -305,9 +306,9 @@
 									<h1>$Property</h1>
 
 									<div class='second-content'>
-									<p><i class='fa-solid fa-house'></i>: $ID </p>
-									<p><i class='fa-solid fa-bed'></i>: $Bed</p>
-									<p><i class='fa-solid fa-shower'></i>: $Bath </p>
+									<p><i class='fa-solid fa-maximize'></i> : $Area </p>
+									<p><i class='fa-solid fa-bed'></i> : $Bed</p>
+									<p><i class='fa-solid fa-shower'></i> : $Bath </p>
 									</div>
 
 									<form method='POST' action='./Assets/Php/Index.php'>

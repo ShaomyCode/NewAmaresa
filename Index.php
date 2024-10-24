@@ -1,7 +1,7 @@
 <?php
 	include './Assets/Php/Connection.php';
 	session_start();
-	$Holder = $_SESSION['Holder'];
+	
 
 ?>
 <!DOCTYPE html>

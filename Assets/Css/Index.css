@@ -447,7 +447,6 @@ button, a {transition: var(--transition);}
 	color: var(--black);
 	font-size: var(--fs-5);
 	line-height: 1.7;
-/*	text-align: center;*/
 	margin-bottom: 30px;
 }
 /*======================*\

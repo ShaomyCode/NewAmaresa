@@ -1,8 +1,8 @@
 <?php
 	include './Assets/Php/Connection.php';
 	session_start();
-	$user = $_SESSION['lastname'];
-	$email = $_SESSION['email'];
+    $Firstname = $_SESSION['Firstname'];
+    $Lastname = $_SESSION['Lastname'];
 
 	$Holder = $_SESSION['Holder'];
 
@@ -79,7 +79,7 @@
 							<i class="fa-solid fa-user-tie"></i> 
 							<?php
 							
-							echo $user;
+							echo $Firstname, " " .$Lastname;
 
 							?>
 						</div>
@@ -115,6 +115,7 @@
 			<div class='container'>
 
 			<figure class='Exterior'>
+				<button class='btn' onclick='ShowInquiry()'> Make an Inquiry </button>
 				<img src='$ImageExterior' alt='Exterior' '>
 			</figure>
 
@@ -135,6 +136,7 @@
 					<div class='container'>
 						<div class='LeftHouse-Details'>
 							<div class='House-Details'>
+
 								<h3 class='h3 Titles'> $Properties </h3>
 								<ul class='House-list'>
 									<li class='list-items'>

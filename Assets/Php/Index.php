@@ -84,32 +84,56 @@ session_start();
 /***********************************************
     FILTER: LOGIN
     ************************************************/
-    function LoginUser($conn){
-
-        $Email = $_POST['email'];
+function LoginUser($conn) {
+    // Validate and sanitize email
+    if (isset($_POST['email']) && filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
+        $Email = $conn->real_escape_string($_POST['email']);
         $Password = $_POST['password'];
 
-        $stmt = "SELECT * FROM User WHERE Email = '$Email'";
-        $rs = mysqli_query($conn,$stmt);
-
-        if($rs){
-            while ($row = mysqli_fetch_assoc($rs)) {
-                
-                if(password_verify($Password, $row['Password'] )){
+        $stmt = $conn->prepare("SELECT * FROM User WHERE Email = ?");
+        $stmt->bind_param("s", $Email);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        
+        if ($result->num_rows > 0) {
+            while ($row = $result->fetch_assoc()) {
+                if (password_verify($Password, $row['Password'])) {
                     $_SESSION['Firstname'] = $row['Firstname'];
                     $_SESSION['Lastname'] = $row['Lastname'];
-                     echo "<script>
-                    alert('Successfully Login ');
-                    setTimeout(function(){
-                        window.location.href = '../../Login.php';
-                        }, 500); 
-                        </script>"; 
+                    echo "<script>
+                        alert('Successfully Login');
+                        setTimeout(function(){
+                            window.location.href = '../../Login.php';
+                        }, 500);
+                    </script>";
+                } else {
+                    echo "<script>
+                        alert('Incorrect Password! Please try again.');
+                        setTimeout(function(){
+                            window.location.href = '../../Index.php';
+                        }, 500);
+                    </script>";
                 }
-
             }
+        } else {
+            echo "<script>
+                alert('Email not found. Please try again.');
+                setTimeout(function(){
+                    window.location.href = '../../Index.php';
+                }, 500);
+            </script>";
         }
-                
+        $stmt->close();
+     } else {
+        echo "<script>
+            alert('Invalid Email! Please try again.');
+            setTimeout(function(){
+                window.location.href = '../../Index.php';
+            }, 500);
+        </script>";
     }
+}
+
 
 /***********************************************
     GET THE HOUSE ID

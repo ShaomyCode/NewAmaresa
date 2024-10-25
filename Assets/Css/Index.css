@@ -280,6 +280,38 @@ button, a {transition: var(--transition);}
 	align-items: center;	
 }
 /*======================*\
+# Section: WE L C O M E
+\*======================*/
+.Welcome{
+	background: var(--white);
+	padding-block: 1rem;
+}
+.Welcome .container{
+	display: flex;
+	justify-content: space-evenly;
+	align-items: center;
+}
+.Welcome-info > *{
+	margin-block: 5px;
+	width: 100%;
+}
+.Welcome-Title{
+	font-size: var(--fs-1);
+	font-weight: var(--fw-700);
+}
+.Welcome-sign{
+	background: var(--prussian-blue);
+	color: white;
+	padding: .5rem;
+	width: fit-content;
+	border-radius: 5px;
+}
+.Welcome-btn button{
+	margin-block: 1rem;
+	width: 150px;
+	text-align: center;
+}
+/*======================*\
 # Section: HERO
 \*======================*/
 .hero{
@@ -294,13 +326,8 @@ button, a {transition: var(--transition);}
 	align-items: center;
 
 	> *{
-		width: 50%;
+		width: 50%;	
 	}
-}
-
-.hero-logo{
-	
-
 }
 .hero-text{
 	text-align: justify;
@@ -397,7 +424,8 @@ button, a {transition: var(--transition);}
 	font-size: var(--fs-5);
 }
 .about .callout,
-.location .callout{
+.location .callout,
+.Welcome .callout{
 	background: hsla(7, 78%, 53%, 0.05);
 	color: var(--dark-jungle-green);
 	font-size: var(--fs-5);
@@ -532,6 +560,9 @@ padding-block: var(--section-spacing);
 	width: 350px;
 	position: relative;
 	height: 350px;
+}
+.property .locale-text{
+	text-align: center;
 }
 .property-features-card figure{
 	width: 100%;

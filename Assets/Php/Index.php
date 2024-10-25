@@ -10,7 +10,10 @@ session_start();
         inquiry($conn);
     }
     if(isset($_POST['login-btn'])){
-        Login($conn);
+        LoginUser($conn);
+    }
+    if(isset($_POST['Signin-btn'])){
+        Signup($conn);
     }
 /***********************************************
     ADDING INQUIRY
@@ -59,7 +62,7 @@ session_start();
         $Email = $_POST['Email'];
         $Phone = $_POST['Phone'];
         $Address = $_POST['Address'];
-        $Password = $_POST['Password'];
+        $Password = password_hash($_POST['Password'], PASSWORD_DEFAULT);
         $Role = "User";
     // SQL HERE
         $query = "
@@ -81,81 +84,44 @@ session_start();
 /***********************************************
     FILTER: LOGIN
     ************************************************/
-    function Login($conn){
+    function LoginUser($conn){
+
         $Email = $_POST['email'];
         $Password = $_POST['password'];
 
-        $query = "
-        SELECT * 
-        FROM Management
-        WHERE Email = ?
-        UNION
-        SELECT * 
-        FROM User
-        WHERE Email = ?
-        ";
+        $stmt = "SELECT * FROM User WHERE Email = '$Email'";
+        $rs = mysqli_query($conn,$stmt);
 
-        $stmt = $conn->prepare($query);
-        $stmt -> bind_param("ss",$Email,$Email);
-        $stmt -> execute();
-        $result = $stmt -> get_result();
-
-        if($result -> num_rows > 0){
-         $row = $result->fetch_assoc();
-
-         $Role = $row['Role'];
-           // Verify password
-         if ($row['Password'] === $Password){
-
-            if($Role === 'Admin'){
-               echo "<script>
-               alert('Welcome, ".$row['Lastname']."! You have successfully logged in. ' );
-               setTimeout(function(){
-                window.location.href = '../../Account.php';
-                }, 500); 
-                </script>";   
-            }elseif($Role === 'User'){
-
-                $_SESSION['lastname'] = $row['Lastname'];
-                $_SESSION['email'] = $row['Email'];
-
-                echo "<script>
-                alert('Welcome, ".$row['Lastname']." ! You have successfully logged in. ' );
-                setTimeout(function(){
-                    window.location.href = '../../Login.php';
-                    }, 500); 
-                    </script>";                
+        if($rs){
+            while ($row = mysqli_fetch_assoc($rs)) {
+                
+                if(password_verify($Password, $row['Password'] )){
+                    $_SESSION['Firstname'] = $row['Firstname'];
+                    $_SESSION['Lastname'] = $row['Lastname'];
+                     echo "<script>
+                    alert('Successfully Login ');
+                    setTimeout(function(){
+                        window.location.href = '../../Login.php';
+                        }, 500); 
+                        </script>"; 
                 }
 
-
-            }else{
-            // WRONG PASS
-               echo "<script>
-               alert('Wrong password' );
-               setTimeout(function(){
-                window.location.href = '../../index.php';
-                }, 500); 
-                </script>";
             }
-        }else{
-            // WRONG EMAIL
-           echo "<script>
-           alert('No user found with that email');
-           setTimeout(function(){
-            window.location.href = '../../index.php';
-            }, 500); 
-            </script>";
-        }   
+        }
+                
     }
 
 /***********************************************
     GET THE HOUSE ID
     ************************************************/
-
     if(isset($_POST['PassID'])){
+        $Holder = $_POST['IDHolder'];
+        $_SESSION['Holder'] = $Holder;
+        header("location: ../../UserHouseDetails.php" );
+    }    
+    if(isset($_POST['PassIDUser'])){
         $Holder = $_POST['IDHolder'];
         $_SESSION['Holder'] = $Holder;
         header("location: ../../HouseDetails.php" );
     }
-
 ?>

@@ -241,8 +241,16 @@ button, a {transition: var(--transition);}
 	opacity: 1;
 	font-size: var(--fs-3);
 	position: absolute;
+	padding: 1rem;
 	left: 5rem;
-	color: black;
+	color: var(--prussian-blue);
+	width: fit-content;
+	background: rgba(255, 255, 255, 0.14);
+	border-radius: 16px;
+	box-shadow: 5px 5px 5px black;
+	backdrop-filter: blur(2.9px);
+	-webkit-backdrop-filter: blur(2.9px);
+	border: 1px solid rgba(255, 255, 255, 0.3);
 }
 .sidebar figure{
 	border-bottom: 3px solid black;

@@ -1,7 +1,12 @@
 <?php
 	include './Assets/Php/Connection.php';
 	session_start();
+	$user = $_SESSION['lastname'];
+	$email = $_SESSION['email'];
+
 	$Holder = $_SESSION['Holder'];
+
+
 ?>
 
 <!DOCTYPE html>
@@ -64,12 +69,20 @@
 							</li>																							
 						</ul>
 
-						<a class="header-top-btn"  href="./Index.php"> 
+						<a class="header-top-btn"  href="./Login.php"> 
 							<i class="fa-solid fa-house"></i>
 							<span> Home </span>
 						</a>
 
 
+						<div class="header-user-display">
+							<i class="fa-solid fa-user-tie"></i> 
+							<?php
+							
+							echo $user;
+
+							?>
+						</div>
 					</div>
 				</div>
 

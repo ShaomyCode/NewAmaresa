@@ -14,10 +14,3 @@
 		die(mysqli_error($conn));
 	}
 ?>
-
-<!-- 
-		echo "string";
-		sleep(15);
-		exit();	
-header('Location: ../../index.html');
- -->

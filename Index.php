@@ -1,8 +1,5 @@
 <?php
 	include './Assets/Php/Connection.php';
-	session_start();
-	
-
 ?>
 <!DOCTYPE html>
 <html>
@@ -296,7 +293,7 @@
 
 										
 											<input type='hidden' name='IDHolder' value='$ID'>
-											<button type='submit'   name='PassID' '>
+											<button type='submit'   name='PassIDUser' '>
 											<i class='fa-solid fa-eye'></i>
 											<span>See more</span>
 											</button>

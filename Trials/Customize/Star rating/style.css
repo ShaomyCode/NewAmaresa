@@ -1,0 +1,32 @@
+
+.star-rating {
+  display: flex;
+  flex-direction: row-reverse; /* Display stars from right to left */
+  justify-content: center;
+  font-size: 2em;
+  padding:1rem;
+  box-shadow: 0 5px 5px black;
+  width: fit-content;
+  border-radius: 16px;
+  margin-inline: auto;
+}
+
+.star-rating input {
+  display: none; /* Hide the radio buttons */
+}
+
+.star-rating label {
+  color: lightgray;
+  cursor: pointer;
+  transition: .4s ease;
+}
+
+/* Change color of stars on hover or selection */
+.star-rating label:hover,
+.star-rating label:hover ~ label,
+.star-rating input:checked ~ label {
+  color: gold; /* Highlight color */
+  filter: drop-shadow(0 5px 10px rgba(0, 0, 0, 0.5));
+  transform: scale(1.1);
+
+}

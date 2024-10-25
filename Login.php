@@ -475,16 +475,7 @@
 
                 </div>
             </dialog>
-            <!-- RESERVATION MODAL -->
-            <dialog id="Reservation-Modal" class="dialog">
-                <button onclick="CloseReservation()" class="closebtn">X</button>    
-                <form>
-                    <div class="container">
-                        <button type="submit" name="SentInquiry">Send Inquiry</button>
-                    </div>
-                </form>
-            </dialog>
-        </section>
+
 
         <!-- Section: Footer -->
         <footer class="footer">

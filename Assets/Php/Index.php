@@ -100,6 +100,7 @@ function LoginUser($conn) {
                 if (password_verify($Password, $row['Password'])) {
                     $_SESSION['Firstname'] = $row['Firstname'];
                     $_SESSION['Lastname'] = $row['Lastname'];
+                    $_SESSION['UserID'] = $row['UserID'];
                     echo "<script>
                         alert('Successfully Login');
                         setTimeout(function(){

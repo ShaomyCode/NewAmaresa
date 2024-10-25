@@ -3,6 +3,7 @@
 	session_start();
     $Firstname = $_SESSION['Firstname'];
     $Lastname = $_SESSION['Lastname'];
+    $UserID = $_SESSION['UserID'];
 
 	$Holder = $_SESSION['Holder'];
 
@@ -17,10 +18,13 @@
 	<title>AMARESA - House Details </title>
 	<!-- Custom Css Link -->
 	<link rel="stylesheet" type="text/css" href="./Assets/Css/House.css?v=<?php echo time(); ?>">
+	<link rel="stylesheet" type="text/css" href="./Assets/Css/Index.css?v=<?php echo time(); ?>">
 	<!-- Google font link -->
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+		<!-- Script: JQuery -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 	<!-- WEBSITE ICON -->
 	<link rel="website icon" type="png" href="./Assets/Images/Icon.png">
 </head>
@@ -115,7 +119,7 @@
 			<div class='container'>
 
 			<figure class='Exterior'>
-				<button class='btn' onclick='ShowInquiry()'> Make an Inquiry </button>
+				<button class='Exterior-btn btn' onclick='ShowInquiry()'> Make an Inquiry </button>
 				<img src='$ImageExterior' alt='Exterior' '>
 			</figure>
 
@@ -202,6 +206,116 @@
 		?>
 		
 	
+       <dialog id="Inquiry-Modal" class="dialog">
+            <button onclick="CloseInquiry()" class="closebtn">X</button>    
+
+            <div class="container">
+
+                <form class="form Inquiry" method="POST" enctype="multipart/form-data" action="./Assets/Php/Index.php" autocomplete="on">
+                    <?php 
+
+                    $query = "
+                    SELECT *
+                    FROM User
+                    WHERE UserID = $UserID
+                    ";
+                    $result = $conn->query($query);
+                    $row = $result->fetch_assoc();
+                    $firstname = $row['Firstname'];
+                    $lastname = $row['Lastname'];
+                    $number = $row['Phone'];
+                    $Address = $row['Address'];
+                    $Email = $row['Email'];
+
+
+                    echo "	
+                    <div class='form-items'>
+
+	                    <input type='text' name='Firstname' placeholder='First name' value='$firstname' required>
+	                    <input type='text' name='Lastname' placeholder='Last name' value='$lastname'  required> 
+
+	                    <input type='tel' maxlength='11' name='Phone'  class='PhoneInput' id'PhoneInput' placeholder='Contact Number' value='$number' required autocomplete='off'>       
+
+                    </div>
+                    <div class='form-items'>
+                    <input type='text' name='Address' placeholder='Address' value='$Address' required>
+                    <input type='email' name='Email' placeholder='Email Address' value='$Email' required>
+                    </div> 
+
+
+					<input list='options' id='Role' name='Property' placeholder='Select Property' required>
+	                    <datalist id='options'>
+		                    <option value='Kalya House'>
+		                    <option value='Aria House'>
+	                    </datalist> 
+                    
+                    ";
+
+                    ?>
+                    
+                    
+           
+                    		
+                    		<div class="textarea-container">
+                    			<textarea id="message" rows="5" name="Message" placeholder="I'd like to inquire about this property..."></textarea>
+                    		</div>
+
+
+                    		<div class="form-items">
+
+                    		</div>
+                    		<div>
+                    			<input type="checkbox" id="cbx2" onclick="ShowReservation()" style="display: none;"> 
+                    			<label for="cbx2" class="check">
+                    				<svg width="18px" height="18px" viewBox="0 0 18 18">
+                    					<path d="M 1 9 L 1 9 c 0 -5 3 -8 8 -8 L 9 1 C 14 1 17 5 17 9 L 17 9 c 0 4 -4 8 -8 8 L 9 17 C 5 17 1 14 1 9 L 1 9 Z"></path>
+                    					<polyline points="1 9 7 14 15 4"></polyline>
+                    				</svg>
+                    				Reservation Fee (optional)
+                    			</label>
+
+
+                    			<div class="payments" id="payments">
+                    				<h3 class="h3 payment-title"> Gcash </h3>
+                    				<img id="paymentImg" src="./Assets/Images/payment.png" >
+
+                    				<div class="payment-upload" >
+                    					<label for="file-upload" class="custom-file-upload btn">
+                    						Upload Here
+                    					</label>
+                    					<input id="file-upload" type="file" name="Receipt" accept="image/*">
+                    				</div>
+
+                    			</div>
+
+
+                    			<script>
+                    				const checkbox = document.getElementById('cbx2');
+                    				const div = document.getElementById('payments');
+
+                    				checkbox.addEventListener('change', function() {
+                    					if (this.checked) {
+                    						div.style.display = 'block'; 
+                    					} else {
+                    						div.style.display = 'none';
+                    					}
+                    				});
+                    			</script>
+                    		</div>
+                    	</div>
+
+                    	<div class="inquiry-buttons">
+                    		<div id="panel">
+                    			
+                    			<span>Hello </span>
+                    		</div>
+                    		<span id="requirements" class="btn">Requirements</span>
+                    		<button type="submit" name="SentInquiry" onclick="ShowSignupInquiry()" class="btn">Send Inquiry</button>
+                    	</div>
+                    </form>
+
+                </div>
+            </dialog>
 
 	</main>
 

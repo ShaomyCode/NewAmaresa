@@ -315,7 +315,43 @@
 					</section>
 				</div>
 			</section>
+			<!-- Section: Testimonial -->
+			<section class="testimonial" id="testimonial">
+				<div class="container">
 
+					<div class="testimonial-feedback">
+
+						<div class="testimonial-headline">
+							<h3 class="h3 testimonial-title"> We Appreciate your Feedback! </h3>
+							<span> We are committed to continuously enhancing your experience with us, and your feedback plays an invaluable role in that journey. Please take a few moments to evaluate our services and share your thoughts. Your insights—whether they’re about what you love, areas you think could be improved, or suggestions you’d like to see implemented—will help us serve you better and create a more fulfilling experience. Thank you for helping us grow and improve</span>
+						</div>
+
+						<div class="testimonial-feedbox">
+							<form>
+								<div class="testimonial-feedbox-top">
+									<img src="./Assets/Images/Feedback.gif" class="Feedback-Image">
+									<input type="text" name="Name" placeholder="Enter your name">
+									<div class="star-rating">
+										<input type="radio" id="star5" name="rating" value="5"><label for="star5" title="5 stars">★</label>
+										<input type="radio" id="star4" name="rating" value="4"><label for="star4" title="4 stars">★</label>
+										<input type="radio" id="star3" name="rating" value="3"><label for="star3" title="3 stars">★</label>
+										<input type="radio" id="star2" name="rating" value="2"><label for="star2" title="2 stars">★</label>
+										<input type="radio" id="star1" name="rating" value="1"><label for="star1" title="1 star">★</label>
+									</div>
+								</div>
+
+								<div class="testimonial-Message-Container">
+
+									<textarea id="message" rows="5" maxlength="300" name="Message" placeholder="What do you think about your experience with us?"></textarea>
+								</div>
+								<button type="submit" name="Submit"  class="testimonial-btn btn"> submit</button>
+							</form>
+						</div>
+
+					</div>
+
+				</div>
+			</section>
 		</article>
 	</main>
 	<!-- Section: Dialogs -->

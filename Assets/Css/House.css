@@ -300,6 +300,13 @@ button, a {transition: var(--transition);}
 		width: 50%;
 	}
 }
+.Exterior{
+	position: relative;
+}
+.Exterior .Exterior-btn{
+	position: absolute;
+	box-shadow: 0 4px 4px black;
+}
 .Exterior img{
 	height: 70vh;
 }

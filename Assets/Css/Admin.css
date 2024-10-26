@@ -380,7 +380,7 @@ button, a {transition: var(--transition);}
 	padding: 1rem;
 }
 /*======================*\
-	# ACTIVITY
+# ACTIVITY
 \*======================*/
 .activity{  
 	margin-block: var(--section-spacing);
@@ -425,38 +425,28 @@ button, a {transition: var(--transition);}
 .activity-subtitle{
 	text-align: center;
 }
-/*======================*\
-	# MATRICS
-\*======================*/
-/*.matrics{
-	margin-block: var(--section-spacing);
-	background: var(--sidebar-color);
-	padding-block: var(--section-spacing);	
-}
-*//*======================*\
-	# ACTIVITY
-\*======================*/
+
 /*======================*\
 	# TESTIMONIAL
 \*======================*/
 .Testimonial{
-	margin-block: var(--section-spacing);
-	background: var(--sidebar-color);
-	padding-block: var(--section-spacing);	
+	background: var(--white);
+	padding: 1rem;
+	box-shadow: 0 5px 5px black;
+	border-radius: 10px;
 }
 .Testimonial .Testimonial-title{
 	text-align: center;
 	font-size: var(--fs-1);
-	margin-block: 0 5rem;
 	font-weight: var(--fw-700);
 }
 .Testimonial-Container{
 	padding: 5rem;
 	position: relative;
-	width: 80%;
-	margin-inline: auto;
-	height: 250px;
-	position: relative;
+	display: block;
+	cursor: pointer;
+	width: 100%;	
+
 }
 .Testimonial-swiper{
 	padding: 1rem;
@@ -470,22 +460,41 @@ button, a {transition: var(--transition);}
 	width: 100%;
 	height: 100%;
 	margin-inline: auto;
-
 }
-
 .Testimonial-card{
 	width: 350px; 
 	height: 100%;
 	text-align: center;
 }
+.design-btn{
+	font-size: var(--fs-2);
+}
 
+
+/*======================*\
+	# RIGHT MAIN CONTAINER
+\*======================*/
+.Right-main-container{
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
+}
+.ActiveLog-table-container{
+	max-height: 40vh;
+	overflow-x: hidden;
+	position: relative;
+}
+.Testimonials-table-container{
+	max-height: 55vh;
+		overflow-x: hidden;
+	position: relative;
+}
 /*==================================================*\
 				ACCOUNT PHP : ENDS
 \*==================================================*/
 /*======================*\
 	# TABLE STYLE
 \*======================*/
-
 .Table-section{
 	max-height: 99vh;
 	overflow-x: hidden;
@@ -620,13 +629,29 @@ tr:hover td{
 	color: white;
 	font-size: var(--fs-4);
 }
-
 /*======================*\
 # RECENT ACTIVITY
 \*======================*/
-.recent-activity-container {
-	width: 50%;
+.Main-Container{
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	gap:1rem;
 	margin:2rem;
+	margin-block:1rem;
+
+	>*{
+		width: 50%;
+	}
+}
+.Left-main-container{
+	display: flex;
+	gap: 1rem;
+	flex-direction: column;
+}
+.recent-activity-container {
+	width: 100%;
+
  	background: var(--white);
  	box-shadow: 0 5px 5px black;
  	padding: 2rem;
@@ -656,14 +681,12 @@ tr:hover td{
 .item-wrapper .items span{
 	font-size: var(--fs-1);
 }
+/*======================*\
+# DIV: Testimonial Table
+\*======================*/
+.Testimonial-container{
 
-
-
-
-
-
-
-
+}
 
 /*======================*\
 	# FLOAT DIAGRAM

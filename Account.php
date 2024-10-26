@@ -116,80 +116,153 @@
 		</div>
 	</header>
 
-		<div class="Left-main-container">
-			<div class="recent-activity-container">
-				 <h3 class="header-title">Recent Activities</h3>
-				<div class="item-wrapper">
-					<div class="items">
-						<h3 class="content-title">
-							Property Listed
-						</h3>
-						<?php 
-						$sql = "SELECT COUNT(*) AS total FROM Properties";
-						$result = $conn->query($sql);
-						$total = 0;
-						if ($result->num_rows > 0) {
-							$row = $result->fetch_assoc();
-							$total = $row['total'];
-						}
-						echo "<span> ".$total." </span>";
-						?>
-					</div>
-
-					<div class="items">
-						<h3 class="content-title">User Registered</h3>
-						<?php 
-						$sql = "SELECT COUNT(*) AS total FROM User";
-						$result = $conn->query($sql);
-						$total = 0;
-						if ($result->num_rows > 0) {
-							$row = $result->fetch_assoc();
-							$total = $row['total'];
-						}
-						echo "<span> ".$total." </span>";
-						?>
-					</div>
-
-					<div class="items">
-						<h3 class="content-title">
-							Pending Logs
-						</h3>
-						<?php 
-						$sql = "SELECT COUNT(*) AS total FROM Pending";
-						$result = $conn->query($sql);
-						$total = 0;
-						if ($result->num_rows > 0) {
-							$row = $result->fetch_assoc();
-							$total = $row['total'];
-						}
-						echo "<span> ".$total." </span>";
-						?>
-					</div>
+		<section class="Main-Container">
+			<div class="Left-main-container">
+				<div class="recent-activity-container">
+					 <h3 class="header-title">Recent Activities</h3>
+					<div class="item-wrapper">
+						<div class="items">
+							<h3 class="content-title">
+								Property Listed
+							</h3>
+							<?php 
+							$sql = "SELECT COUNT(*) AS total FROM Properties";
+							$result = $conn->query($sql);
+							$total = 0;
+							if ($result->num_rows > 0) {
+								$row = $result->fetch_assoc();
+								$total = $row['total'];
+							}
+							echo "<span> ".$total." </span>";
+							?>
+						</div>
 
 						<div class="items">
-						<h3 class="content-title">
-							Archive Logs
-						</h3>
-						<?php 
-						$sql = "SELECT COUNT(*) AS total FROM Archive";
-						$result = $conn->query($sql);
-						$total = 0;
-						if ($result->num_rows > 0) {
-							$row = $result->fetch_assoc();
-							$total = $row['total'];
-						}
-						echo "<span> ".$total." </span>";
-						?>
+							<h3 class="content-title">User Registered</h3>
+							<?php 
+							$sql = "SELECT COUNT(*) AS total FROM User";
+							$result = $conn->query($sql);
+							$total = 0;
+							if ($result->num_rows > 0) {
+								$row = $result->fetch_assoc();
+								$total = $row['total'];
+							}
+							echo "<span> ".$total." </span>";
+							?>
+						</div>
+
+						<div class="items">
+							<h3 class="content-title">
+								Pending Logs
+							</h3>
+							<?php 
+							$sql = "SELECT COUNT(*) AS total FROM Pending";
+							$result = $conn->query($sql);
+							$total = 0;
+							if ($result->num_rows > 0) {
+								$row = $result->fetch_assoc();
+								$total = $row['total'];
+							}
+							echo "<span> ".$total." </span>";
+							?>
+						</div>
+
+							<div class="items">
+							<h3 class="content-title">
+								Archive Logs
+							</h3>
+							<?php 
+							$sql = "SELECT COUNT(*) AS total FROM Archive";
+							$result = $conn->query($sql);
+							$total = 0;
+							if ($result->num_rows > 0) {
+								$row = $result->fetch_assoc();
+								$total = $row['total'];
+							}
+							echo "<span> ".$total." </span>";
+							?>
+						</div>
+
 					</div>
-
 				</div>
+				<div class="Testimonial-container">
+					<div class="Testimonials-table-container">
+							<table class="table" id="table">
+						<thead>
+							<tr>
+								<th> Fullname</th>
+								<th> Message</th>
+								<th> Rate </th>
+								<th> Date </th>
+								<th> Action </th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td> Fullname</td>
+								<td> Message</td>
+								<td> Rate </td>
+								<td> Date </td>
+								<td> Action </td>								
+							</tr>
+						</tbody>
+					</table>
+					</div>
+				</div>
+			</div>
 
-			</div >
-		</div>
-	
+			<div class="Right-main-container">
+				<div class="Testimonial" id="Testimonial">
+					<div class="container">
+						<h3 class="h3 Testimonial-title"> Preview </h3>
+						<div class="Testimonial-Container">
+							<div class="Testimonial-swiper mySwiper">
+								<div class="Testimonial-wrapper swiper-wrapper">
 
+									<div class="Testimonial-card swiper-slide">
+										<h3 class="Testimonial-user"> User here </h3>
+										<span> Star rate here </span>
+										<span>Message  here</span>
+									</div>
 
-		
+									<div class="Testimonial-card swiper-slide">
+										<h3 class="Testimonial-user"> User here </h3>
+										<span> Star rate here </span>
+										<span>Message  here</span>
+									</div>
+								</div>
+								<div class="swiper-button-next"></div>
+								<div class="swiper-button-prev"></div>
+								<div class="swiper-pagination"></div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<section class="ActiveLog" id="ActiveLog">
+					<div class="container">
+						<div class="ActiveLog-table-container">
+							<table class="table">
+							<thead>
+								<tr>
+									<th> Lastname</th>
+									<th> Status</th>
+									<th> Last Log </th>
+
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td> Fullname</td>
+									<td> Message</td>
+									<td> Rate </td>
+								</tr>							
+							</tbody>
+						</table>
+						</div>
+					</div>
+				</section>
+			</div>
+		</section>
 	</main>
 	<!-- Custom JS & JQUERY -->
 	<script src="./Assets/Js/Admin.js?v=<?php echo time(); ?>"></script>

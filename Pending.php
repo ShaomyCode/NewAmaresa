@@ -167,7 +167,9 @@
 										
 
 										<td class='td-action'>
-											<a href=''><i class='fa-solid fa-money-check-dollar'></i></a>
+											<a href='./ViewPending.php?ViewID=".$PendingID."'>
+												<i class='fa-solid fa-eye'></i>
+											</a>
 											<a href='#'><i class='fa-solid fa-user-check'></i> </a>
 											<a href='./Assets/Php/Admin.php?archiveID=".$PendingID."&value=Pending' onclick='return archiveConfirmation()' '>
 											<i class='fa-solid fa-box-archive' ></i>

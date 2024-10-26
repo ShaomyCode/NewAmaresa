@@ -1,6 +1,13 @@
 /*======================*\
 	# STYLE CSS
 \*======================*/
+/* For Chrome, Safari, Edge, and Opera */
+ input::-webkit-outer-spin-button,
+ input::-webkit-inner-spin-button {
+ 	-webkit-appearance: none;
+ 	margin: 0;
+ }
+
 /*======================*\
 	# CUSTOM PROPERTY
 \*======================*/
@@ -554,6 +561,109 @@ tr:hover td{
 	color: white;
 	cursor: pointer;
 }
+/*======================*\
+# HEADER DASHBOARD
+\*======================*/
+.header{
+	position: relative;
+	z-index: 2;
+	background: var(--head-foot-bg-amaresa);
+	box-shadow:var(--header-bg-amaresa-shadow);	
+	padding-block: 1rem;
+}
+.header .container{
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+.Personal-Details{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	gap: .4rem;
+}
+.Personal-Admin-Container{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 5px;
+	font-size: 2rem;
+}
+.Personal-Title{
+	color: var(--orange-soda);
+	font-size: 2rem;
+}
+.Personal-tag{
+	width: 150px;
+	text-align: center;
+	padding: 10px;
+	border-radius: 5px;
+	background: var(--prussian-blue);
+	color: white;
+	border:1px solid black;
+}
+.callouts{
+	background: hsla(7, 78%, 53%, 0.05);
+	color: var(--dark-jungle-green);
+	font-size: var(--fs-4);
+	font-weight: var(--fw-500);
+	line-height: 1.8;
+	padding: 10px;
+	border-left: 4px solid var(--orange-soda);	
+}
+.Logout a{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap:10px;
+	padding: 1rem;
+	color: white;
+	font-size: var(--fs-4);
+}
+
+/*======================*\
+# RECENT ACTIVITY
+\*======================*/
+.recent-activity-container {
+	width: 50%;
+	margin:2rem;
+ 	background: var(--white);
+ 	box-shadow: 0 5px 5px black;
+ 	padding: 2rem;
+ 	border-radius: 1rem;
+}
+
+.header-title {
+	font-size: var(--fs-2);
+	margin-bottom: 1rem;
+}
+
+.item-wrapper{ 
+	display: flex;
+	justify-content: space-evenly;
+	align-items: center;
+	gap:1rem;
+}
+
+.item-wrapper .items {
+	width: 25% ;
+	box-shadow: 0 5px 2px black;
+	padding: 1rem;
+}
+.item-wrapper .items h3{
+	font-size: var(--fs-4);
+}
+.item-wrapper .items span{
+	font-size: var(--fs-1);
+}
+
+
+
+
+
+
+
+
 
 /*======================*\
 	# FLOAT DIAGRAM
@@ -794,3 +904,7 @@ textarea:focus {
 		height: 100%;
 	}
 }
+
+
+
+

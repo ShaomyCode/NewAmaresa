@@ -341,7 +341,6 @@
 								</div>
 
 								<div class="testimonial-Message-Container">
-
 									<textarea id="message" rows="5" maxlength="300" name="Message" placeholder="What do you think about your experience with us?"></textarea>
 								</div>
 								<button type="submit" name="Submit"  class="testimonial-btn btn"> submit</button>

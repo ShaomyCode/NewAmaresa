@@ -129,7 +129,7 @@
 								$Bedrooms = $row['Bedrooms'];
 								$Bathrooms = $row['Bathrooms'];
 								$Area_sqft = $row['Area_sqft'];
-								$Date = $row['Date'];
+								$Date = $row['Calendar'];
 								$Status = $row['Status'];	
 								echo "
 
@@ -143,9 +143,8 @@
 									<td>".$Date."</td>
 
 							<td class='td-action'>
-								<a href='#'><i class='fa-solid fa-eye'></i></a>
-								<a href='#'><i class='fa-solid fa-pen-to-square'></i></a>
-								<a href='#'> <i class='fa-solid fa-check'></i></a>
+								<a href='./ViewProperties.php?ViewID=".$PropertyID."'><i class='fa-solid fa-eye'></i></a>
+								<a href='#'> <i class='fa-solid fa-house-circle-check'></i></a>
 								<a href='./Assets/Php/Admin.php?archiveID=".$PropertyID."&value=Property' onclick='return archiveConfirmation()' '>
 										<i class='fa-solid fa-box-archive' ></i>
 

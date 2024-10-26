@@ -105,7 +105,8 @@
 				<table class="table" id="table">
 					<tr>	
 						<th>Property</th>
-						<th>Owner</th>
+						<th>Current Owner</th>
+						<th>Previous Owner</th>
 						<th>Date Purchased</th>
 
 						<th class="action-center">Actions</th>
@@ -128,6 +129,7 @@
 
 								<tr>
 									<td>".$Property."</td>
+									<td>".$Owner."</td>
 									<td>".$Owner."</td>
 									<td>".$Date_Purchased."</td>
 								

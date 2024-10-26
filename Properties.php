@@ -106,7 +106,6 @@
 
 						<th>Property</th>
 						<th>Price</th>
-						<th>Description</th>
 						<th>Bedrooms</th>
 						<th>Bathrooms</th>
 						<th>Square Meters</th>
@@ -137,7 +136,6 @@
 								<tr>
 									<td>".$Property."</td>
 									<td>".$Price."</td>
-									<td>".$Description."</td>
 									<td>".$Bedrooms."</td>
 									<td>".$Bathrooms."</td>	
 									<td>".$Area_sqft."</td>	

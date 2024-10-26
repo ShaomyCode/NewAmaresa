@@ -227,8 +227,8 @@
                     $Address = $row['Address'];
                     $Email = $row['Email'];
 
-
-                    echo "	
+                     echo "	
+                 
                     <div class='form-items'>
 
 	                    <input type='text' name='Firstname' placeholder='First name' value='$firstname' required>
@@ -242,52 +242,57 @@
                     <input type='email' name='Email' placeholder='Email Address' value='$Email' required>
                     </div> 
 
-
 					<input list='options' id='Role' name='Property' placeholder='Select Property' required>
-	                    <datalist id='options'>
-		                    <option value='Kalya House'>
-		                    <option value='Aria House'>
-	                    </datalist> 
-                    
+					     <datalist id='options'>
                     ";
-
-                    ?>
-                    
-                    
-           
-                    		
-                    		<div class="textarea-container">
-                    			<textarea id="message" rows="5" name="Message" placeholder="I'd like to inquire about this property..."></textarea>
-                    		</div>
+		  			  $sql = "SELECT * FROM Properties";
+		                    $rs = $conn->query($sql);
+		                    if($rs){
+		                    	while($rw = mysqli_fetch_assoc($rs)){
+		                    		echo "
 
 
-                    		<div class="form-items">
+				               
+					                    <option value='$rw[Property]'>
+				                 
+		                    		";
+		                    	}
+		                    	echo " </datalist>";
+		                    }
+
+		             echo " 
+	       				<div class='textarea-container'>
+							<textarea id='message' rows='5' name='Message' placeholder='Id like to inquire about this property...'></textarea>
+						</div>
+						<div class='form-items'>
 
                     		</div>
                     		<div>
-                    			<input type="checkbox" id="cbx2" onclick="ShowReservation()" style="display: none;"> 
-                    			<label for="cbx2" class="check">
-                    				<svg width="18px" height="18px" viewBox="0 0 18 18">
-                    					<path d="M 1 9 L 1 9 c 0 -5 3 -8 8 -8 L 9 1 C 14 1 17 5 17 9 L 17 9 c 0 4 -4 8 -8 8 L 9 17 C 5 17 1 14 1 9 L 1 9 Z"></path>
-                    					<polyline points="1 9 7 14 15 4"></polyline>
+                    			<input type='checkbox' id='cbx2' onclick='ShowReservation()' style='display: none;'> 
+                    			<label for='cbx2' class='check'>
+                    				<svg width='18px' height='18px' viewBox='0 0 18 18'>
+                    					<path d='M 1 9 L 1 9 c 0 -5 3 -8 8 -8 L 9 1 C 14 1 17 5 17 9 L 17 9 c 0 4 -4 8 -8 8 L 9 17 C 5 17 1 14 1 9 L 1 9 Z'></path>
+                    					<polyline points='1 9 7 14 15 4'></polyline>
                     				</svg>
                     				Reservation Fee (optional)
                     			</label>
 
 
-                    			<div class="payments" id="payments">
-                    				<h3 class="h3 payment-title"> Gcash </h3>
-                    				<img id="paymentImg" src="./Assets/Images/payment.png" >
+                    			<div class='payments' id='payments'>
+                    				<h3 class='h3 payment-title'> Gcash </h3>
+                    				<img id='paymentImg' src='./Assets/Images/payment.png' >
 
-                    				<div class="payment-upload" >
-                    					<label for="file-upload" class="custom-file-upload btn">
+                    				<div class='payment-upload' >
+                    					<label for='file-upload' class='custom-file-upload btn'>
                     						Upload Here
                     					</label>
-                    					<input id="file-upload" type="file" name="Receipt" accept="image/*">
+                    					<input id='file-upload' type='file' name='Receipt' accept='image/*'>
                     				</div>
 
                     			</div>
 
+		             ";
+                    ?>
 
                     			<script>
                     				const checkbox = document.getElementById('cbx2');
@@ -306,7 +311,6 @@
 
                     	<div class="inquiry-buttons">
                     		<div id="panel">
-                    			
                     			<span>Hello </span>
                     		</div>
                     		<span id="requirements" class="btn">Requirements</span>
@@ -316,7 +320,6 @@
 
                 </div>
             </dialog>
-
 	</main>
 
 

@@ -27,15 +27,12 @@ session_start();
         $Message = $_POST['Message'];
         $SelectedProperty = $_POST['Property'];
         $Address = $_POST['Address'];
-
-
-        if (!empty($_FILES['Receipt']['name'])) {
-            $file = $_FILES['Receipt']['name'];
-            $tempFile = $_FILES['inputName']['tmp_name'];
+        $file = $_FILES['Receipt']['name'];
+        if (!empty($file)) {
+            $tempFile = $_FILES['Receipt']['tmp_name'];
             $newFileName = uniqid() . "-" . $file;
             $uploadPath = realpath('../../Images') . DIRECTORY_SEPARATOR . $newFileName;
             move_uploaded_file($tempFile, $uploadPath);
-
             $Category = 'Paid';
         } else {
             $newFileName = "No Image Attach";
@@ -49,7 +46,7 @@ session_start();
         echo "<script>
         alert('Your inquiry has been successfully submitted.');
         setTimeout(function(){
-            window.location.href = '../../index.php';
+            window.location.href = '../../Login.php';
             }, 1500); 
             </script>";   
         }

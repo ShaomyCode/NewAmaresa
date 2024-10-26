@@ -33,4 +33,10 @@ const body = document.querySelector("body"),
     toggle.addEventListener("click", () =>{
         sidebar.classList.toggle("close");
     });
+/*======================*\
+    GCASH MODAL
+\*======================*/
 
+function Gcash(){
+    document.getElementById('GcashModal').showModal();
+}

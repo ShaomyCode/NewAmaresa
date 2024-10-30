@@ -771,11 +771,19 @@ padding-block: var(--section-spacing);
 .Displaytest-user{
 	padding: 1rem 0;
 }
+.Displaytest-card{
+	cursor: pointer;
+	transition: 1s ease;
+	padding: 2rem 0;
+}
+.Displaytest-card:hover{
+	border-radius: 15px;
+	box-shadow: 3px 3px 15px black;
+}
 .Displaytest-card .star-rating{
 	box-shadow: none;
 }
 .Displaytest-message{
-
 	width: 50%;
 	margin-inline: auto;
 	font-size: var(--fs-6);

@@ -56,34 +56,43 @@ session_start();
 /***********************************************
     ADDING SIGNUP
     ************************************************/
-    function Signup($conn){
-        $Firstname = $_POST['Firstname'];
-        $Lastname = $_POST['Lastname'];
-        $Email = $_POST['Email'];
-        $Phone = $_POST['Phone'];
-        $Address = $_POST['Address'];
-        $Password = password_hash($_POST['Password'], PASSWORD_DEFAULT);
-        $Role = "User";
-    // SQL HERE
-        $query = "
+   function Signup($conn) {
+    $Firstname = $_POST['Firstname'];
+    $Lastname = $_POST['Lastname'];
+    $Email = $_POST['Email'];
+    $Phone = $_POST['Phone'];
+    $Address = $_POST['Address'];
+    $Password = password_hash($_POST['Password'], PASSWORD_DEFAULT);
+    $Role = "User";
 
-        INSERT INTO User(Firstname, Lastname, Email, Phone, Address, Password, Role)
-        VALUES('$Firstname','$Lastname','$Email','$Phone','$Address','$Password','$Role');
-        ";
-        mysqli_query($conn,$query);
+    // SQL to insert new user
+    $query = "INSERT INTO User(Firstname, Lastname, Email, Phone, Address, Password, Role) VALUES('$Firstname','$Lastname','$Email','$Phone','$Address','$Password','$Role');";
+    
+    if (mysqli_query($conn, $query)) {
+        // Fetch the newly created user ID
+        $userID = mysqli_insert_id($conn);
+
+        // Log the signup action in the ActivityLog
+        $action = "New user signup: $Firstname $Lastname";
+        $logQuery = "INSERT INTO ActivityLog(UserID, Action) VALUES ('$userID', '$action')";
+        mysqli_query($conn, $logQuery);
 
         echo "<script>
-        alert('Your account has been created successfully');
-        setTimeout(function(){
-            window.location.href = '../../index.php';
-            }, 500); 
-            </script>";        
-        }
+            alert('Your account has been created successfully');
+            setTimeout(function(){
+                window.location.href = '../../index.php';
+            }, 500);
+        </script>";
+    } else {
+        echo "Error: " . mysqli_error($conn);
+    }
+}
+
 
 
 /***********************************************
     FILTER: LOGIN
-    ************************************************/
+************************************************/
 function LoginUser($conn) {
     // Validate and sanitize email
     if (isset($_POST['email']) && filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
@@ -94,15 +103,30 @@ function LoginUser($conn) {
         $stmt->bind_param("s", $Email);
         $stmt->execute();
         $result = $stmt->get_result();
-        
+
         if ($result->num_rows > 0) {
             while ($row = $result->fetch_assoc()) {
                 if (password_verify($Password, $row['Password'])) {
                     $_SESSION['Firstname'] = $row['Firstname'];
                     $_SESSION['Lastname'] = $row['Lastname'];
                     $_SESSION['UserID'] = $row['UserID'];
+                    $UserID = $row['UserID'];
+
+                    // Update LastLogin timestamp
+                    $updateStmt = $conn->prepare("UPDATE User SET Date_Joined = CURRENT_TIMESTAMP WHERE UserID = ?");
+                    $updateStmt->bind_param("i", $UserID);
+                    $updateStmt->execute();
+                    $updateStmt->close();
+
+                    // Log the login activity
+                    $Status = "User logged in ";
+                    $logQuery = $conn->prepare("INSERT INTO ActivityLog(UserID, Action) VALUES (?, ?)");
+                    $logQuery->bind_param("is", $UserID, $Status);
+                    $logQuery->execute();
+                    $logQuery->close();
+
                     echo "<script>
-                        alert('Successfully Login');
+                        alert('Successfully logged in');
                         setTimeout(function(){
                             window.location.href = '../../Login.php';
                         }, 500);
@@ -125,7 +149,7 @@ function LoginUser($conn) {
             </script>";
         }
         $stmt->close();
-     } else {
+    } else {
         echo "<script>
             alert('Invalid Email! Please try again.');
             setTimeout(function(){
@@ -134,6 +158,7 @@ function LoginUser($conn) {
         </script>";
     }
 }
+
 
 /***********************************************
  # TESTIMONIAL

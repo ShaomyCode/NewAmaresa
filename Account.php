@@ -194,7 +194,6 @@
 								<th> Message</th>
 								<th> Rate </th>
 								<th> Date </th>
-								<th> Action </th>
 							</tr>
 						</thead>
 						<tbody>
@@ -212,7 +211,7 @@
 										<td> $row[Message]</td>
 										<td> $rating</td>
 										<td> $row[Date] </td>
-										<td> Action </td>								
+							
 									</tr>								
 								";
 							
@@ -273,14 +272,32 @@
 									<th> Last Log </th>
 
 								</tr>
-							</thead>
-							<tbody>
-								<tr>
-									<td> Fullname</td>
-									<td> Message</td>
-									<td> Rate </td>
-								</tr>							
-							</tbody>
+							</thead>								
+								<?php
+
+									$sql = "SELECT ActivityLog.*, User.Lastname FROM ActivityLog JOIN User ON ActivityLog.UserID = User.UserID ORDER BY Logintime DESC ";
+									$rs = mysqli_query($conn,$sql);
+									if($rs){
+										while($row=mysqli_fetch_assoc($rs)){
+
+											$lastname = $row['Lastname'];
+											$Action = $row['Action'];
+											$LoginTime = $row['Logintime'];
+
+											echo "
+											<tbody>
+											<tr>
+											<td> $lastname</td>
+											<td> $Action</td>
+											<td> $LoginTime </td>
+											</tr>							
+											</tbody>
+											";
+										}
+									}
+
+
+							?>
 						</table>
 						</div>
 					</div>

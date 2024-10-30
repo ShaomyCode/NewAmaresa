@@ -114,6 +114,7 @@ function AddProperty($conn){
     $Bedroom = $_POST['Bedroom'];
     $Bathroom = $_POST['Bathroom'];
     $Area = $_POST['Area'];
+    $VirtualTour = $_POST['VirtualTour'];
     $Message = $_POST['Message'];
     $Status = "Sale";
     $Role = "Property";
@@ -126,8 +127,8 @@ function AddProperty($conn){
     uploadImage('Bathroom', $Newfile_Bathroom);  
 
     $stmt = "
-    INSERT INTO properties(Property, Description, Price, Bedrooms, Bathrooms, Area_sqft, Status, IExterior,IBedroom,IBathroom,IAttic,IDining,Role) 
-    VALUES ('$Property', '$Message', '$Price', '$Bedroom', '$Bathroom', '$Area','$Status','$Newfile_Exterior','$Newfile_Bedroom','$Newfile_Livingroom','$Newfile_Diningroom','$Newfile_Bathroom','$Role')
+    INSERT INTO properties(Property, Description, Price, Bedrooms, Bathrooms, Area_sqft, VirtualTour, Status, IExterior,IBedroom,IBathroom,IAttic,IDining,Role) 
+    VALUES ('$Property', '$Message', '$Price', '$Bedroom', '$Bathroom', '$Area','$VirtualTour','$Status','$Newfile_Exterior','$Newfile_Bedroom','$Newfile_Livingroom','$Newfile_Diningroom','$Newfile_Bathroom','$Role')
     ";
     mysqli_query($conn,$stmt);
 

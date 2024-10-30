@@ -186,6 +186,10 @@
 						<input type="number" max="10" min="1" name="Bathroom" placeholder="Bathrooms/s" required> 												
 					</div>
 					<input type="text" name="Area" placeholder="Area sqft" required>
+					<div class="virtual">
+						<span>Example: virtual/Amaresa House/index.html</span>
+						<input type="text" name="VirtualTour" placeholder="Virtual/Folder/ filename with extension" required>
+					</div>
 				    <div class="textarea-container">
 				        <textarea id="message" rows="5" name="Message" placeholder="Property Description..."></textarea>
 				    </div>		

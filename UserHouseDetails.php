@@ -112,6 +112,7 @@
 				$Bedrooms = $row['Bedrooms'];
 				$Bathrooms = $row['Bathrooms'];
 				$Area = $row['Area_sqft'];
+				$VirtualTour =  $row['VirtualTour'];
 			// FOR IMAGE
 			echo "
 
@@ -197,15 +198,26 @@
 							
 							</div>
 						</div>
-					</div>
-				</section>
 
+					</div>
+
+				</section>
+			";
+			echo "
+
+			<div class='Iframe-container'>
+				<div class='left-iframe'>
+					<span> To move: </span>
+					<img src='./Assets/Images/Move.png' alt='Move tutorial'>
+				</div>
+				<iframe src='$VirtualTour' class='VirtualTour' alt='No Virtual model.'>No Virtual Model</iframe>
+			</div>
 
 			";
 		}
 		?>
-		
-	
+
+
        <dialog id="Inquiry-Modal" class="dialog">
             <button onclick="CloseInquiry()" class="closebtn">X</button>    
 

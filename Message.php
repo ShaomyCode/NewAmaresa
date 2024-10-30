@@ -118,7 +118,7 @@
 				
 					<?php
 
-						$sql = "SELECT * FROM message";
+						$sql = "SELECT * FROM message ORDER BY Rate DESC";
 						$rs = mysqli_query($conn, $sql);
 
 						if($rs){

@@ -711,9 +711,8 @@ tr:hover td{
 	gap: 5px;
 	justify-content: center;
 }
-.form-items .virtual{
+.virtual{
 	flex-direction: column;
-	border:2px solid red;
 
 	span{
 		color: white;

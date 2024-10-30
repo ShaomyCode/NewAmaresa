@@ -67,7 +67,7 @@ function AddUser($conn){
          echo "<script>
                     alert('Added Successfully');
                     setTimeout(function(){
-                        window.location.href = '../../Users.php';
+                        window.location.href = '../../Admin-Users.php';
                     }, 50); 
                 </script>";          
 }	
@@ -92,7 +92,7 @@ function AddManagement($conn){
          echo "<script>
                     alert('Added Successfully');
                     setTimeout(function(){
-                        window.location.href = '../../Management.php';
+                        window.location.href = '../../Admin-Management.php';
                     }, 50); 
                 </script>";          
 }
@@ -114,6 +114,9 @@ function AddProperty($conn){
     $Bedroom = $_POST['Bedroom'];
     $Bathroom = $_POST['Bathroom'];
     $Area = $_POST['Area'];
+    $Block = $_POST['Block'];
+    $Lot = $_POST['Lot'];
+    $Phase = $_POST['Phase'];
     $VirtualTour = $_POST['VirtualTour'];
     $Message = $_POST['Message'];
     $Status = "Sale";
@@ -127,8 +130,8 @@ function AddProperty($conn){
     uploadImage('Bathroom', $Newfile_Bathroom);  
 
     $stmt = "
-    INSERT INTO properties(Property, Description, Price, Bedrooms, Bathrooms, Area_sqft, VirtualTour, Status, IExterior,IBedroom,IBathroom,IAttic,IDining,Role) 
-    VALUES ('$Property', '$Message', '$Price', '$Bedroom', '$Bathroom', '$Area','$VirtualTour','$Status','$Newfile_Exterior','$Newfile_Bedroom','$Newfile_Livingroom','$Newfile_Diningroom','$Newfile_Bathroom','$Role')
+    INSERT INTO properties(Property, Description, Price, Bedrooms, Bathrooms, Lot,Block, Phase, Area_sqft, VirtualTour, Status, IExterior,IBedroom,IBathroom,IAttic,IDining,Role) 
+    VALUES ('$Property', '$Message', '$Price', '$Bedroom', '$Bathroom','$Lot','$Block','$Phase', '$Area','$VirtualTour','$Status','$Newfile_Exterior','$Newfile_Bedroom','$Newfile_Livingroom','$Newfile_Diningroom','$Newfile_Bathroom','$Role')
     ";
     mysqli_query($conn,$stmt);
 
@@ -136,7 +139,7 @@ function AddProperty($conn){
     <script>
         alert('Property Successfully Added');
      setTimeout(function(){
-        window.location.href = '../../Properties.php';
+        window.location.href = '../../Admin-Properties.php';
         }, 50); 
     </script>"; 
 }
@@ -159,7 +162,7 @@ function DeleteArchive($conn){
          echo "<script>
                     alert('Record Successfully Deleted');
                     setTimeout(function(){
-                        window.location.href = '../../Archieve.php';
+                        window.location.href = '../../Admin-Archieve.php';
                     }, 50); 
                 </script>";         
     }
@@ -198,7 +201,7 @@ function ArchiveManagement($conn){
          echo "<script>
                     alert('Archive Successfully');
                     setTimeout(function(){
-                        window.location.href = '../../Archieve.php';
+                        window.location.href = '../../Admin-Archieve.php';
                     }, 50); 
                 </script>";     
 
@@ -237,7 +240,7 @@ function ArchiveProperty($conn){
          echo "<script>
                     alert('Archive Successfully');
                     setTimeout(function(){
-                        window.location.href = '../../Archieve.php';
+                        window.location.href = '../../Admin-Archieve.php';
                     }, 50); 
                 </script>";     
 
@@ -276,7 +279,7 @@ function ArchivePending($conn){
     echo "<script>
             alert('Archive Successfully');
             setTimeout(function(){
-                 window.location.href = '../../Pending.php';
+                 window.location.href = '../../Admin-Pending.php';
             }, 50); 
         </script>";     
 
@@ -315,7 +318,7 @@ function ArchiveUser($conn){
     echo "<script>
             alert('Archive Successfully');
             setTimeout(function(){
-                 window.location.href = '../../Archieve.php';
+                 window.location.href = '../../Admin-Archieve.php';
             }, 50); 
         </script>";     
 

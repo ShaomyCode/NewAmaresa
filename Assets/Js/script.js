@@ -32,6 +32,15 @@ function CloseInquiry(){
     document.getElementById('Inquiry-Modal').close();
 }
 /*======================*\
+# DIALOG: Edit Profile
+\*======================*/
+function ShowEdit(){
+    document.getElementById('EditProfile').showModal();
+}
+function CloseEdit(){
+    document.getElementById('EditProfile').close();
+}
+/*======================*\
 # TOGGLE
 \*======================*/
 $(document).ready(function(){

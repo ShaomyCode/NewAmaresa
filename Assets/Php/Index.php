@@ -15,6 +15,9 @@ session_start();
     if(isset($_POST['Signin-btn'])){
         Signup($conn);
     }
+    if(isset($_POST['Submit'])){
+        Testimonial($conn);
+    }
 /***********************************************
     ADDING INQUIRY
     ************************************************/
@@ -132,10 +135,30 @@ function LoginUser($conn) {
     }
 }
 
+/***********************************************
+ # TESTIMONIAL
+************************************************/
+function Testimonial($conn){
+    $Name = $_POST['Name'];
+    $Rating = $_POST['rating'];
+    $Message = $_POST['Message'];
 
+    $sql = "
+    INSERT INTO Message(sender, Rate, Message) 
+    VALUES('$Name', $Rating, '$Message');
+    ";
+    mysqli_query($conn,$sql);
+
+    echo "<script>
+    alert('Submitted successfully');
+    setTimeout(function(){
+        window.location.href = '../../index.php';
+        }, 500); 
+        </script>";     
+}
 /***********************************************
     GET THE HOUSE ID
-    ************************************************/
+************************************************/
     if(isset($_POST['PassID'])){
         $Holder = $_POST['IDHolder'];
         $_SESSION['Holder'] = $Holder;

@@ -108,9 +108,9 @@
 					<tr>	
 
 						<th>Sender</th>
-						<th>Receiver</th>
-						<th>Conversation</th>
 						<th>Message</th>
+						<th>Rate</th>
+						<th>Date Received</th>
 
 						<th class="action-center">Actions</th>
 					</tr>	
@@ -126,7 +126,7 @@
 								// code...
 								$MessageID = $row['MessageID'];
 								$Sender = $row['Sender'];
-								$Receiver = $row['Receiver'];
+								$Rate = $row['Rate'];
 								$Date = $row['Date'];
 								$Message = $row['Message'];
 
@@ -137,9 +137,10 @@
 								<tr>
 
 									<td>".$Sender."</td>
-									<td>".$Receiver."</td>
-									<td>".$Date."</td>
 									<td>".$Message."</td>
+									<td>".$Rate."</td>
+									<td>".$Date."</td>
+									
 
 
 									<td class='td-action'>

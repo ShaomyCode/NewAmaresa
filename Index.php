@@ -46,23 +46,27 @@
 
 					<ul class="header-top-social-list">
 						<li>
-							<a href="#" class="header-top-social-link">
-								<i class="fa-brands fa-facebook"></i>
+							<a href="#about" class="header-top-social-link">
+								<i class="fa-solid fa-circle-info"></i>
+								<span>About us</span>
 							</a>
 						</li>
 						<li>
-							<a href="#" class="header-top-social-link">
-								<i class="fa-brands fa-instagram"></i>
+							<a href="#location" class="header-top-social-link">
+								<i class="fa-solid fa-location-crosshairs"></i>
+								<span> Location</span>
 							</a>
 						</li>
 						<li>
-							<a href="#" class="header-top-social-link">
-								<i class="fa-brands fa-x-twitter"></i>
+							<a href="#service" class="header-top-social-link">
+								<i class="fa-brands fa-servicestack"></i>
+								<span> Service </span>
 							</a>
 						</li>
 						<li>
-							<a href="#" class="header-top-social-link">
-								<i class="fa-brands fa-linkedin"></i>
+							<a href="#property" class="header-top-social-link">
+								<i class="fa-solid fa-house-lock"></i>
+								<span> Properties </span>
 							</a>
 						</li>																							
 					</ul>
@@ -188,7 +192,6 @@
 					</div>
 					
 				</div>
-
 			</section>
 			<!-- Section: Service -->
 			<section class="service" id="service">
@@ -327,21 +330,21 @@
 						</div>
 
 						<div class="testimonial-feedbox">
-							<form>
+							<form method="POST" action="./Assets/Php/Index.php">
 								<div class="testimonial-feedbox-top">
 									<img src="./Assets/Images/Feedback.gif" class="Feedback-Image">
-									<input type="text" name="Name" placeholder="Enter your name">
+									<input type="text" name="Name" placeholder="Enter your name" required>
 									<div class="star-rating">
-										<input type="radio" id="star5" name="rating" value="5"><label for="star5" title="excellent">★</label>
-										<input type="radio" id="star4" name="rating" value="4"><label for="star4" title="Good">★</label>
-										<input type="radio" id="star3" name="rating" value="3"><label for="star3" title="Average">★</label>
-										<input type="radio" id="star2" name="rating" value="2"><label for="star2" title="Poor">★</label>
-										<input type="radio" id="star1" name="rating" value="1"><label for="star1" title="Very Poor">★</label>
+										<input type="radio" id="star5" name="rating" value="5" required><label for="star5" title="excellent">★</label>
+										<input type="radio" id="star4" name="rating" value="4" required><label for="star4" title="Good">★</label>
+										<input type="radio" id="star3" name="rating" value="3" required><label for="star3" title="Average">★</label>
+										<input type="radio" id="star2" name="rating" value="2" required><label for="star2" title="Poor">★</label>
+										<input type="radio" id="star1" name="rating" value="1" required><label for="star1" title="Very Poor">★</label>
 									</div>
 								</div>
 
 								<div class="testimonial-Message-Container">
-									<textarea id="message" rows="5" maxlength="300" name="Message" placeholder="What do you think about your experience with us?"></textarea>
+									<textarea id="message" rows="5" maxlength="300" name="Message" placeholder="What do you think about your experience with us?" required></textarea>
 								</div>
 								<button type="submit" name="Submit"  class="testimonial-btn btn"> submit</button>
 							</form>

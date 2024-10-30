@@ -198,13 +198,27 @@
 							</tr>
 						</thead>
 						<tbody>
-							<tr>
-								<td> Fullname</td>
-								<td> Message</td>
-								<td> Rate </td>
-								<td> Date </td>
-								<td> Action </td>								
-							</tr>
+							<?php
+
+								$sql = "SELECT * FROM Message";
+								$rs = $conn->query($sql);
+								if($rs){
+									while ($row = mysqli_fetch_assoc($rs)) {
+					
+								echo "
+									<tr>
+										<td> $row[Sender]</td>
+										<td> $row[Message]</td>
+										<td> $row[Rate] </td>
+										<td> $row[Date] </td>
+										<td> Action </td>								
+									</tr>								
+								";
+									}
+								}
+
+
+							?>
 						</tbody>
 					</table>
 					</div>
@@ -218,18 +232,26 @@
 						<div class="Testimonial-Container">
 							<div class="Testimonial-swiper mySwiper">
 								<div class="Testimonial-wrapper swiper-wrapper">
-
-									<div class="Testimonial-card swiper-slide">
-										<h3 class="Testimonial-user"> User here </h3>
-										<span> Star rate here </span>
-										<span>Message  here</span>
-									</div>
-
-									<div class="Testimonial-card swiper-slide">
-										<h3 class="Testimonial-user"> User here </h3>
-										<span> Star rate here </span>
-										<span>Message  here</span>
-									</div>
+									<?php
+									$sql = "SELECT * FROM Message";
+									$rs = $conn->query($sql);
+									if($rs){
+										while ($row = mysqli_fetch_assoc($rs)) {
+											$rating = $row['Rate'];
+											echo "
+											<div class='Testimonial-card swiper-slide'>
+												<h3 class='Testimonial-user'> $row[Sender] </h3>
+												<div class='star-rating'>";
+												for ($i = 5; $i >= 1; $i--) { 
+													echo "
+													<input type='radio' id='star$i'  value='$i' " . ($i == $rating ? "checked" : "") . "> 
+													<label for='star$i' title='Rating: $i'>★</label>
+													"; 
+												}
+											echo "</div> <span>$row[Message]</span> </div>";
+										}			
+									}
+									?>
 								</div>
 								<div class="swiper-button-next"></div>
 								<div class="swiper-button-prev"></div>

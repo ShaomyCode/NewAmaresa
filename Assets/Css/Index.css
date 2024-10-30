@@ -235,6 +235,15 @@ button, a {transition: var(--transition);}
 	align-items: center;
 	
 }
+.header-top-social-link{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 5px;
+}
+.header-top-social-link i{
+	color: var(--orange-soda);
+}
 .header-top .wrapper{gap: 20px;}
 .header-top-social-list{gap: 12px;}
 .header-top-social-link,.header-top-btn{

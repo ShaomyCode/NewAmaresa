@@ -110,9 +110,10 @@
                                 <span class='callout'> Explore the best properties matching your preferences. </span>
                             </div>
                             <div class='Welcome-btn'>
-                             <button  class='btn'> <span> View pending </span> </button>
-                             <a href='./EditProfile.php?EditID = $UserID'  class='btn'> 
-                                 <span> Edit Profile </span> 
+                       
+                             <a href='./Profile.php?EditID = $UserID'  class='Profile-btn btn'> 
+                                    <i class='fa-regular fa-id-card'></i>
+                                 <span> Profile </span> 
                              </a>
                             </div>
                         </div>

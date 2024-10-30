@@ -368,6 +368,13 @@ button, a {transition: var(--transition);}
 	height: calc(100vh - 250px);
 	width: 100%;
 }
+.Profile-btn{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 10px;
+	font-size: var(--fs-3);
+}
 /*======================*\
 # Section: ABOUT
 \*======================*/
@@ -1463,6 +1470,9 @@ input[type="file"] {
         border-radius: 15px;
     }
 }
+/*======================*\
+#		Profile PHP
+\*======================*/
 /*======================*\
 #	Section: FOOTER
 \*======================*/

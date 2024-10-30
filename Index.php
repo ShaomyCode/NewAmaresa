@@ -354,7 +354,40 @@
 
 				</div>
 			</section>
-
+			<!-- SECTION: RATE DISPLAY -->
+			<section class="displaytest" id="displaytest">
+				<div class="container">
+					<h3 class="h3 displaytest-title">Testimonial Reviews</h3>
+					<div class="Displaytest-content">
+						<div class="Displaytest-swiper mySwiper-autoplay">
+							<div class="Displaytest-wrapper swiper-wrapper">
+								<?php
+									$sql = "SELECT * FROM Message";
+									$rs = $conn->query($sql);
+									if($rs){
+										while ($row = mysqli_fetch_assoc($rs)) {
+											$rating = $row['Rate'];
+											if($rating >= 3){
+											echo "
+											<div class='Displaytest-card swiper-slide'>
+												<h3 class='Displaytest-user'> $row[Sender] </h3>
+												<div class='star-rating'>";
+												for ($i = 5; $i >= 1; $i--) { 
+													echo "
+													<input type='radio' id='star$i'  value='$i' " . ($i == $rating ? "checked" : "") . "> 
+													<label for='star$i' title='Rating: $i'>★</label>
+													"; 
+												}
+											echo "</div> <span class='Displaytest-message'>$row[Message]</span> </div>";
+											}
+										}			
+									}
+									?>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
 		</article>
 	</main>
 	<!-- Section: Dialogs -->

@@ -362,7 +362,6 @@ button, a {transition: var(--transition);}
 	margin-bottom: 30px;
 }
 .swiper-slide{
-	background: red;
 	height: 250px;
 }
 .swiper-slide img{
@@ -757,6 +756,29 @@ padding-block: var(--section-spacing);
   color: gold; /* Highlight color */
   filter: drop-shadow(0 5px 10px rgba(0, 0, 0, 0.5));
   transform: scale(1.1);
+}
+/*======================*\
+# Section: Display Testimonial 
+\*======================*/
+.displaytest-title{
+	text-align: center;
+	font-size: var(--fs-1);
+	padding: 1rem;
+}
+.Displaytest-content{
+	text-align: center;
+}
+.Displaytest-user{
+	padding: 1rem 0;
+}
+.Displaytest-card .star-rating{
+	box-shadow: none;
+}
+.Displaytest-message{
+
+	width: 50%;
+	margin-inline: auto;
+	font-size: var(--fs-6);
 }
 /*======================*\
 # Section: Featured Card

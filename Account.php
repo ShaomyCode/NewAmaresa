@@ -200,20 +200,22 @@
 						<tbody>
 							<?php
 
-								$sql = "SELECT * FROM Message";
+								$sql = "SELECT * FROM Message ORDER BY Rate DESC";
 								$rs = $conn->query($sql);
 								if($rs){
 									while ($row = mysqli_fetch_assoc($rs)) {
-					
+									$rating = $row['Rate'];
+								
 								echo "
 									<tr>
 										<td> $row[Sender]</td>
 										<td> $row[Message]</td>
-										<td> $row[Rate] </td>
+										<td> $rating</td>
 										<td> $row[Date] </td>
 										<td> Action </td>								
 									</tr>								
 								";
+							
 									}
 								}
 

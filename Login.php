@@ -101,6 +101,7 @@
                         </div>                      
                     </div>
                     <?php
+                    $Get = $UserID;
                     echo "
                     <section class='Welcome'>
                         <div class='container'>
@@ -111,7 +112,7 @@
                             </div>
                             <div class='Welcome-btn'>
                        
-                             <a href='./Profile.php?EditID = $UserID'  class='Profile-btn btn'> 
+                             <a href='./Profile.php?EditID=$Get'  class='Profile-btn btn'> 
                                     <i class='fa-regular fa-id-card'></i>
                                  <span> Profile </span> 
                              </a>

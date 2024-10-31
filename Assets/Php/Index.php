@@ -24,6 +24,7 @@ session_start();
     function inquiry($conn){
         $Lastname = $_POST['Lastname'];
         $Firstname = $_POST['Firstname'];
+        $UserID = $_POST['UserID'];
         $Email = $_POST['Email'];
         $Phone = $_POST['Phone'];
         $Address = $_POST['Address'];
@@ -42,8 +43,8 @@ session_start();
             $Category = 'Unpaid';
         }
         
-        $stmt = "INSERT INTO Pending(Lastname, Firstname, Email, Phone, Message, Address, Selected_Property, Category , Receipt) 
-        VALUES('$Lastname','$Firstname', '$Email', '$Phone', '$Message','$Address', '$SelectedProperty', '$Category','$newFileName') ";
+        $stmt = "INSERT INTO Pending(Lastname, Firstname, Email, Phone, Message, Address, Selected_Property, Category , Receipt, UserID) 
+        VALUES('$Lastname','$Firstname', '$Email', '$Phone', '$Message','$Address', '$SelectedProperty', '$Category','$newFileName', '$UserID') ";
         mysqli_query($conn, $stmt); 
 
         echo "<script>
@@ -184,17 +185,33 @@ function Testimonial($conn) {
         }, 500);
     </script>";
 }
+
 /***********************************************
     GET THE HOUSE ID
 ************************************************/
-    if(isset($_POST['PassID'])){
-        $Holder = $_POST['IDHolder'];
-        $_SESSION['Holder'] = $Holder;
-        header("location: ../../UserHouseDetails.php" );
-    }    
-    if(isset($_POST['PassIDUser'])){
-        $Holder = $_POST['IDHolder'];
-        $_SESSION['Holder'] = $Holder;
-        header("location: ../../HouseDetails.php" );
-    }
+if(isset($_GET['DeleteID'])){
+    $ItemID = $_GET['DeleteID'];
+    $sql = "DELETE FROM Pending WHERE PendingID = $ItemID";
+    mysqli_query($conn, $sql);
+
+    echo "<script>
+        alert('Submitted successfully');
+        setTimeout(function(){
+            window.location.href = '../../Login.php';
+        }, 500);
+    </script>";       
+}
+/***********************************************
+    GET THE HOUSE ID
+************************************************/
+if(isset($_POST['PassID'])){
+    $Holder = $_POST['IDHolder'];
+    $_SESSION['Holder'] = $Holder;
+    header("location: ../../UserHouseDetails.php" );
+}    
+if(isset($_POST['PassIDUser'])){
+    $Holder = $_POST['IDHolder'];
+    $_SESSION['Holder'] = $Holder;
+    header("location: ../../HouseDetails.php" );
+}
 ?>

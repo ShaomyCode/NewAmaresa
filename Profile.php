@@ -5,9 +5,6 @@
     $Lastname = $_SESSION['Lastname'];
     $UserID = $_SESSION['UserID'];
 
-	$Holder = $_SESSION['Holder'];
-
-
 ?>
 
 <!DOCTYPE html>
@@ -94,8 +91,135 @@
 			</div>
 	</header>
 	<main>
-		<section class="Profile-Wrapper">
-			
+		<section class="Profile-Wrapper" class="Profile-Wrapper">
+			<div class="Profile-present-info">
+				<h3 class="h3 Profile-title"> Present Information </h3>
+				<span class="Profile-subtitle">Presenting the most recent insights... </span>
+				<?php
+
+					if(isset($_GET['EditID'])){
+						$EditID = $_GET['EditID'];
+						
+						$sql = "SELECT * FROM User WHERE UserID = $EditID";
+						$rs = mysqli_query($conn,$sql);
+						if($rs){
+							while ($row = mysqli_fetch_assoc($rs)) {
+								$Firstname = $row['Firstname'];
+								$Lastname = $row['Lastname'];
+								$Email = $row['Email'];
+								$Phone = $row['Phone'];
+								$Address = $row['Address'];
+								$Password = $row['Password'];
+								$Date = $row['Date_Joined'];
+							
+
+							echo "
+								<div class='Profile-present-items'>
+									<input type='text' value='$Firstname' readonly>
+									<input type='text' value='$Lastname' readonly>
+								</div>								
+
+								<div class='Profile-present-items'>
+									<input type='text' value='$Email' readonly>
+									<input type='text' value='$Phone' readonly>
+								</div>
+
+								<div class='Profile-present-items'>
+									<input type='text' value='$Address' readonly>
+									<input type='text' value='$Password' readonly>
+								</div>
+								<div class='Profile-present-items'>
+									<input type='text' value='$Date' readonly>
+								</div>
+							";								
+							}
+						}
+					
+					}
+				?>
+			</div>
+			<div class="Profile-refresh">
+				<h3 class="h3 Profile-refresh-title"> Refreshing Your Profile </h3>
+				<span class="Profile-subtitle">Breathe New Life into Your Profile </span>
+					<?php
+
+					if(isset($_GET['EditID'])){
+						$EditID = $_GET['EditID'];
+
+						$sql = "SELECT * FROM User WHERE UserID = $EditID";
+						$rs = mysqli_query($conn,$sql);
+						if($rs){
+							while ($row = mysqli_fetch_assoc($rs)) {
+								$Firstname = $row['Firstname'];
+								$Lastname = $row['Lastname'];
+								$Email = $row['Email'];
+								$Phone = $row['Phone'];
+								$Address = $row['Address'];
+								$Password = $row['Password'];
+								$Date = $row['Date_Joined'];
+								
+
+								echo "
+								<form method='POST' action='./Assets/Php/Admin.php'>
+									<div class='Profile-refresh-items'>
+										<input type='text' placeholder='Update your First name' required>
+										<input type='text' placeholder='Update your Last name' required>
+									</div>								
+
+									<div class='Profile-refresh-items'>
+										<input type='text' placeholder='Update your Email' required>
+										<input type='tel' placeholder='Update your Phone' required>
+									</div>
+
+									<div class='Profile-refresh-items'>
+										<input type='text' placeholder='Update your Address' required>
+										<input type='text' placeholder='Update your Password' required>
+									</div>
+									<div class='Profile-refresh-items'>
+										<button type='submit' name='Update' class='Profile-btn btn'>
+											<i class='fa-regular fa-pen-to-square'></i>
+											<span>Update</span>
+										</button>
+									</div>
+								</form>
+								";								
+							}
+						}
+						
+					}
+					?>
+			</div>
+		</section>
+		<section class="Purchase-Wrapper" class='Purchase-Wrapper'>
+			<h3 class="h3 Purchase-title"> Ready to Purchase </h3>
+			<span class="Profile-subtitle"> Reach Out for More Information </span>
+			<?php
+			if (isset($_GET['EditID'])) {
+			    $ProfileID = $_GET['EditID'];
+			    $sql = "SELECT Pending.*, User.* 
+			    FROM Pending 
+			    JOIN User 
+			    ON Pending.UserID = User.UserID 
+			    WHERE User.UserID = $ProfileID";
+
+			    $rs = mysqli_query($conn, $sql);
+			    if ($rs) {
+			        while ($row = mysqli_fetch_assoc($rs)) {
+			            $Property = $row['Selected_Property'];
+			            $Category = $row['Category'];
+			            $PendingID = $row['PendingID'];
+			            $Date = $row['Date'];
+			            echo "<div class='Purchase-items'>
+			                    <input type='text' value='$Property' readonly>
+			                    <input type='text' value='$Category' readonly>
+			                    <input type='text' value='$Date' readonly>
+			                    <a href='./Assets/Php/Index.php?DeleteID=$PendingID'><i class='fa-solid fa-trash'></i></a>
+			                  </div>";
+			        }
+			    }
+			}
+
+			?>
 		</section>
 	</main>
 

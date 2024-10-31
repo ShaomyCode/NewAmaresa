@@ -4,10 +4,7 @@
     $Firstname = $_SESSION['Firstname'];
     $Lastname = $_SESSION['Lastname'];
     $UserID = $_SESSION['UserID'];
-
 	$Holder = $_SESSION['Holder'];
-
-
 ?>
 
 <!DOCTYPE html>
@@ -234,6 +231,7 @@
                     $result = $conn->query($query);
                     $row = $result->fetch_assoc();
                     $firstname = $row['Firstname'];
+                    $UserID = $row['UserID'];
                     $lastname = $row['Lastname'];
                     $number = $row['Phone'];
                     $Address = $row['Address'];
@@ -253,7 +251,7 @@
                     <input type='text' name='Address' placeholder='Address' value='$Address' required>
                     <input type='email' name='Email' placeholder='Email Address' value='$Email' required>
                     </div> 
-
+                    <input type='hidden' name='UserID' value='$UserID'>
 					<input list='options' id='Role' name='Property' placeholder='Select Property' required>
 					     <datalist id='options'>
                     ";

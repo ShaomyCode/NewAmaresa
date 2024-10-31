@@ -1473,6 +1473,68 @@ input[type="file"] {
 /*======================*\
 #		Profile PHP
 \*======================*/
+.Profile-Wrapper{
+	display: flex;
+	justify-content: space-evenly;
+	gap: 1rem;
+	padding-block: var(--section-spacing);
+}
+.Profile-title,
+.Profile-refresh-title,
+.Purchase-title{
+	font-size: var(--fs-1);
+	text-align: center;
+}
+.Profile-subtitle{
+	text-align: center;
+	font-size: var(--fs-5);
+}
+.Profile-present-items,
+.Profile-refresh-items{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 10px;
+	margin:20px;
+}
+.Profile-present-items input,
+.Profile-refresh-items input,
+.Purchase-items input{
+	padding: 1rem;
+	text-align: center;
+	border: none;
+	border-radius: 5px;
+	box-shadow: 0 3px 2px black;
+}
+.Profile-present-items input:is(:hover,:focus),
+.Profile-refresh-items input:is(:hover,:focus){
+	outline: 3px solid blue;
+
+}
+.Profile-btn{
+	width: 100%;
+}
+.Purchase-Wrapper{
+	background: var(--white);
+	padding-block: var(--section-spacing);
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	gap: 10px;
+}
+.Purchase-items{
+	display: flex;
+	justify-content: center;
+	gap: 1rem;
+	align-items: center;
+}
+.Purchase-items a{
+	padding: 1rem;
+	font-size: var(--fs-1);
+	color: var(--orange-soda);
+	text-shadow: 2px 2px 3px black;
+}
 /*======================*\
 #	Section: FOOTER
 \*======================*/

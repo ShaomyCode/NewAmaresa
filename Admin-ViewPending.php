@@ -37,11 +37,9 @@
 		<section class="Content" id="Content">
 			<div class="container">
 				<?php
-
 					if(isset($_GET['ViewID'])){
 
 						$SelectedID = $_GET['ViewID'];
-
 						$stmt = "SELECT * FROM Pending WHERE PendingID = $SelectedID ";
 						$rs = mysqli_query($conn,$stmt);
 						if($rs){
@@ -64,27 +62,29 @@
 										<h3 class='h3 View-title'>Overview of $Lastname details</h3>
 										<span>A Summary of Important Details</span>
 										<div class='View-details-items'>
-											<input type='text' value='$Lastname' disabled>
-											<input type='text' value='$Firstname' disabled>
+											<input type='text' value='$Lastname' readonly>
+											<input type='text' value='$Firstname' readonly>
 										</div>										
 
 										<div class='View-details-items'>
-											<input type='text' value='$Email' disabled>
-											<input type='text' value='$Phone' disabled>
+											<input type='text' value='$Email' readonly>
+											<input type='text' value='$Phone' readonly>
 										</div>
 
 										<div class='View-details-items'>
-											<input type='text' value='$Address' disabled>
-											<input type='text' value='$Selected' disabled>
+											<input type='text' value='$Address' readonly>
+											<input type='text' value='$Selected' readonly>
 										</div>		
 
 										<div class='View-details-items'>
-											<input type='text' value='$Category' disabled>
-											<input type='text' value='$Date' disabled>
+											<input type='text' value='$Category' readonly>
+											<input type='text' placeholder='Category here...' readonly>
 										</div>
-
 										<div class='View-details-items'>
-											<textarea>$Message</textarea>
+											<input type='text' value='$Date' readonly>
+										</div>
+										<div class='View-details-items'>
+											<textarea placeholder='User Message here...' readonly>$Message</textarea>
 										</div>
 									</div>
 									<div class='View-images'>
@@ -97,9 +97,57 @@
 							}
 						}
 					}
-
 				?>
 			</div>
+		</section>
+		<section class="Update">
+			<div class="container">
+				<form method="POST">
+					<h3 class="Update-Title"> Send your Message </h3>
+					<span class="Update-Subtitle">Your Voice Matters: We Value Your Thoughts and Feedback. Share What's on Your Mind!</span>
+
+					<div class="Update-items">
+						<input list="options" id="Role" name="Status" placeholder="Select Status here" required>
+					    <datalist id="options">
+					        <option value="Pending">
+					        <option value="Verified">
+					        <option value="Declined">
+					    </datalist>
+					</div>
+					<div class="Update-items">
+						<input type="hidden" name="UpdateID" value="<?php $_GET['ViewID'] ?>">
+						<textarea name="Requirements" placeholder="Share your desire Message here..."></textarea>
+					</div>
+					<div class="Update-items">
+						<button type="submit" name="Send" class="btn">
+							<i class="fa-solid fa-paper-plane"></i>
+							Send
+						</button>
+					</div>
+				</form>
+			</div>
+			<?php
+
+				if(isset($_POST['Send']) && isset($_GET['ViewID'])){
+					$PendingID = $_GET['ViewID'];
+				    $Status = $_POST['Status'];
+				    $Requirements = $_POST['Requirements'];		
+				    $query = "
+				    UPDATE Pending SET
+				    Status = '$Status',
+				    Requirements = '$Requirements'
+				    WHERE PendingID = '$PendingID'
+				    ";		
+				    mysqli_query($conn,$query);
+				    echo "
+				    <script>
+				        alert('Message Successfully sent');
+				     setTimeout(function(){
+				        window.location.href = 'Admin-Pending.php';
+				        }, 50); 
+				    </script>"; 				    		    			
+				}
+			?>
 		</section>
 	</main>
 

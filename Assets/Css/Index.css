@@ -1535,6 +1535,16 @@ input[type="file"] {
 	color: var(--orange-soda);
 	text-shadow: 2px 2px 3px black;
 }
+.Purchase-items textarea{
+	position: relative;
+	width: 100vh;
+	max-height: 100px;
+	min-height: 50px;
+	height: 100px;
+}
+.Purchase-items textarea::placeholder{
+	color: dimgrey;
+}
 /*======================*\
 #	Section: FOOTER
 \*======================*/

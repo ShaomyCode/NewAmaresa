@@ -67,22 +67,22 @@ include './Assets/Php/Connection.php';
 							<div class='Property-details'>
 							<span class='Property-tag'> Viewing </span>
 							<div class='Property-detail-items'>
-							<input type='text' value='$Property' disabled>
-							<input type='text' value='$Price' disabled>
+							<input type='text' value='$Property'  readonly>
+							<input type='text' value='$Price'  readonly>
 							</div>										
 
 							<div class='Property-detail-items'>
-							<input type='text' value='$Bedrooms' disabled>
-							<input type='text' value='$Bathrooms' disabled>
+							<input type='text' value='$Bedrooms'  readonly>
+							<input type='text' value='$Bathrooms'  readonly>
 							</div>
 
 							<div class='Property-detail-items'>
-							<input type='text' value='$Area' disabled>
-							<input type='text' value='$Date' disabled>
+							<input type='text' value='$Area'  readonly>
+							<input type='text' value='$Date'  readonly>
 							</div>
 
 							<div class='Property-detail-items'>
-							<textarea>$Description</textarea>
+							<textarea readonly>$Description</textarea>
 							</div>
 
 							</div>
@@ -136,14 +136,14 @@ include './Assets/Php/Connection.php';
 					<div class="form-items images">
 
 						<div class="images-container">
-							<label for="file-upload-exterior" class="custom-file-upload">Upload Exterior</label>
+							<label for="file-upload-exterior" class="custom-file-upload">Upload House Exterior</label>
 							<span id="show-text-exterior" class="show-text">Exterior Image shows here</span>
 							<input id="file-upload-exterior" type="file"  name="Exterior" accept="image/*" >
 						</div>				
 
 						<div class="images-container">
-							<label for="file-upload-bedroom" class="custom-file-upload">Upload Bedroom</label>
-							<span id="show-text-bedroom" class="show-text">Bedroom Image shows here</span>
+							<label for="file-upload-bedroom" class="custom-file-upload">Upload House Highlight</label>
+							<span id="show-text-bedroom" class="show-text">Image shows here</span>
 							<input id="file-upload-bedroom" type="file" name="Bedroom" accept="image/*" >	
 						</div>					
 					</div>					
@@ -151,15 +151,15 @@ include './Assets/Php/Connection.php';
 					<div class="form-items images">
 
 						<div class="images-container">
-							<label for="file-upload-bathtoom" class="custom-file-upload">Upload Bathroom</label>
-							<span id="show-text-bathtoom" class="show-text">Bathroom Image shows here</span>
+							<label for="file-upload-bathtoom" class="custom-file-upload">Upload House Highlight</label>
+							<span id="show-text-bathtoom" class="show-text">Image shows here</span>
 							<input id="file-upload-bathtoom" type="file" name="Bathroom" accept="image/*" >
 						</div>				
 
 						<div class="images-container">
-							<label for="file-upload-Livingroom" class="custom-file-upload">Upload Livingroom
+							<label for="file-upload-Livingroom" class="custom-file-upload">Upload House Highlight
 							</label>
-							<span id="show-text-Livingroom" class="show-text">Livingroom Image shows here</span>
+							<span id="show-text-Livingroom" class="show-text">Image shows here</span>
 							<input id="file-upload-Livingroom" type="file" name="Livingroom" accept="image/*" >
 						</div>					
 					</div>
@@ -167,8 +167,8 @@ include './Assets/Php/Connection.php';
 
 					<div class="form-items images">
 						<div class="images-container">
-							<label for="file-upload-Diningroom" class="custom-file-upload">Upload Diningroom</label>
-							<span id="show-text-Diningroom" class="show-text">Diningroom Image shows here</span>
+							<label for="file-upload-Diningroom" class="custom-file-upload">Upload House Highlight</label>
+							<span id="show-text-Diningroom" class="show-text">Image shows here</span>
 							<input id="file-upload-Diningroom" type="file" name="Diningroom" accept="image/*" >
 						</div>	
 

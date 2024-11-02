@@ -24,6 +24,7 @@ session_start();
     function inquiry($conn){
         $Lastname = $_POST['Lastname'];
         $Firstname = $_POST['Firstname'];
+        $Status = 'Pending';
         $UserID = $_POST['UserID'];
         $Email = $_POST['Email'];
         $Phone = $_POST['Phone'];
@@ -43,8 +44,8 @@ session_start();
             $Category = 'Unpaid';
         }
         
-        $stmt = "INSERT INTO Pending(Lastname, Firstname, Email, Phone, Message, Address, Selected_Property, Category , Receipt, UserID) 
-        VALUES('$Lastname','$Firstname', '$Email', '$Phone', '$Message','$Address', '$SelectedProperty', '$Category','$newFileName', '$UserID') ";
+        $stmt = "INSERT INTO Pending(Lastname, Firstname, Email, Phone, Message, Address, Selected_Property, Category , Receipt, UserID, Status) 
+        VALUES('$Lastname','$Firstname', '$Email', '$Phone', '$Message','$Address', '$SelectedProperty', '$Category','$newFileName', '$UserID','$Status') ";
         mysqli_query($conn, $stmt); 
 
         echo "<script>
@@ -56,7 +57,7 @@ session_start();
         }
 /***********************************************
     ADDING SIGNUP
-    ************************************************/
+ ************************************************/
    function Signup($conn) {
     $Firstname = $_POST['Firstname'];
     $Lastname = $_POST['Lastname'];
@@ -88,9 +89,6 @@ session_start();
         echo "Error: " . mysqli_error($conn);
     }
 }
-
-
-
 /***********************************************
     FILTER: LOGIN
 ************************************************/
@@ -159,8 +157,12 @@ function LoginUser($conn) {
         </script>";
     }
 }
+/***********************************************
+FUNCTION FOR EDITING: PROFILE
+************************************************/
+function UpdateProfile($conn){
 
-
+}
 /***********************************************
  # TESTIMONIAL
 ************************************************/
@@ -187,7 +189,7 @@ function Testimonial($conn) {
 }
 
 /***********************************************
-    GET THE HOUSE ID
+    DELETE PENDING
 ************************************************/
 if(isset($_GET['DeleteID'])){
     $ItemID = $_GET['DeleteID'];
@@ -195,7 +197,7 @@ if(isset($_GET['DeleteID'])){
     mysqli_query($conn, $sql);
 
     echo "<script>
-        alert('Submitted successfully');
+        alert('Successfully Deleted');
         setTimeout(function(){
             window.location.href = '../../Login.php';
         }, 500);

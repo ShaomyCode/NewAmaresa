@@ -418,9 +418,14 @@ button, a {transition: var(--transition);}
 	border-radius: 5px;
 	text-align: center;
 	width: 100%;
+	box-shadow: 0 3px 5px black;
+	border: none;
 }
 .View-details-items textarea{
 	height: 150px;
+	max-height: 150px;
+	min-height: 100px;
+	box-shadow: 0 3px 5px black;
 }
 .Viewing-wrapper{
 	display: flex;
@@ -451,3 +456,34 @@ button, a {transition: var(--transition);}
 	border-radius: 15px;
 }
 
+/*======================*\
+# Div: View Pending
+\*======================*/
+.Update-items{
+	width: 80%;
+	margin-inline: auto;
+}
+.Update-items input{
+	width: 100%;
+	padding: 1rem;
+	text-align: center;
+	border-radius: 5px;
+	border: none;
+	box-shadow: 0 3px 5px black;
+}
+.Update-items textarea{
+	border-radius: 5px;
+	height: 150px;
+	min-height: 150px;
+	max-height: 200px;
+}
+.Update-items textarea::placeholder{
+	color: dimgrey;
+}
+.Update-items button{
+	float: right;
+	width: 150px;
+	text-align: center;
+	background: var(--orange-soda);
+	border:none;
+}

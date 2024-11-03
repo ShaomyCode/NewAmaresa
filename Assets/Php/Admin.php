@@ -20,6 +20,9 @@ FOR DELETING: USERS - MANAGEMENTS - PROPERTIES
 if(isset($_GET['deleteid'])){
     DeleteArchive($conn);
 }
+if(isset($_GET['DeleteID'])){
+    DeleteMessage($conn);
+}
 /***********************************************
 FOR UPDATING[EDITING]: USERS - MANAGEMENTS - PROPERTIES
 ************************************************/
@@ -165,6 +168,22 @@ function DeleteArchive($conn){
                 </script>";         
     }
 }
+function DeleteMessage($conn){
+    if(isset($_GET['DeleteID'])){
+
+        $ID = $_GET['DeleteID'];
+
+        $sql = "DELETE FROM Message WHERE MessageID = $ID";
+        mysqli_query($conn, $sql);
+
+         echo "<script>
+                    alert('Record Successfully Deleted');
+                    setTimeout(function(){
+                        window.location.href = '../../Admin-Message.php';
+                    }, 50); 
+                </script>";         
+    }
+}
 /***********************************************
 FUNCTION FOR ARCHIVING 
 ************************************************/ 
@@ -232,6 +251,18 @@ function ArchiveProperty($conn){
     $stmtDelete->bind_param("i", $ID);    
 
     if (!$stmtDelete->execute()) {
+        throw new Exception("Error deleting record from management: " . $stmtDelete->error);
+    }
+
+    $Pendingquery = "
+    DELETE FROM Pending 
+    WHERE PropertyID = ?
+    ";
+    
+    $stmtPending = $conn->prepare($Pendingquery);
+    $stmtPending->bind_param("i",$ID);
+
+    if(!$stmtPending->execute()){
         throw new Exception("Error deleting record from management: " . $stmtDelete->error);
     }
 

@@ -129,7 +129,7 @@
 								$sql = "SELECT * FROM Pending ORDER BY Category ASC";
 							}
 						}else{
-							$sql = "SELECT * FROM Pending";;
+							$sql = "SELECT Pending.*, Properties.Property FROM Pending JOIN Properties ON Pending.PropertyID = Properties.PropertyID";
 						}
 							
 							$rs = mysqli_query($conn, $sql);
@@ -142,7 +142,7 @@
 									$Firstname = $row['Firstname'];
 									$Email = $row['Email'];
 									$Phone = $row['Phone'];
-									$Selected_Property = $row['Selected_Property'];
+									$Selected_Property = $row['Property'];
 									$Message = $row['Message'];
 									$Category = $row['Category'];
 									$Receipt = $row['Receipt'];

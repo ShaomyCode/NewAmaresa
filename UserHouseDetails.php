@@ -252,6 +252,8 @@
                     <input type='email' name='Email' placeholder='Email Address' value='$Email' required>
                     </div> 
                     <input type='hidden' name='UserID' value='$UserID'>
+                    <input type='hidden' name='PropertyID' id='propertyID'>
+           
 					<input list='options' id='Role' name='Property' placeholder='Select Property' required>
 					     <datalist id='options'>
                     ";
@@ -260,16 +262,13 @@
 		                    if($rs){
 		                    	while($rw = mysqli_fetch_assoc($rs)){
 		                    		echo "
+					                    <option value='$rw[PropertyID]'> $rw[Property] </option>
 
-
-				               
-					                    <option value='$rw[Property]'>
-				                 
 		                    		";
 		                    	}
 		                    	echo " </datalist>";
-		                    }
 
+		                    }
 		             echo " 
 	       				<div class='textarea-container'>
 							<textarea id='message' rows='5' name='Message' placeholder='Id like to inquire about this property...'></textarea>

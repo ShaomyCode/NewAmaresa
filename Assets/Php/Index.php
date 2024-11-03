@@ -44,7 +44,7 @@ session_start();
             $Category = 'Unpaid';
         }
         
-        $stmt = "INSERT INTO Pending(Lastname, Firstname, Email, Phone, Message, Address, Selected_Property, Category , Receipt, UserID, Status) 
+        $stmt = "INSERT INTO Pending(Lastname, Firstname, Email, Phone, Message, Address, PropertyID, Category , Receipt, UserID, Status) 
         VALUES('$Lastname','$Firstname', '$Email', '$Phone', '$Message','$Address', '$SelectedProperty', '$Category','$newFileName', '$UserID','$Status') ";
         mysqli_query($conn, $stmt); 
 
@@ -78,7 +78,7 @@ session_start();
             $userID = mysqli_insert_id($conn);
 
             // Log the signup action in the ActivityLog
-            $action = "New user signup: $Firstname $Lastname";
+            $action = "New user signup  ";
             $logQuery = "INSERT INTO ActivityLog(UserID, Action) VALUES ('$userID', '$action')";
             mysqli_query($conn, $logQuery);
 

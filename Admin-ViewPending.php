@@ -40,7 +40,7 @@
 					if(isset($_GET['ViewID'])){
 
 						$SelectedID = $_GET['ViewID'];
-						$stmt = "SELECT * FROM Pending WHERE PendingID = $SelectedID ";
+						$stmt = "SELECT Pending.*, Properties.Property FROM Pending JOIN Properties ON Pending.PropertyID= Properties.PropertyID WHERE PendingID = $SelectedID ";
 						$rs = mysqli_query($conn,$stmt);
 						if($rs){
 							while ($row = mysqli_fetch_assoc($rs)) {
@@ -51,7 +51,7 @@
 								$Phone = $row['Phone'];
 								$Message = $row['Message'];
 								$Address = $row['Address'];
-								$Selected = $row['Selected_Property'];
+								$Selected = $row['Property'];
 								$Category = $row['Category'];
 								$Receipt = "./Images/".$row['Receipt'];
 								$Date = $row['Date'];

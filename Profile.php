@@ -208,16 +208,17 @@
 			<?php
 			if (isset($_GET['EditID'])) {
 			    $ProfileID = $_GET['EditID'];
-			    $sql = "SELECT Pending.*, User.* 
-			    FROM Pending 
-			    JOIN User 
-			    ON Pending.UserID = User.UserID 
-			    WHERE User.UserID = $ProfileID";
+				$sql = "SELECT Pending.*, User.*, Properties.Property 
+       			 FROM Pending 
+       			 JOIN User ON Pending.UserID = User.UserID
+        		 JOIN Properties ON Pending.PropertyID = Properties.PropertyID
+       			 WHERE User.UserID = $ProfileID";
+
 
 			    $rs = mysqli_query($conn, $sql);
 			    if ($rs) {
 			        while ($row = mysqli_fetch_assoc($rs)) {
-			            $Property = $row['Selected_Property'];
+			            $Property = $row['Property'];
 			            $Category = $row['Category'];
 			            $PendingID = $row['PendingID'];
 			            $Date = $row['Date'];

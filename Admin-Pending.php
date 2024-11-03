@@ -1,6 +1,6 @@
 	<?php
-
 		include './Assets/Php/Connection.php';
+		session_start();
 	?>
 	<!DOCTYPE html>
 	<html>
@@ -85,7 +85,7 @@
 						</li>					
 
 						<li class="nav-link">
-							<a href="./Admin-Assets/Php/Logout.php" class="dashboard-list-item">
+							<a href="./Assets/Php/Logout.php" class="dashboard-list-item">
 								<i class="fa-solid fa-right-from-bracket"></i>
 								<span class="text nav-text">Logout</span>
 							</a>
@@ -213,5 +213,9 @@
 		<script src="./Assets/Js/Admin.js?v=<?php echo time(); ?>"></script>
 		<!-- Fontawesome Link -->
 		<script src="https://kit.fontawesome.com/83786b8894.js" crossorigin="anonymous"></script>	
+		<!-- NO TURNING BACk -->
+		<script language="javascript" type="text/javascript">	
+	            window.history.forward();
+		</script>		
 	</body>
 	</html>

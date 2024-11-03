@@ -310,16 +310,12 @@
 	<script src="./Assets/Js/Swiper.js?v=<?php echo time(); ?>"></script>
 	<!-- JS: Swiper -->
 	<script type="text/javascript" src="./Assets/Js/swiper-bundle.min.js"></script>
-
 	<!-- Fontawesome Link -->
 	<script src="https://kit.fontawesome.com/83786b8894.js" crossorigin="anonymous"></script>	
 	<!-- NO TURNING BACk -->
 	<script language="javascript" type="text/javascript">	
-            // window.history.forward();
+            window.history.forward();
 	</script>
 	
-
-
-
 </body>
 </html>

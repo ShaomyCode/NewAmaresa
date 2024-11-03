@@ -47,6 +47,7 @@
 								$Lastname = $row['Lastname'];
 								$Firstname = $row['Firstname'];
 								$Email = $row['Email'];
+								$Status = $row['Status'];
 								$Phone = $row['Phone'];
 								$Message = $row['Message'];
 								$Address = $row['Address'];
@@ -78,7 +79,7 @@
 
 										<div class='View-details-items'>
 											<input type='text' value='$Category' readonly>
-											<input type='text' placeholder='Category here...' readonly>
+											<input type='text' placeholder='Category here...' value='$Status' readonly>
 										</div>
 										<div class='View-details-items'>
 											<input type='text' value='$Date' readonly>

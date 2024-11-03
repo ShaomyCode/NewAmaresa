@@ -1,7 +1,7 @@
 <?php
 
 	include './Assets/Php/Connection.php';
-
+	session_start();
 ?>
 <!DOCTYPE html>
 <html>
@@ -196,7 +196,7 @@
 
 					<div class="virtual">
 						<span>Example: virtual/Amaresa House/index.html</span>
-						<input type="text" name="VirtualTour" placeholder="Virtual file location" required>
+						<input type="text" name="VirtualTour" placeholder="Virtual file location" >
 					</div>
 				    <div class="textarea-container">
 				        <textarea id="message" rows="5" name="Message" placeholder="Property Description..."></textarea>
@@ -257,5 +257,9 @@
 	<script src="./Assets/Js/UploadImage.js?v=<?php echo time(); ?>"></script>
 	<!-- Fontawesome Link -->
 	<script src="https://kit.fontawesome.com/83786b8894.js" crossorigin="anonymous"></script>	
+		<!-- NO TURNING BACk -->
+		<script language="javascript" type="text/javascript">	
+	            window.history.forward();
+		</script>	
 </body>
 </html>

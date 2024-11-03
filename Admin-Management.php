@@ -1,7 +1,6 @@
 <?php
-
 	include './Assets/Php/Connection.php';
-
+	session_start();
 ?>
 <!DOCTYPE html>
 <html>
@@ -207,6 +206,10 @@
 	<script src="./Assets/Js/Admin.js?v=<?php echo time(); ?>"></script>
 	<script src="./Assets/Js/PhoneValidation.js?v=<?php echo time(); ?>"></script>
 	<!-- Fontawesome Link -->
-	<script src="https://kit.fontawesome.com/83786b8894.js" crossorigin="anonymous"></script>	
+	<script src="https://kit.fontawesome.com/83786b8894.js" crossorigin="anonymous"></script>
+		<!-- NO TURNING BACk -->
+		<script language="javascript" type="text/javascript">	
+	            window.history.forward();
+		</script>			
 </body>
 </html>

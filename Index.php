@@ -396,7 +396,7 @@
 		<dialog id="Signup-Modal" class="dialog">
 			<button onclick="CloseSignup()" class="closebtn"><i class="fa-solid fa-x"></i></button>	
 			<div class="container">
-				<form  method="POST" class="form signup" enctype="multipart/form-data" action="./Assets/Php/Index.php"  autocomplete="on">
+				<form  method="POST" class="form signup" enctype="multipart/form-data" action="./Assets/Php/Index.php"  autocomplete="on" onsubmit="return validatePassword()">
 					<div class="form-items">
 						<input type="text" name="Firstname" placeholder="First Name" required>
 						<input type="text" name="Lastname" placeholder="Last Name" required> 						
@@ -408,14 +408,68 @@
 						<input type="text" name="Address" placeholder="Address" required>
 					</div>
 					<div class="form-items">
-						<input type="password" name="Password" placeholder="Password" required>
-						<input type="password" name="Confirmpass" placeholder="Confirm Password" required> 	
+						<input type="password" name="Password" id="password" placeholder="Password" required>
+						<input type="password" name="Confirmpass" id="confirmpass" placeholder="Confirm Password" required> 
 					</div>	
+					<div class="Validation-wrapper">
+						<p id="error-message-Password"> </p>
+						<p id="error-message-character"> </p>
+						<p id="error-message-number"> </p>
+						<p id="error-message-case"> </p>
+						<p id="error-message-special-char"> </p>
+					</div>
 					<input type="submit" name="Signin-btn" value="Sign up">		
 				</form>
 				<button onclick="ShowLogin()" class="lowerbuttons">Already have an account</button>
 			</div>
-		</dialog>		
+		</dialog>
+		<script>
+function validatePassword() {
+    var password = document.getElementById('password').value;
+    var confirmPassword = document.getElementById('confirmpass').value;
+    var valid = true;
+
+    // Reset error messages
+    document.getElementById('error-message-Password').textContent = '';
+    document.getElementById('error-message-character').textContent = '';
+    document.getElementById('error-message-number').textContent = '';
+    document.getElementById('error-message-case').textContent = '';
+    document.getElementById('error-message-special-char').textContent = '';
+
+    // Password criteria
+    var lengthCriteria = /.{8,}/;
+    var lowercaseCriteria = /[a-z]/;
+    var uppercaseCriteria = /[A-Z]/;
+    var numberCriteria = /\d/;
+    var specialCharCriteria = /[\W_]/;
+
+    if (!password.match(lengthCriteria)) {
+        document.getElementById('error-message-Password').textContent = 'Password must be at least 8 characters long.';
+        valid = false;
+    }
+    if (!password.match(lowercaseCriteria) || !password.match(uppercaseCriteria)) {
+        document.getElementById('error-message-case').textContent = 'Password must contain both uppercase and lowercase letters.';
+        valid = false;
+    }
+    if (!password.match(numberCriteria)) {
+        document.getElementById('error-message-number').textContent = 'Password must contain at least one number.';
+        valid = false;
+    }
+    if (!password.match(specialCharCriteria)) {
+        document.getElementById('error-message-special-char').textContent = 'Password must contain at least one special character.';
+        valid = false;
+    }
+    if (password !== confirmPassword) {
+        document.getElementById('error-message-character').textContent = 'Passwords do not match.';
+        valid = false;
+    }
+
+    return valid;
+}
+</script>
+
+
+		</script>				
 		<!-- Dialog: Login  -->
 		<dialog id="Login-Modal" class="dialog">
 			<button onclick="CloseLogin()" class="closebtn"><i class="fa-solid fa-x"></i></button>	

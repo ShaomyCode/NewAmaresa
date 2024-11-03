@@ -64,30 +64,42 @@ session_start();
     $Email = $_POST['Email'];
     $Phone = $_POST['Phone'];
     $Address = $_POST['Address'];
-    $Password = password_hash($_POST['Password'], PASSWORD_DEFAULT);
+    $Password = $_POST['Password'];
+    $Confirmpass = $_POST['Confirmpass'];
     $Role = "User";
 
-    // SQL to insert new user
-    $query = "INSERT INTO User(Firstname, Lastname, Email, Phone, Address, Password, Role) VALUES('$Firstname','$Lastname','$Email','$Phone','$Address','$Password','$Role');";
-    
-    if (mysqli_query($conn, $query)) {
-        // Fetch the newly created user ID
-        $userID = mysqli_insert_id($conn);
+    if($Password === $Confirmpass){
+        $hash = password_hash($Password, PASSWORD_DEFAULT);
+        // SQL to insert new user
+        $query = "INSERT INTO User(Firstname, Lastname, Email, Phone, Address, Password, Role) VALUES('$Firstname','$Lastname','$Email','$Phone','$Address','$hash','$Role');";
+        
+        if (mysqli_query($conn, $query)) {
+            // Fetch the newly created user ID
+            $userID = mysqli_insert_id($conn);
 
-        // Log the signup action in the ActivityLog
-        $action = "New user signup: $Firstname $Lastname";
-        $logQuery = "INSERT INTO ActivityLog(UserID, Action) VALUES ('$userID', '$action')";
-        mysqli_query($conn, $logQuery);
+            // Log the signup action in the ActivityLog
+            $action = "New user signup: $Firstname $Lastname";
+            $logQuery = "INSERT INTO ActivityLog(UserID, Action) VALUES ('$userID', '$action')";
+            mysqli_query($conn, $logQuery);
 
-        echo "<script>
-            alert('Your account has been created successfully');
-            setTimeout(function(){
-                window.location.href = '../../index.php';
-            }, 500);
-        </script>";
-    } else {
-        echo "Error: " . mysqli_error($conn);
+            echo "<script>
+                alert('Your account has been created successfully');
+                setTimeout(function(){
+                    window.location.href = '../../index.php';
+                }, 500);
+            </script>";
+        } else {
+            echo "Error: " . mysqli_error($conn);
+        }        
+    }else{
+            echo "<script>
+                alert('Password and confirm do not match');
+                setTimeout(function(){
+                    window.location.href = '../../index.php';
+                }, 500);
+            </script>";
     }
+
 }
 /***********************************************
     FILTER: LOGIN

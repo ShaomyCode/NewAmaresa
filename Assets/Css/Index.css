@@ -1338,6 +1338,12 @@ input[type="file"] {
 	font-size: var(--fs-3);
 }
 /*======================*\
+#	DIALOG: Sign up
+\*======================*/
+.Validation-wrapper p{
+	color: white;
+}
+/*======================*\
 #	Section: Image
 \*======================*/
 .Image-Container{

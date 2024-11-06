@@ -167,12 +167,14 @@
 										
 
 										<td class='td-action'>
-											<a href='./Admin-ViewPending.php?ViewID=".$PendingID."'>
+											<a href='./Admin-ViewPending.php?ViewID=".$PendingID."' class='custom-tooltip' data-title='View/Edit'>
 												<i class='fa-solid fa-comment-dots'></i>
 											</a>
-											<a href='#'><i class='fa-sharp fa-solid fa-check'></i> </a>
-											<a href='./Assets/Php/Admin.php?archiveID=".$PendingID."&value=Pending' onclick='return archiveConfirmation()' '>
-											<i class='fa-solid fa-box-archive' ></i>
+											<a href='./Assets/Php/Admin.php?SelectedID=".$PendingID."' onclick='return AcceptConfirmation()'' class='custom-tooltip' data-title='Confirm'>
+												<i class='fa-sharp fa-solid fa-check'></i> 
+											</a>
+											<a href='./Assets/Php/Admin.php?archiveID=".$PendingID."&value=Pending' onclick='return archiveConfirmation()'' class='custom-tooltip' data-title='Archive'>
+												<i class='fa-solid fa-box-archive' ></i>
 											</a>
 										</td>
 									</tr>

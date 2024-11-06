@@ -321,6 +321,7 @@ button, a {transition: var(--transition);}
 }
 .HouseDetails{
 	gap: 1rem;
+	position: relative;
 	display:grid;
 	grid-template-columns: repeat(2, 1fr);
 
@@ -430,4 +431,10 @@ button, a {transition: var(--transition);}
 		width: 100%;
 		height: 150px;
 	}
+}
+
+.VirtualTour-btn{
+	width: 20%;
+	text-align: center;
+	margin-inline: auto;
 }

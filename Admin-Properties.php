@@ -143,8 +143,8 @@
 									<td>".$Date."</td>
 
 							<td class='td-action'>
-								<a href='./Admin-ViewProperties.php?ViewID=".$PropertyID."'><i class='fa-solid fa-eye'></i></a>
-								<a href='./Assets/Php/Admin.php?archiveID=".$PropertyID."&value=Property' onclick='return archiveConfirmation()' '>
+								<a href='./Admin-ViewProperties.php?ViewID=".$PropertyID."' class='custom-tooltip' data-title='View/Edit'><i class='fa-solid fa-eye'></i></a>
+								<a href='./Assets/Php/Admin.php?archiveID=".$PropertyID."&value=Property' onclick='return archiveConfirmation()'' class='custom-tooltip' data-title='Archive'>
 										<i class='fa-solid fa-box-archive' ></i>
 										</a> 
 							</td>
@@ -176,7 +176,7 @@
 				<form  method="POST" class="form adding" enctype="multipart/form-data" action="./Assets/Php/Admin.php" autocomplete="on">
 					<div class="form-items">
 						<input type="text" name="Property" placeholder="Property name" required>
-						<input type="text" name="Price" placeholder="Price" required>	
+						<input type="number" name="Price" placeholder="Price" required>	
 					</div>					
 
 					<div class="form-items">
@@ -210,8 +210,8 @@
 						</div>				
 
 						<div class="images-container">
-						    <label for="file-upload-bedroom" class="custom-file-upload">Upload Bedroom</label>
-						    <span id="show-text-bedroom" class="show-text">Bedroom Image shows here</span>
+						    <label for="file-upload-bedroom" class="custom-file-upload">Upload Highlight</label>
+						    <span id="show-text-bedroom" class="show-text">Highlight show here</span>
 						    <input id="file-upload-bedroom" type="file" name="Bedroom" accept="image/*" >	
 						</div>					
 					</div>					
@@ -219,15 +219,15 @@
 					<div class="form-items images">
 
 						<div class="images-container">
-						    <label for="file-upload-bathtoom" class="custom-file-upload">Upload Bathroom</label>
-						    <span id="show-text-bathtoom" class="show-text">Bathroom Image shows here</span>
+						    <label for="file-upload-bathtoom" class="custom-file-upload">Upload Highlight</label>
+						    <span id="show-text-bathtoom" class="show-text">Highlight show here</span>
 						    <input id="file-upload-bathtoom" type="file" name="Bathroom" accept="image/*" >
 						</div>				
 
 						<div class="images-container">
-						    <label for="file-upload-Livingroom" class="custom-file-upload">Upload Livingroom
+						    <label for="file-upload-Livingroom" class="custom-file-upload">Upload Highlight
 						    </label>
-						    <span id="show-text-Livingroom" class="show-text">Livingroom Image shows here</span>
+						    <span id="show-text-Livingroom" class="show-text">Highlight show here</span>
 						    <input id="file-upload-Livingroom" type="file" name="Livingroom" accept="image/*" >
 						</div>					
 					</div>
@@ -235,8 +235,8 @@
 
 					<div class="form-items images">
 						<div class="images-container">
-						    <label for="file-upload-Diningroom" class="custom-file-upload">Upload Diningroom</label>
-						    <span id="show-text-Diningroom" class="show-text">Diningroom Image shows here</span>
+						    <label for="file-upload-Diningroom" class="custom-file-upload">Upload Highlight</label>
+						    <span id="show-text-Diningroom" class="show-text">Highlight show here</span>
 						    <input id="file-upload-Diningroom" type="file" name="Diningroom" accept="image/*" >
 						</div>	
 					

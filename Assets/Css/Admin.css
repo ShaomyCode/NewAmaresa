@@ -968,3 +968,34 @@ textarea:focus {
   filter: drop-shadow(0 5px 10px rgba(0, 0, 0, 0.5));
   transform: scale(1.1);
 }
+
+/*======================*\
+# TOOLTIP FOR TITLE
+\*======================*/
+.custom-tooltip {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.custom-tooltip:hover::after {
+    content: attr(data-title);
+    position: absolute;
+    left: 50%;	
+    color: black;
+    font-size: 12px;
+    padding: 5px;
+    background: white;
+    box-shadow: 3px 3px 3px black;
+    border-radius: 5px;
+    bottom: 100%;
+    white-space: nowrap;
+    z-index: 1;
+    opacity: 0;
+    transition: opacity 0.3s;
+    pointer-events: none;
+}
+
+.custom-tooltip:hover::after {
+    opacity: 1;
+}

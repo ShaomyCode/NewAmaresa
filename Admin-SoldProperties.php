@@ -108,6 +108,7 @@
 						<th>Current Owner</th>
 						<th>Previous Owner</th>
 						<th>Date Purchased</th>
+						<th>Transaction Date</th>
 
 						<th class="action-center">Actions</th>
 					</tr>	
@@ -121,8 +122,10 @@
 								// code...
 								$SaleID = $row['SaleID'];
 								$Property = $row['Property'];
-								$Owner = $row['Owner'];
+								$Owner = $row['CurrentOwner'];
+								$Previous = $row['PreviousOwner'];
 								$Date_Purchased = $row['Date_Purchased'];
+								$Transaction = $row['TransactionDate'];
 							
 
 								echo "
@@ -130,12 +133,17 @@
 								<tr>
 									<td>".$Property."</td>
 									<td>".$Owner."</td>
-									<td>".$Owner."</td>
+									<td>".$Previous."</td>
 									<td>".$Date_Purchased."</td>
+									<td>".$Transaction."</td>
 								
 								
 
-							<td class='td-action'><a href='#''><i class='fa-solid fa-eye'></i></a></td>
+							<td class='td-action'>
+							<a href='Admin-ViewSales.php?UpdateID=$SaleID' class='custom-tooltip' data-title='Update'>
+							<i class='fa-solid fa-file-pen'></i>
+							</a>
+							</td>
 						
 
 								</tr>

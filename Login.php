@@ -48,28 +48,32 @@
                     </ul>
                     <div class="wrapper">
 
-                        <ul class="header-top-social-list">
-                            <li>
-                                <a href="#" class="header-top-social-link">
-                                    <i class="fa-brands fa-facebook"></i>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" class="header-top-social-link">
-                                    <i class="fa-brands fa-instagram"></i>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" class="header-top-social-link">
-                                    <i class="fa-brands fa-x-twitter"></i>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" class="header-top-social-link">
-                                    <i class="fa-brands fa-linkedin"></i>
-                                </a>
-                            </li>                                                                                           
-                        </ul>
+                    <ul class="header-top-social-list">
+                        <li>
+                            <a href="#about" class="header-top-social-link">
+                                <i class="fa-solid fa-circle-info"></i>
+                                <span>About us</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#location" class="header-top-social-link">
+                                <i class="fa-solid fa-location-crosshairs"></i>
+                                <span> Location</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#service" class="header-top-social-link">
+                                <i class="fa-brands fa-servicestack"></i>
+                                <span> Service </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#property" class="header-top-social-link">
+                                <i class="fa-solid fa-house-lock"></i>
+                                <span> Properties </span>
+                            </a>
+                        </li>                                                                                           
+                    </ul>
 
                         <a href="./Assets/Php/Logout.php" class="header-top-btn"> 
                             <i class="fa-solid fa-user-tie"></i> 

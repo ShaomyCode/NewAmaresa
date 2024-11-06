@@ -467,7 +467,8 @@ button, a {transition: var(--transition);}
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	gap: 1rem;
+	gap: 2rem;
+	padding-inline:  2rem;
 }
 .location .section-subtitle{margin-inline: auto; }
 .location .section-title{
@@ -1681,7 +1682,7 @@ input[type="file"] {
 		height: 20vh;
 	}
 	.service-card{
-		width: 55%;
+		width: 80%;
 	}
 	.dialog{
 		width: 30%;

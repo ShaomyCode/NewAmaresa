@@ -143,8 +143,8 @@
 
 
 									<td class='td-action'>
-										<a href='./Assets/Php/Admin.php?DeleteID=".$MessageID."' onclick='return DeleteConfirmation()'>
-											<i class='fa-solid fa-box-archive' ></i>
+										<a href='./Assets/Php/Admin.php?DeleteID=".$MessageID."' onclick='return DeleteConfirmation()' class='custom-tooltip' data-title='Delete'>
+											<i class='fa-solid fa-trash' ></i>
 										</a>
 									</td>
 								</tr>

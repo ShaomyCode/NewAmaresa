@@ -1,5 +1,4 @@
 <?php
-	
 	include('Connection.php');
 /***********************************************
 FOR ADDING: USERS - MANAGEMENTS - PROPERTIES
@@ -23,10 +22,9 @@ if(isset($_GET['deleteid'])){
 if(isset($_GET['DeleteID'])){
     DeleteMessage($conn);
 }
-/***********************************************
-FOR UPDATING[EDITING]: USERS - MANAGEMENTS - PROPERTIES
-************************************************/
-
+if(isset($_GET['SelectedID'])){
+    Sales($conn);
+}
 /***********************************************
 FOR ARCHIVING: USERS - MANAGEMENTS - PROPERTIES
 ************************************************/
@@ -354,7 +352,42 @@ function ArchiveUser($conn){
     $stmtInsert->close(); 
     $stmtDelete->close(); 
 }
+/***********************************************
+FUNCTION FOR INSERTING SELECTED PENDING
+************************************************/ 
+function Sales($conn) {
+    $SelectedID = $_GET['SelectedID'];
 
+    $InsertSale = " 
+    INSERT INTO Sales (Property, CurrentOwner)
+    SELECT Properties.Property, Pending.Lastname
+    FROM Pending
+    JOIN Properties ON Pending.PropertyID = Properties.PropertyID
+    WHERE PendingID = ?
+    ";
+    
+    $stmt = $conn->prepare($InsertSale);
+    $stmt->bind_param("i", $SelectedID);
 
+    if (!$stmt->execute()) {
+        throw new Exception("Error transferring to Sales log: " . $stmt->error);
+    }
 
+    $sqlDel = "
+    DELETE FROM Pending
+    WHERE PendingID = ?
+    ";
 
+    $stmtDel = $conn->prepare($sqlDel);
+    $stmtDel->bind_param("i",$SelectedID);
+    if(!$stmtDel->execute()){
+         throw new Exception("Error deleting record from Pending: " . $stmtDel->error);
+    }
+
+    echo "<script>
+            alert('Successfully');
+            setTimeout(function(){
+                window.location.href = '../../Admin-SoldProperties.php';
+            }, 50); 
+        </script>";     
+}

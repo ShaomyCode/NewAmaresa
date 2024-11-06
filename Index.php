@@ -247,8 +247,9 @@
 									$Bed = $row['Bedrooms'];
 									$Bath = $row['Bathrooms'];
 									$Property = $row['Property'];
+									$Area = $row['Area_sqft'];
 									$ID = $row['PropertyID'];
-	    							// $_SESSION['HouseID'] = $ID;
+	    							
 									$BathList = [
 										1 => "One Bath",
 										2 => "Two Baths",
@@ -286,7 +287,7 @@
 									<h1>$Property</h1>
 
 									<div class='second-content'>
-									<p><i class='fa-solid fa-house'></i>: $ID </p>
+									<p><i class='fa-solid fa-maximize'></i>: $Area </p>
 									<p><i class='fa-solid fa-bed'></i>: $Bed</p>
 									<p><i class='fa-solid fa-shower'></i>: $Bath </p>
 									</div>
@@ -424,52 +425,49 @@
 			</div>
 		</dialog>
 		<script>
-function validatePassword() {
-    var password = document.getElementById('password').value;
-    var confirmPassword = document.getElementById('confirmpass').value;
-    var valid = true;
+		function validatePassword() {
+		    var password = document.getElementById('password').value;
+		    var confirmPassword = document.getElementById('confirmpass').value;
+		    var valid = true;
 
-    // Reset error messages
-    document.getElementById('error-message-Password').textContent = '';
-    document.getElementById('error-message-character').textContent = '';
-    document.getElementById('error-message-number').textContent = '';
-    document.getElementById('error-message-case').textContent = '';
-    document.getElementById('error-message-special-char').textContent = '';
+		    // Reset error messages
+		    document.getElementById('error-message-Password').textContent = '';
+		    document.getElementById('error-message-character').textContent = '';
+		    document.getElementById('error-message-number').textContent = '';
+		    document.getElementById('error-message-case').textContent = '';
+		    document.getElementById('error-message-special-char').textContent = '';
 
-    // Password criteria
-    var lengthCriteria = /.{8,}/;
-    var lowercaseCriteria = /[a-z]/;
-    var uppercaseCriteria = /[A-Z]/;
-    var numberCriteria = /\d/;
-    var specialCharCriteria = /[\W_]/;
+		    // Password criteria
+		    var lengthCriteria = /.{8,}/;
+		    var lowercaseCriteria = /[a-z]/;
+		    var uppercaseCriteria = /[A-Z]/;
+		    var numberCriteria = /\d/;
+		    var specialCharCriteria = /[\W_]/;
 
-    if (!password.match(lengthCriteria)) {
-        document.getElementById('error-message-Password').textContent = 'Password must be at least 8 characters long.';
-        valid = false;
-    }
-    if (!password.match(lowercaseCriteria) || !password.match(uppercaseCriteria)) {
-        document.getElementById('error-message-case').textContent = 'Password must contain both uppercase and lowercase letters.';
-        valid = false;
-    }
-    if (!password.match(numberCriteria)) {
-        document.getElementById('error-message-number').textContent = 'Password must contain at least one number.';
-        valid = false;
-    }
-    if (!password.match(specialCharCriteria)) {
-        document.getElementById('error-message-special-char').textContent = 'Password must contain at least one special character.';
-        valid = false;
-    }
-    if (password !== confirmPassword) {
-        document.getElementById('error-message-character').textContent = 'Passwords do not match.';
-        valid = false;
-    }
+		    if (!password.match(lengthCriteria)) {
+		        document.getElementById('error-message-Password').textContent = 'Password must be at least 8 characters long.';
+		        valid = false;
+		    }
+		    if (!password.match(lowercaseCriteria) || !password.match(uppercaseCriteria)) {
+		        document.getElementById('error-message-case').textContent = 'Password must contain both uppercase and lowercase letters.';
+		        valid = false;
+		    }
+		    if (!password.match(numberCriteria)) {
+		        document.getElementById('error-message-number').textContent = 'Password must contain at least one number.';
+		        valid = false;
+		    }
+		    if (!password.match(specialCharCriteria)) {
+		        document.getElementById('error-message-special-char').textContent = 'Password must contain at least one special character.';
+		        valid = false;
+		    }
+		    if (password !== confirmPassword) {
+		        document.getElementById('error-message-character').textContent = 'Passwords do not match.';
+		        valid = false;
+		    }
 
-    return valid;
-}
-</script>
-
-
-		</script>				
+		    return valid;
+		}
+		</script>	
 		<!-- Dialog: Login  -->
 		<dialog id="Login-Modal" class="dialog">
 			<button onclick="CloseLogin()" class="closebtn"><i class="fa-solid fa-x"></i></button>	
@@ -587,7 +585,6 @@ function validatePassword() {
 				</form>
 			</dialog>
 		</section>
-
 		<!-- Section: Footer -->
 		<footer class="footer">
 			<div class="footer-top">

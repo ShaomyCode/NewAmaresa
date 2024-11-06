@@ -155,8 +155,8 @@
 						            <td>".$Description."</td>
 						            <td>".$Date."</td>
 						            <td class='td-action'>
-						                <a href='./Assets/Php/Admin.php?deleteid=".$ArchiveID."' onclick='return DeleteConfirmation()'>
-						                <i class='fa-solid fa-trash'></i>
+						                <a href='./Assets/Php/Admin.php?deleteid=".$ArchiveID."' onclick='return DeleteConfirmation()' class='custom-tooltip' data-title='Delete'>
+						                <i class='fa-solid fa-trash' ></i>
 						                </a>                                    
 						            </td>
 						        </tr>

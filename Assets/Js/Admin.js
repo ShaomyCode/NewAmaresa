@@ -23,6 +23,9 @@ function ViewData(){
 function AddConfirmation(){
     return confirm('Confirm if the data is accurate.');
 }
+function AcceptConfirmation(){
+    return confirm('Are you really want to accept this pending?');
+}
 /*======================*\
     SIDEBAR
 \*======================*/

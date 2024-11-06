@@ -133,13 +133,14 @@
 			}
 
 			echo " 
-
+				<a href='#VirtualTour' class='VirtualTour-btn btn'> Go to 3D </a>
 				<section class='HouseDetails-Container'>
 					<div class='container'>
+
 						<div class='LeftHouse-Details'>
 							<div class='House-Details'>
-
 								<h3 class='h3 Titles'> $Properties </h3>
+
 								<ul class='House-list'>
 									<li class='list-items'>
 										<i class='fa-solid fa-hand-holding-dollar'></i>
@@ -192,7 +193,6 @@
 							<div class='Description-Details'>
 								<h3 class='h3 Titles'> Description </h3>
 								<span>$Description </span>
-							
 							</div>
 						</div>
 
@@ -202,7 +202,7 @@
 			";
 			echo "
 
-			<div class='Iframe-container'>
+			<div class='Iframe-container' id='VirtualTour'>
 				<div class='left-iframe'>
 					<span> To move: </span>
 					<img src='./Assets/Images/Move.png' alt='Move tutorial'>
@@ -327,7 +327,7 @@
                     	</div>
                     </form>
 
-                </div>
+             </div>
             </dialog>
 	</main>
 

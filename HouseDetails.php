@@ -121,7 +121,7 @@
 			}
 
 			echo " 
-
+				<a href='#VirtualTour' class='VirtualTour-btn btn'> Go to 3D </a>
 				<section class='HouseDetails-Container'>
 					<div class='container'>
 						<div class='LeftHouse-Details'>
@@ -191,7 +191,7 @@
 
 			if (isset($VirtualTour) && !empty($VirtualTour)) {
 			    echo "
-			        <div class='Iframe-container'>
+			        <div class='Iframe-container' id=>
 			            <div class='left-iframe'>
 			                <span>To move:</span>
 			                <img src='./Assets/Images/Move.png' alt='Move tutorial'>

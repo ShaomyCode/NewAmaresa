@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 06, 2024 at 02:58 PM
+-- Generation Time: Nov 06, 2024 at 05:38 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -91,7 +91,50 @@ INSERT INTO `activitylog` (`TrackID`, `UserID`, `Action`, `Logintime`) VALUES
 (55, 44, 'New user signup  ', '2024-11-06 10:12:30'),
 (56, 44, 'User logged in ', '2024-11-06 10:12:39'),
 (57, 44, 'User logged in ', '2024-11-06 11:21:10'),
-(58, 44, 'User logged in ', '2024-11-06 13:39:45');
+(58, 44, 'User logged in ', '2024-11-06 13:39:45'),
+(59, 44, 'User logged in ', '2024-11-06 14:48:37'),
+(60, 44, 'User logged in ', '2024-11-06 14:51:12'),
+(61, 36, 'User logged in ', '2024-11-06 14:52:08'),
+(62, 36, 'User logged in ', '2024-11-06 14:52:43'),
+(63, 36, 'User logged in ', '2024-11-06 14:53:15'),
+(64, 36, 'User logged in ', '2024-11-06 14:55:21'),
+(65, 36, 'User logged in ', '2024-11-06 14:56:38'),
+(66, 36, 'User logged in ', '2024-11-06 14:57:12'),
+(67, 36, 'User logged in ', '2024-11-06 14:57:41'),
+(68, 36, 'User logged in ', '2024-11-06 15:01:38'),
+(69, 36, 'User logged in ', '2024-11-06 15:06:50'),
+(70, 36, 'User logged in ', '2024-11-06 15:07:03'),
+(71, 36, 'User logged in ', '2024-11-06 15:07:54'),
+(72, 36, 'User logged in ', '2024-11-06 15:08:36'),
+(73, 36, 'User logged in ', '2024-11-06 15:10:44'),
+(74, 36, 'User logged in ', '2024-11-06 15:12:25'),
+(75, 36, 'User logged in ', '2024-11-06 15:18:08'),
+(76, 36, 'User logged in ', '2024-11-06 15:18:37'),
+(77, 36, 'User logged in ', '2024-11-06 15:19:11'),
+(78, 36, 'User logged in ', '2024-11-06 15:20:18'),
+(79, 36, 'User logged in ', '2024-11-06 15:21:32'),
+(80, 36, 'User logged in ', '2024-11-06 15:23:37'),
+(81, 36, 'User logged in ', '2024-11-06 15:30:49'),
+(82, 36, 'User logged in ', '2024-11-06 15:41:17'),
+(83, 36, 'User logged in ', '2024-11-06 15:42:08'),
+(84, 36, 'User logged in ', '2024-11-06 15:42:24'),
+(85, 36, 'User logged in ', '2024-11-06 15:42:52'),
+(86, 44, 'User logged in ', '2024-11-06 15:43:48'),
+(87, 36, 'User logged in ', '2024-11-06 15:45:06'),
+(88, 36, 'User logged in ', '2024-11-06 15:47:07'),
+(89, 36, 'User logged in ', '2024-11-06 16:14:51'),
+(90, 36, 'User logged in ', '2024-11-06 16:19:10'),
+(91, 39, 'User logged in ', '2024-11-06 16:25:34'),
+(92, 39, 'User logged in ', '2024-11-06 16:26:24'),
+(93, 39, 'User logged in ', '2024-11-06 16:26:47'),
+(94, 39, 'User logged in ', '2024-11-06 16:27:07'),
+(95, 36, 'User logged in ', '2024-11-06 16:30:28'),
+(96, 66, 'Admin/Staff logged in ', '2024-11-06 16:31:35'),
+(97, 67, 'Admin/Staff logged in ', '2024-11-06 16:33:47'),
+(98, 36, 'User logged in ', '2024-11-06 16:33:57'),
+(99, 66, 'Admin/Staff logged in ', '2024-11-06 16:34:08'),
+(100, 44, 'User logged ugh ', '2024-11-06 16:35:05'),
+(101, 66, 'Admin/Staff logged in ', '2024-11-06 16:35:27');
 
 -- --------------------------------------------------------
 
@@ -103,58 +146,55 @@ CREATE TABLE `archive` (
   `ArchiveID` int(8) NOT NULL,
   `Name` varchar(255) NOT NULL,
   `Description` varchar(255) NOT NULL,
-  `Date` timestamp NOT NULL DEFAULT current_timestamp(),
-  `UserID` int(8) NOT NULL,
-  `ManagementID` int(8) NOT NULL,
-  `PropertyID` int(8) NOT NULL
+  `Date` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `archive`
 --
 
-INSERT INTO `archive` (`ArchiveID`, `Name`, `Description`, `Date`, `UserID`, `ManagementID`, `PropertyID`) VALUES
-(87, 'Jamandron', 'Paid', '2024-10-26 07:28:11', 0, 0, 0),
-(92, 'try ulet', 'Paid', '2024-10-26 08:07:30', 0, 0, 0),
-(93, 'Caleb house', 'Property', '2024-10-30 12:01:09', 0, 0, 0),
-(94, 'Alexandria/index.html', 'Property', '2024-10-30 12:01:14', 0, 0, 0),
-(95, 'Kayla Prime', 'Property', '2024-10-30 12:01:18', 0, 0, 0),
-(96, 'Camillia', 'Property', '2024-10-30 12:02:11', 0, 0, 0),
-(97, 'Selana Prime', 'Property', '2024-10-30 12:02:16', 0, 0, 0),
-(98, 'Shao Tower', 'Property', '2024-10-30 12:02:20', 0, 0, 0),
-(99, 'Illagan', 'Property', '2024-10-30 12:02:30', 0, 0, 0),
-(100, 'Amara Expanded', 'Property', '2024-10-30 14:12:33', 0, 0, 0),
-(101, 'asda', 'Property', '2024-10-30 14:12:47', 0, 0, 0),
-(102, 'Jamandron', 'Paid', '2024-11-02 10:07:19', 0, 0, 0),
-(103, 'Jamandron', 'Paid', '2024-11-02 10:07:21', 0, 0, 0),
-(104, 'Jamandron', 'Unpaid', '2024-11-02 10:07:22', 0, 0, 0),
-(105, 'Abacial', 'Paid', '2024-11-02 10:07:22', 0, 0, 0),
-(106, 'Britania', 'Paid', '2024-11-02 10:07:23', 0, 0, 0),
-(107, 'Britania', 'Unpaid', '2024-11-02 10:07:23', 0, 0, 0),
-(108, 'Britania', 'Unpaid', '2024-11-02 10:07:24', 0, 0, 0),
-(109, 'Britania', 'Paid', '2024-11-02 10:07:25', 0, 0, 0),
-(111, 'Britania', 'Paid', '2024-11-02 10:07:27', 0, 0, 0),
-(112, 'Britania', 'Unpaid', '2024-11-02 10:07:27', 0, 0, 0),
-(113, 'admin', 'Unpaid', '2024-11-02 10:07:28', 0, 0, 0),
-(114, 'Claen', 'Paid', '2024-11-02 10:07:29', 0, 0, 0),
-(115, 'Britania', 'Paid', '2024-11-02 10:07:29', 0, 0, 0),
-(116, 'Jamandron', 'Unpaid', '2024-11-02 10:07:30', 0, 0, 0),
-(117, 'Jamandron', 'Unpaid', '2024-11-02 10:07:31', 0, 0, 0),
-(118, 'Britania', 'Unpaid', '2024-11-02 10:07:31', 0, 0, 0),
-(119, 'No 3D villa', 'Property', '2024-11-03 07:31:57', 0, 0, 0),
-(120, 'sample', 'Property', '2024-11-03 09:19:51', 0, 0, 0),
-(121, 'ahm', 'Property', '2024-11-03 09:21:48', 0, 0, 0),
-(122, 'ONE MORE HILL', 'Property', '2024-11-03 09:25:02', 0, 0, 0),
-(123, 'Bago', 'Unpaid', '2024-11-03 09:26:32', 0, 0, 0),
-(124, 'asda', 'Property', '2024-11-03 09:26:39', 0, 0, 0),
-(125, 'Jesus', 'Property', '2024-11-04 12:38:53', 0, 0, 0),
-(126, 'Britania', 'Unpaid', '2024-11-06 08:11:16', 0, 0, 0),
-(127, 'Bago', 'Unpaid', '2024-11-06 08:16:28', 0, 0, 0),
-(128, 'Britania', 'Unpaid', '2024-11-06 08:26:56', 0, 0, 0),
-(129, 'ads', 'User', '2024-11-06 10:10:57', 0, 0, 0),
-(130, 'Pen', 'User', '2024-11-06 10:11:01', 0, 0, 0),
-(131, 'Jamandron', 'User', '2024-11-06 10:11:33', 0, 0, 0),
-(132, 'Kengkoy', 'Property', '2024-11-06 10:15:58', 0, 0, 0);
+INSERT INTO `archive` (`ArchiveID`, `Name`, `Description`, `Date`) VALUES
+(87, 'Jamandron', 'Paid', '2024-10-26 07:28:11'),
+(92, 'try ulet', 'Paid', '2024-10-26 08:07:30'),
+(93, 'Caleb house', 'Property', '2024-10-30 12:01:09'),
+(94, 'Alexandria/index.html', 'Property', '2024-10-30 12:01:14'),
+(95, 'Kayla Prime', 'Property', '2024-10-30 12:01:18'),
+(96, 'Camillia', 'Property', '2024-10-30 12:02:11'),
+(97, 'Selana Prime', 'Property', '2024-10-30 12:02:16'),
+(98, 'Shao Tower', 'Property', '2024-10-30 12:02:20'),
+(99, 'Illagan', 'Property', '2024-10-30 12:02:30'),
+(100, 'Amara Expanded', 'Property', '2024-10-30 14:12:33'),
+(101, 'asda', 'Property', '2024-10-30 14:12:47'),
+(102, 'Jamandron', 'Paid', '2024-11-02 10:07:19'),
+(103, 'Jamandron', 'Paid', '2024-11-02 10:07:21'),
+(104, 'Jamandron', 'Unpaid', '2024-11-02 10:07:22'),
+(105, 'Abacial', 'Paid', '2024-11-02 10:07:22'),
+(106, 'Britania', 'Paid', '2024-11-02 10:07:23'),
+(107, 'Britania', 'Unpaid', '2024-11-02 10:07:23'),
+(108, 'Britania', 'Unpaid', '2024-11-02 10:07:24'),
+(109, 'Britania', 'Paid', '2024-11-02 10:07:25'),
+(111, 'Britania', 'Paid', '2024-11-02 10:07:27'),
+(112, 'Britania', 'Unpaid', '2024-11-02 10:07:27'),
+(113, 'admin', 'Unpaid', '2024-11-02 10:07:28'),
+(114, 'Claen', 'Paid', '2024-11-02 10:07:29'),
+(115, 'Britania', 'Paid', '2024-11-02 10:07:29'),
+(116, 'Jamandron', 'Unpaid', '2024-11-02 10:07:30'),
+(117, 'Jamandron', 'Unpaid', '2024-11-02 10:07:31'),
+(118, 'Britania', 'Unpaid', '2024-11-02 10:07:31'),
+(119, 'No 3D villa', 'Property', '2024-11-03 07:31:57'),
+(120, 'sample', 'Property', '2024-11-03 09:19:51'),
+(121, 'ahm', 'Property', '2024-11-03 09:21:48'),
+(122, 'ONE MORE HILL', 'Property', '2024-11-03 09:25:02'),
+(123, 'Bago', 'Unpaid', '2024-11-03 09:26:32'),
+(124, 'asda', 'Property', '2024-11-03 09:26:39'),
+(125, 'Jesus', 'Property', '2024-11-04 12:38:53'),
+(126, 'Britania', 'Unpaid', '2024-11-06 08:11:16'),
+(127, 'Bago', 'Unpaid', '2024-11-06 08:16:28'),
+(128, 'Britania', 'Unpaid', '2024-11-06 08:26:56'),
+(129, 'ads', 'User', '2024-11-06 10:10:57'),
+(130, 'Pen', 'User', '2024-11-06 10:11:01'),
+(131, 'Jamandron', 'User', '2024-11-06 10:11:33'),
+(132, 'Kengkoy', 'Property', '2024-11-06 10:15:58');
 
 -- --------------------------------------------------------
 
@@ -181,7 +221,9 @@ CREATE TABLE `management` (
 INSERT INTO `management` (`ManagementID`, `Lastname`, `Firstname`, `Email`, `Phone`, `Address`, `Password`, `Role`, `Date`) VALUES
 (62, 'Shaori', 'Admin Shao', 'amaresa@gmail.com', '151515', 'BLK 3 LOT 6 SEC 7 PHASE 1 Pabahay 2000', '$2y$10$Z0qzmYshj91gf3G3j.BSq.wEYrMNrnW0MJwNmXV.llt9dDVntnMdy', 'Admin', '2024-08-31 10:38:50'),
 (63, 'ONLINE STORE', 'SMART', 'ma.cleopisalbon@gmail.com', '09557495359', 'SMART TOWER', '$2y$10$BKlgzbNdm8p0g9Ko7eFqq.BbGJslLqn3DKf9dwmsSphSIdycBe/yy', 'Staff', '2024-09-10 07:08:50'),
-(64, 'ONLINE STORE', 'SMART', 'ma.cleopisalbon@gmail.com', '09557495359', 'SMART TOWER', '$2y$10$Tlm.EaSntEwG0HLmKkdkc.6lJAnl5jdoPf5l8mDy6CXKkw0/mXTHu', 'Admin', '2024-09-10 08:52:40');
+(64, 'ONLINE STORE', 'SMART', 'ma.cleopisalbon@gmail.com', '09557495359', 'SMART TOWER', '$2y$10$Tlm.EaSntEwG0HLmKkdkc.6lJAnl5jdoPf5l8mDy6CXKkw0/mXTHu', 'Admin', '2024-09-10 08:52:40'),
+(66, 'Jamandron', 'John Samuel', 'admin@gmail.com', '09563326964', 'BULACAN', '$2y$10$TzdwTJ3EM7yoZsXdR0WioexJN87UW3fiqfb8AjjiyB/ADEE/Fes9O', 'Admin', '2024-11-06 16:21:20'),
+(67, 'Duenas', 'Kim', 'kimduenas17@gmail.com', '09350478829', 'Bulacan', '$2y$10$m/ZBdZ9eciIOtZ1ULcZyyec7KNVn.6caLGzCGVIWczzu6VZRuJWs6', 'Admin', '2024-11-06 16:33:13');
 
 -- --------------------------------------------------------
 
@@ -194,26 +236,25 @@ CREATE TABLE `message` (
   `Sender` varchar(255) NOT NULL,
   `Rate` int(7) NOT NULL,
   `Message` varchar(255) NOT NULL,
-  `Date` timestamp NOT NULL DEFAULT current_timestamp(),
-  `PendingID` int(8) NOT NULL
+  `Date` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `message`
 --
 
-INSERT INTO `message` (`MessageID`, `Sender`, `Rate`, `Message`, `Date`, `PendingID`) VALUES
-(3, 'Try nga', 4, 'hello', '2024-10-30 03:55:43', 0),
-(4, 'John Samuel Jamandron', 4, 'This system is need a lot of improvement specially in the functions those function are lacking at validations, security, and fashion. I would like to say this is overall good.', '2024-10-30 03:57:31', 0),
-(5, 'gfryt', 1, 'tfugyufh', '2024-10-30 03:58:56', 0),
-(6, 'asd', 4, 'dasd', '2024-10-30 04:11:42', 0),
-(7, 'asdsad', 2, 'two star', '2024-10-30 04:15:44', 0),
-(9, 'David Britania', 5, 'If I have a chance to put an 6s I will put it', '2024-10-30 07:00:43', 0),
-(11, 'asdadas', 4, 'tama ba?', '2024-10-30 11:48:33', 0),
-(12, 'Log out', 5, 'adsad', '2024-10-30 11:48:51', 0),
-(13, 'Papasok na', 3, 'asdasdadada', '2024-10-30 11:49:19', 0),
-(14, 'Samuel', 5, 'hahahahahahaha', '2024-11-02 10:29:48', 0),
-(15, 'Jesus', 2, 'adsassdada', '2024-11-04 12:33:00', 0);
+INSERT INTO `message` (`MessageID`, `Sender`, `Rate`, `Message`, `Date`) VALUES
+(3, 'Try nga', 4, 'hello', '2024-10-30 03:55:43'),
+(4, 'John Samuel Jamandron', 4, 'This system is need a lot of improvement specially in the functions those function are lacking at validations, security, and fashion. I would like to say this is overall good.', '2024-10-30 03:57:31'),
+(5, 'gfryt', 1, 'tfugyufh', '2024-10-30 03:58:56'),
+(6, 'asd', 4, 'dasd', '2024-10-30 04:11:42'),
+(7, 'asdsad', 2, 'two star', '2024-10-30 04:15:44'),
+(9, 'David Britania', 5, 'If I have a chance to put an 6s I will put it', '2024-10-30 07:00:43'),
+(11, 'asdadas', 4, 'tama ba?', '2024-10-30 11:48:33'),
+(12, 'Log out', 5, 'adsad', '2024-10-30 11:48:51'),
+(13, 'Papasok na', 3, 'asdasdadada', '2024-10-30 11:49:19'),
+(14, 'Samuel', 5, 'hahahahahahaha', '2024-11-02 10:29:48'),
+(15, 'Jesus', 2, 'adsassdada', '2024-11-04 12:33:00');
 
 -- --------------------------------------------------------
 
@@ -244,9 +285,12 @@ CREATE TABLE `pending` (
 
 INSERT INTO `pending` (`PendingID`, `Lastname`, `Firstname`, `Email`, `Phone`, `Message`, `Address`, `Category`, `Receipt`, `Date`, `Status`, `Requirements`, `UserID`, `PropertyID`) VALUES
 (104, 'Bago', 'Bago', 'Bago@gmail.com', '12313', 'asdada', 'STA. Maria', 'Unpaid', 0x4e6f20496d61676520417474616368, '2024-11-03 09:20:52', 'Pending', '', 43, 16),
-(105, 'Bago', 'Bago', 'Bago@gmail.com', '12313', 'asdadsadsa', 'STA. Maria', 'Unpaid', 0x4e6f20496d61676520417474616368, '2024-11-03 09:21:02', 'Pending', '', 43, 0),
-(106, 'Bago', 'Bago', 'Bago@gmail.com', '12313', 'asdasda', 'STA. Maria', 'Unpaid', 0x4e6f20496d61676520417474616368, '2024-11-03 09:22:36', 'Pending', '', 43, 0),
-(121, 'Jamandron', 'Samuel', 'jamandron@gmail.com', '123', 'I would like to buy', 'Bulacan', 'Paid', 0x363732623531346130643238612d70656b746f722e6a7067, '2024-11-06 11:21:46', 'Pending', '', 44, 12);
+(122, 'Jamandron', 'Samuel', 'jamandron@gmail.com', '123', 'asdda', 'Bulacan', 'Unpaid', 0x4e6f20496d61676520417474616368, '2024-11-06 14:09:06', 'Verified', 'Yoww b', 44, 12),
+(123, 'Jamandron', 'Samuel', 'jamandron@gmail.com', '123', 'asd', 'Bulacan', 'Unpaid', 0x4e6f20496d61676520417474616368, '2024-11-06 14:25:08', 'Pending', '', 44, 11),
+(124, 'asfdasfd', 'Kim', 'jamandron@gmail.com', '121213213', 'ok', 'Bulacan', 'Unpaid', 0x4e6f20496d61676520417474616368, '2024-11-06 14:36:28', 'Pending', '', 0, 0),
+(125, 'Jamandron', 'Samuel', 'jamandron@gmail.com', '12313', 'asd', 'Bulacan', 'Unpaid', 0x4e6f20496d61676520417474616368, '2024-11-06 14:37:05', 'Pending', '', 0, 0),
+(126, 'Jamandron', 'Samuel', 'jamandron@gmail.com', '123', 'asdsadas', 'Bulacan', 'Unpaid', 0x4e6f20496d61676520417474616368, '2024-11-06 14:50:12', 'Pending', '', 44, 11),
+(127, 'Britania', 'Davinchi', 'david@gmail.com', '04014014141', 'Yay', 'MINUYAN', 'Paid', 0x363732623937313433306538302d6164612e6a7067, '2024-11-06 16:19:32', 'Pending', '', 36, 14);
 
 -- --------------------------------------------------------
 
@@ -299,30 +343,29 @@ CREATE TABLE `sales` (
   `CurrentOwner` varchar(255) NOT NULL,
   `PreviousOwner` varchar(255) NOT NULL,
   `Date_Purchased` timestamp NOT NULL DEFAULT current_timestamp(),
-  `TransactionDate` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
-  `PendingID` int(8) NOT NULL,
-  `PropertyID` int(8) NOT NULL
+  `TransactionDate` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `sales`
 --
 
-INSERT INTO `sales` (`SaleID`, `Property`, `CurrentOwner`, `PreviousOwner`, `Date_Purchased`, `TransactionDate`, `PendingID`, `PropertyID`) VALUES
-(1, 'Arya Prime', 'Abacial', 'Sam', '2024-08-23 08:50:08', '2024-11-06 10:10:12', 0, 0),
-(2, 'Pen', 'asdas', 'Sam', '2024-11-06 07:49:44', '2024-11-06 10:09:09', 0, 0),
-(3, 'Bago', 'Abacial', 'Sam', '2024-11-06 07:50:47', '2024-11-06 10:15:35', 0, 0),
-(4, 'Arya Prime', '', '', '2024-11-06 07:51:58', '2024-11-06 10:06:12', 0, 0),
-(5, 'Amara Expanded', 'fafafa', 'Bago', '2024-11-06 07:54:35', '2024-11-06 10:08:34', 0, 0),
-(6, 'Arya Prime', 'Bago', '', '2024-11-06 07:54:54', '2024-11-06 09:29:32', 0, 0),
-(7, 'Amara Expanded', 'Pen', '', '2024-11-06 07:58:07', '2024-11-06 09:29:32', 0, 0),
-(8, 'Amara Expanded', 'Pen', '', '2024-11-06 07:58:43', '2024-11-06 09:29:32', 0, 0),
-(9, 'Amara Expanded', 'Pen', '', '2024-11-06 07:59:22', '2024-11-06 09:29:32', 0, 0),
-(10, 'Kengkoy', 'Britania', '', '2024-11-06 08:01:49', '2024-11-06 09:29:32', 0, 0),
-(11, 'Kengkoy', 'Britania', '', '2024-11-06 08:03:22', '2024-11-06 09:29:32', 0, 0),
-(12, 'Kengkoy', 'Britania', '', '2024-11-06 08:20:24', '2024-11-06 09:29:32', 0, 0),
-(13, 'Arya Prime', 'Bago', '', '2024-11-06 08:27:09', '2024-11-06 09:29:32', 0, 0),
-(14, 'Amara Expanded', 'Bago', '', '2024-11-06 09:30:54', '2024-11-06 09:30:54', 0, 0);
+INSERT INTO `sales` (`SaleID`, `Property`, `CurrentOwner`, `PreviousOwner`, `Date_Purchased`, `TransactionDate`) VALUES
+(1, 'Arya Prime', 'Abacial', 'Sam', '2024-08-23 08:50:08', '2024-11-06 10:10:12'),
+(2, 'Pen', 'asdas', 'Sam', '2024-11-06 07:49:44', '2024-11-06 10:09:09'),
+(3, 'Bago', 'Abacial', 'Sam', '2024-11-06 07:50:47', '2024-11-06 10:15:35'),
+(4, 'Arya Prime', '', '', '2024-11-06 07:51:58', '2024-11-06 10:06:12'),
+(5, 'Amara Expanded', 'fafafa', 'Bago', '2024-11-06 07:54:35', '2024-11-06 10:08:34'),
+(6, 'Arya Prime', 'Bago', '', '2024-11-06 07:54:54', '2024-11-06 09:29:32'),
+(7, 'Amara Expanded', 'Abacial', 'Pen', '2024-11-06 07:58:07', '2024-11-06 14:27:26'),
+(8, 'Amara Expanded', 'Pen', '', '2024-11-06 07:58:43', '2024-11-06 09:29:32'),
+(9, 'Amara Expanded', 'Pen', '', '2024-11-06 07:59:22', '2024-11-06 09:29:32'),
+(10, 'Kengkoy', 'Britania', '', '2024-11-06 08:01:49', '2024-11-06 09:29:32'),
+(11, 'Kengkoy', 'Britania', '', '2024-11-06 08:03:22', '2024-11-06 09:29:32'),
+(12, 'Kengkoy', 'Britania', '', '2024-11-06 08:20:24', '2024-11-06 09:29:32'),
+(13, 'Arya Prime', 'Bago', '', '2024-11-06 08:27:09', '2024-11-06 09:29:32'),
+(14, 'Amara Expanded', 'Bago', '', '2024-11-06 09:30:54', '2024-11-06 09:30:54'),
+(15, 'Arya Prime', 'Jamandron', '', '2024-11-06 14:08:07', '2024-11-06 14:08:07');
 
 -- --------------------------------------------------------
 
@@ -347,13 +390,13 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`UserID`, `Firstname`, `Lastname`, `Email`, `Phone`, `Address`, `Password`, `Role`, `Date_Joined`) VALUES
-(36, 'Davinchi', 'Britania', 'david@gmail.com', '04014014141', 'MINUYAN', '$2y$10$PVSA6QcJQQMCkpKUCm99I.fd8JUBXFl6Jcbf8UJEaQp6wW/rsy2su', 'User', '2024-11-06 08:00:48'),
+(36, 'Davinchi', 'Britania', 'david@gmail.com', '04014014141', 'MINUYAN', '$2y$10$PVSA6QcJQQMCkpKUCm99I.fd8JUBXFl6Jcbf8UJEaQp6wW/rsy2su', 'User', '2024-11-06 16:19:10'),
 (37, 'Ryan', 'Abacial', 'yangyang16@gmail.com', '09772375591', 'blk4 alot 27', '$2y$10$h2z6RDYsja/VAaNYEFo8z.ofTOe0cOmx/IdArTwjs8vzO783jy1qC', 'User', '2024-10-26 09:27:52'),
 (38, 'New Caleb', 'Claen', 'caleb@gmail.com', '41241414141', 'MINUYAN', '$2y$10$gYrJka.miNj2SbXaq9HHY.kdyAd13A/MvsAz472DcRPmIXe2QisUm', 'User', '2024-10-31 08:57:41'),
-(39, 'Admin', 'admin', 'admin@gmail.com', '31221421414', 'Bulacan', '$2y$10$BHCYwhYq0zlJkITDGUMjOenGTnjHLCA48CxenB1lKekT1kiRW44uC', 'User', '2024-10-31 08:43:41'),
+(39, 'Admin', 'admin', 'admin@gmail.com', '31221421414', 'Bulacan', '$2y$10$BHCYwhYq0zlJkITDGUMjOenGTnjHLCA48CxenB1lKekT1kiRW44uC', 'User', '2024-11-06 16:27:07'),
 (42, 'Samuel', 'Jamandron', 'pen@gmail.com', '2', 'STA. Maria', '$2y$10$.9GPXPbc.BlTZtS7hlWOvOwRPUkF3La9EEj/IEmOsqfL3dHrQG2bu', 'User', '2024-11-03 07:12:32'),
 (43, 'Bago', 'Bago', 'Bago@gmail.com', '12313', 'STA. Maria', '$2y$10$FLCwnulyE3Q6OqpcWM2RU.ka/Bj1y7uLzt1QoxEAzodxBi5HHQLLa', 'User', '2024-11-03 08:27:38'),
-(44, 'Samuel', 'Jamandron', 'jamandron@gmail.com', '123', 'Bulacan', '$2y$10$0Oo1fwwB7yWg1Lj91mGdi.HGJiWXeWPKSkBr8aQuVDHbwKp4sXoWO', 'User', '2024-11-06 13:39:45');
+(44, 'Samuel', 'Jamandron', 'jamandron@gmail.com', '123', 'Bulacan', '$2y$10$0Oo1fwwB7yWg1Lj91mGdi.HGJiWXeWPKSkBr8aQuVDHbwKp4sXoWO', 'User', '2024-11-06 15:43:48');
 
 --
 -- Indexes for dumped tables
@@ -415,7 +458,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `activitylog`
 --
 ALTER TABLE `activitylog`
-  MODIFY `TrackID` int(7) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=59;
+  MODIFY `TrackID` int(7) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=102;
 
 --
 -- AUTO_INCREMENT for table `archive`
@@ -427,7 +470,7 @@ ALTER TABLE `archive`
 -- AUTO_INCREMENT for table `management`
 --
 ALTER TABLE `management`
-  MODIFY `ManagementID` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=66;
+  MODIFY `ManagementID` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=68;
 
 --
 -- AUTO_INCREMENT for table `message`
@@ -439,7 +482,7 @@ ALTER TABLE `message`
 -- AUTO_INCREMENT for table `pending`
 --
 ALTER TABLE `pending`
-  MODIFY `PendingID` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=122;
+  MODIFY `PendingID` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=128;
 
 --
 -- AUTO_INCREMENT for table `properties`
@@ -451,7 +494,7 @@ ALTER TABLE `properties`
 -- AUTO_INCREMENT for table `sales`
 --
 ALTER TABLE `sales`
-  MODIFY `SaleID` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `SaleID` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `user`

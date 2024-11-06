@@ -110,7 +110,7 @@
 							<th>Category</th>
 							<th>Receipt</th>
 							<th>Property</th>
-							<th>Notes</th>
+							<th>Status</th>
 							<th>Date</th>
 							<th class="action-center">Actions</th>
 						</tr>	
@@ -120,16 +120,20 @@
 						if(isset($_POST['Sort-btn'])){
 							$Sortlist = $_POST['Sort-Option'];
 							if($Sortlist == "Paid"){
-								$sql = "SELECT * FROM Pending WHERE Category = 'Paid' ";
+								$sql = "SELECT Pending.*, Properties.Property FROM Pending JOIN Properties ON Pending.PropertyID = Properties.PropertyID WHERE Category = 'Paid' ";
 							}elseif($Sortlist == "Unpaid"){
-								$sql = "SELECT * FROM Pending WHERE Category = 'Unpaid' ";
-							}elseif($Sortlist == "Testimonial"){
-								$sql = "SELECT * FROM Pending WHERE Category = 'Testimonial' ";
+								$sql = "SELECT Pending.*, Properties.Property FROM Pending JOIN Properties ON Pending.PropertyID = Properties.PropertyID WHERE Category = 'Unpaid' ";
+							}elseif($Sortlist == "Pending"){
+								$sql = "SELECT Pending.*, Properties.Property FROM Pending JOIN Properties ON Pending.PropertyID = Properties.PropertyID WHERE Pending.Status = 'Pending' ";
+							}elseif($Sortlist == "Verified"){
+								$sql = "SELECT Pending.*, Properties.Property FROM Pending JOIN Properties ON Pending.PropertyID = Properties.PropertyID WHERE Pending.Status = 'Verified' ";
+							}elseif($Sortlist == "Declined"){
+								$sql = "SELECT Pending.*, Properties.Property FROM Pending JOIN Properties ON Pending.PropertyID = Properties.PropertyID WHERE Pending.Status = 'Declined' ";
 							}else{
-								$sql = "SELECT * FROM Pending ORDER BY Category ASC";
+								$sql = "SELECT Pending.*, Properties.Property FROM Pending JOIN Properties ON Pending.PropertyID = Properties.PropertyID ORDER BY Category DESC";
 							}
 						}else{
-							$sql = "SELECT Pending.*, Properties.Property FROM Pending JOIN Properties ON Pending.PropertyID = Properties.PropertyID";
+							$sql = "SELECT Pending.*, Properties.Property FROM Pending JOIN Properties ON Pending.PropertyID = Properties.PropertyID ";
 						}
 							
 							$rs = mysqli_query($conn, $sql);
@@ -143,10 +147,9 @@
 									$Email = $row['Email'];
 									$Phone = $row['Phone'];
 									$Selected_Property = $row['Property'];
-									$Message = $row['Message'];
+									$Status = $row['Status'];
 									$Category = $row['Category'];
 									$Receipt = $row['Receipt'];
-									
 									$Image = 'Images/'.$row['Receipt'];
 									$Date = $row['Date'];
 
@@ -162,7 +165,7 @@
 										<td>".$Category."</td>
 										<td>".$Receipt."</td>
 										<td>".$Selected_Property."</td>
-										<td class='note'>".$Message."</td>
+										<td>".$Status."</td>
 										<td>".$Date."</td>
 										
 
@@ -201,7 +204,9 @@
 						<datalist id="Options">
 						    <option value="Paid">
 						    <option value="Unpaid">
-						    <option value="Testimonial">
+						    <option value="Pending">
+						    <option value="Verified">
+						    <option value="Declined">
 						    <option value="Default">
 						</datalist>						
 					</div>

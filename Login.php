@@ -666,12 +666,6 @@
         <script src="./Assets/Js/PhoneValidation.js?v=<?php echo time(); ?>"></script>
         <!-- Script: Fontawesome -->
         <script src="https://kit.fontawesome.com/83786b8894.js" crossorigin="anonymous"></script>
-    <script type="text/javascript">
-        window.onbeforeunload = function() {
-            return "Are you sure you want to leave this page?";
-        };
-    </script>
-
 
     
     </body>

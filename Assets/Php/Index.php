@@ -110,36 +110,74 @@ function LoginUser($conn) {
         $Email = $conn->real_escape_string($_POST['email']);
         $Password = $_POST['password'];
 
-        $stmt = $conn->prepare("SELECT * FROM User WHERE Email = ?");
-        $stmt->bind_param("s", $Email);
-        $stmt->execute();
-        $result = $stmt->get_result();
+        // Check in the Management table (for Admin/Staff)
+        $stmtAdmin = $conn->prepare("SELECT * FROM Management WHERE Email = ?");
+        $stmtAdmin->bind_param("s", $Email);
+        $stmtAdmin->execute();
+        $resultAdmin = $stmtAdmin->get_result();
 
-        if ($result->num_rows > 0) {
-            while ($row = $result->fetch_assoc()) {
+        // Check in the User table
+        $stmtUser = $conn->prepare("SELECT * FROM User WHERE Email = ?");
+        $stmtUser->bind_param("s", $Email);
+        $stmtUser->execute();
+        $resultUser = $stmtUser->get_result();
+
+        // Admin/Staff login check
+        if ($resultAdmin->num_rows > 0) {
+            while ($row = $resultAdmin->fetch_assoc()) {
+                if (password_verify($Password, $row['Password'])) {
+                    $_SESSION['Firstname'] = $row['Firstname'];
+                    $_SESSION['Lastname'] = $row['Lastname'];
+                    $_SESSION['UserID'] = $row['ManagementID'];
+                    $_SESSION['Role'] = $row['Role']; // Admin or Staff role
+
+                    // Log the login activity
+                    $UserID = $row['ManagementID'];
+                    $Status = "Admin/Staff logged in ";
+                    $logQuery = $conn->prepare("INSERT INTO ActivityLog(UserID, Action) VALUES (?, ?)");
+                    $logQuery->bind_param("is", $UserID, $Status);
+                    $logQuery->execute();
+                    $logQuery->close();
+
+                    // Redirect to Admin page
+                    echo "<script>
+                        alert('Welcome Admin/Staff! You are logged in.');
+                        setTimeout(function(){
+                            window.location.href = '../../Admin-Account.php';
+                        }, 500);
+                    </script>";
+                } else {
+                    echo "<script>
+                        alert('Incorrect Password! Please try again.');
+                        setTimeout(function(){
+                            window.location.href = '../../Index.php';
+                        }, 500);
+                    </script>";
+                }
+            }
+        }
+        // Regular User login check
+        elseif ($resultUser->num_rows > 0) {
+            while ($row = $resultUser->fetch_assoc()) {
                 if (password_verify($Password, $row['Password'])) {
                     $_SESSION['Firstname'] = $row['Firstname'];
                     $_SESSION['Lastname'] = $row['Lastname'];
                     $_SESSION['UserID'] = $row['UserID'];
-                    $UserID = $row['UserID'];
-
-                    // Update LastLogin timestamp
-                    $updateStmt = $conn->prepare("UPDATE User SET Date_Joined = CURRENT_TIMESTAMP WHERE UserID = ?");
-                    $updateStmt->bind_param("i", $UserID);
-                    $updateStmt->execute();
-                    $updateStmt->close();
+                    $_SESSION['Role'] = $row['Role']; // User role
 
                     // Log the login activity
+                    $UserID = $row['UserID'];
                     $Status = "User logged in ";
                     $logQuery = $conn->prepare("INSERT INTO ActivityLog(UserID, Action) VALUES (?, ?)");
                     $logQuery->bind_param("is", $UserID, $Status);
                     $logQuery->execute();
                     $logQuery->close();
 
+                    // Redirect to User page
                     echo "<script>
                         alert('Successfully logged in');
                         setTimeout(function(){
-                            window.location.href = '../../Login.php';
+                            window.location.href = '../../login.php';
                         }, 500);
                     </script>";
                 } else {
@@ -159,7 +197,9 @@ function LoginUser($conn) {
                 }, 500);
             </script>";
         }
-        $stmt->close();
+
+        $stmtAdmin->close();
+        $stmtUser->close();
     } else {
         echo "<script>
             alert('Invalid Email! Please try again.');
@@ -169,6 +209,7 @@ function LoginUser($conn) {
         </script>";
     }
 }
+
 /***********************************************
 FUNCTION FOR EDITING: PROFILE
 ************************************************/

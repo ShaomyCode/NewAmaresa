@@ -1,5 +1,5 @@
 <?php
-session_start();
+	session_start();
 
 	// Clear all session variables
 	$_SESSION = array();
@@ -10,5 +10,5 @@ session_start();
 	// Redirect to Index.php
 	header("Location: ../../Index.php");
 	
-exit();
+	exit();
 ?>

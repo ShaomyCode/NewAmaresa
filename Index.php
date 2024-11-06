@@ -23,7 +23,7 @@
 <body>
 
 	<!-- Section: Header -->
-	<header class="header">
+	<header class="header" id="header">
 		<div class="header-top"> 
 			<div class="container">
 				<ul class="header-top-list">
@@ -209,7 +209,7 @@
 
 								<h3 class="h3 card-title">
 									<!-- MAKE IT BUTTON TO INQUIRY -->
-									<button onclick="ShowInquiry()"> Buy a Home </button> 
+									<button onclick="ShowSignup()"> Buy a Home </button> 
 								</h3>
 								<p class="card-text">
 									Your dream home awaits! Whether you’re looking for a cozy starter home or your forever dream house, our expert team is here to turn your vision into reality. We offer a diverse selection of homes and personalized assistance to help you find a perfect fit. Let’s embark on this exciting journey together!
@@ -481,100 +481,7 @@
 				<button onclick="ShowSignup()" class="lowerbuttons">Dont have account</button>				
 			</div>		
 		</dialog>
-		<!-- Dialog: Inquiry -->
-		<dialog id="Inquiry-Modal" class="dialog">
-			<button onclick="CloseInquiry()" class="closebtn">X</button>	
 
-			<div class="container">
-
-				<form class="form Inquiry" method="POST" enctype="multipart/form-data" action="./Assets/Php/Index.php" autocomplete="on">
-					<?php 
-
-					$query = "SELECT *
-					FROM USER;
-					";
-					$result = $conn->query($query);
-					$row = $result->fetch_assoc();
-
-
-					echo "
-					<div class='form-items'>
-					<input type='text' name='Firstname' placeholder='First Name' required>
-					<input type='text' name='Lastname' placeholder='Last Name'  required>		
-					</div>
-					";
-
-					?>
-					
-					<input type="tel" maxlength="11" name="Phone"  class="PhoneInput" id="PhoneInput" placeholder="Contact Number" required autocomplete="off">		
-					<div class="form-items">
-						<input type="text" name="Address" placeholder="Address" required>
-						<input list="options" id="Role" name="Property" placeholder="Select Property" required>
-						<datalist id="options">
-							<option value="Kalya House">
-								<option value="Aria House">
-								</datalist>	
-							</div>	
-							<input type="email" name="Email" placeholder="Email Address" required>
-							<div class="textarea-container">
-								<textarea id="message" rows="5" name="Message" placeholder="I'd like to inquire about this property..."></textarea>
-							</div>
-
-
-							<div class="form-items">
-
-							</div>
-							<div>
-								<input type="checkbox" id="cbx2" onclick="ShowReservation()" style="display: none;"> 
-								<label for="cbx2" class="check">
-									<svg width="18px" height="18px" viewBox="0 0 18 18">
-										<path d="M 1 9 L 1 9 c 0 -5 3 -8 8 -8 L 9 1 C 14 1 17 5 17 9 L 17 9 c 0 4 -4 8 -8 8 L 9 17 C 5 17 1 14 1 9 L 1 9 Z"></path>
-										<polyline points="1 9 7 14 15 4"></polyline>
-									</svg>
-									Reservation Fee (optional)
-								</label>
-
-
-								<div class="payments" id="payments">
-									<h3 class="h3 payment-title"> Gcash </h3>
-									<img id="paymentImg" src="./Assets/Images/payment.png" >
-
-									<div class="payment-upload" >
-										<label for="file-upload" class="custom-file-upload btn">
-											Upload Here
-										</label>
-										<input id="file-upload" type="file" name="Receipt" accept="image/*">
-									</div>
-
-								</div>
-
-
-								<script>
-									const checkbox = document.getElementById('cbx2');
-									const div = document.getElementById('payments');
-
-									checkbox.addEventListener('change', function() {
-										if (this.checked) {
-											div.style.display = 'block'; 
-										} else {
-											div.style.display = 'none';
-										}
-									});
-								</script>
-							</div>
-						</div>
-
-						<div class="inquiry-buttons">
-							<div id="panel">
-								<span>requirements shows here</span>
-							</div>
-							<span id="requirements" class="btn">Requirements</span>
-							<button type="submit" name="SentInquiry" onclick="ShowSignupInquiry()" class="btn">Send Inquiry</button>
-						</div>
-					</form>
-
-				</div>
-			</dialog>
 			<!-- RESERVATION MODAL -->
 			<dialog id="Reservation-Modal" class="dialog">
 				<button onclick="CloseReservation()" class="closebtn">X</button>	
@@ -670,6 +577,9 @@
 		<script src="./Assets/Js/PhoneValidation.js?v=<?php echo time(); ?>"></script>
 		<!-- Script: Fontawesome -->
 		<script src="https://kit.fontawesome.com/83786b8894.js" crossorigin="anonymous"></script>
-
+		<!-- NO TURNING BACK -->
+		<script language="javascript" type="text/javascript">	
+	            window.history.forward();
+		</script>
 	</body>
 	</html>

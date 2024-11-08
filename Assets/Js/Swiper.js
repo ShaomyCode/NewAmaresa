@@ -21,7 +21,7 @@ document.addEventListener("DOMContentLoaded", function() {
   new Swiper(".mySwiper-autoplay", {
       loop: true,  // Enables infinite loop
       autoplay: {
-        delay: 2500,  // Slide transition delay (2 seconds)
+        delay: 3000,  // Slide transition delay (2 seconds)
         disableOnInteraction: false,  // Keep autoplaying even after interaction
       },
       pagination: {

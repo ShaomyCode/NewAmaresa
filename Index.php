@@ -29,14 +29,14 @@
 				<ul class="header-top-list">
 
 					<li>
-						<a href="https://www.amaresa.ph/" class="header-top-link">
+						<a href="https://www.amaresa.ph/" class="header-top-link" title="www.amaresa.ph">
 							<i class="fa-solid fa-paper-plane"></i>
 							<span>amaresa.ph</span>
 						</a>
 					</li>						
 
 					<li> 
-						<a href="https://www.google.com/maps/dir//Amaresa+Marilao,+3019+M.+Villarica+Rd,+Marilao,+3019+Bulacan/@14.7950949,121.0162162,17z/data=!4m17!1m7!3m6!1s0x3397b38da5906293:0x8b01e358c47a7685!2sAmaresa+Marilao!8m2!3d14.7950897!4d121.0187911!16s%2Fg%2F11gpnfmdlb!4m8!1m0!1m5!1m1!1s0x3397b38da5906293:0x8b01e358c47a7685!2m2!1d121.0188034!2d14.7951434!3e2?entry=ttu"  class="header-top-link">
+						<a href="https://www.google.com/maps/dir//Amaresa+Marilao,+3019+M.+Villarica+Rd,+Marilao,+3019+Bulacan/@14.7950949,121.0162162,17z/data=!4m17!1m7!3m6!1s0x3397b38da5906293:0x8b01e358c47a7685!2sAmaresa+Marilao!8m2!3d14.7950897!4d121.0187911!16s%2Fg%2F11gpnfmdlb!4m8!1m0!1m5!1m1!1s0x3397b38da5906293:0x8b01e358c47a7685!2m2!1d121.0188034!2d14.7951434!3e2?entry=ttu"  class="header-top-link" title="Amaresa location">
 							<i class="fa-solid fa-map-location-dot"></i>
 							<span>3019 M. Villarica Rd, Marilao, 3019 Bulacan</span>
 						</a>
@@ -46,25 +46,25 @@
 
 					<ul class="header-top-social-list">
 						<li>
-							<a href="#about" class="header-top-social-link">
+							<a href="#about" class="header-top-social-link" title="Redirect to About us">
 								<i class="fa-solid fa-circle-info"></i>
 								<span>About us</span>
 							</a>
 						</li>
 						<li>
-							<a href="#location" class="header-top-social-link">
+							<a href="#location" class="header-top-social-link" title="Redirect to Location">
 								<i class="fa-solid fa-location-crosshairs"></i>
 								<span> Location</span>
 							</a>
 						</li>
 						<li>
-							<a href="#service" class="header-top-social-link">
+							<a href="#service" class="header-top-social-link" title="Redirect to Service">
 								<i class="fa-brands fa-servicestack"></i>
 								<span> Service </span>
 							</a>
 						</li>
 						<li>
-							<a href="#property" class="header-top-social-link">
+							<a href="#property" class="header-top-social-link" title="Redirect to Property listing">
 								<i class="fa-solid fa-house-lock"></i>
 								<span> Properties </span>
 							</a>
@@ -502,59 +502,61 @@
 
 				<ul class="footer-list help">
 					<h3 class="h3 list-title"> Get Help </h3>
-					<li><a href="#"> Inquire Process </a></li>
-					<li><a href="#"> Pending Process </a></li>
-
+					<div class="list-items">
+						<li><a href="#"> Inquire Process </a></li>
+						<li><a href="#"> Pending Process </a></li>
+					</div>
 				</ul>					
 
 				<ul class="footer-list company">
 					<h3 class="h3 list-title">	Company </h3>
-					<li><a href="#"> About us </a></li>
-					<li><a href="#"> Service </a></li>
-					<li><a href="#"> Privacy Policy </a></li>
-
-
+					<div class="list-items">
+						<li><a href="#"> About us </a></li>
+						<li><a href="#"> Service </a></li>
+						<li><a href="#"> Privacy Policy </a></li>
+					</div>
 				</ul>					
 
 				<ul class="footer-list social">
 					<h3 class="h3 list-title"> Follow us </h3>
-					<li>
-						<a href="#" class="list-item"> 
-							<i class="fa-brands fa-facebook"></i>
-							<span>Facebook </span>
-						</a>
-					</li>				
+					<div class="list-items">
+						<li>
+							<a href="#" class="list-item"> 
+								<i class="fa-brands fa-facebook"></i>
+								<span>Facebook </span>
+							</a>
+						</li>				
 
-					<li>
-						<a href="#" class="list-item"> 
-							<i class="fa-brands fa-instagram"></i>
-							<span>Instagram </span>
-						</a>
-					</li>				
+						<li>
+							<a href="#" class="list-item"> 
+								<i class="fa-brands fa-instagram"></i>
+								<span>Instagram </span>
+							</a>
+						</li>				
 
-					<li>
-						<a href="#" class="list-item"> 
-							<i class="fa-brands fa-x-twitter"></i>
-							<span>Twitter </span>
-						</a>
-					</li>				
+						<li>
+							<a href="#" class="list-item"> 
+								<i class="fa-brands fa-x-twitter"></i>
+								<span>Twitter </span>
+							</a>
+						</li>				
 
-					<li>
-						<a href="#" class="list-item"> 
-							<i class="fa-brands fa-linkedin"></i>
-							<span>LinkIn </span>
-						</a>
-					</li>
-
-
+						<li>
+							<a href="#" class="list-item"> 
+								<i class="fa-brands fa-linkedin"></i>
+								<span>LinkIn </span>
+							</a>
+						</li>
+					</div>
 				</ul>			
 
 				<ul class="footer-list Developer">
 					<h3 class="h3 list-title"> Developer </h3>
-					<li><a href="#"> FAQ </a></li>
-					<li><a href="#"> Payment Process </a></li>
-					<li><a href="#"> Pending Process </a></li>
-
+					<div class="list-items">
+						<li><a href="#"> FAQ </a></li>
+						<li><a href="#"> Payment Process </a></li>
+						<li><a href="#"> Pending Process </a></li>
+					</div>
 				</ul>		
 			</div>		
 

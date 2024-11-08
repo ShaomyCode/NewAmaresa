@@ -222,6 +222,13 @@ button, a {transition: var(--transition);}
 	justify-content: center;
 	align-items: center;
 	gap: 5px;
+
+	span{
+		display: none;
+	}
+}
+.header-top-social-list a span{
+	display: none;
 }
 .header-top-link:is(:hover,:focus){color: var(--orange-soda);}
 .header-top-social-link :is(:hover,:focus){color: var(--orange-soda);}
@@ -331,42 +338,38 @@ button, a {transition: var(--transition);}
 .hero-top-part{
 	margin-bottom: 1rem;
 	display: flex;
+	flex-direction: column;
 	justify-content: center;
 	align-items: center;
 
 	> *{
-		width: 50%;	
+		width: 100%;	
 	}
 }
 .hero-text{
 	text-align: justify;
 }
 .hero-logo img{
-	width: 100%;
-	padding: 1rem;
-	height: 100%;
+	height: 150px;
+	margin-inline: auto;
+}
 
+.hero-title{
+	margin-bottom: 20px;
+	font-size: var(--fs-2);
 }
-.hero-location-banner{
-	width: 100%;
-	height: 100%;
-	object-fit: cover;
-}
-.hero-title{margin-bottom: 20px;}
 .hero-text{
 	color: var(--black);
-	font-size: var(--fs-5);
+	font-size: var(--fs-6);
 	line-height: 1.8;
 	padding-left: 15px;
 	border-left: 1px solid ;
 	margin-bottom: 30px;
 }
-.swiper-slide{
-	height: 250px;
-}
 .swiper-slide img{
-	height: calc(100vh - 250px);
+	height: calc(60vh - 150px);
 	width: 100%;
+	cursor: pointer;
 }
 .Profile-btn{
 	display: flex;
@@ -378,16 +381,17 @@ button, a {transition: var(--transition);}
 /*======================*\
 # Section: ABOUT
 \*======================*/
-.about { padding-block:var(--section-spacing); }
-
+.about { 
+	--section-spacing: 50px;
+	padding-block:var(--section-spacing); 
+}
 .about .container{
 	display: flex;
+	flex-direction: column;
 	justify-content: space-between;
 	align-items: center;
-	gap:1rem;
-
 	> *{
-		width: 50%;
+		width: 100%;
 	}
 }
 .about-banner{
@@ -399,17 +403,18 @@ button, a {transition: var(--transition);}
 .about-banner img{
 	width: 100%;
 	background: white;
-	height: 500px;
+	height: 250px;
 }
 
-.about .section-subtitle{margin-inline: 0; }
+.about .section-subtitle{margin-inline: auto; }
 .about .section-title{
-	--text-align:left;
+	--text-align:center;
 	--margin-bottom: 15px;
+	font-size: var(--fs-4);
 }
 .about-text{
 	color: var(--black);
-	font-size: var(--fs-5);
+	font-size: var(--fs-6);
 	line-height: 1.7;
 	margin-bottom: 30px;
 }
@@ -443,7 +448,7 @@ button, a {transition: var(--transition);}
 .Welcome .callout{
 	background: hsla(7, 78%, 53%, 0.05);
 	color: var(--dark-jungle-green);
-	font-size: var(--fs-5);
+	font-size: var(--fs-6);
 	font-weight: var(--fw-500);
 	line-height: 1.8;
 	padding: 20px 25px;
@@ -465,40 +470,42 @@ button, a {transition: var(--transition);}
 }
 .location .container{
 	display: flex;
+	flex-direction: column-reverse;
 	justify-content: center;
 	align-items: center;
 	gap: 2rem;
 	padding-inline:  2rem;
 }
-.location .section-subtitle{margin-inline: auto; }
+.location .section-subtitle{
+	margin-inline: auto; 
+}
 .location .section-title{
 	--text-align:center;
 	--margin-bottom: 15px;
+	font-size: var(--fs-4);
+}
+.locale-text{
+	color: var(--black);
+	font-size: var(--fs-6);
+	text-align: justify;
+	line-height: 1.7;
+	margin-bottom: 30px;
 }
 .location-banner{
-	width:120%;
+	width:100%;
 }
 .location iframe{
 	width: 100%;
 	border-radius: 16px;
 	margin-inline: auto;
-	height: 55vh;
-	display: block;
+	height: 30vh;
 	box-shadow: 5px 5px 4px black, -1px -2px 3px black;
-}
-
-.locale-text{
-	color: var(--black);
-	font-size: var(--fs-5);
-	line-height: 1.7;
-	margin-bottom: 30px;
 }
 /*======================*\
 # Section: SERVICE
 \*======================*/
 .service{
-/*	background: var(--cultured-2);*/
-padding-block: var(--section-spacing);
+padding-block: 50px;
 }
 .service-list{
 	display: flex;
@@ -655,30 +662,31 @@ padding-block: var(--section-spacing);
 /*======================*\
 # Section: Testimonial 
 \*======================*/
-.testimonial{padding-block:var(--section-spacing); }
+.testimonial{padding-block:55px; }
 .testimonial-feedback{
 	display: flex;
+	flex-direction: column;
 	align-items: center;
 	gap: 1rem;
 	justify-content: center;
 
 	> *{
-		width: 50%;
+		width: 100;
 		max-height: 350px;
 	}
 }
 .testimonial-headline{
-	text-align: center;
-	padding: 1rem;
-	line-height: 50px;
+	margin-block: 1rem;
 }
 .testimonial-headline .testimonial-title{
-	font-size: 40px;
+	font-size: var(--fs-3);
 	color: var(--prussian-blue);
-/*	text-shadow: 3px 4px 2px black;*/
+	text-align: center;
 }
 .testimonial-headline span{
 	color: darkslategray;
+	text-align: justify;
+	font-size: var(--fs-5);
 }
 .testimonial-feedbox-top{
 	display: flex;
@@ -711,6 +719,7 @@ padding-block: var(--section-spacing);
 .testimonial-feedbox{
 	box-shadow: 0 5px 5px black;
 	padding: 1rem;
+	margin-block: 1rem;
 	border-radius: 16px;
 	border:1px solid black;
 }
@@ -770,7 +779,7 @@ padding-block: var(--section-spacing);
 \*======================*/
 .displaytest-title{
 	text-align: center;
-	font-size: var(--fs-1);
+	font-size: var(--fs-3);
 	padding: 1rem;
 }
 .Displaytest-content{
@@ -792,7 +801,8 @@ padding-block: var(--section-spacing);
 	box-shadow: none;
 }
 .Displaytest-message{
-	width: 50%;
+	width: 80%;
+	text-align: center;
 	margin-inline: auto;
 	font-size: var(--fs-6);
 }
@@ -1080,7 +1090,7 @@ padding-block: var(--section-spacing);
 }
 .form-items{
 	display: flex;
-	flex-wrap: wrap;
+	flex-direction: column;
 	gap: 1rem;
 	width: 100%;
 	align-items: center;
@@ -1558,47 +1568,46 @@ input[type="file"] {
 .footer{
 	background: rgba(255, 255, 255, 0.66);
 	box-shadow: 0 -4px 30px rgba(0, 0, 0, 0.1);
-	margin-top: var(--section-spacing);
+	margin-top: var(--section-spacing);	
+
 }
 .footer-top{
-	padding: var(--section-spacing);
-	display: flex;
-	align-items: center;
-	justify-content: center;
-}
-
-.footer-top .footer-list{
-	height: 20vh;
-}
-
-.footer-list{
 	display: flex;
 	flex-direction: column;
-	gap: 0.5rem;
-	transition: .3s;
-	a{
-		color: black;	
-		font-size: var(--fs-5);
-	}
+	justify-content: center;
+	align-items: center;
+	gap: 1rem;
+	padding: 55px;
+}
+.footer-list{
+	text-align: center;
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
 }
 .footer-list .list-title{
-	font-size: var(--fs-2);
+	font-size: var(--fs-4);
 	color: var(--orange-soda);
-	border-bottom: 2px solid black;
-	width: 50%;
-	font-weight: var(--fw-700);
 }
-.list-item{
+.footer-list .list-items{
+	font-size: var(--fs-6);
 	display: flex;
+	justify-content: center;
+	gap: 1rem;
 	align-items: center;
-	justify-content: left;
-	padding: .3rem;
-	gap: .4rem;
 }
+.footer-list .list-items a{
+	color: black;
+	width: max-content;
+	
+}
+
 .footer-list a:is(:hover,:focus){color: var(--orange-soda); font-weight: var(--fw-600);}
 
 
-/*TERMS*/
+	/*======================*\
+	#	TERMS
+	\*======================*/
 .terms{
 	padding: 1rem;
 	gap: 1rem;
@@ -1614,9 +1623,32 @@ input[type="file"] {
 	}
 }
 /*======================*\
-#	Media: For TABLET
+#	Media: FOR TABLET
 \*======================*/
 @media only screen and (min-width: 768px) {
+	/*======================*\
+	#	HEADER
+	\*======================*/
+	.header-top-social-list a span{
+		display: block;
+	}
+	/*======================*\
+	#	HERO
+	\*======================*/
+	.hero-top-part{
+		display: flex;
+		flex-direction: row;
+	}
+	.hero-title{
+		font-size: var(--fs-4);
+		text-align: center;
+	}
+	.hero-banner img{
+		height:50vh;
+	}
+	/*======================*\
+	#	ABOUT
+	\*======================*/
 	.about .container{
 		flex-direction: column;
 
@@ -1624,14 +1656,33 @@ input[type="file"] {
 			width: 100%;
 		}
 	}
-
+	.about-banner img{
+		height: 50vh;
+	}
+	/*======================*\
+	#	LOCALE
+	\*======================*/
 	.location .container{
 		flex-direction: column-reverse;
 
 		iframe{
-			width: 80%;
+			width: 100%;
 		}
 	}
+	.location-banner iframe{
+		height: 50vh;
+		display: block;
+		width: max-content;
+	}
+	/*======================*\
+	#	SERVICE
+	\*======================*/
+	/*======================*\
+	#	PROPERTY
+	\*======================*/
+	/*======================*\
+	#	TESTIMONIAL
+	\*======================*/
 	.card-container{
 		align-items: center;
 		justify-content: center;
@@ -1644,35 +1695,78 @@ input[type="file"] {
 		> *{
 			width: 100%;
 		}
-	}
-	.footer-top-list-logo img{
-		object-fit: cover;
-
-	}
+	}	
+	/*======================*\
+	#	FOOTER
+	\*======================*/
 	.footer-top{
+		display: flex;
+		flex-direction: row;
 		justify-content: space-evenly;
-		width:100%;
-		gap: 1rem;
+
+		>*{
+			height: 180px;
+		}
+	}
+	.footer-list .list-items{
+		flex-direction: column;
+	}
+	.list-items .list-item{
+		display: inline-flex;
+		justify-content: right;
 		align-items: center;
-	}
-	.footer-list .list-title{
 		width: fit-content;
-	
+		gap: 10px;
 	}
-	.form-items{
+	/*======================*\
+	#	DIALOG
+	\*======================*/
+	.dialog .form-items{
+		display: flex;
+		flex-direction: row;
+		width: 100%;
 		
 	}
+
 }
 /*======================*\
 #	Media: For LAPTOP 
 \*======================*/
 @media only screen and (min-width: 1024px) {
+
+	/*======================*\
+	#	HERO
+	\*======================*/
 	.hero-logo {
 		min-width: 10%;
 		width: 20%;
 		height: 20vh;
 
-	}
+	}	
+	/*======================*\
+	#	ABOUT
+	\*======================*/
+	/*======================*\
+	#	LOCALE
+	\*======================*/
+	/*======================*\
+	#	SERVICE
+	\*======================*/
+	/*======================*\
+	#	PROPERTY
+	\*======================*/
+	/*======================*\
+	#	TESTIMONIAL
+	\*======================*/
+	/*======================*\
+	#	RATE
+	\*======================*/
+	/*======================*\
+	#	FOOTER
+	\*======================*/	
+	/*======================*\
+	#	DIALOG
+	\*======================*/	
 	.service-card{
 		width: 55%;
 	}
@@ -1718,6 +1812,33 @@ input[type="file"] {
 #	Media: For DESKTOP
 \*======================*/
 @media only screen and (min-width: 1629px) {
+	/*======================*\
+	#	HERO
+	\*======================*/	
+	/*======================*\
+	#	ABOUT
+	\*======================*/
+	/*======================*\
+	#	LOCALE
+	\*======================*/
+	/*======================*\
+	#	SERVICE
+	\*======================*/
+	/*======================*\
+	#	PROPERTY
+	\*======================*/
+	/*======================*\
+	#	TESTIMONIAL
+	\*======================*/
+	/*======================*\
+	#	RATE
+	\*======================*/
+	/*======================*\
+	#	FOOTER
+	\*======================*/	
+	/*======================*\
+	#	DIALOG
+	\*======================*/		
 	.hero-logo img{
 		height: 20vh;
 		object-fit: contain;

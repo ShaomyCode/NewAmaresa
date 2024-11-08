@@ -1,2 +1,2 @@
 # Amaresa Update
- Ito ang new 
+Final na itue

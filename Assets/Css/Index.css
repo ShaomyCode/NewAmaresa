@@ -1565,20 +1565,12 @@ input[type="file"] {
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	gap: 2rem;
-
 }
 
 .footer-top .footer-list{
-	flex:1;
 	height: 20vh;
 }
-.footer-top-list-logo img{
-	max-width: max-content;
-	width: 75%;
-	height: 20vh;
 
-}
 .footer-list{
 	display: flex;
 	flex-direction: column;
@@ -1625,31 +1617,54 @@ input[type="file"] {
 #	Media: For TABLET
 \*======================*/
 @media only screen and (min-width: 768px) {
-	.hero-logo {
-		min-width: 25%;
+	.about .container{
+		flex-direction: column;
 
-		height: 10vh;
+		> *{
+			width: 100%;
+		}
 	}
-	.location iframe{
+
+	.location .container{
+		flex-direction: column-reverse;
+
+		iframe{
+			width: 80%;
+		}
+	}
+	.card-container{
+		align-items: center;
+		justify-content: center;
 		width: 100%;
-		height: 65vh;
+		margin-inline: auto;
 	}
-	.service-card{
-		width: 85%;
+	.testimonial-feedback{
+		flex-direction: column;
+
+		> *{
+			width: 100%;
+		}
 	}
-	.property-card{
-		width: 100%;
+	.footer-top-list-logo img{
+		object-fit: cover;
+
 	}
-	.dialog{
-		width: 55%;
+	.footer-top{
+		justify-content: space-evenly;
+		width:100%;
+		gap: 1rem;
+		align-items: center;
+	}
+	.footer-list .list-title{
+		width: fit-content;
+	
 	}
 	.form-items{
-		flex-wrap: nowrap;
-		width: 100%;
+		
 	}
 }
 /*======================*\
-#	Media: For LAPTOP
+#	Media: For LAPTOP 
 \*======================*/
 @media only screen and (min-width: 1024px) {
 	.hero-logo {
@@ -1667,19 +1682,45 @@ input[type="file"] {
 	.dialog{
 		width: 45%;
 	}
-	.property-card-container{
+		.about .container{
+		flex-direction: row;
 
+		> *{
+			width: 50%;
+		}
+	.testimonial-feedback{
+		flex-direction: column;
+		gap: 2rem;
+		height: auto;
 	}
-	.footer-bottom-card{
+	.testimonial-headline{
+		width: 100%;
+	}
+	.location .container{
+		flex-direction: column-reverse;
 
+		iframe{
+			width: 80%;
+		}
+	}
+	.footer-list{
+		flex:1;
+	}
+	.footer-list .list-title{
+		width: fit-content;
+	}
+	.footer-top{
+		width: 15rem;
+		justify-content: center;
 	}
 }
 /*======================*\
 #	Media: For DESKTOP
 \*======================*/
 @media only screen and (min-width: 1629px) {
-	.hero-logo {
+	.hero-logo img{
 		height: 20vh;
+		object-fit: contain;
 	}
 	.service-card{
 		width: 80%;
@@ -1693,11 +1734,20 @@ input[type="file"] {
 	.property-card{
 		overflow-x: visible;
 		height: 100vh;
-
 		.property-card-item{
 			width: 30%;
-
 		}
 	}
+	.testimonial-feedback{
+		display: flex;
+		flex-direction: row;
+	}
+	.location .container{
+		flex-direction: row;
+
+		iframe{
+			width: 100%;
+		}
+	}	
 }
 

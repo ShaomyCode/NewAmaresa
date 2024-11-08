@@ -491,19 +491,14 @@
 					</div>
 				</form>
 			</dialog>
+
 		</section>
+
+
+
 		<!-- Section: Footer -->
 		<footer class="footer">
 			<div class="footer-top">
-				<ul class="footer-list">
-					<li>
-						<figure class="footer-top-list-logo">
-							<img src="./Assets/Images/Amaresa-Logo.png">
-						</figure>
-					</li>
-
-
-				</ul>				
 
 				<ul class="footer-list help">
 					<h3 class="h3 list-title"> Get Help </h3>

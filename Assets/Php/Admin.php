@@ -372,6 +372,21 @@ function Sales($conn) {
     if (!$stmt->execute()) {
         throw new Exception("Error transferring to Sales log: " . $stmt->error);
     }
+    
+    $updateHouse = "
+    UPDATE Properties 
+    INNER JOIN Pending ON Properties.PropertyID = Pending.PropertyID
+    SET Properties.Status = ?
+    WHERE Pending.PendingID = ?";
+
+    $stmtUpdate = $conn->prepare($updateHouse);
+    $Update = "Purchased";
+    $stmtUpdate->bind_param("si", $Update, $SelectedID);
+
+    if(!$stmtUpdate->execute()){
+        throw new Exception("Error updating record in Properties: " . $stmtUpdate->error);
+    }
+
 
     $sqlDel = "
     DELETE FROM Pending

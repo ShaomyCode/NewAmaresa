@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 06, 2024 at 05:38 PM
+-- Generation Time: Nov 09, 2024 at 11:43 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -134,7 +134,34 @@ INSERT INTO `activitylog` (`TrackID`, `UserID`, `Action`, `Logintime`) VALUES
 (98, 36, 'User logged in ', '2024-11-06 16:33:57'),
 (99, 66, 'Admin/Staff logged in ', '2024-11-06 16:34:08'),
 (100, 44, 'User logged ugh ', '2024-11-06 16:35:05'),
-(101, 66, 'Admin/Staff logged in ', '2024-11-06 16:35:27');
+(101, 66, 'Admin/Staff logged in ', '2024-11-06 16:35:27'),
+(102, 36, 'User logged in ', '2024-11-08 10:13:07'),
+(103, 36, 'User logged in ', '2024-11-09 07:44:22'),
+(104, 36, 'User logged in ', '2024-11-09 08:10:18'),
+(105, 36, 'User logged in ', '2024-11-09 08:16:48'),
+(106, 36, 'User logged in ', '2024-11-09 08:21:08'),
+(107, 68, 'Admin/Staff logged in ', '2024-11-09 08:30:08'),
+(108, 36, 'User logged in ', '2024-11-09 08:35:58'),
+(109, 36, 'User logged in ', '2024-11-09 08:52:07'),
+(110, 36, 'User logged in ', '2024-11-09 08:59:50'),
+(111, 36, 'User logged in ', '2024-11-09 09:28:46'),
+(112, 70, 'Admin/Staff logged in ', '2024-11-09 09:50:44'),
+(113, 70, 'Admin/Staff logged in ', '2024-11-09 09:54:34'),
+(114, 45, 'New user signup  ', '2024-11-09 09:55:44'),
+(115, 45, 'User logged in ', '2024-11-09 09:56:01'),
+(116, 70, 'Admin/Staff logged in ', '2024-11-09 09:56:14'),
+(117, 45, 'User logged in ', '2024-11-09 09:57:25'),
+(118, 45, 'User logged in ', '2024-11-09 09:58:34'),
+(119, 45, 'User logged in ', '2024-11-09 10:02:48'),
+(120, 45, 'User logged in ', '2024-11-09 10:03:27'),
+(121, 70, 'Admin/Staff logged in ', '2024-11-09 10:05:53'),
+(122, 71, 'Admin/Staff logged in ', '2024-11-09 10:08:21'),
+(123, 71, 'Admin/Staff logged in ', '2024-11-09 10:08:53'),
+(124, 71, 'Admin/Staff logged in ', '2024-11-09 10:09:29'),
+(125, 72, 'Admin/Staff logged in ', '2024-11-09 10:09:29'),
+(126, 71, 'Admin/Staff logged in ', '2024-11-09 10:09:47'),
+(127, 72, 'Admin/Staff logged in ', '2024-11-09 10:09:47'),
+(128, 45, 'User logged in ', '2024-11-09 10:10:46');
 
 -- --------------------------------------------------------
 
@@ -154,47 +181,7 @@ CREATE TABLE `archive` (
 --
 
 INSERT INTO `archive` (`ArchiveID`, `Name`, `Description`, `Date`) VALUES
-(87, 'Jamandron', 'Paid', '2024-10-26 07:28:11'),
-(92, 'try ulet', 'Paid', '2024-10-26 08:07:30'),
-(93, 'Caleb house', 'Property', '2024-10-30 12:01:09'),
-(94, 'Alexandria/index.html', 'Property', '2024-10-30 12:01:14'),
-(95, 'Kayla Prime', 'Property', '2024-10-30 12:01:18'),
-(96, 'Camillia', 'Property', '2024-10-30 12:02:11'),
-(97, 'Selana Prime', 'Property', '2024-10-30 12:02:16'),
-(98, 'Shao Tower', 'Property', '2024-10-30 12:02:20'),
-(99, 'Illagan', 'Property', '2024-10-30 12:02:30'),
-(100, 'Amara Expanded', 'Property', '2024-10-30 14:12:33'),
-(101, 'asda', 'Property', '2024-10-30 14:12:47'),
-(102, 'Jamandron', 'Paid', '2024-11-02 10:07:19'),
-(103, 'Jamandron', 'Paid', '2024-11-02 10:07:21'),
-(104, 'Jamandron', 'Unpaid', '2024-11-02 10:07:22'),
-(105, 'Abacial', 'Paid', '2024-11-02 10:07:22'),
-(106, 'Britania', 'Paid', '2024-11-02 10:07:23'),
-(107, 'Britania', 'Unpaid', '2024-11-02 10:07:23'),
-(108, 'Britania', 'Unpaid', '2024-11-02 10:07:24'),
-(109, 'Britania', 'Paid', '2024-11-02 10:07:25'),
-(111, 'Britania', 'Paid', '2024-11-02 10:07:27'),
-(112, 'Britania', 'Unpaid', '2024-11-02 10:07:27'),
-(113, 'admin', 'Unpaid', '2024-11-02 10:07:28'),
-(114, 'Claen', 'Paid', '2024-11-02 10:07:29'),
-(115, 'Britania', 'Paid', '2024-11-02 10:07:29'),
-(116, 'Jamandron', 'Unpaid', '2024-11-02 10:07:30'),
-(117, 'Jamandron', 'Unpaid', '2024-11-02 10:07:31'),
-(118, 'Britania', 'Unpaid', '2024-11-02 10:07:31'),
-(119, 'No 3D villa', 'Property', '2024-11-03 07:31:57'),
-(120, 'sample', 'Property', '2024-11-03 09:19:51'),
-(121, 'ahm', 'Property', '2024-11-03 09:21:48'),
-(122, 'ONE MORE HILL', 'Property', '2024-11-03 09:25:02'),
-(123, 'Bago', 'Unpaid', '2024-11-03 09:26:32'),
-(124, 'asda', 'Property', '2024-11-03 09:26:39'),
-(125, 'Jesus', 'Property', '2024-11-04 12:38:53'),
-(126, 'Britania', 'Unpaid', '2024-11-06 08:11:16'),
-(127, 'Bago', 'Unpaid', '2024-11-06 08:16:28'),
-(128, 'Britania', 'Unpaid', '2024-11-06 08:26:56'),
-(129, 'ads', 'User', '2024-11-06 10:10:57'),
-(130, 'Pen', 'User', '2024-11-06 10:11:01'),
-(131, 'Jamandron', 'User', '2024-11-06 10:11:33'),
-(132, 'Kengkoy', 'Property', '2024-11-06 10:15:58');
+(154, 'Jamandron', 'Admin', '2024-11-09 10:10:03');
 
 -- --------------------------------------------------------
 
@@ -219,11 +206,8 @@ CREATE TABLE `management` (
 --
 
 INSERT INTO `management` (`ManagementID`, `Lastname`, `Firstname`, `Email`, `Phone`, `Address`, `Password`, `Role`, `Date`) VALUES
-(62, 'Shaori', 'Admin Shao', 'amaresa@gmail.com', '151515', 'BLK 3 LOT 6 SEC 7 PHASE 1 Pabahay 2000', '$2y$10$Z0qzmYshj91gf3G3j.BSq.wEYrMNrnW0MJwNmXV.llt9dDVntnMdy', 'Admin', '2024-08-31 10:38:50'),
-(63, 'ONLINE STORE', 'SMART', 'ma.cleopisalbon@gmail.com', '09557495359', 'SMART TOWER', '$2y$10$BKlgzbNdm8p0g9Ko7eFqq.BbGJslLqn3DKf9dwmsSphSIdycBe/yy', 'Staff', '2024-09-10 07:08:50'),
-(64, 'ONLINE STORE', 'SMART', 'ma.cleopisalbon@gmail.com', '09557495359', 'SMART TOWER', '$2y$10$Tlm.EaSntEwG0HLmKkdkc.6lJAnl5jdoPf5l8mDy6CXKkw0/mXTHu', 'Admin', '2024-09-10 08:52:40'),
-(66, 'Jamandron', 'John Samuel', 'admin@gmail.com', '09563326964', 'BULACAN', '$2y$10$TzdwTJ3EM7yoZsXdR0WioexJN87UW3fiqfb8AjjiyB/ADEE/Fes9O', 'Admin', '2024-11-06 16:21:20'),
-(67, 'Duenas', 'Kim', 'kimduenas17@gmail.com', '09350478829', 'Bulacan', '$2y$10$m/ZBdZ9eciIOtZ1ULcZyyec7KNVn.6caLGzCGVIWczzu6VZRuJWs6', 'Admin', '2024-11-06 16:33:13');
+(70, 'Molina', 'Jesus', 'jesusmolina@gmail.com', '09222222222', 'BSU', '$2y$10$zzu7RcEtZQU4UylMNGnyn.O8BwAQa1O44DSgsPIABSk0fuyVjKTQq', 'Admin', '2024-11-09 09:50:24'),
+(71, 'Gojo Cruz', 'Essay', 'admin@gmail.com', '21313131313', 'San Jose Del Monte Bulacan', '$2y$10$g5vXXIdhABj9JjfOuXWM4uVg.6XiiyZDL2ZTUwmE2zDBs1Bj.RDCi', 'Staff', '2024-11-09 10:07:38');
 
 -- --------------------------------------------------------
 
@@ -244,17 +228,7 @@ CREATE TABLE `message` (
 --
 
 INSERT INTO `message` (`MessageID`, `Sender`, `Rate`, `Message`, `Date`) VALUES
-(3, 'Try nga', 4, 'hello', '2024-10-30 03:55:43'),
-(4, 'John Samuel Jamandron', 4, 'This system is need a lot of improvement specially in the functions those function are lacking at validations, security, and fashion. I would like to say this is overall good.', '2024-10-30 03:57:31'),
-(5, 'gfryt', 1, 'tfugyufh', '2024-10-30 03:58:56'),
-(6, 'asd', 4, 'dasd', '2024-10-30 04:11:42'),
-(7, 'asdsad', 2, 'two star', '2024-10-30 04:15:44'),
-(9, 'David Britania', 5, 'If I have a chance to put an 6s I will put it', '2024-10-30 07:00:43'),
-(11, 'asdadas', 4, 'tama ba?', '2024-10-30 11:48:33'),
-(12, 'Log out', 5, 'adsad', '2024-10-30 11:48:51'),
-(13, 'Papasok na', 3, 'asdasdadada', '2024-10-30 11:49:19'),
-(14, 'Samuel', 5, 'hahahahahahaha', '2024-11-02 10:29:48'),
-(15, 'Jesus', 2, 'adsassdada', '2024-11-04 12:33:00');
+(18, 'David', 5, 'Hi I would like it is impressive', '2024-11-09 09:53:56');
 
 -- --------------------------------------------------------
 
@@ -284,13 +258,9 @@ CREATE TABLE `pending` (
 --
 
 INSERT INTO `pending` (`PendingID`, `Lastname`, `Firstname`, `Email`, `Phone`, `Message`, `Address`, `Category`, `Receipt`, `Date`, `Status`, `Requirements`, `UserID`, `PropertyID`) VALUES
-(104, 'Bago', 'Bago', 'Bago@gmail.com', '12313', 'asdada', 'STA. Maria', 'Unpaid', 0x4e6f20496d61676520417474616368, '2024-11-03 09:20:52', 'Pending', '', 43, 16),
-(122, 'Jamandron', 'Samuel', 'jamandron@gmail.com', '123', 'asdda', 'Bulacan', 'Unpaid', 0x4e6f20496d61676520417474616368, '2024-11-06 14:09:06', 'Verified', 'Yoww b', 44, 12),
-(123, 'Jamandron', 'Samuel', 'jamandron@gmail.com', '123', 'asd', 'Bulacan', 'Unpaid', 0x4e6f20496d61676520417474616368, '2024-11-06 14:25:08', 'Pending', '', 44, 11),
-(124, 'asfdasfd', 'Kim', 'jamandron@gmail.com', '121213213', 'ok', 'Bulacan', 'Unpaid', 0x4e6f20496d61676520417474616368, '2024-11-06 14:36:28', 'Pending', '', 0, 0),
-(125, 'Jamandron', 'Samuel', 'jamandron@gmail.com', '12313', 'asd', 'Bulacan', 'Unpaid', 0x4e6f20496d61676520417474616368, '2024-11-06 14:37:05', 'Pending', '', 0, 0),
-(126, 'Jamandron', 'Samuel', 'jamandron@gmail.com', '123', 'asdsadas', 'Bulacan', 'Unpaid', 0x4e6f20496d61676520417474616368, '2024-11-06 14:50:12', 'Pending', '', 44, 11),
-(127, 'Britania', 'Davinchi', 'david@gmail.com', '04014014141', 'Yay', 'MINUYAN', 'Paid', 0x363732623937313433306538302d6164612e6a7067, '2024-11-06 16:19:32', 'Pending', '', 36, 14);
+(132, 'Jamandron', 'John Samuel', 'jamandron@gmail.com', '09563326964', 'Hey can I have this house?', 'San Jose Del Monte Bulacan', 'Paid', 0x363732663332616532386139332d47636173682e6a7067, '2024-11-09 10:00:14', 'Pending', '', 45, 13),
+(136, 'Jamandron', 'John Samuel', 'jamandron@gmail.com', '09563326964', 'haha', 'San Jose Del Monte Bulacan', 'Unpaid', 0x4e6f20496d61676520417474616368, '2024-11-09 10:33:02', 'Pending', '', 45, 11),
+(137, 'Jamandron', 'John Samuel', 'jamandron@gmail.com', '09563326964', 'buy ', 'San Jose Del Monte Bulacan', 'Unpaid', 0x4e6f20496d61676520417474616368, '2024-11-09 10:34:00', 'Declined', 'haha', 45, 22);
 
 -- --------------------------------------------------------
 
@@ -317,19 +287,20 @@ CREATE TABLE `properties` (
   `IBathroom` longblob DEFAULT NULL,
   `IAttic` longblob DEFAULT NULL,
   `IDining` longblob DEFAULT NULL,
-  `Role` varchar(255) NOT NULL,
-  `UserID` int(7) NOT NULL COMMENT 'Foreign key of User table'
+  `Role` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `properties`
 --
 
-INSERT INTO `properties` (`PropertyID`, `Property`, `Description`, `Price`, `Bedrooms`, `Bathrooms`, `Lot`, `Block`, `Phase`, `Area_sqft`, `VirtualTour`, `Calendar`, `Status`, `IExterior`, `IBedroom`, `IBathroom`, `IAttic`, `IDining`, `Role`, `UserID`) VALUES
-(11, 'Amara Expanded', 'Two-Storey Single attached with attic  3 BR  3  T&B  Living Dining and kitchen Area  Maids room  Sliding door to lanel  carport withd deck addtional 16 sqm usable floor area at deck ', '4,974,450.0', 3, 3, '1', '1', '1', '131sqm', 'Virtual/AmaraExpanded/index.html', '2024-10-30 14:11:38', 'Sale', 0x363732323365396131353465322d416d617261204578746572696f722e706e67, 0x363732323365396131633138352d4d61737465727320426564726f6f6d2e6a706567, 0x363732323365396131653937642d426564726f6f6d2e6a706567, 0x363732323365396131646463362d4c6976696e6720526f6f6d2e6a706567, 0x363732323365396131653761662d44696e696e6720616e64204b69746368656e20417265612e6a706567, 'Property', 0),
-(12, 'Arya Prime', 'Two-Storey * Single-Attached * 3 BR * 2 T&B * Family Room * Living, Dining and Kitchen Area * Carport with Deck (additional 15 sqm usable floor area at deck)', '5,962,300.00', 3, 2, '1', '1', '1', '89sqm', 'Virtual/AryaPrime/index.html', '2024-10-30 14:56:19', 'Sale', 0x363732323432653637343736342d41727961204578746572696f722e706e67, 0x363732323432653637343935392d426564726f6f6d2e6a7067, 0x363732323439313364303435372d4c6976696e6720726f6f6d20332e6a7067, 0x363732323432653637346332632d44696e696e6720417265612e6a7067, 0x363732323432653637346438332d, 'Property', 0),
-(13, 'Alexandria', 'Two-Storey Single-Attached with Attic * 5 Br * 3 T&B * Living, Dining, and Kitchen Area * Sliding Door to Lanal * Carport with Deck (additional 15 sqm usable floor area at deck)', '9,548,280.00', 5, 3, '1', '1', '1', '130sqm', 'virtual/Alexandria/index.html', '2024-10-30 14:51:11', 'Sale', 0x363732323433653562616533612d416c6578616e64726961204578746572696f722e706e67, 0x363732323433653562623030392d426564726f6f6d20312e6a706567, 0x363732323437646632633366652d426564726f6f6d20322e6a706567, 0x363732323433653562623237352d44696e696e6720616e64204b69746368656e2e6a706567, 0x363732323433653562623361372d, 'Property', 0),
-(14, 'Kayla Prime', 'Two-Storey * Single-Attached * 3 BR * 2 T&B * High-Celling Living Area * Dining and Kitchen Area * Carport with Deck (additional 15 sqm usable floor area at deck)', '5,721,410.00', 3, 2, '1', '1', '1', '89sqm', 'virtual/Kayla Prime/index.html', '2024-10-30 14:58:59', 'Sale', 0x363732323434616466336361632d4b61796c61205072696d652e706e67, 0x363732323436333537353662382d48696768204365696c696e67202d20486967686c696768742e6a706567, 0x363732323434616466336561632d4c6976696e6720726f6f6d2e6a706567, 0x363732323434616466343030372d44696e696e6720417265612e6a706567, 0x363732323434616466343135642d, 'Property', 0);
+INSERT INTO `properties` (`PropertyID`, `Property`, `Description`, `Price`, `Bedrooms`, `Bathrooms`, `Lot`, `Block`, `Phase`, `Area_sqft`, `VirtualTour`, `Calendar`, `Status`, `IExterior`, `IBedroom`, `IBathroom`, `IAttic`, `IDining`, `Role`) VALUES
+(1, 'David HOuse', 'haha', '2131', 2, 3, '1', '1', '1', '100sqm', '', '2024-11-09 10:21:45', 'Purchased', 0x363732663337623936343562322d416d61726142616e6e65722e706e67, 0x363732663337623936343739362d416d61726142616e6e65722e706e67, 0x363732663337623936346237632d416d61726142616e6e65722e706e67, 0x363732663337623936343865332d416d61726142616e6e65722e706e67, 0x363732663337623936346133382d416d61726142616e6e65722e706e67, 'Properties'),
+(11, 'Amara Expanded', 'Two-Storey Single attached with attic  3 BR  3  T&B  Living Dining and kitchen Area  Maids room  Sliding door to lanel  carport withd deck addtional 16 sqm usable floor area at deck', '4,974,450.0', 3, 3, '1', '1', '1', '131sqm', 'Virtual/AmaraExpanded/index.html', '2024-11-09 07:31:24', 'Sale', 0x363732663066636330343933622d416d617261204578746572696f722e706e67, 0x363732663066636330356131392d4d61737465727320426564726f6f6d2e6a706567, 0x363732663066636330356534342d426564726f6f6d20322e6a706567, 0x363732663066636330356261622d4c6976696e6720526f6f6d2e6a706567, 0x363732663066636330356430632d44696e696e6720616e64204b69746368656e20417265612e6a706567, 'Property'),
+(12, 'Arya Prime', 'Two-Storey * Single-Attached * 3 BR * 2 T&B * Family Room * Living, Dining and Kitchen Area * Carport with Deck (additional 15 sqm usable floor area at deck)', '5,962,300.00', 3, 2, '1', '1', '1', '89sqm', 'Virtual/AryaPrime/index.html', '2024-10-30 14:56:19', 'Sale', 0x363732323432653637343736342d41727961204578746572696f722e706e67, 0x363732323432653637343935392d426564726f6f6d2e6a7067, 0x363732323439313364303435372d4c6976696e6720726f6f6d20332e6a7067, 0x363732323432653637346332632d44696e696e6720417265612e6a7067, 0x363732323432653637346438332d, 'Property'),
+(13, 'Alexandria', 'Two-Storey Single-Attached with Attic * 5 Br * 3 T&B * Living, Dining, and Kitchen Area * Sliding Door to Lanal * Carport with Deck (additional 15 sqm usable floor area at deck)', '9,548,280.00', 5, 3, '1', '1', '1', '130sqm', 'virtual/Alexandria/index.html', '2024-10-30 14:51:11', 'Sale', 0x363732323433653562616533612d416c6578616e64726961204578746572696f722e706e67, 0x363732323433653562623030392d426564726f6f6d20312e6a706567, 0x363732323437646632633366652d426564726f6f6d20322e6a706567, 0x363732323433653562623237352d44696e696e6720616e64204b69746368656e2e6a706567, 0x363732323433653562623361372d, 'Property'),
+(14, 'Kayla Prime', 'Two-Storey * Single-Attached * 3 BR * 2 T&B * High-Celling Living Area * Dining and Kitchen Area * Carport with Deck (additional 15 sqm usable floor area at deck)', '5,721,410.00', 3, 2, '1', '1', '1', '89sqm', 'virtual/Kayla Prime/index.html', '2024-10-30 14:58:59', 'Sale', 0x363732323434616466336361632d4b61796c61205072696d652e706e67, 0x363732323436333537353662382d48696768204365696c696e67202d20486967686c696768742e6a706567, 0x363732323434616466336561632d4c6976696e6720726f6f6d2e6a706567, 0x363732323434616466343030372d44696e696e6720417265612e6a706567, 0x363732323434616466343135642d, 'Property'),
+(22, 'Trial House', 'yay', '1234567890', 2, 3, '2', '2', '2', '123sqm', '', '2024-11-09 08:24:17', 'Purchased', 0x363732663163333138643665622d416d617261204578746572696f722e706e67, 0x363732663163333138643931642d416d617261204578746572696f722e706e67, 0x363732663163333138646161622d416d617261204578746572696f722e706e67, 0x363732663163333138646336312d416d617261204578746572696f722e706e67, 0x363732663163333138646462322d416d617261204578746572696f722e706e67, 'Property');
 
 -- --------------------------------------------------------
 
@@ -351,21 +322,10 @@ CREATE TABLE `sales` (
 --
 
 INSERT INTO `sales` (`SaleID`, `Property`, `CurrentOwner`, `PreviousOwner`, `Date_Purchased`, `TransactionDate`) VALUES
-(1, 'Arya Prime', 'Abacial', 'Sam', '2024-08-23 08:50:08', '2024-11-06 10:10:12'),
-(2, 'Pen', 'asdas', 'Sam', '2024-11-06 07:49:44', '2024-11-06 10:09:09'),
-(3, 'Bago', 'Abacial', 'Sam', '2024-11-06 07:50:47', '2024-11-06 10:15:35'),
-(4, 'Arya Prime', '', '', '2024-11-06 07:51:58', '2024-11-06 10:06:12'),
-(5, 'Amara Expanded', 'fafafa', 'Bago', '2024-11-06 07:54:35', '2024-11-06 10:08:34'),
-(6, 'Arya Prime', 'Bago', '', '2024-11-06 07:54:54', '2024-11-06 09:29:32'),
-(7, 'Amara Expanded', 'Abacial', 'Pen', '2024-11-06 07:58:07', '2024-11-06 14:27:26'),
-(8, 'Amara Expanded', 'Pen', '', '2024-11-06 07:58:43', '2024-11-06 09:29:32'),
-(9, 'Amara Expanded', 'Pen', '', '2024-11-06 07:59:22', '2024-11-06 09:29:32'),
-(10, 'Kengkoy', 'Britania', '', '2024-11-06 08:01:49', '2024-11-06 09:29:32'),
-(11, 'Kengkoy', 'Britania', '', '2024-11-06 08:03:22', '2024-11-06 09:29:32'),
-(12, 'Kengkoy', 'Britania', '', '2024-11-06 08:20:24', '2024-11-06 09:29:32'),
-(13, 'Arya Prime', 'Bago', '', '2024-11-06 08:27:09', '2024-11-06 09:29:32'),
-(14, 'Amara Expanded', 'Bago', '', '2024-11-06 09:30:54', '2024-11-06 09:30:54'),
-(15, 'Arya Prime', 'Jamandron', '', '2024-11-06 14:08:07', '2024-11-06 14:08:07');
+(16, 'Trial House', 'Britania', 'Jamandron', '2024-11-09 10:12:20', '2024-11-09 10:40:31'),
+(17, 'David HOuse', 'Jamandron', '', '2024-11-09 10:31:28', '2024-11-09 10:31:28'),
+(18, 'David HOuse', 'Jamandron', '', '2024-11-09 10:32:42', '2024-11-09 10:32:42'),
+(19, 'Trial House', 'Jamandron', '', '2024-11-09 10:34:10', '2024-11-09 10:34:10');
 
 -- --------------------------------------------------------
 
@@ -390,13 +350,7 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`UserID`, `Firstname`, `Lastname`, `Email`, `Phone`, `Address`, `Password`, `Role`, `Date_Joined`) VALUES
-(36, 'Davinchi', 'Britania', 'david@gmail.com', '04014014141', 'MINUYAN', '$2y$10$PVSA6QcJQQMCkpKUCm99I.fd8JUBXFl6Jcbf8UJEaQp6wW/rsy2su', 'User', '2024-11-06 16:19:10'),
-(37, 'Ryan', 'Abacial', 'yangyang16@gmail.com', '09772375591', 'blk4 alot 27', '$2y$10$h2z6RDYsja/VAaNYEFo8z.ofTOe0cOmx/IdArTwjs8vzO783jy1qC', 'User', '2024-10-26 09:27:52'),
-(38, 'New Caleb', 'Claen', 'caleb@gmail.com', '41241414141', 'MINUYAN', '$2y$10$gYrJka.miNj2SbXaq9HHY.kdyAd13A/MvsAz472DcRPmIXe2QisUm', 'User', '2024-10-31 08:57:41'),
-(39, 'Admin', 'admin', 'admin@gmail.com', '31221421414', 'Bulacan', '$2y$10$BHCYwhYq0zlJkITDGUMjOenGTnjHLCA48CxenB1lKekT1kiRW44uC', 'User', '2024-11-06 16:27:07'),
-(42, 'Samuel', 'Jamandron', 'pen@gmail.com', '2', 'STA. Maria', '$2y$10$.9GPXPbc.BlTZtS7hlWOvOwRPUkF3La9EEj/IEmOsqfL3dHrQG2bu', 'User', '2024-11-03 07:12:32'),
-(43, 'Bago', 'Bago', 'Bago@gmail.com', '12313', 'STA. Maria', '$2y$10$FLCwnulyE3Q6OqpcWM2RU.ka/Bj1y7uLzt1QoxEAzodxBi5HHQLLa', 'User', '2024-11-03 08:27:38'),
-(44, 'Samuel', 'Jamandron', 'jamandron@gmail.com', '123', 'Bulacan', '$2y$10$0Oo1fwwB7yWg1Lj91mGdi.HGJiWXeWPKSkBr8aQuVDHbwKp4sXoWO', 'User', '2024-11-06 15:43:48');
+(45, 'John Samuel', 'Jamandron', 'jamandron@gmail.com', '09563326964', 'San Jose Del Monte Bulacan', '$2y$10$2tTfwE0BAg0blAn6tGzm5u5rbUxh.8YR2KJr3AW2M3wsT45cobr0C', 'User', '2024-11-09 09:55:44');
 
 --
 -- Indexes for dumped tables
@@ -458,49 +412,49 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `activitylog`
 --
 ALTER TABLE `activitylog`
-  MODIFY `TrackID` int(7) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=102;
+  MODIFY `TrackID` int(7) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=129;
 
 --
 -- AUTO_INCREMENT for table `archive`
 --
 ALTER TABLE `archive`
-  MODIFY `ArchiveID` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=133;
+  MODIFY `ArchiveID` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=155;
 
 --
 -- AUTO_INCREMENT for table `management`
 --
 ALTER TABLE `management`
-  MODIFY `ManagementID` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=68;
+  MODIFY `ManagementID` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=73;
 
 --
 -- AUTO_INCREMENT for table `message`
 --
 ALTER TABLE `message`
-  MODIFY `MessageID` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `MessageID` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT for table `pending`
 --
 ALTER TABLE `pending`
-  MODIFY `PendingID` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=128;
+  MODIFY `PendingID` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=138;
 
 --
 -- AUTO_INCREMENT for table `properties`
 --
 ALTER TABLE `properties`
-  MODIFY `PropertyID` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `PropertyID` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT for table `sales`
 --
 ALTER TABLE `sales`
-  MODIFY `SaleID` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `SaleID` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `UserID` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
+  MODIFY `UserID` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

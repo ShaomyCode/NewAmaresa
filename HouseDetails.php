@@ -105,16 +105,17 @@
 			<section class='ImageContainer' id='ImageContainer'>
 			<div class='container'>
 
-			<figure class='Exterior'>
-				<img src='$ImageExterior' alt='Exterior' '>
-			</figure>
+				<figure class='Exterior'>
+					<img src='$ImageExterior' alt='Exterior' '>
+				</figure>
 
-			<figure class='HouseDetails'> 
-				<img src='$IBathroom'. alt='Exterior'>
-				<img src='$IBedroom' alt='Exterior'>
-				<img src='$IAttic' alt='Exterior'>
-				<img src='$IDining' alt='Exterior'>
-			</figure>
+				<figure class='HouseDetails'> 
+					<img src='$IBathroom'. alt='Exterior'>
+					<img src='$IBedroom' alt='Exterior'>
+					<img src='$IAttic' alt='Exterior'>
+					<img src='$IDining' alt='Exterior'>
+				</figure>
+
 			</div>
 			</section>
 			";				
@@ -191,7 +192,7 @@
 
 			if (isset($VirtualTour) && !empty($VirtualTour)) {
 			    echo "
-			        <div class='Iframe-container' id=>
+			        <div class='Iframe-container' id='VirtualTour'>
 			            <div class='left-iframe'>
 			                <span>To move:</span>
 			                <img src='./Assets/Images/Move.png' alt='Move tutorial'>

@@ -91,7 +91,7 @@
 			</div>
 	</header>
 	<main>
-		<section class="Profile-Wrapper" class="Profile-Wrapper">
+		<section class="Profile-Wrapper" id="Profile-Wrapper">
 			<div class="Profile-present-info">
 				<h3 class="h3 Profile-title"> Present Information </h3>
 				<span class="Profile-subtitle">Presenting the most recent insights... </span>
@@ -232,7 +232,7 @@
 			                    <a href='./Assets/Php/Index.php?DeleteID=$PendingID'><i class='fa-solid fa-trash'></i></a>
 			                  </div>
 
-			                  <div class='Purchase-items'>
+			                  <div class='Purchase-items textarea'>
 			                  	<textarea placeholder='No Message from the Amaresa yet....' readonly>$Requirements</textarea>
 			                  </div>
 			                  ";

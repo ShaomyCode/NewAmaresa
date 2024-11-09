@@ -117,7 +117,7 @@
 			<div class='container'>
 
 			<figure class='Exterior'>
-				<button class='Exterior-btn btn' onclick='ShowInquiry()'> Make an Inquiry </button>
+				
 				<img src='$ImageExterior' alt='Exterior' '>
 			</figure>
 
@@ -133,7 +133,10 @@
 			}
 
 			echo " 
+				<div class='butttons'>
 				<a href='#VirtualTour' class='VirtualTour-btn btn'> Go to 3D </a>
+				<button class='Exterior-btn btn' onclick='ShowInquiry()'> Make an Inquiry </button>
+				</div>
 				<section class='HouseDetails-Container'>
 					<div class='container'>
 
@@ -215,12 +218,12 @@
 		?>
 
 
-       <dialog id="Inquiry-Modal" class="dialog">
+       <dialog id="Inquiry-Modal" class="dialog dialog-user">
             <button onclick="CloseInquiry()" class="closebtn">X</button>    
 
             <div class="container">
 
-                <form class="form Inquiry" method="POST" enctype="multipart/form-data" action="./Assets/Php/Index.php" autocomplete="on">
+                <form class="form Inquiry-user" method="POST" enctype="multipart/form-data" action="./Assets/Php/Index.php" autocomplete="on">
                     <?php 
 
                     $query = "
@@ -261,10 +264,13 @@
 		                    $rs = $conn->query($sql);
 		                    if($rs){
 		                    	while($rw = mysqli_fetch_assoc($rs)){
+		                    		$status = $rw['Status'];
+		                    		if($status == "Sale"){
 		                    		echo "
 					                    <option value='$rw[PropertyID]'> $rw[Property] </option>
 
 		                    		";
+		                    		}
 		                    	}
 		                    	echo " </datalist>";
 
@@ -289,15 +295,15 @@
 
                     			<div class='payments' id='payments'>
                     				<h3 class='h3 payment-title'> Gcash </h3>
+                    				<span class='payment-subtitle'> Please note that we cannot process refunds.  </span>
                     				<img id='paymentImg' src='./Assets/Images/payment.png' >
 
-                    				<div class='payment-upload' >
-                    					<label for='file-upload' class='custom-file-upload btn'>
-                    						Upload Here
-                    					</label>
-                    					<input id='file-upload' type='file' name='Receipt' accept='image/*'>
-                    				</div>
 
+									<div class='Payments-upload'>
+										<label for='file-upload-payment' class='custom-file-upload'>Upload Payment</label>
+										<span id='show-text-payment' class='show-text'>Image shows here</span>
+										<input id='file-upload-payment' type='file'  name='Receipt' accept='image/*' >
+									</div>	
                     			</div>
 
 		             ";
@@ -340,5 +346,7 @@
 		<script src="./Assets/Js/PhoneValidation.js?v=<?php echo time(); ?>"></script>
 		<!-- Script: Fontawesome -->
 		<script src="https://kit.fontawesome.com/83786b8894.js" crossorigin="anonymous"></script>
+		<!-- IMAGE UPLOAD -->
+		<script src="./Assets/Js/UploadPayment.js?v=<?php echo time(); ?>"></script>
 </body>
 </html>

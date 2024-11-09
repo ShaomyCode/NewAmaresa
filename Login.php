@@ -33,63 +33,62 @@
 <body>
 
     <!-- HEADERS -->
-    <header class="header">
-            <div class="header-top"> 
-                <div class="container">
-                    <ul class="header-top-list">
+    <header class="header" id="header">
+        <div class="header-top"> 
+            <div class="container">
+                <ul class="header-top-list">
 
-                        <li>
-                            <a href="https://www.amaresa.ph/" class="header-top-link">
-                                <i class="fa-solid fa-paper-plane"></i>
-                                <span>amaresa.ph</span>
-                            </a>
-                        </li>                       
+                    <li>
+                        <a href="https://www.amaresa.ph/" class="header-top-link" title="www.amaresa.ph">
+                            <i class="fa-solid fa-paper-plane"></i>
+                            <span>amaresa.ph</span>
+                        </a>
+                    </li>                       
 
-                        <li> 
-                            <a href="https://www.google.com/maps/dir//Amaresa+Marilao,+3019+M.+Villarica+Rd,+Marilao,+3019+Bulacan/@14.7950949,121.0162162,17z/data=!4m17!1m7!3m6!1s0x3397b38da5906293:0x8b01e358c47a7685!2sAmaresa+Marilao!8m2!3d14.7950897!4d121.0187911!16s%2Fg%2F11gpnfmdlb!4m8!1m0!1m5!1m1!1s0x3397b38da5906293:0x8b01e358c47a7685!2m2!1d121.0188034!2d14.7951434!3e2?entry=ttu"  class="header-top-link">
-                                <i class="fa-solid fa-map-location-dot"></i>
-                                <span>3019 M. Villarica Rd, Marilao, 3019 Bulacan</span>
-                            </a>
-                        </li>
-                    </ul>
-                    <div class="wrapper">
+                    <li> 
+                        <a href="https://www.google.com/maps/dir//Amaresa+Marilao,+3019+M.+Villarica+Rd,+Marilao,+3019+Bulacan/@14.7950949,121.0162162,17z/data=!4m17!1m7!3m6!1s0x3397b38da5906293:0x8b01e358c47a7685!2sAmaresa+Marilao!8m2!3d14.7950897!4d121.0187911!16s%2Fg%2F11gpnfmdlb!4m8!1m0!1m5!1m1!1s0x3397b38da5906293:0x8b01e358c47a7685!2m2!1d121.0188034!2d14.7951434!3e2?entry=ttu"  class="header-top-link" title="Amaresa location">
+                            <i class="fa-solid fa-map-location-dot"></i>
+                            <span>3019 M. Villarica Rd, Marilao, 3019 Bulacan</span>
+                        </a>
+                    </li>
+                </ul>
+                <div class="wrapper">
 
                     <ul class="header-top-social-list">
                         <li>
-                            <a href="#about" class="header-top-social-link">
+                            <a href="#about" class="header-top-social-link" title="Redirect to About us">
                                 <i class="fa-solid fa-circle-info"></i>
                                 <span>About us</span>
                             </a>
                         </li>
                         <li>
-                            <a href="#location" class="header-top-social-link">
+                            <a href="#location" class="header-top-social-link" title="Redirect to Location">
                                 <i class="fa-solid fa-location-crosshairs"></i>
                                 <span> Location</span>
                             </a>
                         </li>
                         <li>
-                            <a href="#service" class="header-top-social-link">
+                            <a href="#service" class="header-top-social-link" title="Redirect to Service">
                                 <i class="fa-brands fa-servicestack"></i>
                                 <span> Service </span>
                             </a>
                         </li>
                         <li>
-                            <a href="#property" class="header-top-social-link">
+                            <a href="#property" class="header-top-social-link" title="Redirect to Property listing">
                                 <i class="fa-solid fa-house-lock"></i>
                                 <span> Properties </span>
                             </a>
                         </li>                                                                                           
                     </ul>
 
-                        <a href="./Assets/Php/Logout.php" class="header-top-btn"> 
+                      <a href="./Assets/Php/Logout.php" class="header-top-btn"> 
                             <i class="fa-solid fa-user-tie"></i> 
                             <span> Sign out </span>
                         </a>
-
-                    </div>
                 </div>
-
             </div>
+
+        </div>
     </header>
     <!-- Section: Main Contents -->
     <main>
@@ -281,6 +280,7 @@
                                     $ImageExterior = './Images/'.$row['IExterior'];
                                     $Bed = $row['Bedrooms'];
                                     $Bath = $row['Bathrooms'];
+                                    $Status = $row['Status'];
                                     $Property = $row['Property'];
                                     $Area = $row['Area_sqft'];
                                     $ID = $row['PropertyID'];
@@ -310,7 +310,8 @@
                                         10 => "Ten Bedrooms"
                                     ];
                                     $Bath = $BathList[$Bath] ?? $Bath;
-                                    $Bed = $BedList[$Bed] ?? $Bed;                              
+                                    $Bed = $BedList[$Bed] ?? $Bed;  
+                                    if($Status === "Sale"){                            
                                     echo "
                                     <div class='card wallet'>
                                     <div class='overlay'></div>
@@ -343,6 +344,7 @@
                                     </div>
 
                                     ";
+                                    }
 
                                 }
                             }
@@ -513,10 +515,13 @@
                             $rs = $conn->query($sql);
                             if($rs){
                                 while($rw = mysqli_fetch_assoc($rs)){
+                                    $status = $rw['Status'];
+                                    if($status == "Sale"){
                                     echo "
                                         <option value='$rw[PropertyID]'> $rw[Property] </option>
 
                                     ";
+                                    }
                                 }
                                 echo " </datalist>";
 
@@ -584,71 +589,64 @@
         <!-- Section: Footer -->
         <footer class="footer">
             <div class="footer-top">
-                <ul class="footer-list">
-                    <li>
-                        <figure class="footer-top-list-logo">
-                            <img src="./Assets/Images/Amaresa-Logo.png">
-                        </figure>
-                    </li>
-
-
-                </ul>               
 
                 <ul class="footer-list help">
                     <h3 class="h3 list-title"> Get Help </h3>
-                    <li><a href="#"> Inquire Process </a></li>
-                    <li><a href="#"> Pending Process </a></li>
-
+                    <div class="list-items">
+                        <li><a href="#"> Inquire Process </a></li>
+                        <li><a href="#"> Pending Process </a></li>
+                    </div>
                 </ul>                   
 
                 <ul class="footer-list company">
                     <h3 class="h3 list-title">  Company </h3>
-                    <li><a href="#"> About us </a></li>
-                    <li><a href="#"> Service </a></li>
-                    <li><a href="#"> Privacy Policy </a></li>
-
-
+                    <div class="list-items">
+                        <li><a href="#"> About us </a></li>
+                        <li><a href="#"> Service </a></li>
+                        <li><a href="#"> Privacy Policy </a></li>
+                    </div>
                 </ul>                   
 
                 <ul class="footer-list social">
                     <h3 class="h3 list-title"> Follow us </h3>
-                    <li>
-                        <a href="#" class="list-item"> 
-                            <i class="fa-brands fa-facebook"></i>
-                            <span>Facebook </span>
-                        </a>
-                    </li>               
+                    <div class="list-items">
+                        <li>
+                            <a href="#" class="list-item"> 
+                                <i class="fa-brands fa-facebook"></i>
+                                <span>Facebook </span>
+                            </a>
+                        </li>               
 
-                    <li>
-                        <a href="#" class="list-item"> 
-                            <i class="fa-brands fa-instagram"></i>
-                            <span>Instagram </span>
-                        </a>
-                    </li>               
+                        <li>
+                            <a href="#" class="list-item"> 
+                                <i class="fa-brands fa-instagram"></i>
+                                <span>Instagram </span>
+                            </a>
+                        </li>               
 
-                    <li>
-                        <a href="#" class="list-item"> 
-                            <i class="fa-brands fa-x-twitter"></i>
-                            <span>Twitter </span>
-                        </a>
-                    </li>               
+                        <li>
+                            <a href="#" class="list-item"> 
+                                <i class="fa-brands fa-x-twitter"></i>
+                                <span>Twitter </span>
+                            </a>
+                        </li>               
 
-                    <li>
-                        <a href="#" class="list-item"> 
-                            <i class="fa-brands fa-linkedin"></i>
-                            <span>LinkIn </span>
-                        </a>
-                    </li>
-
-
+                        <li>
+                            <a href="#" class="list-item"> 
+                                <i class="fa-brands fa-linkedin"></i>
+                                <span>LinkIn </span>
+                            </a>
+                        </li>
+                    </div>
                 </ul>           
 
                 <ul class="footer-list Developer">
                     <h3 class="h3 list-title"> Developer </h3>
-                    <li><a href="#"> FAQ </a></li>
-                    <li><a href="#"> Payment Process </a></li>
-                    <li><a href="#"> Pending Process </a></li>
-
+                    <div class="list-items">
+                        <li><a href="#"> FAQ </a></li>
+                        <li><a href="#"> Payment Process </a></li>
+                        <li><a href="#"> Pending Process </a></li>
+                    </div>
                 </ul>       
             </div>      
 
@@ -666,7 +664,10 @@
         <script src="./Assets/Js/PhoneValidation.js?v=<?php echo time(); ?>"></script>
         <!-- Script: Fontawesome -->
         <script src="https://kit.fontawesome.com/83786b8894.js" crossorigin="anonymous"></script>
-
+        <!-- NO TURNING BACK -->
+        <script language="javascript" type="text/javascript">   
+                window.history.forward();
+        </script>
     
     </body>
     </html>

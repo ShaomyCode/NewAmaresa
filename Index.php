@@ -400,7 +400,7 @@
 				<form  method="POST" class="form signup" enctype="multipart/form-data" action="./Assets/Php/Index.php"  autocomplete="on" onsubmit="return validatePassword()">
 					<div class="form-items">
 						<input type="text" name="Firstname" placeholder="First Name" required>
-						<input type="text" name="Lastname" placeholder="Last Name" required> 						
+						<input type="text" name="Lastname" placeholder="Last Name" required>		
 					</div>
 					<input type="email" name="Email" placeholder="Email Address" required>
 					<div class="form-items">

@@ -1,6 +1,15 @@
 <?php
 	include './Assets/Php/Connection.php';
 	session_start();
+
+	if(isset($_SESSION['Firstname']) && isset($_SESSION['Lastname']) && isset($_SESSION['UserID'])){
+		$Firstname = $_SESSION['Firstname'];
+		$Lastname = $_SESSION['Lastname'];
+		$UserID = $_SESSION['UserID'];        
+	}else{
+		header("location: ./Index.php");
+
+	}	
 ?>
 <!DOCTYPE html>
 <html>
@@ -108,7 +117,7 @@
 			<div class="Personal-Details">
 				<div class="Personal-Admin-Container">
 					<h3 class="h3 Personal-Title"> WELCOME, </h3> 
-					<span class="AdminName"> Admin Here </span>
+					<span class="AdminName"><?php echo "$Firstname $Lastname" ?></span>
 				</div>
 				<span class="Personal-tag"> Admin </span>
 				<span class="callouts">Manage Properties and Users. </span>

@@ -1,6 +1,7 @@
 /*======================*\
 # ADDING USERS
 \*======================*/
+
 function OpenDialog(){
     document.getElementById('Adding-users-modal').showModal();
 }

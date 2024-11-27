@@ -1,4 +1,5 @@
 <?php
+    echo  "HELLo";
 	session_start();
 
 	// Clear all session variables
@@ -8,7 +9,7 @@
 	session_destroy();
 
 	// Redirect to Index.php
-	header("Location: ../../Index.php");
+	header("Location: ../../index.php");
 	
 	exit();
 ?>

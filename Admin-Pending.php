@@ -11,7 +11,9 @@
 		<!-- CUSTOM CSS  -->
 		<link rel="stylesheet" type="text/css" href="./Assets/Css/Admin.css?v=<?php echo time(); ?>">
 		<!-- WEBSITE ICON -->
-		<link rel="website icon" type="png" href="./Assets/Images/Icon.png">	
+		<link rel="website icon" type="png" href="./Assets/Images/Icon.PNG">	
+		<!-- SWWET ALERT -->
+		  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">		
 	</head>
 	<body>
 		<nav class="sidebar close" id="sidebar">
@@ -120,20 +122,20 @@
 						if(isset($_POST['Sort-btn'])){
 							$Sortlist = $_POST['Sort-Option'];
 							if($Sortlist == "Paid"){
-								$sql = "SELECT Pending.*, Properties.Property FROM Pending JOIN Properties ON Pending.PropertyID = Properties.PropertyID WHERE Category = 'Paid' ";
+								$sql = "SELECT pending.*, properties.Property FROM pending JOIN properties ON pending.PropertyID = properties.PropertyID WHERE Category = 'Paid' ";
 							}elseif($Sortlist == "Unpaid"){
-								$sql = "SELECT Pending.*, Properties.Property FROM Pending JOIN Properties ON Pending.PropertyID = Properties.PropertyID WHERE Category = 'Unpaid' ";
+								$sql = "SELECT pending.*, properties.Property FROM pending JOIN properties ON pending.PropertyID = properties.PropertyID WHERE Category = 'Unpaid' ";
 							}elseif($Sortlist == "Pending"){
-								$sql = "SELECT Pending.*, Properties.Property FROM Pending JOIN Properties ON Pending.PropertyID = Properties.PropertyID WHERE Pending.Status = 'Pending' ";
+								$sql = "SELECT pending.*, properties.Property FROM pending JOIN properties ON pending.PropertyID = properties.PropertyID WHERE pending.Status = 'Pending' ";
 							}elseif($Sortlist == "Verified"){
-								$sql = "SELECT Pending.*, Properties.Property FROM Pending JOIN Properties ON Pending.PropertyID = Properties.PropertyID WHERE Pending.Status = 'Verified' ";
+								$sql = "SELECT pending.*, properties.Property FROM pending JOIN properties ON pending.PropertyID = properties.PropertyID WHERE pending.Status = 'Verified' ";
 							}elseif($Sortlist == "Declined"){
-								$sql = "SELECT Pending.*, Properties.Property FROM Pending JOIN Properties ON Pending.PropertyID = Properties.PropertyID WHERE Pending.Status = 'Declined' ";
+								$sql = "SELECT pending.*, properties.Property FROM pending JOIN properties ON pending.PropertyID = properties.PropertyID WHERE pending.Status = 'Declined' ";
 							}else{
-								$sql = "SELECT Pending.*, Properties.Property FROM Pending JOIN Properties ON Pending.PropertyID = Properties.PropertyID ORDER BY Category DESC";
+								$sql = "SELECT pending.*, properties.Property FROM pending JOIN properties ON pending.PropertyID = properties.PropertyID ORDER BY Category DESC";
 							}
 						}else{
-							$sql = "SELECT Pending.*, Properties.Property FROM Pending JOIN Properties ON Pending.PropertyID = Properties.PropertyID ";
+							$sql = "SELECT pending.*, properties.Property FROM pending JOIN properties ON pending.PropertyID = properties.PropertyID ";
 						}
 							
 							$rs = mysqli_query($conn, $sql);
@@ -173,10 +175,13 @@
 											<a href='./Admin-ViewPending.php?ViewID=".$PendingID."' class='custom-tooltip' data-title='View/Edit'>
 												<i class='fa-solid fa-comment-dots'></i>
 											</a>
-											<a href='./Assets/Php/Admin.php?SelectedID=".$PendingID."' onclick='return AcceptConfirmation()'' class='custom-tooltip' data-title='Confirm'>
+											
+
+											<a href='./Assets/Php/Admin.php?SelectedID=".$PendingID."' class='custom-tooltip confirm-pending' data-title='Confirm'>
 												<i class='fa-sharp fa-solid fa-check'></i> 
+
 											</a>
-											<a href='./Assets/Php/Admin.php?archiveID=".$PendingID."&value=Pending' onclick='return archiveConfirmation()'' class='custom-tooltip' data-title='Archive'>
+											<a href='./Assets/Php/Admin.php?archiveID=".$PendingID."&value=Pending' class='custom-tooltip delete-purchase' data-title='Archive'>
 												<i class='fa-solid fa-box-archive' ></i>
 											</a>
 										</td>
@@ -216,13 +221,15 @@
 
 		</main>
 
-		<!-- Custom JS & JQUERY -->
-		<script src="./Assets/Js/Admin.js?v=<?php echo time(); ?>"></script>
+
+		<script src="./Assets/Js/Notification.js?v=<?php echo time(); ?>"></script>
 		<!-- Fontawesome Link -->
 		<script src="https://kit.fontawesome.com/83786b8894.js" crossorigin="anonymous"></script>	
 		<!-- NO TURNING BACk -->
 		<script language="javascript" type="text/javascript">	
 	            window.history.forward();
 		</script>		
+		<!-- SWEET ALERT -->
+		<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 	</body>
 	</html>

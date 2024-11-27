@@ -57,3 +57,4 @@ function ShowHouse() {
 function CloseHouse(){
     document.getElementById('House-Modal').close();
 }
+

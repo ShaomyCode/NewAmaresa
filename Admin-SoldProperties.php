@@ -12,7 +12,7 @@
 	<!-- CUSTOM CSS  -->
 	<link rel="stylesheet" type="text/css" href="./Assets/Css/Admin.css?v=<?php echo time(); ?>">
 	<!-- WEBSITE ICON -->
-	<link rel="website icon" type="png" href="./Assets/Images/Icon.png">	
+	<link rel="website icon" type="png" href="./Assets/Images/Icon.PNG">	
 </head>
 <body>
 

@@ -35,12 +35,20 @@
 	--header-bg-amaresa-shadow:0 4px 30px rgba(0, 0, 0, 0.1);
 	--footer-bg-amaresa-shadow:0 -4px 30px rgba(0, 0, 0, 0.1);
 	--body-color: #E4E9F7;
+
+	--amaresa-logo-brown-light: #A16636;
+	--amaresa-logo-green-light: #78A27D;
+	--amaresa-logo-yellow-light: #DCA828;	
+
+	--amaresa-logo-brown-strong: #DB7421;
+	--amaresa-logo-green-strong: #33B242;
+	--amaresa-logo-yellow-strong: #FFB500;
 	/*======================*\
 	# TYPOGRAPHY
 	\*======================*/
 	--ff-numito-sans:"Nunito Sans", sans-serif;
 	--ff-poppins:"Poppins", sans-serif;
-
+	--ff-Momoiro:	'Momoiro', sans-serif;
 	--fs-1: 1.875rem;
 	--fs-2: 1.5rem;
 	--fs-3: 1.375rem;
@@ -108,7 +116,8 @@ body{
 	background: var(--body-color);
 	overflow-x: hidden;
 	width: 98%;
-	min-width: 425px;
+	min-width: 430px;
+
 	margin-inline: auto;
 	
 }
@@ -148,12 +157,12 @@ button, a {transition: var(--transition);}
 
 .btn{
 	position: relative;
-	background: var(--orange-soda);
+	background: var(--amaresa-logo-green-strong);
 	color: var(--white);
 	font-family: var(--ff-poppins);
 	font-size: var(--fs-5);
 	text-transform: var(--text-transform, capitalize);
-	border: 1px solid var(--orange-soda);
+	border: 1px solid var(--amaresa-logo-green-light);
 	padding:10px 20px;
 	z-index: 1;
 }
@@ -227,13 +236,16 @@ button, a {transition: var(--transition);}
 		display: none;
 	}
 }
+.header-top-list img{
+	width: 70px;
+}
 .header-top-social-list a span{
 	display: none;
 }
 .header-top-link:is(:hover,:focus){color: var(--orange-soda);}
 .header-top-social-link :is(:hover,:focus){color: var(--orange-soda);}
 .header-top-link i{
-	color: var(--orange-soda);
+	color: var(--amaresa-logo-brown-light);
 	font-size: 15px;
 }
 .header-top .wrapper,
@@ -249,7 +261,7 @@ button, a {transition: var(--transition);}
 	gap: 5px;
 }
 .header-top-social-link i{
-	color: var(--orange-soda);
+	color: var(--amaresa-logo-brown-light);
 }
 .header-top .wrapper{gap: 20px;}
 .header-top-social-list{gap: 12px;}
@@ -257,17 +269,28 @@ button, a {transition: var(--transition);}
 	color: var(--black);
 	font-size: 16px ;
 }
+.header-btn-wrapper{
+	display: flex;
+	flex-direction: column;
+	gap: 5px;
+
+}
 .header-top-btn{
-	background: var(--orange-soda);
+	background: var(--amaresa-logo-yellow-light);
 	color: var(--white);
 	font-size: var(--fs-6);
 	font-weight: var(--fw-700);
-	padding: 4px 16px;
+	padding: 10px 16px;
 	border-radius: 8px;
 	display: flex;
 	gap: 5px;
 	align-items: center;
 }
+.signout{
+	background: var(--orange-soda);
+}
+
+.login-btn span{display: none;}
 .header-top-btn:is(:hover,:focus){--orange-soda:hsl(7, 72%, 46%);}
 .header-user-display{
 	background: var(--orange-soda);
@@ -295,38 +318,7 @@ button, a {transition: var(--transition);}
 	gap: 5px;
 	align-items: center;	
 }
-/*======================*\
-# Section: WE L C O M E
-\*======================*/
-.Welcome{
-	background: var(--white);
-	padding-block: 1rem;
-}
-.Welcome .container{
-	display: flex;
-	justify-content: space-evenly;
-	align-items: center;
-}
-.Welcome-info > *{
-	margin-block: 5px;
-	width: 100%;
-}
-.Welcome-Title{
-	font-size: var(--fs-1);
-	font-weight: var(--fw-700);
-}
-.Welcome-sign{
-	background: var(--prussian-blue);
-	color: white;
-	padding: .5rem;
-	width: fit-content;
-	border-radius: 5px;
-}
-.Welcome-btn button{
-	margin-block: 1rem;
-	width: 150px;
-	text-align: center;
-}
+
 /*======================*\
 # Section: HERO
 \*======================*/
@@ -353,10 +345,16 @@ button, a {transition: var(--transition);}
 	height: 150px;
 	margin-inline: auto;
 }
-
+.Inquiry-btn{
+	display: flex;
+	align-items: center;
+	gap: 10px;
+}
 .hero-title{
 	margin-bottom: 20px;
 	font-size: var(--fs-2);
+	font-family: 'Momoiro', sans-serif; 
+	text-align: center;
 }
 .hero-text{
 	color: var(--black);
@@ -371,12 +369,74 @@ button, a {transition: var(--transition);}
 	width: 100%;
 	cursor: pointer;
 }
+/*======================*\
+# Section: WE L C O M E
+\*======================*/
+
+.Welcome{
+	background: var(--white);
+	padding-block: 1rem;
+}
+.Welcome-txt{
+	text-align: center;
+	font-size: var(--fs-1);
+	font-weight: var(--fw-700);
+	color: var(--orange-soda);
+}
+.Welcome-Title{
+	text-align: center;
+	font-size: var(--fs-3);
+}
+.Welcome-sign{
+	background: var(--prussian-blue);
+	color: white;
+	padding: .5rem;
+	width: fit-content;
+	border-radius: 5px;
+	margin-inline: auto;
+	margin-block: 10px;
+}
+
 .Profile-btn{
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	gap: 10px;
 	font-size: var(--fs-3);
+}
+.Welcome-btn{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 1rem;
+}
+.Display-wrapper{
+	display: flex;
+	gap: 10px;
+	align-items: center;
+	justify-content: center;
+	position: relative;
+}
+.notif-icon{
+	position: relative;
+	padding: 1rem;
+	border-radius: 100%;
+	box-shadow: 2px 2px 2px black;
+	background: var(--amaresa-logo-green-strong);
+	color: white;
+	font-size: var(--fs-4);
+}
+.notif-msg{
+	font-size: var(--fs-4);
+	font-weight: var(--fw-700);
+	background: white;
+	position: absolute;
+	color: var(--orange-soda);
+	border-radius: 50%;
+	padding: 0 5px;
+	top: 0;	
+	right: -6px;
+
 }
 /*======================*\
 # Section: ABOUT
@@ -410,7 +470,8 @@ button, a {transition: var(--transition);}
 .about .section-title{
 	--text-align:center;
 	--margin-bottom: 15px;
-	font-size: var(--fs-4);
+	font-size: var(--fs-2);
+	font-family: 'Momoiro', sans-serif; 
 }
 .about-text{
 	color: var(--black);
@@ -436,7 +497,7 @@ button, a {transition: var(--transition);}
 
 }
 .about-item-icon i{
-	color: var(--orange-soda);
+	color: var(--amaresa-logo-brown-strong);
 	font-size: var(--fs-5);
 }
 .about-item-text{
@@ -478,11 +539,13 @@ button, a {transition: var(--transition);}
 }
 .location .section-subtitle{
 	margin-inline: auto; 
+	
 }
 .location .section-title{
 	--text-align:center;
 	--margin-bottom: 15px;
-	font-size: var(--fs-4);
+	font-size: var(--fs-2);
+	font-family: 'Momoiro', sans-serif; 
 }
 .locale-text{
 	color: var(--black);
@@ -535,14 +598,14 @@ padding-block: 50px;
 	width: 100%;
 	height: 100%;
 }
-.service-card .card-title{margin-bottom: 15px;}
+.service-card .card-title{margin-bottom: 15px; }
 .service-card .card-title button{
 	margin-inline: auto;
 }
 .service-card .card-title > button:is(:hover,:focus){color: var(--orange-soda);}
 .service-card .card-text{
 	color: var(--black);
-	font-size: var(--fs-5);
+	font-size: var(--fs-6);
 	line-height: 1.8;
 	margin-bottom: 25px;
 	text-align: justify;
@@ -585,8 +648,13 @@ padding-block: 50px;
 	position: relative;
 	height: 350px;
 }
+.section-title{
+		font-size: var(--fs-2);
+	font-family: 'Momoiro', sans-serif; 
+}
 .property .locale-text{
 	text-align: center;
+	font-size: var(--fs-6);
 }
 .property-features-card figure{
 	width: 100%;
@@ -661,9 +729,39 @@ padding-block: 50px;
 	border-top-left-radius: 16px ;
 }
 /*======================*\
+# Section: House Map 
+\*======================*/
+.HouseMap{
+	padding-block: var(--section-spacing);
+
+}
+.HouseMap .container{
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
+}
+.HouseMap-Details{
+	text-align: center;
+}
+.HouseMap-title{
+		font-size: var(--fs-2);
+	font-family: 'Momoiro', sans-serif; 	
+}
+.HouseMap-subtitle{
+	font-size: var(--fs-6);
+
+}
+#map { 
+	height: 50vh; 
+	border-radius: 10px;
+	width: 100%;
+	margin-inline: auto;
+	box-shadow: 5px 5px 5px black;
+}
+/*======================*\
 # Section: Testimonial 
 \*======================*/
-.testimonial{padding-block:55px; }
+.testimonial{padding-block:55px; background:var(--white); }
 .testimonial-feedback{
 	display: flex;
 	flex-direction: column;
@@ -680,14 +778,15 @@ padding-block: 50px;
 	margin-block: 1rem;
 }
 .testimonial-headline .testimonial-title{
-	font-size: var(--fs-3);
+	font-size: var(--fs-2);
+	font-family: 'Momoiro', sans-serif; 
 	color: var(--prussian-blue);
 	text-align: center;
 }
 .testimonial-headline span{
 	color: darkslategray;
 	text-align: justify;
-	font-size: var(--fs-5);
+	font-size: var(--fs-6);
 }
 .testimonial-feedbox-top{
 	display: flex;
@@ -780,23 +879,29 @@ padding-block: 50px;
 \*======================*/
 .displaytest-title{
 	text-align: center;
-	font-size: var(--fs-3);
+	font-size: var(--fs-2);
+	font-family: 'Momoiro', sans-serif; 
 	padding: 1rem;
+}
+.displaytest{
+	background: var(--white);
 }
 .Displaytest-content{
 	text-align: center;
+  overflow-x:hidden;
 }
 .Displaytest-user{
 	padding: 1rem 0;
 }
 .Displaytest-card{
+
 	cursor: pointer;
 	transition: 1s ease;
 	padding: 2rem 0;
+
 }
 .Displaytest-card:hover{
-	border-radius: 15px;
-	box-shadow: 3px 3px 15px black;
+
 }
 .Displaytest-card .star-rating{
 	box-shadow: none;
@@ -806,6 +911,7 @@ padding-block: 50px;
 	text-align: center;
 	margin-inline: auto;
 	font-size: var(--fs-6);
+
 }
 /*======================*\
 # Section: Featured Card
@@ -839,7 +945,7 @@ padding-block: 50px;
 	z-index: 1;
 	cursor: pointer;
 	border-radius: 15px;
-	transform: scale(1.2);
+	transform: scale(1.3);
 	box-shadow: 0 24px 36px rgba(0, 0, 0, 0.11), 
 	0 24px 46px var(--box-shadow-color);
 }
@@ -877,7 +983,6 @@ padding-block: 50px;
 	align-items: center;
 	gap:10px;
 	margin-left: 10px;
-
 	height: 100%;
 	width: 100%;
 	color: white;
@@ -966,15 +1071,16 @@ padding-block: 50px;
 
 
 .circle {
-	width: 131px;
-	height: 131px;
+	width: 200px;
+	height: 200px;
 	border-radius: 60%;
 	background: #fff;
-	border: 2px solid var(--orange-soda);
+	border: 2px solid var(--amaresa-logo-green-light);
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	position: relative;
+	transform: translateY(-40px);
 	z-index: 1;
 	transition: all 0.3s ease-out;
 	overflow: hidden;
@@ -985,6 +1091,7 @@ padding-block: 50px;
 	height: 100%; 
 	object-fit: cover; 
 	border-radius: 50%;
+
 }
 
 .circle:after {
@@ -993,7 +1100,6 @@ padding-block: 50px;
 	height: 118px;
 	display: block;
 	position: absolute;
-
 	border-radius: 50%;
 	top: 7px;
 	left: 7px;
@@ -1010,7 +1116,7 @@ padding-block: 50px;
 	position: absolute;
 	height: 120px;
 	border-radius:60%;
-	background: var(--orange-soda);
+	background: var(--amaresa-logo-green-light);
 	top: 120px;
 	left: 100px;
 	z-index: 0;
@@ -1606,7 +1712,6 @@ input[type="file"] {
 	background: rgba(255, 255, 255, 0.66);
 	box-shadow: 0 -4px 30px rgba(0, 0, 0, 0.1);
 	margin-top: var(--section-spacing);	
-
 }
 .footer-top{
 	display: flex;
@@ -1623,8 +1728,9 @@ input[type="file"] {
 	flex-direction: column;
 }
 .footer-list .list-title{
-	font-size: var(--fs-4);
-	color: var(--orange-soda);
+	color: var(--amaresa-logo-brown-strong);
+	font-size: var(--fs-2);
+	font-family: 'Momoiro', sans-serif; 
 }
 .footer-list .list-items{
 	font-size: var(--fs-6);
@@ -1671,6 +1777,52 @@ input[type="file"] {
 	.about .container > *{width: 100%;}
 	.about .container img{height: 50vh;}
 	/*======================*\
+	#	HERO
+	\*======================*/		
+	.hero-title{font-size: var(--fs-1);}
+	.hero-text{font-size: var(--fs-5);}
+	/*======================*\
+	#	ABOUT
+	\*======================*/
+	.about .section-title{font-size: var(--fs-1);}
+	.about-tex{font-size: var(--fs-5); text-align: center;}		
+	/*======================*\
+	#	WELCOME
+	\*======================*/	
+	.Welcome .container{
+		display: flex;
+		justify-content: space-evenly;
+		align-items: center;
+	}
+	.Welcome-info > *{
+		margin-block: 5px;
+		width: 100%;
+	}
+	.Welcome-welcome{
+		display: flex;
+		gap: 5px;
+		justify-content: center;
+		align-items: center;
+	}
+	.Welcome-txt{	text-transform: uppercase;}
+	.Welcome-Title{
+		font-size: var(--fs-1);
+		font-weight: var(--fw-700);
+	}
+	.Welcome-sign{
+		background: var(--prussian-blue);
+		color: white;
+		padding: .5rem;
+		width: fit-content;
+		margin-inline: revert-layer;
+		border-radius: 5px;
+	}
+	.Welcome-btn button{
+		margin-block: 1rem;
+		width: 150px;
+		text-align: center;
+	}
+	/*======================*\
 	#	LOCATION
 	\*======================*/	
 	.location .container{flex-direction: column-reverse;}
@@ -1681,14 +1833,26 @@ input[type="file"] {
 		width: 100%;
 		margin-inline: auto;
 	}
+	.location .section-title{font-size: var(--fs-1);}
+	.locale-tex{font-size: var(--fs-5);}
+	/*======================*\
+	#	SERVICE
+	\*======================*/		
+	.service .section-title{font-size: var(--fs-1);}
+	.service .card-text{font-size: var(--fs-5);}
+	/*======================*\
+	#	PROPERTY
+	\*======================*/	
+	.property .section-title{font-size: var(--fs-1);}
+	.property .locale-text{font-size: var(--fs-5);}
 	/*======================*\
 	#	TESTIMONIAL
 	\*======================*/		
 	.testimonial-feedback{flex-direction: column;}
 	.testimonial-feedback > *{width: 100;}
 	.footer-top-list-logo img{object-fit: cover;}
-
-
+	.testimonial .testimonial-title{font-size: var(--fs-1);}
+	.testimonial span{font-size: var(--fs-5);}
 	/*======================*\
 	#	FOOTER
 	\*======================*/		
@@ -1720,7 +1884,7 @@ input[type="file"] {
 		gap: 2rem;
 		flex-direction: row;
 	}
-	.hero-title{font-size: var(--fs-2);}
+	.hero .hero-title{font-size: var(--fs-1);}
 	.hero-text{font-size: var(--fs-5);}
 	.hero-top-part > *{width: 50%;}
 	.hero-logo {
@@ -1740,16 +1904,14 @@ input[type="file"] {
 	}
 	.about .container > *{width: 50%;}
 	.about .about-banner img{height: 50vh;}
-	.about .section-title{font-size: var(--fs-1);}
-	.about .about-text{font-size: var(--fs-4);}
 	/*======================*\
 	#	LOCATION 
 	\*======================*/
 	.location .container{
 		flex-direction: row;
 	}
-	.location .section-title{font-size: var(--fs-1);}	
-	.location .locale-text{font-size: var(--fs-3);}	
+
+	.location .locale-text{font-size: var(--fs-5);}	
 	.location .container > *{width: 50%;}
 	/*======================*\
 	#	SERVICE 
@@ -1763,9 +1925,11 @@ input[type="file"] {
 	.testimonial-feedback{
 		display: flex;
 		flex-direction: row;
+		gap: 2rem;
+		padding: 0 5rem;
 	}
 	.testimonial .testimonial-title{font-size: var(--fs-1);}	
-	.testimonial span{font-size: var(--fs-3);}
+	.testimonial span{font-size: var(--fs-5);}
 	.testimonial-feedback > *{width: 50%; }
 	/*======================*\
 	#	FOOTER
@@ -1783,7 +1947,7 @@ input[type="file"] {
 		font-size: var(--fs-5);
 	}
 	.footer-list .list-title{
-		font-size: var(--fs-2);
+		font-size: var(--fs-1);
 	}
 	.footer-list .list-item{
 		display: flex;
@@ -1804,7 +1968,8 @@ input[type="file"] {
 		}
 
 	.Profile-Wrapper{
-		flex-direction: row;
+
+		flex-wrap: revert-layer;
 	}		
 }
 
@@ -1815,11 +1980,30 @@ input[type="file"] {
 	.service-card{
 		width: 50%;
 	}
+	#map{
+		width: 80%;
+		height: 80vh;
+	}
 	.Profile-Wrapper{
 		flex-direction: row;
 	}
 	.textarea{
 	width: 50%;
 	}
-}
+	/* ALL APPLIED	*/
+	.hero .hero-title,
+	.about .section-title,
+	.location .section-title,
+	.section-title .section-title,
+	.property .section-title{font-size: 40px;}
+
+	.hero .hero-text,
+	.about .about-text,
+	.location .locale-text,
+	.service .card-text{font-size: var(--fs-4);}
+
+		.location .container{
+			gap: 4rem;
+		}
+}	
 

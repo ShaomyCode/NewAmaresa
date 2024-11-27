@@ -12,7 +12,9 @@
 	<!-- CUSTOM CSS  -->
 	<link rel="stylesheet" type="text/css" href="./Assets/Css/Admin.css?v=<?php echo time(); ?>"> 
 	<!-- WEBSITE ICON -->
-	<link rel="website icon" type="png" href="./Assets/Images/Icon.png">	
+	<link rel="website icon" type="png" href="./Assets/Images/Icon.PNG">
+	<!-- Include SweetAlert2 CSS and JS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">	
 </head>
 <body>
 
@@ -75,7 +77,7 @@
 					<li class="nav-link">
 						<a href="./Admin-Archieve.php" class="dashboard-list-item">
 							<i class="fa-solid fa-box-archive"></i>
-							<span class="text nav-text">Archieve</span>
+							<span class="text nav-text">Archive</span>
 						</a>
 					</li>					
 
@@ -87,7 +89,7 @@
 					</li>					
 
 					<li class="nav-link">
-						<a href="./Admin-Assets/Php/Logout.php" class="dashboard-list-item">
+						<a href="./Assets/Php/Logout.php" class="dashboard-list-item">
 							<i class="fa-solid fa-right-from-bracket"></i>
 							<span class="text nav-text">Logout</span>
 						</a>
@@ -143,7 +145,7 @@
 
 									<td class='td-action'>
 
-									<a href='./Assets/Php/Admin.php?archiveID=".$UserID."&value=User' onclick='return archiveConfirmation()'' class='custom-tooltip' data-title='Archive'>
+									<a href='./Assets/Php/Admin.php?archiveID=".$UserID."&value=User' class='custom-tooltip delete-purchase' data-title='Archive'>
 
 									<i class='fa-solid fa-box-archive' ></i> 
 									</td>
@@ -196,6 +198,7 @@
 
 
 	<!-- Custom JS & JQUERY -->
+	<script src="./Assets/Js/Notification.js?v=<?php echo time(); ?>"></script>
 	<script src="./Assets/Js/Admin.js?v=<?php echo time(); ?>"></script>
 	<script src="./Assets/Js/PhoneValidation.js?v=<?php echo time(); ?>"></script>
 	<!-- Fontawesome Link -->
@@ -203,6 +206,8 @@
 		<!-- NO TURNING BACk -->
 		<script language="javascript" type="text/javascript">	
 	            window.history.forward();
-		</script>		
+		</script>
+		<!-- SWEET ALERT -->
+		<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </body>
 </html>

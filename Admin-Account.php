@@ -7,7 +7,7 @@
 		$Lastname = $_SESSION['Lastname'];
 		$UserID = $_SESSION['UserID'];        
 	}else{
-		header("location: ./Index.php");
+		header("location: ./index.php");
 
 	}	
 ?>
@@ -20,7 +20,7 @@
 	<!-- Link: Custom css  -->
 	<link rel="stylesheet" type="text/css" href="./Assets/Css/Admin.css?v=<?php echo time(); ?>">
 	<!-- Link: Web icon -->
-	<link rel="website icon" type="png" href="./Assets/Images/Icon.png">
+	<link rel="website icon" type="png" href="./Assets/Images/Icon.PNG">
 	<!-- Link: Swiper -->
 	<link rel="stylesheet" type="text/css" href="./Assets/Css/swiper-bundle.min.css">
 </head>
@@ -29,7 +29,7 @@
 	<nav class="sidebar close" id="sidebar">
 		<header>
 			<figure class="image-container">
-				<img src="./Assets/Images/Amaresa-logo.png" alt="Amaresa Logo">
+				<img src="./Assets/Images/amaresa-logo.PNG" alt="Amaresa Logo">
 			</figure>
 			<button class="toggle">
 				<i class="fa-solid fa-angles-right"></i>
@@ -135,7 +135,7 @@
 								Property Listed
 							</h3>
 							<?php 
-							$sql = "SELECT COUNT(*) AS total FROM Properties";
+							$sql = "SELECT COUNT(*) AS total FROM properties";
 							$result = $conn->query($sql);
 							$total = 0;
 							if ($result->num_rows > 0) {
@@ -149,7 +149,7 @@
 						<div class="items">
 							<h3 class="content-title">User Registered</h3>
 							<?php 
-							$sql = "SELECT COUNT(*) AS total FROM User";
+							$sql = "SELECT COUNT(*) AS total FROM user";
 							$result = $conn->query($sql);
 							$total = 0;
 							if ($result->num_rows > 0) {
@@ -165,7 +165,7 @@
 								Pending Logs
 							</h3>
 							<?php 
-							$sql = "SELECT COUNT(*) AS total FROM Pending";
+							$sql = "SELECT COUNT(*) AS total FROM pending";
 							$result = $conn->query($sql);
 							$total = 0;
 							if ($result->num_rows > 0) {
@@ -181,7 +181,7 @@
 								Archive Logs
 							</h3>
 							<?php 
-							$sql = "SELECT COUNT(*) AS total FROM Archive";
+							$sql = "SELECT COUNT(*) AS total FROM archive";
 							$result = $conn->query($sql);
 							$total = 0;
 							if ($result->num_rows > 0) {
@@ -208,7 +208,7 @@
 						<tbody>
 							<?php
 
-								$sql = "SELECT * FROM Message ORDER BY Rate DESC";
+								$sql = "SELECT * FROM message ORDER BY Rate DESC";
 								$rs = $conn->query($sql);
 								if($rs){
 									while ($row = mysqli_fetch_assoc($rs)) {
@@ -243,7 +243,7 @@
 							<div class="Testimonial-swiper mySwiper">
 								<div class="Testimonial-wrapper swiper-wrapper">
 									<?php
-									$sql = "SELECT * FROM Message";
+									$sql = "SELECT * FROM message";
 									$rs = $conn->query($sql);
 									if($rs){
 										while ($row = mysqli_fetch_assoc($rs)) {
@@ -284,7 +284,7 @@
 							</thead>								
 								<?php
 
-									$sql = "SELECT ActivityLog.*, User.Lastname FROM ActivityLog JOIN User ON ActivityLog.UserID = User.UserID ORDER BY Logintime DESC ";
+									$sql = "SELECT activitylog.*, user.Lastname FROM activitylog JOIN user ON activitylog.UserID = user.UserID ORDER BY Logintime DESC ";
 									$rs = mysqli_query($conn,$sql);
 									if($rs){
 										while($row=mysqli_fetch_assoc($rs)){

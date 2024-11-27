@@ -11,7 +11,7 @@ include './Assets/Php/Connection.php';
 	<link rel="stylesheet" type="text/css" href="./Assets/Css/Content.css?v=<?php echo time(); ?>"> 
 	<link rel="stylesheet" type="text/css" href="./Assets/Css/Admin.css?v=<?php echo time(); ?>"> 
 	<!-- WEBSITE ICON -->
-	<link rel="website icon" type="png" href="./Assets/Images/Icon.png">	
+	<link rel="website icon" type="png" href="./Assets/Images/Icon.PNG">	
 </head>
 <body>
 	<header class="header" id="header">
@@ -42,7 +42,7 @@ include './Assets/Php/Connection.php';
 				if(isset($_GET['ViewID'])){
 					$SelectedID = $_GET['ViewID'];
 
-					$SelectedSQL = "SELECT * FROM Properties WHERE PropertyID = $SelectedID";
+					$SelectedSQL = "SELECT * FROM properties WHERE PropertyID = $SelectedID";
 					$SelectedRS = mysqli_query($conn,$SelectedSQL);
 					if($SelectedRS){
 						while ($SelectedRow = mysqli_fetch_assoc($SelectedRS)) {
@@ -216,7 +216,7 @@ include './Assets/Php/Connection.php';
 
 
 			$sql = "
-			UPDATE Properties SET 
+			UPDATE properties SET 
 			Property='$Property', 
 			Price='$Price', 
 			Bedrooms='$Bedroom', 

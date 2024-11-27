@@ -1,0 +1,9 @@
+@font-face {
+    font-family: 'Momoiro';
+    src: local('Momoiro Regular'), local('Momoiro-Regular'),
+        url('Momoiro-Regular.woff2') format('woff2'),
+        url('Momoiro-Regular.woff') format('woff'),
+        url('Momoiro-Regular.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+  }

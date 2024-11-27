@@ -35,6 +35,14 @@
 	--header-bg-amaresa-shadow:0 4px 30px rgba(0, 0, 0, 0.1);
 	--footer-bg-amaresa-shadow:0 -4px 30px rgba(0, 0, 0, 0.1);
 	--body-color: #E4E9F7;
+
+	--amaresa-logo-brown-light: #A16636;
+	--amaresa-logo-green-light: #78A27D;
+	--amaresa-logo-yellow-light: #DCA828;	
+
+	--amaresa-logo-brown-strong: #DB7421;
+	--amaresa-logo-green-strong: #33B242;
+	--amaresa-logo-yellow-strong: #FFB500;	
 	/*======================*\
 	# TYPOGRAPHY
 	\*======================*/
@@ -66,9 +74,7 @@
 
 	--shadow-1: 0 5px 20px hsla(219, 56%, 21%, 0.1);
 	--shadow-1: 0 16px 32px hsla(188, 63%, 63%, 0.1);
-
 }
-
 /*======================*\
 # RESET
 \*======================*/
@@ -215,13 +221,7 @@ button, a {transition: var(--transition);}
 .header-top .container{gap: 8px 20px;}
 .header-top-list{gap: 15px;}
 .header-top-link{
-	color: var(--black);
-	font-size: var(--fs-6);
-	font-weight: var(--fw-700);
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	gap: 5px;
+	display: none;
 }
 .header-top-link:is(:hover,:focus){color: var(--orange-soda);}
 .header-top-social-link :is(:hover,:focus){color: var(--orange-soda);}
@@ -233,7 +233,6 @@ button, a {transition: var(--transition);}
 .header-top-social-list{
 	display: flex;
 	align-items: center;
-	
 }
 .header-top .wrapper{gap: 20px;}
 .header-top-social-list{gap: 12px;}
@@ -241,24 +240,24 @@ button, a {transition: var(--transition);}
 	color: var(--black);
 	font-size: 16px ;
 }
-.header-top-btn{
-	background: var(--orange-soda);
+.header-top-btn-nice{
+	background: var(--amaresa-logo-green-strong);
 	color: var(--white);
 	font-size: var(--fs-6);
 	font-weight: var(--fw-700);
-	padding: 4px 16px;
+	padding: 10px 16px;
 	border-radius: 8px;
 	display: flex;
 	gap: 5px;
 	align-items: center;
 }
-.header-top-btn:is(:hover,:focus){--orange-soda:hsl(7, 72%, 46%);}
-.header-user-display{
-	background: var(--orange-soda);
+.header-top-btn-nice:is(:hover,:focus){--amaresa-logo-green-strong:hsl(7, 72%, 46%);}
+.header-user-display-nice{
+	background: var(--amaresa-logo-green-strong);
 	color: var(--white);
 	font-size: var(--fs-6);
 	font-weight: var(--fw-700);
-	padding: 4px 16px;
+	padding: 10px 16px;
 	border-radius: 8px;
 	display: flex;
 	gap: 5px;
@@ -283,29 +282,150 @@ button, a {transition: var(--transition);}
 # Image Container
 \*======================*/
 .ImageContainer{
-	margin-block: 1rem;
-	box-shadow: 0 3px 5px black;
-	width: 97%;
-	margin-inline: auto;
+	margin-block: 10px;
+	width: 100%;
+	background: white;
+	padding-block: 1rem;
 }
+.ImageContainer .container{
+	display: flex;
+	flex-direction: column;
+	gap: 2rem;
 
+}
 .ImageContainer .Exterior{
 	width: 100%;
-	height: 30vh;
+	height: 40vh;
+	position: relative;
+
+}
+.VirtualTour-btn-nonlogin{
+
+	display: none;
+}
+
+.housedetails-btn{
+	top: 20px;
+}
+.housedetails-btn-item{
+	display: flex;
+	flex-direction: c;
+}
+.Virtual-btn{
+	display: ;
+}
+.housedetails-btn .Exterior-btn{
+	width: fit-content;
+	font-size: var(--fs-6);
 }
 .ImageContainer .Exterior img{
 	width: 100%;
 	height: 100%;
+	box-shadow: 0 3px 3px black;
+	border-radius: 10px;
+	position: relative;
+	margin-block: 10px;
 }
 .HouseDetails{
 	display: flex;
-	justify-content: center;
 	align-items: center;
-	width: 100%;
+	justify-content: center;
+	gap: 1rem;
 }
-.HouseDetails img{
-	width: 25%;
+.thumbnail{
+    background-color: #fff;
+    box-shadow: 3px 3px 3px black;
+    border-radius: 4px;
+    overflow: hidden;
+    width: 25%;
+    border:1px solid black;
+    text-align: center;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    transition:2s;
 }
+
+.thumbnail img {
+    width: 100%;
+    height: 10vh;
+    box-shadow: 3px 3px 3px black;
+    object-fit: cover;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+#overlay {
+	z-index: 9999;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+	background: rgba(255, 255, 255, 0.57);
+	border-radius: 16px;
+	box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+	backdrop-filter: blur(13.1px);
+	-webkit-backdrop-filter: blur(13.1px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0s, opacity 0.5s;
+}
+
+#overlay img {
+    width: 90%;
+    border-radius: 16px;
+    height: 95%;
+    object-fit: contain;
+}
+
+#overlay.show {
+    visibility: visible;
+    opacity: 1;
+}
+
+.close{
+    position: absolute;
+    top: 17rem;
+    right: 20px;
+    color: black;
+    font-size: 40px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.prev, .next {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    width: auto;
+    padding: 16px;
+    margin-top: -22px;
+    color: black;
+    font-weight: bold;
+    font-size: 40px;
+    transition: 0.6s ease;
+    border-radius: 0 3px 3px 0;
+    user-select: none;
+}
+
+.prev {
+    left: 10px;
+    color: white;
+    border-radius: 3px 0 0 3px;
+}
+
+.next {
+    right: 10px;
+    color: white;
+    border-radius: 0 3px 3px 0;
+}
+
+.prev:hover, .next:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+}
+
 /*======================*\
 # CONTENTS
 \*======================*/
@@ -313,7 +433,6 @@ button, a {transition: var(--transition);}
 {
 	display: none;
 	margin-inline: auto;
-
 }
 .Exterior-btn{
 	margin-inline: auto;
@@ -346,6 +465,15 @@ button, a {transition: var(--transition);}
 .Iframe-container{
 	display: none;
 }
+.inner-btns-wrapper{
+	position: absolute;
+	top: 20px;
+	left: 10px;
+	text-align: center;
+}
+.inner-btns-wrapper a{
+	display: none;
+}
 /*======================*\
 # RESPONSIVENESS HERE
 \*======================*/
@@ -358,13 +486,37 @@ button, a {transition: var(--transition);}
 		height: 50vh;
 	}
 	.HouseDetails img{
-		height: 30vh;
+		height: 20vh;
 	}	
 
 	.form .form-items{
 		flex-wrap: nowrap;
 	}	
-	
+	.close{
+		top: 10rem;
+	}
+	.next{right: 0;}
+	.prev{left: 0;}
+	.next,
+	.prev{
+		color: black;
+	}
+}
+.ImageContainer .Exterior img{
+	width: 100%;
+	height: 100%;
+	box-shadow: 0 3px 3px black;
+	border-radius: 10px;
+	position: relative;
+	margin-block: 10px;
+}
+.HouseDetails{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 90%;
+	gap: 10px;
+	margin-inline: auto;
 }
 /*======================*\
 # LAPTOP
@@ -374,34 +526,38 @@ button, a {transition: var(--transition);}
 		height: 70vh;
 		position: relative;
 	}	
+	.VirtualTour-btn-nonlogin{
+		display: block;
+		top: -70vh;
+		left: 10px;
+		width: fit-content;
+	}	
+	.HouseDetails .thumbnail img{
+		height: 30vh;
+		width: 100%;
+	}
+	.close{top: 1rem;}
 
-	.HouseDetails img{
-		height: 40vh;
-	
-	}
-	.butttons{
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		gap: 2rem;
-	}
-	.VirtualTour-btn{
+
+	.ImageContainer{position: relative;}
+	.ImageContainer .VirtualTour-btn,
+	.ImageContainer .Exterior-btn{
 		display: block;
+		position: absolute;
+		left: 0;
 		width: 250px;
 		text-align: center;
+		border-top-left-radius: 10px;
+		border-bottom-right-radius: 10px;
 	}
-	.Exterior-btn{
-		display: block;
-		width: 250px;
-		text-align: center;
-	}
+
 	.Iframe-container{
 		display: block;	
 
 	}
 	.left-iframe{
 		display: flex;
-		justify-content: left;
+		justify-content: center;
 		align-items: center;
 	}
 	.left-iframe img{
@@ -410,17 +566,21 @@ button, a {transition: var(--transition);}
 	.Iframe-container iframe{
 		width: 100%;
 		margin-bottom: 10rem;
+		border:none;
 		height: 60vh;
 	}
+	.housedetails-btn{
+		position: absolute;
+		display: flex;
 
-	.form .Inquiry-user{
-		flex-wrap: nowrap;
-		width: 100vh;
 	}
-	.form Inquiry-user{
-	
-		background: red;
-	}	
+
+
+	.inner-btns-wrapper a{
+		display: block;
+		margin-block: 10px;
+	}
+
 }
 /*======================*\
 # DESKTOP
@@ -428,5 +588,11 @@ button, a {transition: var(--transition);}
 @media only screen and (min-width: 1629px){
 	.ImageContainer .Exterior{
 		height: 100vh;
+	}
+	.VirtualTour-btn-nonlogin{
+		top: -100vh;
+	}	
+	.HouseDetails{
+		width: 100%;
 	}	
 }

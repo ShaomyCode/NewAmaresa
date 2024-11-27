@@ -1,4 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title></title>
+    <!-- Include SweetAlert2 CSS and JS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>    
+</head>
+<body>
+
+</body>
+</html>
 <?php
+  
 	include('Connection.php');
 /***********************************************
 FOR ADDING: USERS - MANAGEMENTS - PROPERTIES
@@ -10,7 +25,8 @@ if(isset($_POST['Submit'])){
 		AddManagement($conn);
 	}else{
         AddProperty($conn);
-    } 
+    }
+ 
 }
 
 /***********************************************
@@ -30,7 +46,7 @@ FOR ARCHIVING: USERS - MANAGEMENTS - PROPERTIES
 ************************************************/
 if(isset($_GET['archiveID']) && isset($_GET['value'])){
     $value = $_GET['value'];
-    if($value == "Admin"){
+    if($value == "Admin" or $value == "Staff"){
         ArchiveManagement($conn);
      }elseif($value == "Pending"){
         ArchivePending($conn);
@@ -42,6 +58,17 @@ if(isset($_GET['archiveID']) && isset($_GET['value'])){
         echo "Cannot found!";
      }
 }
+if (isset($_GET['restoreid']) && isset($_GET['value'])) {
+    $value = $_GET['value'];
+    if($value == "User"){
+        restoreUser($conn);
+    }elseif($value == "Staff" or $value == "Admin"){
+        restoreManagement($conn);
+    }elseif($value == "Property"){
+        restoreProperty($conn);
+    }
+}
+
 /***********************************************
 FOR SORTING
 ************************************************/
@@ -64,10 +91,14 @@ function AddUser($conn){
          mysqli_query($conn, $stmt); 
 
          echo "<script>
-                    alert('Added Successfully');
-                    setTimeout(function(){
-                        window.location.href = '../../Admin-Users.php';
-                    }, 50); 
+        Swal.fire({
+            icon: 'success',
+            title: 'Added Successfully',
+            showConfirmButton: false,
+            timer: 1500
+            }).then(() => {
+                window.location.href = '../../Admin-Users.php';
+                });
                 </script>";          
 }	
 
@@ -87,13 +118,18 @@ function AddManagement($conn){
         VALUES('$Lastname','$Firstname','$Email', '$Phone', '$Address', '$Hash','$Role')";
 
          mysqli_query($conn, $stmt); 
+  
 
-         echo "<script>
-                    alert('Added Successfully');
-                    setTimeout(function(){
-                        window.location.href = '../../Admin-Management.php';
-                    }, 50); 
-                </script>";          
+     echo "<script>
+        Swal.fire({
+            icon: 'success',
+            title: 'Added Successfully',
+            showConfirmButton: false,
+            timer: 1500
+            }).then(() => {
+                window.location.href = '../../Admin-Management.php';
+                });
+                </script>";        
 }
 
 /***********************************************
@@ -134,13 +170,16 @@ function AddProperty($conn){
     ";
     mysqli_query($conn,$stmt);
 
-    echo "
-    <script>
-        alert('Property Successfully Added');
-     setTimeout(function(){
-        window.location.href = '../../Admin-Properties.php';
-        }, 50); 
-    </script>"; 
+     echo "<script>
+        Swal.fire({
+            icon: 'success',
+            title: 'Property Added Successfully',
+            showConfirmButton: false,
+            timer: 1500
+            }).then(() => {
+                window.location.href = '../../Admin-Properties.php';
+                });
+                </script>";   
 }
 
 /***********************************************
@@ -155,15 +194,20 @@ function DeleteArchive($conn){
 
         $ID = $_GET['deleteid'];
 
-        $sql = "DELETE FROM Archive WHERE ArchiveId = $ID";
+        $sql = "DELETE FROM archive WHERE ArchiveId = $ID";
         mysqli_query($conn, $sql);
 
-         echo "<script>
-                    alert('Record Successfully Deleted');
-                    setTimeout(function(){
-                        window.location.href = '../../Admin-Archieve.php';
-                    }, 50); 
-                </script>";         
+
+     echo "<script>
+        Swal.fire({
+            icon: 'success',
+            title: 'Record Successfully Deleted',
+            showConfirmButton: false,
+            timer: 1500
+            }).then(() => {
+                window.location.href = '../../Admin-Archieve.php';
+                });
+                </script>";                        
     }
 }
 function DeleteMessage($conn){
@@ -171,15 +215,18 @@ function DeleteMessage($conn){
 
         $ID = $_GET['DeleteID'];
 
-        $sql = "DELETE FROM Message WHERE MessageID = $ID";
+        $sql = "DELETE FROM message WHERE MessageID = $ID";
         mysqli_query($conn, $sql);
-
-         echo "<script>
-                    alert('Record Successfully Deleted');
-                    setTimeout(function(){
-                        window.location.href = '../../Admin-Message.php';
-                    }, 50); 
-                </script>";         
+     echo "<script>
+        Swal.fire({
+            icon: 'success',
+            title: 'Record Successfully Deleted',
+            showConfirmButton: false,
+            timer: 1500
+            }).then(() => {
+                window.location.href = '../../Admin-Message.php';
+                });
+                </script>";           
     }
 }
 /***********************************************
@@ -189,9 +236,9 @@ function ArchiveManagement($conn){
 
     $ID = $_GET['archiveID'];
 
-    $InsertArchive = "INSERT INTO archive(Name, Description)
-            SELECT Lastname, Role
-            FROM Management
+    $InsertArchive = "INSERT INTO Archive(Name, Description, Lastname, Firstname, Email, Phone, Address, Password)
+            SELECT Lastname, Role, Lastname, Firstname, Email, Phone,Address,Password
+            FROM management
             WHERE ManagementID = ? ";
 
     $stmtInsert = $conn->prepare($InsertArchive);
@@ -212,13 +259,17 @@ function ArchiveManagement($conn){
     if (!$stmtDelete->execute()) {
         throw new Exception("Error deleting record from management: " . $stmtDelete->error);
     }
-
-         echo "<script>
-                    alert('Archive Successfully');
-                    setTimeout(function(){
-                        window.location.href = '../../Admin-Archieve.php';
-                    }, 50); 
-                </script>";     
+        echo "<script>
+        Swal.fire({
+            icon: 'success',
+            title: 'Archive Successfully',
+            showConfirmButton: false,
+            timer: 1500
+            }).then(() => {
+                window.location.href = '../../Admin-Archieve.php';
+                });
+                </script>";
+  
 
     $stmtInsert->close(); 
     $stmtDelete->close(); 
@@ -228,8 +279,8 @@ function ArchiveProperty($conn){
 
     $ID = $_GET['archiveID'];
 
-    $InsertArchive = "INSERT INTO archive(Name, Description)
-            SELECT Property, Role
+    $InsertArchive = "INSERT INTO archive(Name, Description, Property, Script, Price, Bedrooms, Bathrooms, Lot, Block, Phase, Area_sqft, Virtual, Status, IExterior, IBedroom, IBathroom, IAttic, IDining, Role)
+            SELECT Property, Role, Property, Description, Price, Bedrooms, Bathrooms, Lot, Block, Phase, Area_sqft, VirtualTour, Status, IExterior, IBedroom, IBathroom, IAttic, IDining, Role
             FROM properties
             WHERE PropertyID = ? ";
 
@@ -253,7 +304,7 @@ function ArchiveProperty($conn){
     }
 
     $Pendingquery = "
-    DELETE FROM Pending 
+    DELETE FROM pending 
     WHERE PropertyID = ?
     ";
     
@@ -264,12 +315,16 @@ function ArchiveProperty($conn){
         throw new Exception("Error deleting record from management: " . $stmtDelete->error);
     }
 
-         echo "<script>
-                    alert('Archive Successfully');
-                    setTimeout(function(){
-                        window.location.href = '../../Admin-Archieve.php';
-                    }, 50); 
-                </script>";     
+        echo "<script>
+        Swal.fire({
+            icon: 'success',
+            title: 'Archive Successfully',
+            showConfirmButton: false,
+            timer: 1500
+            }).then(() => {
+                window.location.href = '../../Admin-Archieve.php';
+                });
+                </script>";   
 
     $stmtInsert->close(); 
     $stmtDelete->close(); 
@@ -281,7 +336,7 @@ function ArchivePending($conn){
 
     $InsertArchive = "INSERT INTO archive(Name, Description)
             SELECT Lastname, Category
-            FROM Pending
+            FROM pending
             WHERE PendingID = ? ";
 
     $stmtInsert = $conn->prepare($InsertArchive);
@@ -292,7 +347,7 @@ function ArchivePending($conn){
     }  
 
     $sqlDelete = "
-    DELETE FROM Pending 
+    DELETE FROM pending 
     WHERE PendingID = ?
     ";
 
@@ -302,13 +357,17 @@ function ArchivePending($conn){
     if (!$stmtDelete->execute()) {
         throw new Exception("Error deleting record from Pending: " . $stmtDelete->error);
     }
-
-    echo "<script>
-            alert('Archive Successfully');
-            setTimeout(function(){
-                 window.location.href = '../../Admin-Pending.php';
-            }, 50); 
-        </script>";     
+        echo "<script>
+        Swal.fire({
+            icon: 'success',
+            title: 'Archive Successfully!',
+            showConfirmButton: false,
+            timer: 2000
+            }).then(() => {
+                window.location.href = '../../Admin-Pending.php';
+                });
+                </script>";
+   
 
     $stmtInsert->close(); 
     $stmtDelete->close(); 
@@ -318,9 +377,9 @@ function ArchiveUser($conn){
 
     $ID = $_GET['archiveID'];
 
-    $InsertArchive = "INSERT INTO archive(Name, Description)
-            SELECT Lastname, Role
-            FROM User
+    $InsertArchive = "INSERT INTO archive(Name, Description, Lastname, Firstname, Email, Phone, Address, Password)
+            SELECT Lastname, Role, Lastname, Firstname, Email, Phone,Address,Password
+            FROM user
             WHERE UserID = ? ";
 
     $stmtInsert = $conn->prepare($InsertArchive);
@@ -331,7 +390,7 @@ function ArchiveUser($conn){
     }  
 
     $sqlDelete = "
-    DELETE FROM User 
+    DELETE FROM user 
     WHERE UserID = ?
     ";
 
@@ -342,16 +401,177 @@ function ArchiveUser($conn){
         throw new Exception("Error deleting record from User: " . $stmtDelete->error);
     }
 
-    echo "<script>
-            alert('Archive Successfully');
-            setTimeout(function(){
-                 window.location.href = '../../Admin-Archieve.php';
-            }, 50); 
-        </script>";     
+        echo "<script>
+        Swal.fire({
+            icon: 'success',
+            title: 'Archive Successfully',
+            showConfirmButton: false,
+            timer: 1500
+            }).then(() => {
+                window.location.href = '../../Admin-Archieve.php';
+                });
+                </script>";    
 
     $stmtInsert->close(); 
     $stmtDelete->close(); 
 }
+/***********************************************
+    SECTION: RESTORE
+************************************************/ 
+function restoreManagement($conn) {
+    $RestoreID = $_GET['restoreid'];
+    
+    try {
+        // Insert into management table
+        $Insert = "
+        INSERT INTO management(Lastname, Firstname, Email, Phone, Address, Password, Role)
+        SELECT Lastname, Firstname, Email, Phone, Address, Password, Description
+        FROM archive
+        WHERE ArchiveID = ? 
+        ";
+        $stmt = $conn->prepare($Insert);
+        $stmt->bind_param("i", $RestoreID);
+
+        if (!$stmt->execute()) {
+            throw new Exception("Error in restoring data: " . $stmt->error);
+        }
+
+        // Delete from archive table
+        $delete = "
+        DELETE FROM archive 
+        WHERE ArchiveID = ?
+        ";
+        $stmtdel = $conn->prepare($delete);
+        $stmtdel->bind_param("i", $RestoreID);
+
+        if (!$stmtdel->execute()) {
+            throw new Exception("Error deleting record from archive: " . $stmtdel->error);
+        }
+
+        // Success message
+        echo "
+        <script>
+            Swal.fire({
+                icon: 'success',
+                title: 'Restore Successfully',
+                showConfirmButton: false,
+                timer: 1500
+            }).then(() => {
+                window.location.href = '../../Admin-Management.php';
+            });
+        </script>    
+        ";
+
+    } catch (Exception $e) {
+        echo "Exception: " . $e->getMessage();
+    } finally {
+        if (isset($stmt)) $stmt->close();
+        if (isset($stmtdel)) $stmtdel->close();
+    }
+}
+function restoreUser($conn) {
+    $RestoreID = $_GET['restoreid'];
+    
+    try {
+        // Insert into management table
+        $Insert = "
+        INSERT INTO user(Lastname, Firstname, Email, Phone, Address, Password, Role)
+        SELECT Lastname, Firstname, Email, Phone, Address, Password, Description
+        FROM archive
+        WHERE ArchiveID = ? 
+        ";
+        $stmt = $conn->prepare($Insert);
+        $stmt->bind_param("i", $RestoreID);
+
+        if (!$stmt->execute()) {
+            throw new Exception("Error in restoring data: " . $stmt->error);
+        }
+
+        // Delete from archive table
+        $delete = "
+        DELETE FROM archive 
+        WHERE ArchiveID = ?
+        ";
+        $stmtdel = $conn->prepare($delete);
+        $stmtdel->bind_param("i", $RestoreID);
+
+        if (!$stmtdel->execute()) {
+            throw new Exception("Error deleting record from archive: " . $stmtdel->error);
+        }
+
+        // Success message
+        echo "
+        <script>
+            Swal.fire({
+                icon: 'success',
+                title: 'Restore Successfully',
+                showConfirmButton: false,
+                timer: 1500
+            }).then(() => {
+                window.location.href = '../../Admin-Users.php';
+            });
+        </script>    
+        ";
+
+    } catch (Exception $e) {
+        echo "Exception: " . $e->getMessage();
+    } finally {
+        if (isset($stmt)) $stmt->close();
+        if (isset($stmtdel)) $stmtdel->close();
+    }
+}
+function restoreProperty($conn) {
+    $RestoreID = $_GET['restoreid'];
+    
+    try {
+        // Insert into management table
+        $Insert = "
+        INSERT INTO Properties(Property, Description, Price,Bedrooms,Bathrooms,Lot,Block,Phase,Area_sqft,VirtualTour, Status, IExterior, IBedroom, IBathroom, IAttic, IDining,Role)
+        SELECT Property, Script, Price, Bedrooms, Bathrooms, Lot, Block, Phase, Area_sqft, Virtual, Status, IExterior, IBedroom, IBathroom, IAttic, IDining, Role
+        FROM archive
+        WHERE ArchiveID = ? 
+        ";
+        $stmt = $conn->prepare($Insert);
+        $stmt->bind_param("i", $RestoreID);
+
+        if (!$stmt->execute()) {
+            throw new Exception("Error in restoring data: " . $stmt->error);
+        }
+
+        // Delete from archive table
+        $delete = "
+        DELETE FROM archive 
+        WHERE ArchiveID = ?
+        ";
+        $stmtdel = $conn->prepare($delete);
+        $stmtdel->bind_param("i", $RestoreID);
+
+        if (!$stmtdel->execute()) {
+            throw new Exception("Error deleting record from archive: " . $stmtdel->error);
+        }
+
+        // Success message
+        echo "
+        <script>
+            Swal.fire({
+                icon: 'success',
+                title: 'Restore Successfully',
+                showConfirmButton: false,
+                timer: 1500
+            }).then(() => {
+                window.location.href = '../../Admin-Properties.php';
+            });
+        </script>    
+        ";
+
+    } catch (Exception $e) {
+        echo "Exception: " . $e->getMessage();
+    } finally {
+        if (isset($stmt)) $stmt->close();
+        if (isset($stmtdel)) $stmtdel->close();
+    }
+}
+
 /***********************************************
 FUNCTION FOR INSERTING SELECTED PENDING
 ************************************************/ 
@@ -359,10 +579,10 @@ function Sales($conn) {
     $SelectedID = $_GET['SelectedID'];
 
     $InsertSale = " 
-    INSERT INTO Sales (Property, CurrentOwner)
-    SELECT Properties.Property, Pending.Lastname
-    FROM Pending
-    JOIN Properties ON Pending.PropertyID = Properties.PropertyID
+    INSERT INTO sales (Property, CurrentOwner)
+    SELECT properties.Property, pending.Lastname
+    FROM pending
+    JOIN properties ON pending.PropertyID = properties.PropertyID
     WHERE PendingID = ?
     ";
     
@@ -374,10 +594,10 @@ function Sales($conn) {
     }
     
     $updateHouse = "
-    UPDATE Properties 
-    INNER JOIN Pending ON Properties.PropertyID = Pending.PropertyID
-    SET Properties.Status = ?
-    WHERE Pending.PendingID = ?";
+    UPDATE properties 
+    INNER JOIN pending ON properties.PropertyID = pending.PropertyID
+    SET properties.Status = ?
+    WHERE pending.PendingID = ?";
 
     $stmtUpdate = $conn->prepare($updateHouse);
     $Update = "Purchased";
@@ -389,7 +609,7 @@ function Sales($conn) {
 
 
     $sqlDel = "
-    DELETE FROM Pending
+    DELETE FROM pending
     WHERE PendingID = ?
     ";
 
@@ -398,11 +618,15 @@ function Sales($conn) {
     if(!$stmtDel->execute()){
          throw new Exception("Error deleting record from Pending: " . $stmtDel->error);
     }
-
-    echo "<script>
-            alert('Successfully');
-            setTimeout(function(){
+        echo "<script>
+        Swal.fire({
+            icon: 'success',
+            title: 'Sold Successfully',
+            showConfirmButton: false,
+            timer: 1500
+            }).then(() => {
                 window.location.href = '../../Admin-SoldProperties.php';
-            }, 50); 
-        </script>";     
+                });
+                </script>"; 
+    
 }

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SweetAlert2 Example</title>
+  <!-- Include SweetAlert2 CSS and JS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+<body>
+
+  <!-- Button that triggers the alert -->
+  <button id="alertButton">Show Alert</button>
+
+  <script>
+    // Trigger SweetAlert2 when the button is clicked
+    document.getElementById('alertButton').addEventListener('click', function() {
+      Swal.fire({
+        title: 'Update!',
+        text: 'Successfully updated!',
+        icon: 'success',
+        confirmButtonText: 'Confirm!'
+        
+      });
+    });
+
+  </script>
+
+</body>
+</html>

@@ -20,7 +20,7 @@
 		<!-- Script: JQuery -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 	<!-- WEBSITE ICON -->
-	<link rel="website icon" type="png" href="./Assets/Images/Icon.png">
+	<link rel="website icon" type="png" href="./Assets/Images/Icon.PNG">
 </head>
 <body>
 	<header class="header">
@@ -67,7 +67,7 @@
 							</li>																							
 						</ul>
 
-						<a class="header-top-btn"  href="./Index.php"> 
+						<a class="header-top-btn"  href="./index.php"> 
 							<i class="fa-solid fa-house"></i>
 							<span> Home </span>
 						</a>
@@ -82,7 +82,7 @@
 
 	<main>
 		<?php
-		$sql = "SELECT * FROM Properties WHERE PropertyID = $Holder";
+		$sql = "SELECT * FROM properties WHERE PropertyID = $Holder";
 		$rs = mysqli_query($conn,$sql);
 
 		if($rs){
@@ -104,25 +104,44 @@
 
 			<section class='ImageContainer' id='ImageContainer'>
 			<div class='container'>
-
+				
 				<figure class='Exterior'>
-					<img src='$ImageExterior' alt='Exterior' '>
+					<img src='$ImageExterior' alt='Exterior' />
+						<a href='#VirtualTour' class='VirtualTour-btn-nonlogin btn'> Go to 3D </a>
 				</figure>
 
 				<figure class='HouseDetails'> 
-					<img src='$IBathroom'. alt='Exterior'>
-					<img src='$IBedroom' alt='Exterior'>
-					<img src='$IAttic' alt='Exterior'>
-					<img src='$IDining' alt='Exterior'>
-				</figure>
+				
+					<div class='thumbnail'>
+						<img src='$IBathroom'. alt='Exterior' onclick='enlargeImage(this, 0)'>
+					</div>
 
+					<div class='thumbnail'>
+					<img src='$IBedroom' alt='Exterior' onclick='enlargeImage(this, 1)'>
+					</div>
+
+					<div class='thumbnail'>
+					<img src='$IAttic' alt='Exterior' onclick='enlargeImage(this, 2)'>
+					</div>
+
+					<div class='thumbnail'>
+					<img src='$IDining' alt='Exterior' onclick='enlargeImage(this, 3)'>
+					</div>
+
+				</figure>
+			    <div id='overlay'>
+			      <span class='close' onclick='closeImage()'>&times;</span>
+			        <img id='enlargedImage' src='' alt='Enlarged Image'>
+			        <a class='prev' onclick='changeImage(-1)'>&#10094;</a>
+			        <a class='next' onclick='changeImage(1)'>&#10095;</a>			        
+			    </div>
 			</div>
 			</section>
 			";				
 			}
 
 			echo " 
-				<a href='#VirtualTour' class='VirtualTour-btn btn'> Go to 3D </a>
+			
 				<section class='HouseDetails-Container'>
 					<div class='container'>
 						<div class='LeftHouse-Details'>
@@ -197,7 +216,7 @@
 			                <span>To move:</span>
 			                <img src='./Assets/Images/Move.png' alt='Move tutorial'>
 			            </div>
-			            <iframe src='$VirtualTour' class='VirtualTour' alt='Virtual Tour'>No Virtual Model</iframe>
+			            <iframe src='$VirtualTour' class='VirtualTour' alt='Virtual Tour' style ='height='500px' '>No Virtual Model</iframe>
 			        </div>
 			    ";
 			} else {
@@ -215,6 +234,7 @@
 
 			<!-- Script: Custom -->
 		<script src="./Assets/Js/script.js?v=<?php echo time(); ?>"></script>
+		<script src="./Assets/Js/Thumbnails.js?v=<?php echo time(); ?>"></script>
 		<script src="./Assets/Js/Swiper.js?v=<?php echo time(); ?>"></script>
 		<!-- JS: Swiper -->
 		<script type="text/javascript" src="./Assets/Js/swiper-bundle.min.js"></script> 	

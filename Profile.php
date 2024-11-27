@@ -24,7 +24,9 @@
 		<!-- Script: JQuery -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 	<!-- WEBSITE ICON -->
-	<link rel="website icon" type="png" href="./Assets/Images/Icon.png">
+	<link rel="website icon" type="png" href="./Assets/Images/Icon.PNG">
+  <!-- Include SweetAlert2 CSS and JS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">	
 </head>
 <body>
 	<header class="header">
@@ -100,7 +102,7 @@
 					if(isset($_GET['EditID'])){
 						$EditID = $_GET['EditID'];
 						
-						$sql = "SELECT * FROM User WHERE UserID = $EditID";
+						$sql = "SELECT * FROM user WHERE UserID = $EditID";
 						$rs = mysqli_query($conn,$sql);
 						if($rs){
 							while ($row = mysqli_fetch_assoc($rs)) {
@@ -176,7 +178,7 @@
 					$Password = password_hash($_POST['Password'], PASSWORD_DEFAULT);
 
 					$sql = "
-					UPDATE User SET 
+					UPDATE user SET 
 					Firstname = '$Firstname',
 					Lastname = '$Lastname',
 					Email = '$Email',
@@ -205,14 +207,30 @@
 		<section class="Purchase-Wrapper" class='Purchase-Wrapper'>
 			<h3 class="h3 Purchase-title"> Ready to Purchase </h3>
 			<span class="Profile-subtitle"> Reach Out for More Information </span>
+			<div class="Purchase-title">
+				<table>
+					<thead>
+						<tr>
+							<th>Properties</th>
+							<th>Payment</th>
+							<th>Status</th>
+							<th>Message</th>
+							<th>Pending Date</th>
+							<th>Actions</th>
+						</tr>
+					</thead>
+
+			</div>
 			<?php
 			if (isset($_GET['EditID'])) {
 			    $ProfileID = $_GET['EditID'];
-				$sql = "SELECT Pending.*, User.*, Properties.Property 
-       			 FROM Pending 
-       			 JOIN User ON Pending.UserID = User.UserID
-        		 JOIN Properties ON Pending.PropertyID = Properties.PropertyID
-       			 WHERE User.UserID = $ProfileID";
+				$sql = "SELECT pending.*, user.*, properties.Property 
+       			 FROM pending 
+       			 JOIN user ON pending.UserID = user.UserID
+        		 JOIN properties ON pending.PropertyID = properties.PropertyID
+       			 WHERE user.UserID = $ProfileID 
+       			 ORDER BY pending.Category ASC
+       			";
 
 
 			    $rs = mysqli_query($conn, $sql);
@@ -224,23 +242,30 @@
 			            $Date = $row['Date'];
 			            $Status = $row['Status'];
 			            $Requirements = $row['Requirements'];
-			            echo "<div class='Purchase-items'>
-			                    <input type='text' value='$Property' readonly>
-			                    <input type='text' value='$Category' readonly>
-			                    <input type='text' value='$Date' readonly>
-			                    <input type='text' value='$Status' readonly>
-			                    <a href='./Assets/Php/Index.php?DeleteID=$PendingID'><i class='fa-solid fa-trash'></i></a>
-			                  </div>
 
+
+						echo "
+						<tbody>
+							<tr>
+								<td>  <input type='text' value='$Property' readonly> </td>
+								<td>  <input type='text' value='$Category' readonly> </td>
+								<td>  <input type='text' value='$Status' readonly> </td>
+								<td>
 			                  <div class='Purchase-items textarea'>
 			                  	<textarea placeholder='No Message from the Amaresa yet....' readonly>$Requirements</textarea>
-			                  </div>
-			                  ";
+			                  </div></td>
+								<td>  <input type='text' value='$Date' readonly> </td>
+								<td>   <a href='./Assets/Php/index.php?DeleteID=$PendingID' class='delete-purchase'><i class='fa-solid fa-trash'></i></a></td>
+							</tr>
+						</tbody>
+									
+						";			                  
 			        }
 			    }
 			}
 
 			?>
+				</table>	
 		</section>
 	</main>
 	
@@ -248,10 +273,12 @@
 			<!-- Script: Custom -->
 		<script src="./Assets/Js/script.js?v=<?php echo time(); ?>"></script>
 		<script src="./Assets/Js/Swiper.js?v=<?php echo time(); ?>"></script>
+		<script src="./Assets/Js/Notification.js?v=<?php echo time(); ?>"></script>
 		<!-- JS: Swiper -->
 		<script type="text/javascript" src="./Assets/Js/swiper-bundle.min.js"></script> 	
 		<script src="./Assets/Js/PhoneValidation.js?v=<?php echo time(); ?>"></script>
 		<!-- Script: Fontawesome -->
 		<script src="https://kit.fontawesome.com/83786b8894.js" crossorigin="anonymous"></script>
+		 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </body>
 </html>

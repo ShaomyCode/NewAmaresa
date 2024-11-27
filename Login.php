@@ -7,7 +7,7 @@
         $Lastname = $_SESSION['Lastname'];
         $UserID = $_SESSION['UserID'];        
     }else{
-        header("location: ./Index.php");
+        header("location: ./index.php");
 
     }
 ?>
@@ -17,7 +17,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>AMARESA - Welcome </title>
-
+    <!-- LINK: FOR AMARESA FONT -->
+    <link rel="stylesheet" type="text/css" href="./Assets/Momoiro-Regular/style.css">   
     <!-- Custom Css Link -->
     <link rel="stylesheet" type="text/css" href="./Assets/Css/Index.css?v=<?php echo time(); ?>">
     <!-- Google font link -->
@@ -28,7 +29,9 @@
     <link rel="website icon" type="png" href="./Assets/Images/Icon.png">
     <!-- JQUERY -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>    
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />   
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
+     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">   
 </head>
 <body>
 
@@ -39,28 +42,28 @@
                 <ul class="header-top-list">
 
                     <li>
+                        <a href="Login.php"><img src="./Assets/Images/Amaresa-logo.PNG" alt="Amaresa Logo"> </a>
+                    </li>                    
+                    <li>
                         <a href="https://www.amaresa.ph/" class="header-top-link" title="www.amaresa.ph">
                             <i class="fa-solid fa-paper-plane"></i>
-                            <span>amaresa.ph</span>
+                            <span>Amaresa.ph</span>
                         </a>
                     </li>                       
 
-                    <li> 
-                        <a href="https://www.google.com/maps/dir//Amaresa+Marilao,+3019+M.+Villarica+Rd,+Marilao,+3019+Bulacan/@14.7950949,121.0162162,17z/data=!4m17!1m7!3m6!1s0x3397b38da5906293:0x8b01e358c47a7685!2sAmaresa+Marilao!8m2!3d14.7950897!4d121.0187911!16s%2Fg%2F11gpnfmdlb!4m8!1m0!1m5!1m1!1s0x3397b38da5906293:0x8b01e358c47a7685!2m2!1d121.0188034!2d14.7951434!3e2?entry=ttu"  class="header-top-link" title="Amaresa location">
-                            <i class="fa-solid fa-map-location-dot"></i>
-                            <span>3019 M. Villarica Rd, Marilao, 3019 Bulacan</span>
-                        </a>
                     </li>
                 </ul>
                 <div class="wrapper">
 
                     <ul class="header-top-social-list">
+                             
                         <li>
                             <a href="#about" class="header-top-social-link" title="Redirect to About us">
                                 <i class="fa-solid fa-circle-info"></i>
                                 <span>About us</span>
                             </a>
-                        </li>
+                        </li>                        
+               
                         <li>
                             <a href="#location" class="header-top-social-link" title="Redirect to Location">
                                 <i class="fa-solid fa-location-crosshairs"></i>
@@ -81,7 +84,7 @@
                         </li>                                                                                           
                     </ul>
 
-                      <a href="./Assets/Php/Logout.php" class="header-top-btn"> 
+                      <a href="./Assets/Php/Logout.php" class="header-top-btn signout" > 
                             <i class="fa-solid fa-user-tie"></i> 
                             <span> Sign out </span>
                         </a>
@@ -97,38 +100,65 @@
             <section class="hero" id="home">
                 <div class="container">
 
-                    <div class="hero-top-part">
-                        <div class="hero-logo">
-                            <img src="./Assets/Images/Amaresa-Logo.png" alt="Amaresa Logo" >
-                        </div>  
-                        <div class="hero-top-details">
 
-                            <h2 class="h1 hero-title">Find Your Dream House By Us!</h2>
-                            <p class="hero-text">
-                                At Amaresa, we are committed to helping you find your dream home with ease and confidence. Whether you're a first-time homebuyer or looking to upgrade, we guide you through every step of the process, ensuring a seamless and stress-free experience. Trust us to turn your dream of homeownership into a reality.
-                            </p>                        
-                        </div>                      
-                    </div>
                     <?php
                     $Get = $UserID;
                     echo "
                     <section class='Welcome'>
                         <div class='container'>
                             <div class='Welcome-info'>
-                                <h3 class='Welcome-Title'>Welcome: $Firstname, $Lastname  </h3>
+                                <div class='Welcome-welcome'>
+                                    <h3 class='Welcome-txt'>Welcome</h3>
+                                    <h3 class='Welcome-Title'>$Firstname, $Lastname  </h3>                                
+                                </div>
                                 <span class='Welcome-sign'>Preferred Buyer</span>
-                                <span class='callout'> Explore the best properties matching your preferences. </span>
+                                <span class='Welcome-callout callout'> Explore the best properties matching your preferences. </span>
                             </div>
-                            <div class='Welcome-btn'>
-                       
-                             <a href='./Profile.php?EditID=$Get'  class='Profile-btn btn'> 
-                                    <i class='fa-regular fa-id-card'></i>
-                                 <span> Profile </span> 
-                             </a>
-                            </div>
-                        </div>
-                    </section>
                     ";
+
+                    $sql = "SELECT COUNT(*) as replied FROM pending WHERE UserID = $Get AND Status != 'Pending'";
+                    $rs = mysqli_query($conn,$sql);
+                    if($rs){
+                        $row =  mysqli_fetch_assoc($rs);
+                        $replied = $row['replied'];     
+                        echo "
+                                <div class='Welcome-btn'>
+                                <div class='Display'>
+ 
+                                     <a href='./Profile.php?EditID=$Get'  class='Profile-btn btn'> 
+                                            <i class='fa-regular fa-id-card'></i>
+                                         <span> Profile</span> 
+                                     </a>
+                                   
+                                </div>
+                               <div class='Display-wrapper'>
+                                    <div class='notif-icon'>
+                                     <i class='fa-solid fa-bell'></i>
+                                        <div class='notif-msg'>
+                                           $replied
+                                        </div>
+
+                        ";                            
+                    }
+                    $cart = "SELECT count(*) AS inquiry FROM pending WHERE UserID = $Get AND Status = 'Pending' ";
+                    $cartrs = mysqli_query($conn, $cart);
+                    if($cartrs){
+                        $row = mysqli_fetch_assoc($cartrs);
+                        $total = $row['inquiry'];
+                        echo "
+                                    </div>                                       
+
+                                    <div class='notif-icon'>
+                                     <i class='fa-solid fa-cart-plus'></i>
+                                        <div class='notif-msg'>
+                                           $total
+                                        </div>
+                                    </div>                                 
+                                </div>  
+                            </div>
+                        </section>                        
+                        ";                        
+                    }
                     ?>
                     <figure class="hero-banner">
 
@@ -143,6 +173,7 @@
                     </figure>
                 </div>
             </section>
+
             <!-- Section: About -->
             <section class="about" id="about">
                 <div class="container"> 
@@ -272,7 +303,7 @@
                     <section class="featuredcard" id = "card">
                         <div class="card-container">
                             <?php
-                            $sql = "SELECT * FROM Properties";
+                            $sql = "SELECT * FROM properties";
                             $rs = mysqli_query($conn,$sql);
                             if($rs){
                                 while ($row = mysqli_fetch_assoc($rs)) {
@@ -400,7 +431,7 @@
                         <div class="Displaytest-swiper mySwiper-autoplay">
                             <div class="Displaytest-wrapper swiper-wrapper">
                                 <?php
-                                    $sql = "SELECT * FROM Message";
+                                    $sql = "SELECT * FROM message";
                                     $rs = $conn->query($sql);
                                     if($rs){
                                         while ($row = mysqli_fetch_assoc($rs)) {
@@ -479,7 +510,7 @@
 
                     $query = "
                     SELECT *
-                    FROM User
+                    FROM user
                     WHERE UserID = $UserID
                     ";
                     $result = $conn->query($query);
@@ -511,7 +542,7 @@
                     <input list='options' id='Role' name='Property' placeholder='Select Property' required>
                          <datalist id='options'>
                     ";
-                      $sql = "SELECT * FROM Properties";
+                      $sql = "SELECT * FROM properties";
                             $rs = $conn->query($sql);
                             if($rs){
                                 while($rw = mysqli_fetch_assoc($rs)){
@@ -519,7 +550,6 @@
                                     if($status == "Sale"){
                                     echo "
                                         <option value='$rw[PropertyID]'> $rw[Property] </option>
-
                                     ";
                                     }
                                 }
@@ -659,6 +689,7 @@
         <!-- Script: Custom -->
         <script src="./Assets/Js/script.js?v=<?php echo time(); ?>"></script>
         <script src="./Assets/Js/Swiper.js?v=<?php echo time(); ?>"></script>
+        <script src="./Assets/Js/Notification.js?v=<?php echo time(); ?>"></script>
         <!-- JS: Swiper -->
         <script type="text/javascript" src="./Assets/Js/swiper-bundle.min.js"></script>     
         <script src="./Assets/Js/PhoneValidation.js?v=<?php echo time(); ?>"></script>
@@ -668,6 +699,6 @@
         <script language="javascript" type="text/javascript">   
                 window.history.forward();
         </script>
-    
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     </body>
     </html>

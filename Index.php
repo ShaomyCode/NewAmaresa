@@ -9,16 +9,25 @@
 	<title>AMARESA - Find your dream house</title>
 	<!-- Link: Custom -->
 	<link rel="stylesheet" type="text/css" href="./Assets/Css/Index.css?v=<?php echo time(); ?>">
+	<!-- LINK: FOR AMARESA FONT -->
+	<link rel="stylesheet" type="text/css" href="./Assets/Momoiro-Regular/style.css">	
 	<!-- Link: Google Fonts -->
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic\.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
 	<!-- Link: Web Icon -->
-	<link rel="website icon" type="png" href="./Assets/Images/Icon.png">
+	<link rel="website icon" type="png" href="./Assets/Images/Icon.PNG">
 	<!-- Script: JQuery -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 	<!-- Link: Swiper -->
-	<link rel="stylesheet" type="text/css" href="./Assets/Css/swiper-bundle.min.css">		
+	<link rel="stylesheet" type="text/css" href="./Assets/Css/swiper-bundle.min.css">
+  	<!-- Include SweetAlert2 CSS and JS -->
+	  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+	<!-- LEAFLET -->
+	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+	     integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+	     crossorigin=""/>		
+
 </head>
 <body>
 
@@ -68,10 +77,16 @@
 								<i class="fa-solid fa-house-lock"></i>
 								<span> Properties </span>
 							</a>
-						</li>																							
+						</li>	
+						<li class="header-btn-wrapper">
+				
+							<button class="header-top-btn " onclick="ShowLogin()" > <i class="fa-solid fa-right-to-bracket"></i>Log in </span></button>
+						</li>																						
 					</ul>
 
-					<button class="header-top-btn" onclick="ShowSignup()" > <i class="fa-solid fa-user-tie"></i> <span> Sign up </span></button>
+
+					<!--<button class="header-top-btn btn-acc" onclick="ShowLogin()" > <i class="fa-solid fa-plus"></i> <span> Log in </span></button>-->
+							<button class="header-top-btn" onclick="ShowSignup()" > <i class="fa-solid fa-user-tie"></i> <span> Sign up </span></button>	
 				</div>
 			</div>
 
@@ -85,9 +100,11 @@
 				<div class="container">
 
 					<div class="hero-top-part">
-						<div class="hero-logo">
-							<img src="./Assets/Images/Amaresa-Logo.png" alt="Amaresa Logo" >
-						</div>	
+                        <div class="hero-logo">
+                     
+                             <img src="./Assets/Images/Amaresa-logo.PNG" alt="Amaresa Logo" >
+
+                        </div>
 						<div class="hero-top-details">
 
 							<h2 class="h1 hero-title">Find Your Dream House By Us!</h2>
@@ -96,15 +113,16 @@
 							</p>						
 						</div>						
 					</div>
-
+					<button class="Inquiry-btn btn" onclick="ShowLogin()" > 
+						<span>Make an Inquiry</span>
+					</button>
 					<figure class="hero-banner">
 
 						<div class="swiper mySwiper-autoplay">
 							<div class="swiper-wrapper">
-								<div class="swiper-slide"><img src="./Assets/Images/Amaresa Marilao.png" alt="Amaresa Marilao" class="w-100"></div>
-								<div class="swiper-slide"><img src="./Assets/Images/Amaresa about us .png" alt="Amaresa Marilao" class="w-100"></div>
-								<div class="swiper-slide"><img src="./Assets/Images/Drop-shot-buy.jpg" alt="Amaresa Marilao" class="w-100"></div>
-
+								<div class="swiper-slide"><img src="./Assets/Images/Amaresa Marilao.PNG" alt="Amaresa Marilao" class="w-100"></div>
+								<div class="swiper-slide"><img src="./Assets/Images/Amaresa about us .PNG" alt="Amaresa Marilao" class="w-100"></div>
+								<div class="swiper-slide"><img src="./Assets/Images/Dropshot.png" alt="Amaresa Marilao" class="w-100"></div>
 							</div>
 						</div>
 					</figure>
@@ -163,9 +181,10 @@
 					<div class="about-banner">
 						<div class="swiper mySwiper-autoplay">
 							<div class="swiper-wrapper">
-								<div class="swiper-slide"> <img src="./Assets/Images/AlexandriaBanner.png"></div>
-								<div class="swiper-slide"> <img src="./Assets/Images/AmaraBanner.png"></div>
-								<div class="swiper-slide"> <img src="./Assets/Images/AryaBanner.png"></div>
+								<div class="swiper-slide"> <img src="./Assets/Images/Alexandria/Alexandria Exterior.png"></div>
+								<div class="swiper-slide"> <img src="./Assets/Images/Amara Expanded/Amara Exterior.png"></div>
+								<div class="swiper-slide"> <img src="./Assets/Images/Arya Prime/Arya Exterior.png"></div>
+								<div class="swiper-slide"> <img src="./Assets/Images/Kayla Prime/Kayla Prime.png"></div>
 							</div>
 						</div>
 					</div>
@@ -204,12 +223,12 @@
 						<li>
 							<div class="service-card"> 
 								<div class="card-icon">
-									<img src="./Assets/Images/Drop-shot-buy.jpg" alt="service icon">
+									<img src="./Assets/Images/Dropshot.png" alt="service icon">
 								</div>
 
 								<h3 class="h3 card-title">
 									<!-- MAKE IT BUTTON TO INQUIRY -->
-									<button onclick="ShowSignup()"> Buy a Home </button> 
+									<button onclick="ShowLogin()"> Buy a Home </button> 
 								</h3>
 								<p class="card-text">
 									Your dream home awaits! Whether you’re looking for a cozy starter home or your forever dream house, our expert team is here to turn your vision into reality. We offer a diverse selection of homes and personalized assistance to help you find a perfect fit. Let’s embark on this exciting journey together!
@@ -238,7 +257,7 @@
 					<section class="featuredcard" id = "card">
 						<div class="card-container">
 							<?php
-							$sql = "SELECT * FROM Properties";
+							$sql = "SELECT * FROM properties";
 							$rs = mysqli_query($conn,$sql);
 							if($rs){
 								while ($row = mysqli_fetch_assoc($rs)) {
@@ -247,6 +266,7 @@
 									$Bed = $row['Bedrooms'];
 									$Bath = $row['Bathrooms'];
 									$Property = $row['Property'];
+									$Status = $row['Status'];
 									$Area = $row['Area_sqft'];
 									$ID = $row['PropertyID'];
 	    							
@@ -275,7 +295,8 @@
 										10 => "Ten Beds"
 									];
 									$Bath = $BathList[$Bath] ?? $Bath;
-									$Bed = $BedList[$Bed] ?? $Bed;   							
+									$Bed = $BedList[$Bed] ?? $Bed;   
+								  	if($Status === "Sale"){    								
 									echo "
 									<div class='card wallet'>
 									<div class='overlay'></div>
@@ -308,15 +329,26 @@
 									</div>
 
 									";
+									}
 
 								}
 							}
 
 							?>
 
-
+            
 						</div>
 					</section>
+				</div>
+			</section>
+			<!-- MAP -->
+			<section class="HouseMap" id="HouseMap">
+				<div class="container">
+					<div class="HouseMap-Details">
+						<h3 class="h3 HouseMap-title"> House Map </h3>
+						<span class="HouseMap-subtitle">Discover your haven with us. Whether you're looking for a cozy apartment, a spacious family home, or a luxurious retreat, we have the perfect place for you. </span>
+					</div>
+					<div id="map"></div>
 				</div>
 			</section>
 			<!-- Section: Testimonial -->
@@ -333,7 +365,6 @@
 						<div class="testimonial-feedbox">
 							<form method="POST" action="./Assets/Php/Index.php">
 								<div class="testimonial-feedbox-top">
-									<img src="./Assets/Images/Feedback.gif" class="Feedback-Image">
 									<input type="text" name="Name" placeholder="Enter your name" required>
 									<div class="star-rating">
 										<input type="radio" id="star5" name="rating" value="5" required><label for="star5" title="excellent">★</label>
@@ -363,7 +394,7 @@
 						<div class="Displaytest-swiper mySwiper-autoplay">
 							<div class="Displaytest-wrapper swiper-wrapper">
 								<?php
-									$sql = "SELECT * FROM Message";
+									$sql = "SELECT * FROM message";
 									$rs = $conn->query($sql);
 									if($rs){
 										while ($row = mysqli_fetch_assoc($rs)) {
@@ -476,21 +507,11 @@
 
 					<input type="email" name="email" placeholder="Email Address" required>
 					<input type="password" name="password" placeholder="Password" required>	
-					<input type="submit" name="login-btn" value="Login">
+					<input type="submit" name="login-btn" value="Login" >
 				</form>
-				<button onclick="ShowSignup()" class="lowerbuttons">Dont have account</button>				
+				<button onclick="ShowSignup()" class="lowerbuttons" >Dont have account</button>				
 			</div>		
 		</dialog>
-
-			<!-- RESERVATION MODAL -->
-			<dialog id="Reservation-Modal" class="dialog">
-				<button onclick="CloseReservation()" class="closebtn">X</button>	
-				<form>
-					<div class="container">
-						<button type="submit" name="SentInquiry">Send Inquiry</button>
-					</div>
-				</form>
-			</dialog>
 
 		</section>
 
@@ -566,17 +587,26 @@
 				<button >Privacy Polocy</button>
 			</div>
 		</footer>
+
+		<!-- Script: Fontawesome -->
+		<script src="https://kit.fontawesome.com/83786b8894.js" crossorigin="anonymous"></script>
 		<!-- Script: Custom -->
 		<script src="./Assets/Js/script.js?v=<?php echo time(); ?>"></script>
 		<script src="./Assets/Js/Swiper.js?v=<?php echo time(); ?>"></script>
+		<script src="./Assets/Js/Notification.js?v=<?php echo time(); ?>"></script>
+		<script src="./Assets/Js/Leaflet.js?v=<?php echo time(); ?>"></script>
 		<!-- JS: Swiper -->
 		<script type="text/javascript" src="./Assets/Js/swiper-bundle.min.js"></script> 	
 		<script src="./Assets/Js/PhoneValidation.js?v=<?php echo time(); ?>"></script>
-		<!-- Script: Fontawesome -->
-		<script src="https://kit.fontawesome.com/83786b8894.js" crossorigin="anonymous"></script>
+		<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>	
 		<!-- NO TURNING BACK -->
 		<script language="javascript" type="text/javascript">	
 	            window.history.forward();
-		</script>
+		</script>		
+		 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+		     integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+		     crossorigin=""></script>
+  		<script type="text/javascript" src="Leaflet.js?v=<?php echo time(); ?>"></script>
+
 	</body>
 	</html>

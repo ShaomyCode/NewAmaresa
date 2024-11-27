@@ -11,7 +11,9 @@
 	<link rel="stylesheet" type="text/css" href="./Assets/Css/Content.css?v=<?php echo time(); ?>"> 
 	<link rel="stylesheet" type="text/css" href="./Assets/Css/Admin.css?v=<?php echo time(); ?>"> 
 	<!-- WEBSITE ICON -->
-	<link rel="website icon" type="png" href="./Assets/Images/Icon.png">	
+	<link rel="website icon" type="png" href="./Assets/Images/Icon.PNG">	
+	  <!-- Include SweetAlert2 CSS and JS -->
+	  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
 </head>
 <body>
 	<header class="header" id="header">
@@ -40,7 +42,7 @@
 					if(isset($_GET['ViewID'])){
 
 						$SelectedID = $_GET['ViewID'];
-						$stmt = "SELECT Pending.*, Properties.Property FROM Pending JOIN Properties ON Pending.PropertyID= Properties.PropertyID WHERE PendingID = $SelectedID ";
+						$stmt = "SELECT pending.*, properties.Property FROM pending JOIN properties ON pending.PropertyID= properties.PropertyID WHERE PendingID = $SelectedID ";
 						$rs = mysqli_query($conn,$stmt);
 						if($rs){
 							while ($row = mysqli_fetch_assoc($rs)) {
@@ -132,14 +134,19 @@
 				if(isset($_POST['Send']) && isset($_GET['ViewID'])){
 					$PendingID = $_GET['ViewID'];
 				    $Status = $_POST['Status'];
-				    $Requirements = $_POST['Requirements'];		
+				    $Requirements = $_POST['Requirements'];	
+
 				    $query = "
-				    UPDATE Pending SET
+				    UPDATE pending SET
+				    Seen = 0,	
 				    Status = '$Status',
 				    Requirements = '$Requirements'
 				    WHERE PendingID = '$PendingID'
 				    ";		
 				    mysqli_query($conn,$query);
+
+
+        		    
 				    echo "
 				    <script>
 				        alert('Message Successfully sent');
@@ -157,6 +164,8 @@
 		<script src="./Assets/Js/Admin.js?v=<?php echo time(); ?>"></script>
 		<script src="./Assets/Js/UploadImage.js?v=<?php echo time(); ?>"></script>
 		<!-- Fontawesome Link -->
-		<script src="https://kit.fontawesome.com/83786b8894.js" crossorigin="anonymous"></script>		
+		<script src="https://kit.fontawesome.com/83786b8894.js" crossorigin="anonymous"></script>
+		<!-- SWEET ALERT -->
+	  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>	
 	</body>
 	</html>

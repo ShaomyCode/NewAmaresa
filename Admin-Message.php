@@ -11,7 +11,9 @@
 	<!-- CUSTOM CSS  -->
 	<link rel="stylesheet" type="text/css" href="./Assets/Css/Admin.css?v=<?php echo time(); ?>">
 	<!-- WEBSITE ICON -->
-	<link rel="website icon" type="png" href="./Assets/Images/Icon.png">	
+	<link rel="website icon" type="png" href="./Assets/Images/Icon.PNG">
+	  <!-- Include SweetAlert2 CSS and JS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">	
 </head>
 <body>
 
@@ -143,7 +145,7 @@
 
 
 									<td class='td-action'>
-										<a href='./Assets/Php/Admin.php?DeleteID=".$MessageID."' onclick='return DeleteConfirmation()' class='custom-tooltip' data-title='Delete'>
+										<a href='./Assets/Php/Admin.php?DeleteID=".$MessageID."'' class='custom-tooltip delete-message' data-title='Delete'>
 											<i class='fa-solid fa-trash' ></i>
 										</a>
 									</td>
@@ -165,12 +167,13 @@
 
 
 	<!-- Custom JS & JQUERY -->
-	<script src="./Assets/Js/Admin.js?v=<?php echo time(); ?>"></script>
+	<script src="./Assets/Js/Notification.js?v=<?php echo time(); ?>"></script>
 	<!-- Fontawesome Link -->
 	<script src="https://kit.fontawesome.com/83786b8894.js" crossorigin="anonymous"></script>
 		<!-- NO TURNING BACk -->
 		<script language="javascript" type="text/javascript">	
 	            window.history.forward();
-		</script>			
+		</script>
+	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>			
 </body>
 </html>

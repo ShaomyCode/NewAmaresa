@@ -13,7 +13,7 @@
 	<link rel="stylesheet" type="text/css" href="./Assets/Css/Content.css?v=<?php echo time(); ?>"> 
 	<link rel="stylesheet" type="text/css" href="./Assets/Css/Admin.css?v=<?php echo time(); ?>"> 
 	<!-- WEBSITE ICON -->
-	<link rel="website icon" type="png" href="./Assets/Images/Icon.png">	
+	<link rel="website icon" type="png" href="./Assets/Images/Icon.PNG">	
 </head>
 <body>
 	<header class="header" id="header">
@@ -43,7 +43,7 @@
 						if(isset($_GET['UpdateID'])){
 							$UpdateID = $_GET['UpdateID'];
 
-							$sql = " SELECT * FROM SALES WHERE SaleID = $UpdateID ";
+							$sql = "   * FROM sales WHERE SaleID = $UpdateID ";
 							$rs = mysqli_query($conn,$sql);
 							if($rs){
 								while ($row = mysqli_fetch_assoc($rs)) {
@@ -102,7 +102,7 @@
 					    $Previous = $_POST['Previous'];
 
 					    $stmt = $conn->prepare("
-					        UPDATE Sales SET 
+					        UPDATE sales SET 
 					        CurrentOwner = ?, 
 					        PreviousOwner = ? 
 					        WHERE SaleID = ?");

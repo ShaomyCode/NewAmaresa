@@ -12,7 +12,9 @@
 	<!-- CUSTOM CSS  -->
 	<link rel="stylesheet" type="text/css" href="./Assets/Css/Admin.css?v=<?php echo time(); ?>"> 
 	<!-- WEBSITE ICON -->
-	<link rel="website icon" type="png" href="./Assets/Images/Icon.png">	
+	<link rel="website icon" type="png" href="./Assets/Images/Icon.PNG">	
+	 <!-- Include SweetAlert2 CSS and JS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
 </head>
 <body>
 
@@ -144,7 +146,8 @@
 
 							<td class='td-action'>
 								<a href='./Admin-ViewProperties.php?ViewID=".$PropertyID."' class='custom-tooltip' data-title='View/Edit'><i class='fa-solid fa-eye'></i></a>
-								<a href='./Assets/Php/Admin.php?archiveID=".$PropertyID."&value=Property' onclick='return archiveConfirmation()'' class='custom-tooltip' data-title='Archive'>
+
+								<a href='./Assets/Php/Admin.php?archiveID=".$PropertyID."&value=Property''' class='custom-tooltip delete-purchase' data-title='Archive'>
 										<i class='fa-solid fa-box-archive' ></i>
 										</a> 
 							</td>
@@ -251,6 +254,7 @@
 
 
 	<!-- Custom JS & JQUERY -->
+	<script src="./Assets/Js/Notification.js?v=<?php echo time(); ?>"></script>
 	<script src="./Assets/Js/Admin.js?v=<?php echo time(); ?>"></script>
 	<script src="./Assets/Js/UploadImage.js?v=<?php echo time(); ?>"></script>
 	<!-- Fontawesome Link -->
@@ -259,5 +263,7 @@
 		<script language="javascript" type="text/javascript">	
 	            window.history.forward();
 		</script>	
+	<!-- SWEET ALERT -->
+	 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </body>
 </html>

@@ -1,0 +1,161 @@
+w/*HEADER*/
+.header-user-display{
+	background: var(--amaresa-logo-yellow-light);
+	padding: 8px 5px;
+	color: white;
+	font-weight: var(--fw-700);
+	width: fit-content;
+	border-radius: 5px;
+}
+.header-profile{
+	position: relative;
+}
+/*PROFILE SECTION*/
+.Profile{
+	padding-block: var(--section-spacing);
+	display: flex;
+	align-items: center;
+	justify-content: space-evenly;
+	gap: 1rem;
+
+}
+.Profile > *{
+	width: fit-content;
+
+}
+.Profile_information{
+	text-align: center;
+	font-family: var(--ff-Momoiro);
+}
+.Profile_information .Profile_title{
+	font-size: var(--fs-1);
+	font-family: var(--ff-Momoiro);
+}
+.Profile_information_table{
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+	gap: 1rem;
+}
+.Profile_information_table_items{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 1rem;
+}
+.Information_items{
+	display: flex;
+	flex-direction: column;
+	gap: 4px;
+}
+.Information_items  input{
+	padding: 0.75rem;
+	text-align: center;
+	width: fit-content;
+
+}
+.Information_items .Information_display{
+	border:none;
+	background: none;
+	border-bottom: 1px solid black;
+}
+.Information_items .Information_edit{
+	border:none;
+	box-shadow: 0 3px 3px black;
+	border-radius: 2px;
+}
+
+.Inquiry_container table{
+	width: 100%;
+	border-collapse: collapse;
+	margin-top: 20px;
+	background: white;
+	height: 250px;
+	text-align: center;
+}
+.Table_Inquiry caption{
+	text-align: left;
+	font-size: var(--fs-1);
+	font-weight: var(--fw-700);
+	font-family: var(--ff-Momoiro);
+	padding: 1rem;
+	background: var(--prussian-blue);
+	color:white;
+}
+.Table_Inquiry th, td{
+	padding: 1rem;
+}
+.Table_Inquiry th{
+	background: var(--cultured-2);
+	border:none;
+	text-transform: uppercase;
+	font-weight: var(--fw-700);
+}
+.header-user-display{
+	background: var(--amaresa-logo-yellow-light);
+	color: white;
+	padding: .50rem;
+	border-radius: 5px;
+}
+.td-action{
+	position: relative;
+	transition: .3s ease;
+	display: flex;
+	align-items: center;
+	gap: 1rem;
+	justify-content: space-evenly;
+
+}
+.td-action span{
+	width: fit-content;
+	padding: 4px;
+	position: absolute;
+	top: 0;
+	left: 0;
+	font-size: var(--fs-4);
+	opacity: 0;
+}
+.td-action a{
+	font-size: var(--fs-2);
+	padding: 7px;
+	background: var(--cultured-2);
+	box-shadow: 0 2px 2px black;
+	border-radius: 2px;
+	color: black;
+
+}
+.td-action a:is(:hover,:focus) {
+	color: var(--orange-soda); 
+	transform: scale(1.1);
+
+}
+/*======================*\
+# TOOLTIP FOR TITLE
+\*======================*/
+.custom-tooltip {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.custom-tooltip:hover::after {
+    content: attr(data-title);
+    position: absolute;
+    left: 	0%;	
+    color: black;
+    font-size: 12px;
+    padding: 5px;
+    background: white;
+    box-shadow: 0 3px 3px black;
+    border-radius: 2px;
+    bottom: 100%;
+    white-space: nowrap;
+    z-index: 1;
+    opacity: 0;
+    transition: opacity 0.3s;
+    pointer-events: none;
+}
+
+.custom-tooltip:hover::after {
+    opacity: 1;
+}

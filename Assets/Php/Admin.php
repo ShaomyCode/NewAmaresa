@@ -28,7 +28,15 @@ if(isset($_POST['Submit'])){
     }
  
 }
-
+if(isset($_POST['Transfer_to_client'])){
+    transferClient($conn);
+}
+if(isset($_POST['Add_agent'])){
+    agent($conn);
+}
+if(isset($_POST['Update_Overview'])){
+    UpdateInquiry($conn);
+}
 /***********************************************
 FOR DELETING: USERS - MANAGEMENTS - PROPERTIES
 ************************************************/
@@ -38,8 +46,11 @@ if(isset($_GET['deleteid'])){
 if(isset($_GET['DeleteID'])){
     DeleteMessage($conn);
 }
-if(isset($_GET['SelectedID'])){
+if(isset($_GET['PromoteID'])){
     Sales($conn);
+}
+if(isset($_GET['MoveClient'])){
+    transferClient($conn);
 }
 /***********************************************
 FOR ARCHIVING: USERS - MANAGEMENTS - PROPERTIES
@@ -145,6 +156,7 @@ function uploadImage($inputName, &$newFileName) {
 function AddProperty($conn){
     //INPUT NAMES
     $Property = $_POST['Property'];
+    $Management = $_POST['Management'];
     $Price = $_POST['Price'];
     $Bedroom = $_POST['Bedroom'];
     $Bathroom = $_POST['Bathroom'];
@@ -165,8 +177,8 @@ function AddProperty($conn){
     uploadImage('Bathroom', $Newfile_Bathroom);  
 
     $stmt = "
-    INSERT INTO properties(Property, Description, Price, Bedrooms, Bathrooms, Lot,Block, Phase, Area_sqft, VirtualTour, Status, IExterior,IBedroom,IBathroom,IAttic,IDining,Role) 
-    VALUES ('$Property', '$Message', '$Price', '$Bedroom', '$Bathroom','$Lot','$Block','$Phase', '$Area','$VirtualTour','$Status','$Newfile_Exterior','$Newfile_Bedroom','$Newfile_Livingroom','$Newfile_Diningroom','$Newfile_Bathroom','$Role')
+    INSERT INTO properties(Property, Description, Price, Bedrooms, Bathrooms, Lot,Block, Phase, Area_sqft, VirtualTour, Status, IExterior,IBedroom,IBathroom,IAttic,IDining,Role, ManagementID) 
+    VALUES ('$Property', '$Message', '$Price', '$Bedroom', '$Bathroom','$Lot','$Block','$Phase', '$Area','$VirtualTour','$Status','$Newfile_Exterior','$Newfile_Bedroom','$Newfile_Livingroom','$Newfile_Diningroom','$Newfile_Bathroom','$Role','$Management')
     ";
     mysqli_query($conn,$stmt);
 
@@ -526,7 +538,7 @@ function restoreProperty($conn) {
     try {
         // Insert into management table
         $Insert = "
-        INSERT INTO Properties(Property, Description, Price,Bedrooms,Bathrooms,Lot,Block,Phase,Area_sqft,VirtualTour, Status, IExterior, IBedroom, IBathroom, IAttic, IDining,Role)
+        INSERT INTO properties(Property, Description, Price,Bedrooms,Bathrooms,Lot,Block,Phase,Area_sqft,VirtualTour, Status, IExterior, IBedroom, IBathroom, IAttic, IDining,Role)
         SELECT Property, Script, Price, Bedrooms, Bathrooms, Lot, Block, Phase, Area_sqft, Virtual, Status, IExterior, IBedroom, IBathroom, IAttic, IDining, Role
         FROM archive
         WHERE ArchiveID = ? 
@@ -571,19 +583,91 @@ function restoreProperty($conn) {
         if (isset($stmtdel)) $stmtdel->close();
     }
 }
+function transferClient($conn) {
+    $TransferID = $_GET['MoveClient'];
+    $StagePromote = $_GET['StagePromote'];
+    
+    try {
+        // Insert into management table
+        $Insert = "
+        INSERT INTO clients(Firstname, lastname, phone,email,address,ocular,Stages,Payment,GovermentID1,GovermentID2,Billing,Income,Reservation,PropertyID,UserID)
+        SELECT Firstname, Lastname, Phone, Email, Address,ocular, '$StagePromote', Payment, GovermentID1, GovermentID2,Billing, Income, Reservation, PropertyID,UserID
+        FROM pending
+        WHERE PendingID = ? 
+        ";
+        $stmt = $conn->prepare($Insert);
+        $stmt->bind_param("i", $TransferID);
+
+        if (!$stmt->execute()) {
+            throw new Exception("Error in restoring data: " . $stmt->error);
+        }
+
+        // Delete from archive table
+        $delete = "
+        DELETE FROM pending 
+        WHERE PendingID = ?
+        ";
+        $stmtdel = $conn->prepare($delete);
+        $stmtdel->bind_param("i", $TransferID);
+
+        if (!$stmtdel->execute()) {
+            throw new Exception("Error deleting record from pending: " . $stmtdel->error);
+        }
+
+        // Success message
+        echo "
+        <script>
+            Swal.fire({
+                icon: 'success',
+                title: 'Successfully promoted as a client',
+                showConfirmButton: false,
+                timer: 1500
+            }).then(() => {
+                window.location.href = '../../Admin-Client.php';
+            });
+        </script>    
+        ";
+
+    } catch (Exception $e) {
+        echo "Exception: " . $e->getMessage();
+    } finally {
+        if (isset($stmt)) $stmt->close();
+        if (isset($stmtdel)) $stmtdel->close();
+    }
+}
+function Agent($conn){
+    $SelectedID = $_POST['selectedID'];
+    $Agent = $_POST['Agent'];
+
+    $sql = "UPDATE clients SET ManagementID = $Agent WHERE clientID = $SelectedID ";
+    $rs = mysqli_query($conn,$sql);
+        echo "
+        <script>
+            Swal.fire({
+                icon: 'success',
+                title: 'Successfully Assigned!',
+                showConfirmButton: false,
+                timer: 1500
+            }).then(() => {
+                window.location.href = '../../Admin-Client.php';
+            });
+        </script>    
+        ";    
+}
 
 /***********************************************
 FUNCTION FOR INSERTING SELECTED PENDING
 ************************************************/ 
 function Sales($conn) {
-    $SelectedID = $_GET['SelectedID'];
+    $SelectedID = $_GET['PromoteID'];
 
     $InsertSale = " 
-    INSERT INTO sales (Property, CurrentOwner)
-    SELECT properties.Property, pending.Lastname
-    FROM pending
-    JOIN properties ON pending.PropertyID = properties.PropertyID
-    WHERE PendingID = ?
+    INSERT INTO sales(Property, CurrentOwner, Agent, UserID, PropertyID, ManagementID)
+    SELECT properties.Property, clients.Lastname, management.Lastname,clients.UserID, clients.PropertyID, clients.ManagementID
+    FROM clients
+    JOIN properties ON clients.PropertyID = properties.PropertyID
+    JOIN management ON management.ManagementID = clients.ManagementID
+    WHERE clientID = ?
     ";
     
     $stmt = $conn->prepare($InsertSale);
@@ -595,9 +679,9 @@ function Sales($conn) {
     
     $updateHouse = "
     UPDATE properties 
-    INNER JOIN pending ON properties.PropertyID = pending.PropertyID
+    INNER JOIN clients ON clients.PropertyID = properties.PropertyID
     SET properties.Status = ?
-    WHERE pending.PendingID = ?";
+    WHERE clients.clientID = ?";
 
     $stmtUpdate = $conn->prepare($updateHouse);
     $Update = "Purchased";
@@ -609,8 +693,8 @@ function Sales($conn) {
 
 
     $sqlDel = "
-    DELETE FROM pending
-    WHERE PendingID = ?
+    DELETE FROM clients
+    WHERE clientID = ?
     ";
 
     $stmtDel = $conn->prepare($sqlDel);

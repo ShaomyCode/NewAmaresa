@@ -21,6 +21,7 @@
     <link rel="stylesheet" type="text/css" href="./Assets/Momoiro-Regular/style.css">   
     <!-- Custom Css Link -->
     <link rel="stylesheet" type="text/css" href="./Assets/Css/Index.css?v=<?php echo time(); ?>">
+    <link rel="stylesheet" type="text/css" href="./Assets/Css/Table.css?v=<?php echo time(); ?>">
     <!-- Google font link -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -116,7 +117,8 @@
                             </div>
                     ";
 
-                    $sql = "SELECT COUNT(*) as replied FROM pending WHERE UserID = $Get AND Status != 'Pending'";
+                    $sql = "SELECT COUNT(*) as replied FROM clients WHERE userID = $Get";
+
                     $rs = mysqli_query($conn,$sql);
                     if($rs){
                         $row =  mysqli_fetch_assoc($rs);
@@ -140,7 +142,7 @@
 
                         ";                            
                     }
-                    $cart = "SELECT count(*) AS inquiry FROM pending WHERE UserID = $Get AND Status = 'Pending' ";
+                    $cart = "SELECT count(*) AS inquiry FROM pending WHERE UserID = $Get ";
                     $cartrs = mysqli_query($conn, $cart);
                     if($cartrs){
                         $row = mysqli_fetch_assoc($cartrs);
@@ -149,7 +151,7 @@
                                     </div>                                       
 
                                     <div class='notif-icon'>
-                                     <i class='fa-solid fa-cart-plus'></i>
+                                     <i class='fa-solid fa-home'></i>
                                         <div class='notif-msg'>
                                            $total
                                         </div>
@@ -299,12 +301,64 @@
                     <p class="section-subtitle"> Properties </p>
                     <h2 class="h2 section-title"> Featured Listing </h2>
                     <p class="locale-text"> Step into the finest homes available right now. Our featured listings offer a blend of exceptional design, prime locations, and unparalleled value. Don’t miss out on these standout properties </p>
+                    <?php
+
+                            echo "
+                                <form method='POST'>
+                                <div class='Block-Options-item'>
+                                    <input type='text' list='Block-Options' id='Block' name='Block' placeholder='Filter by block'>
+                                    <input type = 'Submit' name='block_btn'> 
+                                </div>
+
+                                <datalist id='Block-Options'>
+                            ";
+                            $blocksql = "SELECT * FROM properties";
+                            $blockrs = $conn->query($blocksql);
+
+                            if($blockrs){
+                                $unique_blocks = [];
+                                while($blockrw = mysqli_fetch_assoc($blockrs)){
+                                    $Status = $blockrw['Status'];
+                                    $Block = $blockrw['Block'];
+                                    if($Status == "Sale" && !in_array($Block, $unique_blocks)){
+                                    echo "
+                                        <option value='$Block'> </option>
+                                    ";
+                                    $unique_blocks[] = $Block;
+                                    }
+                                    
+                                }
+
+                                echo "
+                                <option value='Default'> </option>
+                                </datalist>
+                                </form>
+                                ";
+
+                            }
+                    ?>                              
                     <!--Section: Featured Card -->
                     <section class="featuredcard" id = "card">
                         <div class="card-container">
                             <?php
-                            $sql = "SELECT * FROM properties";
-                            $rs = mysqli_query($conn,$sql);
+                           
+                                if(isset($_POST['block_btn'])){
+                                    $Sort = $_POST['Block'];
+                                    if($Sort == "Default"){
+                                        $sql = "SELECT * FROM properties";
+                                        $stmt = $conn->prepare($sql);
+                                    } else {
+                                        $sql = "SELECT * FROM properties WHERE Block = ?";
+                                        $stmt = $conn->prepare($sql);
+                                        $stmt->bind_param("s", $Sort);
+                                    }
+                                } else {
+                                    $sql = "SELECT * FROM properties";
+                                    $stmt = $conn->prepare($sql);
+                                }
+
+                                $stmt->execute();
+                                $rs = $stmt->get_result();  
                             if($rs){
                                 while ($row = mysqli_fetch_assoc($rs)) {
 
@@ -387,6 +441,354 @@
                     </section>
                 </div>
             </section>
+            <!-- Sample Computation -->
+            <section class="Computation" id="Computation">
+                <div class="container">
+            <section class="Payment" id="Payment">
+                <h1 class="Payment_Title">Mode of Payment</h1>
+                <span class="Payment_Subtitle">Full payment of the property price at one time. </span>
+                <div class="Container">
+                    <div class="block">
+                        <div class="block-header">
+                            <h3>Bank Financing</h3>
+                        </div>
+                        <div class="details">
+                            <h2>STAGE 1: Reserved Sale</h2>
+                            <br>
+                            <p><strong>Documents 1-6 should be Submitted to guarantee reservation of unit </strong></p> <br>
+                            <p>1. Full Reservation Fee (Cash or Dated Check)</p> <br>
+                            <p>2. Reservation Agreement</p> <br>
+                            <p>3. Buyer’s Information Sheet</p> <br>
+                            <p>4. Photocopy of (2) two Valid Gov’t ID (Driver’s License, Passport, PRC ID, SSS, Postal ID, TIN ID & other valid gov’t ID).</p> <br>
+                            <p>5. Proof of billing (Meralco, PLDT, credit card, water bill, cellphone statement of account) <br> <br>
+                             <strong>Note:</strong> if no proof of billing under the name of buyer. <br>
+                             <strong>Provide:</strong> Certification Letter of Owner and Valid ID.</p> <br> <br>
+                            <p>6. Proof of Income: <br>
+                            <strong>A. If locally employed</strong> <br>
+                            a.1 Latest 3 months payslip or Certificate of Employment and Compensation <br>
+                            <br>
+
+                            <strong>B. OFW</strong> <br>
+                            b.1 Job Contract or Certificate of Employment and Conpensation or 3 months payslip <br>
+                            b.2 Photocopy of two(2) Valid ID of SPA <br>
+                            b.3 Information Sheet of SPA
+                            <br> <br>
+                            <strong>C. FOR SELF-EMPLOYED</strong><br>
+                            c.1 Certificate of Registration of Business Name (DTI Registration) or Business Permit<br>
+                            c.2 Bank Statement (Latest 3 months) or ITR</p> 
+                            <br><br>
+                            <p>Note: if insufficient income, provide additional source of income or provide CO-BUYER.</p><br> <br>
+
+                             <h2>STAGE 2: Closed Sale</h2>
+                            <br>
+                            <p><strong>For submission 7 to 30 days upon approval of sale</strong></p> <br>
+                            <p>1. Tax Identification Number with verification slip</p> <br>
+                            <p>2. Sketch of present address</p> <br>
+                            <p>3. 1X1 ID Photo (3pcs)</p> <br>
+                            <p>4. If single: Birth Certificate & CENOMAR</p> <br>
+                            <p>5. If married: Marriage Certificate</p> <br>
+                            <p>6. COMPLETE POST DATED CHECKS FOR DOWNPAYMENT</p> <br>
+                            <p>7. Proof of Income:</p> <br>
+                            <p><strong>A. If locally employed</strong> <br> a.1 Latest Certificate of Employment and Compensation<br>
+                            a.2 Latest ITR </p> <br>
+                            <p><strong>B. OFW</strong> <br>
+                            b.1 Latest Job Contract or Certificate of Employment and Compensation with English Translation <br>
+                            b.2 Notarized Special Power of Attorney <br>
+                            b.3 Latest 3 months bank statement</p> <br>
+                            <p><strong>C. FOR SELF-EMPLOYED</strong><br>
+                                c.1 Latest ITR or BIR Audited Financial Statement <br>
+                                c.2 Certificate of Registration of Business Name (DTI Registration) <br>
+                                c.3 Business Permit<br>
+                                c.4 Clients and Suppliers (including contact persons and numbers, at least (5) five)</p><br> <br>
+
+
+                            <h2>STAGE 3: Before Full Downpayment</h2> <br>
+                            <p>1. 6 months PDC's</p> <br> <br>
+                        </div>
+                    </div>
+
+                    <div class="block">
+                        <div class="block-header">
+                            <h3>In-House</h3>
+                        </div>
+                        <div class="details">
+                            <h2 class="stage">STAGE 1: Reserved Sale</h2>
+                            <br>
+                            <p><strong>Documents 1-6 should be Submitted to guarantee reservation of unit</strong></p> <br>
+                            <p>1. Full Reservation Fee (Cash or Dated Check)</p> <br>
+                            <p>2. Reservation Agreement</p> <br>
+                            <p>3. Buyer’s Information Sheet</p> <br>
+                            <p>4. Photocopy of (2) two Valid Gov’t ID (Driver’s License, Passport, PRC ID, SSS, Postal ID, TIN ID & other valid gov’t ID). </p> <br>
+                            <p>5. Proof of billing (Meralco, PLDT, credit card, water bill, cellphone statement of account)  <br> <br>
+                             <strong>Note:</strong> if no proof of billing under the name of buyer. <br>
+                             <strong>Provide:</strong> Certification Letter of Owner and Valid ID.</p> <br> <br> 
+                           
+                            <p>6. Proof of Income: <br>
+                            <strong>A. If locally employed</strong> <br>
+                            a.1 Latest 3 months payslip or Certificate of Employment and Compensation <br>
+                            <br>
+                            <strong>B. OFW</strong> <br>
+                            b.1 Job Contract or Certificate of Employment and Conpensation or 3 months payslip <br>
+                            b.2 Photocopy of two(2) Valid ID of SPA <br>
+                            b.3 Information Sheet of SPA
+                            <br> <br>
+                            <strong>C. FOR SELF-EMPLOYED</strong><br>
+                            c.1 Certificate of Registration of Business Name (DTI Registration) or Business Permit<br>
+                            c.2 Bank Statement (Latest 3 months) or ITR</p> 
+                            <br><br>
+                            <p>Note: if insufficient income, provide additional source of income or provide CO-BUYER.</p> <br> <br>
+
+                             <h2>STAGE 2: Closed Sale</h2>
+                            <br>
+                            <p><strong>For submission 7 to 30 days upon approval of sale</strong></p> <br>
+                            <p>1. Tax Identification Number with verification slip</p> <br>
+                            <p>2. Sketch of present address</p> <br>
+                            <p>3. 1X1 ID Photo (3pcs)</p> <br>
+                            <p>4. If single: Birth Certificate</p> <br>
+                            <p>5. If married: Marriage Certificate</p> <br>
+                            <p>6. COMPLETE POST DATED CHECKS FOR DOWNPAYMENT</p> <br>
+                            <p>7. Proof of Income:</p> <br>
+                            <p><strong>A. If locally employed</strong> <br> a.1 Latest Certificate of Employment and Compensation or Latest ITR </p> <br>
+                            <p><strong>B. OFW</strong> <br>
+                            b.1 Latest Job Contract or Certificate of Employment and Compensation with English Translation <br>
+                            b.2 Notarized Special Power of Attorney <br>
+                            b.3 Latest 3 months bank statement</p> <br>
+                            <p><strong>C. FOR SELF-EMPLOYED</strong><br>
+                                c.1 Latest ITR or BIR Audited Financial Statement <br>
+                                c.2 Certificate of Registration of Business Name (DTI Registration) <br>
+                                c.3 Business Permit</p><br> <br>
+
+
+                            <h2>STAGE 3: Before Full Downpayment</h2> <br>
+                            <p>1. 36 months PDC's</p> <br>
+                            <p>2. Any Latest Proof of Income (3 month payslip or Certificate of Employment and Compensation or ITR)</p> <br> <br>
+
+                            
+                        </div>
+                    </div>
+                    
+                </div>
+                <div class="notes">
+                            <p><strong>Notes: </strong> <br><br>
+                                1. For buyers who cannot provide proof of income due to undeclared income/assets/source of income: <br>
+                                a. Suggest cash payment or <br>
+                                b. Suggest deffered cash payment of 24 months</p> <br>
+
+                            <p>2. If seller wishes to hold unit for buyer, the following should be provided: <br>
+                                a. Full reservation fee<br>
+                                b. BIS<br>
+                                c. Reservation Agreement<br>
+                                -Holding unit must 7 calendar days only <br>
+                                -Res. Fee is forfeited upon non-compliance of RS requirements after the 7th day.<br>
+                                -Non-compliance of RS requirements on 8th day, we will re-open the said unit.</p> <br>
+
+                                <p>3. For OFW buyers who will be providing past due job contracts, new job contracts must be submitted before DP and upon submission of M.A. PDC's</p>
+
+                </div>  
+                        <div class="table-block">
+                            <div class="table-header">
+                                <h3>IN-HOUSE</h3>
+                            </div>
+                            <div class="table">
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>House Model</th>
+                                            <th>Kayla-Prime</th>
+                                            <th>Arya-Prime</th>
+                                            <th>Amara-Expanded</th>
+                                            <th>Alexandria</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>Lot Area</td>
+                                            <td>89 sqm.</td>
+                                            <td>89 sqm.</td>
+                                            <td>110 sqm.</td>
+                                            <td>159 sqm.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Usable Floor Area</td>
+                                            <td>94 sqm.</td>
+                                            <td>99 sqm.</td>
+                                            <td>147 sqm.</td>
+                                            <td>174 sqm.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>TCP(IN-HOUSE)</td>
+                                            <td>5,721,410.00</td>
+                                            <td>5,962,300.00</td>
+                                            <td>8,261,110.00</td>
+                                            <td>10,200,220.00</td>
+                                        </tr>
+                                        <tr>
+                                            <td>DISCOUNT</td>
+                                            <td>0.00</td>
+                                            <td>0.00</td>
+                                            <td>0.00</td>
+                                            <td>0.00</td>
+                                        </tr>
+                                        <tr>
+                                            <td>TCP NET</td>
+                                            <td>5,721,410.00</td>
+                                            <td>5,962,300.00</td>
+                                            <td>8,261,110.00</td>
+                                            <td>10,200,220.00</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Less Reservation Fee</td>
+                                            <td>20,000.00</td>
+                                            <td>20,000.00</td>
+                                            <td>30,000.00</td>
+                                            <td>35,000.00</td>
+                                        </tr>
+                                        <tr>
+                                            <td>20% Downpayment (Less Reservation Fee)</td>
+                                            <td>1,124,282.00</td>
+                                            <td>1,172,460.00</td>
+                                            <td>1,622,222.00</td>
+                                            <td>2,0005,004.00</td>
+                                        </tr>
+                                        <tr>
+                                            <td>DP Payable in 24 months</td>
+                                            <td>46,845.08</td>
+                                            <td>48,852.50</td>
+                                            <td>67,592.58</td>
+                                            <td>83,543.50</td>
+                                        </tr>
+                                        <tr>
+                                            <td>80% Balance</td>
+                                            <td>4,557,128.00</td>
+                                            <td>4,769,840.00</td>
+                                            <td>6,608,888.00</td>
+                                            <td>8,160,176.00</td>
+                                        </tr>
+                                        <tr>
+                                            <td>(IN-HOUSE) 5 years @ 17% int p.a.</td>
+                                            <td>114,565.19</td>
+                                            <td>119,388.76</td>
+                                            <td>165,420.00</td>
+                                            <td>201,248.63</td>
+                                        </tr>
+                                        <tr>
+                                            <td>(IN-HOUSE) 10 years @ 17% int p.a.</td>
+                                            <td>85,225.07</td>
+                                            <td>88,813.32</td>
+                                            <td>123,005.97</td>
+                                            <td>151,940.60</td>
+                                        </tr>
+                                      
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="table-block">
+                            <div class="table-header">
+                                <h3>BANK FINANCE</h3>
+                            </div>
+                            <div class="table">
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>House Model</th>
+                                            <th>Kayla-Prime</th>
+                                            <th>Arya-Prime</th>
+                                            <th>Amara-Expanded</th>
+                                            <th>Alexandria</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>Lot Area</td>
+                                            <td>89 sqm.</td>
+                                            <td>89 sqm.</td>
+                                            <td>110 sqm.</td>
+                                            <td>159 sqm.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Usable Floor Area</td>
+                                            <td>94 sqm.</td>
+                                            <td>99 sqm.</td>
+                                            <td>147 sqm.</td>
+                                            <td>174 sqm.</td>
+                                        </tr>
+                                        
+                                            <td>TCP(BANK FIN)</td>
+                                            <td>5,826,390.00</td>
+                                            <td>6,071,700.00</td>
+                                            <td>8,412,690.00</td>
+                                            <td>10,387,380.00</td>
+                                        </tr>
+                                        <tr>
+                                            <td>DISCOUNT</td>
+                                            <td>0.00</td>
+                                            <td>0.00</td>
+                                            <td>0.00</td>
+                                            <td>0.00</td>
+                                        </tr>
+                                        <tr>
+                                            <td>TCP NET</td>
+                                            <td>5,826,390.00</td>
+                                            <td>6,071,700.00</td>
+                                            <td>8,412,690.00</td>
+                                            <td>10,387,380.00</td>
+                                        </tr>
+                                        <tr>
+                                            <td>10% Downpayment (less res. Fee)</td>
+                                            <td>562,639.00</td>
+                                            <td>587,170.00</td>
+                                            <td>811,269.00</td>
+                                            <td>1,003,738.00</td>
+                                        </tr>
+                                        <tr>
+                                            <td>DP Payable in 24 months</td>
+                                            <td>23,443.29</td>
+                                            <td>24,465.42</td>
+                                            <td>33,802.88</td>
+                                            <td>41,822.42</td>
+                                        </tr>
+                                        <tr>
+                                            <td>90% Balance</td>
+                                            <td>5,243,751.00</td>
+                                            <td>5,464,530.00</td>
+                                            <td>7,671,421.00</td>
+                                            <td>9,348,542.00</td>
+                                        </tr>
+                                        <tr>
+                                            <td>(BANK) 5 years @ 8.25% int p.a.</td>
+                                            <td>106,952.86</td>
+                                            <td>111,445.92</td>
+                                            <td>154,428.60</td>
+                                            <td>190,677.24</td>
+                                        </tr>
+                                        <tr>
+                                            <td>(BANK) 10 years @ 8.25% int p.a.</td>
+                                            <td>64,315.97</td>
+                                            <td>67,023.88</td>
+                                            <td>92,865.45</td>
+                                            <td>114,663.52</td>
+                                        </tr>
+                                        <tr>
+                                            <td>(BANK) 15 years @ 8.25% int p.a.</td>
+                                            <td>50,871.73</td>
+                                            <td>53,013.59</td>
+                                            <td>73,453.38</td>
+                                            <td>90,694.92</td>
+                                        </tr>
+                                        <tr>
+                                            <td>(BANK) 20 years @ 8.25% int p.a.</td>
+                                            <td>44,680.22</td>
+                                            <td>46,561.40</td>
+                                            <td>64,513.50</td>
+                                            <td>79,656.60</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+
+            </section>            
             <!-- Section: Testimonial -->
             <section class="testimonial" id="testimonial">
                 <div class="container">
@@ -401,7 +803,7 @@
                         <div class="testimonial-feedbox">
                             <form method="POST" action="./Assets/Php/Index.php">
                                 <div class="testimonial-feedbox-top">
-                                    <img src="./Assets/Images/Feedback.gif" class="Feedback-Image">
+
                                     <input type="text" name="Name" placeholder="Enter your name" required>
                                     <div class="star-rating">
                                         <input type="radio" id="star5" name="rating" value="5" required><label for="star5" title="excellent">★</label>

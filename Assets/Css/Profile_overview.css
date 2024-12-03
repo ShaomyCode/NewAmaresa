@@ -1,0 +1,130 @@
+
+body{
+	width: 60%;
+	margin-inline: auto;
+}
+.Profile_view_header{
+	background: var(--white);
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 1rem 1rem;
+}
+.Profile_view_header .header_title{
+	font-size: var(--fs-1);
+	font-family: var(--ff-Momoiro);
+}
+.Profile_view_header .header_link_back{
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	font-size: var(--fs-3);
+	color: black;
+	font-family: var(--ff-Momoiro);
+}
+.House_Interior{
+	width: 100%;
+}
+.House_Interior img{
+	width: 100%;
+	height: 70vh;
+	object-fit: cover;
+	border-bottom-left-radius: 10px;
+	border-bottom-Right-radius: 10px;
+	box-shadow: 0 4px 3px black;
+}
+.House_Details{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	gap: 2rem;
+	padding-bottom: var(--section-spacing);
+}
+.House_Details > *{width: 100%;}
+.House_name{
+	font-size: var(--fs-1);
+	font-family: var(--ff-Momoiro);
+	font-weight: var(--fw-700);
+	text-align: center;
+	padding: 1rem;
+}
+.House_location{
+	display: flex;
+	align-items: center;
+	justify-content: space-evenly;
+}
+.House_location_items{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	width: 100%;
+}
+.House_location_items input{
+	padding: .75rem;
+	text-align: center;
+	border:none;
+	box-shadow: 0 3px 3px black;
+	width: 80%;
+}
+.Upload_Details{
+	padding-bottom: var(--section-spacing);
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	gap: 1rem;
+}
+.Upload_Details_items:last-child{
+	display: flex;
+	flex-direction: column;
+}
+.Upload_Details_items:last-child > .Upload_items{
+	padding: 1rem;
+	border:none;
+	box-shadow: none;
+}
+.Upload_Details_items:last-child > .Upload_items input{
+	padding: 1rem 0;
+	text-align: center;
+}.Upload_Details_items:last-child > .Upload_items button{
+	width: 100%;
+	text-align: center;
+
+}
+.Upload_Details_items{
+	display: flex;
+	align-items: center;
+	justify-content: space-evenly;
+	gap: 1rem;
+}
+.Upload_items{
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+	justify-content: center;
+	box-shadow: 0 3px 2px black;
+	width: 350px;
+}
+.Upload_items img{
+	width: 100%;
+	height: 350px;
+
+}
+
+.custom-file-upload{
+	display: inline-block;
+	padding: 10px 15px;
+	cursor: pointer;
+	background-color: var(--body-color);
+	border: 1px solid #ccc;
+	border-radius: 5px;
+	text-align: center;
+}
+.Proofs{
+	padding: 1rem;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}

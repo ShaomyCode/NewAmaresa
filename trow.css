@@ -1,0 +1,29 @@
+*{
+		padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+}
+body{
+	width: 80%;
+	margin-inline: auto;
+}
+.Payment .container{
+	text-align: center;
+}
+.Payment-wrapper{
+	display: flex;
+	text-align: center;
+	justify-content: center;
+	gap: 1rem;
+}
+.Payment-wrapper > *{
+	width:50%;
+	height: 100vh;
+	box-shadow: 0 4px 4px black;
+}
+.Payment-wrapper  h3{
+	width: 100%;
+	padding: 1rem  0;
+	background: darkblue;
+	color:white;
+}

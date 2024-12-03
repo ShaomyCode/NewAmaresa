@@ -95,6 +95,9 @@
 				$Properties = $row['Property'];		
 				$Description = $row['Description'];		
 				$Price = $row['Price'];		
+				$Block = $row['Block'];		
+				$Lot = $row['Lot'];		
+				$Phase = $row['Phase'];		
 				$Bedrooms = $row['Bedrooms'];
 				$Bathrooms = $row['Bathrooms'];
 				$Area = $row['Area_sqft'];
@@ -141,13 +144,13 @@
 			}
 
 			echo " 
-			
 				<section class='HouseDetails-Container'>
 					<div class='container'>
+
 						<div class='LeftHouse-Details'>
 							<div class='House-Details'>
-
 								<h3 class='h3 Titles'> $Properties </h3>
+
 								<ul class='House-list'>
 									<li class='list-items'>
 										<i class='fa-solid fa-hand-holding-dollar'></i>
@@ -181,31 +184,38 @@
 									<li class='Overview-list-items'>
 									<i class='fa-solid fa-layer-group'></i>
 									<span>Floor Area(sqm): $Area</span>
-									</li>							
+									</li>		
+
 									<li class='Overview-list-items'>
-									<i class='fa-solid fa-couch'></i>
-									<span>Furnishing: Fully furnished</span>
+									<i class='fa-solid fa-house-flag'></i>
+									<span>Block: $Block</span>
 									</li>							
 									
 									<li class='Overview-list-items'>
-									<i class='fa-solid fa-square-parking'></i>
-									<span>Parking Spaces: 1</span>
+									<i class='fa-solid fa-house-flag'></i>
+									<span>lot: $Lot</span>
+									</li>									
+									<li class='Overview-list-items'>
+									<i class='fa-solid fa-house-flag'></i>									
+									<span>Phase: $Phase</span>
 									</li>
 								</ul>
 							</div>
-
-						</div>
 						
-						<div class='RightHouse-Details'>
+					
 							<div class='Description-Details'>
 								<h3 class='h3 Titles'> Description </h3>
 								<span>$Description </span>
-							
+							</div>
+				
+						</div>
+						<div class='RightHouse-Details'>
+							<div class='House_Map_Container'>
+								<img src='./Assets/Images/Amaresa_House_Map.jpg' alt='House-Map'>
 							</div>
 						</div>
 
 					</div>
-
 				</section>
 			";
 

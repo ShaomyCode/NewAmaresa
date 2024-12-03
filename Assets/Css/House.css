@@ -281,11 +281,30 @@ button, a {transition: var(--transition);}
 /*======================*\
 # Image Container
 \*======================*/
+.HouseDetails-Container .container{
+	width: 100%;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: center;
+	gap: 1rem;
+	margin-bottom: 5rem;
+}
+.RightHouse-Details{
+	width: 50%;
+}
+.RightHouse-Details img{
+	width: 100%;
+
+	border-radius: 4px;
+	padding: 1rem;
+	box-shadow: 0 5px 5px 3px black;
+}
 .ImageContainer{
 	margin-block: 10px;
 	width: 100%;
 	background: white;
-	padding-block: 1rem;
+	padding-block:5rem;
 }
 .ImageContainer .container{
 	display: flex;
@@ -300,7 +319,6 @@ button, a {transition: var(--transition);}
 
 }
 .VirtualTour-btn-nonlogin{
-
 	display: none;
 }
 

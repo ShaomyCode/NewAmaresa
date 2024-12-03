@@ -255,3 +255,4 @@ include './Assets/Php/Connection.php';
 		<script src="https://kit.fontawesome.com/83786b8894.js" crossorigin="anonymous"></script>		
 	</body>
 	</html>
+

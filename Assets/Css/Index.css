@@ -34,7 +34,7 @@
 	--head-foot-bg-amaresa: rgba(255, 255, 255, 0.66);
 	--header-bg-amaresa-shadow:0 4px 30px rgba(0, 0, 0, 0.1);
 	--footer-bg-amaresa-shadow:0 -4px 30px rgba(0, 0, 0, 0.1);
-	--body-color: #E4E9F7;
+	--body-color: #F4F5FF;
 
 	--amaresa-logo-brown-light: #A16636;
 	--amaresa-logo-green-light: #78A27D;
@@ -206,13 +206,16 @@ button, a {transition: var(--transition);}
 # HEADER
 \*======================*/
 .header{
-	position: relative;
+	position: fixed;
+	top: 0;
+	width: inherit;
+	margin-inline: auto;
 	z-index: 2;
 }
 .header-top{
-	background: var(--head-foot-bg-amaresa);
-	box-shadow:var(--header-bg-amaresa-shadow);
-	padding-block: 15px;
+	background: var(--white);
+/*	box-shadow:var(--header-bg-amaresa-shadow);*/
+	padding-block: 25px;
 }
 .header-top .container,
 .header-top-list{
@@ -292,21 +295,7 @@ button, a {transition: var(--transition);}
 
 .login-btn span{display: none;}
 .header-top-btn:is(:hover,:focus){--orange-soda:hsl(7, 72%, 46%);}
-.header-user-display{
-	background: var(--orange-soda);
-	color: var(--white);
-	font-size: var(--fs-6);
-	font-weight: var(--fw-700);
-	padding: 4px 16px;
-	border-radius: 8px;
-	display: flex;
-	gap: 5px;
-	align-items: center;
-	span{
-		color: var(--white);
-		font-weight: var(--fw-700);
-	}
-}
+
 .header-pending{
 	background: var(--orange-soda);
 	color: var(--white);
@@ -323,8 +312,8 @@ button, a {transition: var(--transition);}
 # Section: HERO
 \*======================*/
 .hero{
-	background: var(--cultured-2);
-	padding-block: 1rem;
+	background: var(--white);
+	padding-block: 150px;
 }
 .hero-content{margin-bottom: 66px;}
 .hero-top-part{
@@ -911,11 +900,26 @@ padding-block: 50px;
 	text-align: center;
 	margin-inline: auto;
 	font-size: var(--fs-6);
-
 }
 /*======================*\
 # Section: Featured Card
 \*======================*/
+.Block-Options-item{
+	margin-inline: auto	;
+	width: fit-content;
+	padding: 1rem;
+	box-shadow: 0 3px 3px black;
+	border-radius: 5px;
+	background: var(--body-color);
+}
+.Block-Options-item input{
+	padding: 10px;
+	background: var(--white);
+	border-radius: 5px;
+	outline: none;
+	border:none;
+	text-align: center;
+}
 .card-container {
 	display: flex;                   
 	justify-content: center;     
@@ -1594,117 +1598,7 @@ input[type="file"] {
         border-radius: 15px;
     }
 }
-/*======================*\
-#		Profile PHP
-\*======================*/
-.Profile-Wrapper{
-	display: flex;
-	flex-direction: column;
-	justify-content: space-evenly;
-	gap: 1rem;
-	padding-block: var(--section-spacing);
-}
-.Profile-title,
-.Profile-refresh-title,
-.Purchase-title{
-	font-size: var(--fs-1);
-	text-align: center;
-}
-.Profile-subtitle{
-	text-align: center;
-	font-size: var(--fs-5);
-}
-.Profile-present-items,
-.Profile-refresh-items{
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	gap: 10px;
-	margin:20px;
-}
-.Profile-present-items input,
-.Profile-refresh-items input,
-.Purchase-items input{
-	padding: 1rem;
-	text-align: center;
-	border: none;
-	border-radius: 5px;
-	box-shadow: 0 3px 2px black;
-}
-.Profile-present-items input:is(:hover,:focus),
-.Profile-refresh-items input:is(:hover,:focus){
-	outline: 3px solid blue;
 
-}
-.Profile-btn{
-	width: fit-content;;
-}
-.Purchase-Wrapper{
-	background: var(--white);
-	padding-block: var(--section-spacing);
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
-	gap: 10px;
-}
-.Purchase-items{
-	display: flex;
-	justify-content: center;
-	gap: 1rem;
-	flex-wrap: wrap;
-	align-items: center;
-}
-.Purchase-items a{
-	padding: 1rem;
-	font-size: var(--fs-1);
-	color: var(--orange-soda);
-	text-shadow: 2px 2px 3px black;
-}
-.textarea{
-	width: 90%;
-}
-.Purchase-items textarea{
-	position: relative;
-	width: 100%;
-
-	max-height: 100px;
-	min-height: 50px;
-	height: 100px;
-}
-.Purchase-items textarea::placeholder{
-	color: dimgrey;
-}
-.custom-file-upload {
-	display: inline-block;
-	padding: 10px 15px;
-	cursor: pointer;
-	background-color: #f0f0f0;
-	border: 1px solid #ccc;
-	border-radius: 5px;
-	text-align: center;
-}
-.Payments-upload{
-	width: 50%;
-	margin-inline: auto;
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
-	gap: 1rem;
-}
-.images{
-	padding: 1rem;
-}
-.show-text{
-	color: black;
-	min-width: 5rem;
-	overflow-x: hidden;
-	text-wrap: nowrap;
-}
-.form-items input[type="file"]{
-	display: none;
-}
 /*======================*\
 #	Section: FOOTER
 \*======================*/

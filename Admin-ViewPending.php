@@ -8,8 +8,10 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>AMARESA - View Pending</title>
 	<!-- CUSTOM CSS  -->
-	<link rel="stylesheet" type="text/css" href="./Assets/Css/Content.css?v=<?php echo time(); ?>"> 
+	<link rel="stylesheet" type="text/css" href="./Assets/Css/View_pending.css?v=<?php echo time(); ?>"> 
 	<link rel="stylesheet" type="text/css" href="./Assets/Css/Admin.css?v=<?php echo time(); ?>"> 
+	<!-- LINK: FOR AMARESA FONT -->
+	<link rel="stylesheet" type="text/css" href="./Assets/Momoiro-Regular/style.css">	
 	<!-- WEBSITE ICON -->
 	<link rel="website icon" type="png" href="./Assets/Images/Icon.PNG">	
 	  <!-- Include SweetAlert2 CSS and JS -->
@@ -36,127 +38,139 @@
 	</header>
 
 	<main>
-		<section class="Content" id="Content">
-			<div class="container">
-				<?php
-					if(isset($_GET['ViewID'])){
+		<?php
+			if(isset($_GET['ViewID'])){
+				$SelectedID = $_GET['ViewID'];
+				$stmt = "SELECT pending.*, properties.* FROM pending JOIN properties ON pending.PropertyID= properties.PropertyID WHERE PendingID = $SelectedID ";
+				$rs = mysqli_query($conn,$stmt);
+				if($rs){
+					while ($row = mysqli_fetch_assoc($rs)) {
+						$UserID = $row['UserID'];
+						$PendingID = $row['PendingID'];
+						$Promote = "Stage 2";
+						$Lastname = $row['Lastname'];
+						$Firstname = $row['Firstname'];
+						$Email = $row['Email'];
+						$Phone = $row['Phone'];
+						$Message = $row['Message'];
+						$Address = $row['Address'];
+						$Date = $row['Date'];
+						$ocular = $row['ocular'];
+						$Stage = $row['Stage'];
+						$Payment = $row['Payment'];
+						$GovermentID1 = "./Images/".$row['GovermentID1'];
+						$GovermentID2 = "./Images/".$row['GovermentID2'];
+						$Billing = "./Images/".$row['Billing'];
+						$Income = "./Images/".$row['Income'];
+						$Reservation = "./Images/".$row['Reservation'];
 
-						$SelectedID = $_GET['ViewID'];
-						$stmt = "SELECT pending.*, properties.Property FROM pending JOIN properties ON pending.PropertyID= properties.PropertyID WHERE PendingID = $SelectedID ";
-						$rs = mysqli_query($conn,$stmt);
-						if($rs){
-							while ($row = mysqli_fetch_assoc($rs)) {
-								$Lastname = $row['Lastname'];
-								$Firstname = $row['Firstname'];
-								$Email = $row['Email'];
-								$Status = $row['Status'];
-								$Phone = $row['Phone'];
-								$Message = $row['Message'];
-								$Address = $row['Address'];
-								$Selected = $row['Property'];
-								$Category = $row['Category'];
-								$Receipt = "./Images/".$row['Receipt'];
-								$Date = $row['Date'];
+						// PROPERTY
+						$Property = $row['Property'];
+						$PropertyID = $row['PropertyID'];
+						$Block = $row['Block'];
 
-								echo " 
+						echo " 
+							<form  method='POST' enctype='multipart/form-data' action='./Assets/Php/Admin.php' autocomplete='on'>
+							<div class='Pending_view_wrapper'>
+								<div class='Pending_view_details'>
+									<h3 class='Pending_title'> Overview of Jamandron details </h3>
+									<span> A Summary of Important Details </span>
+									<div class='Pending_view_details_items'>
+										<div class='Pending_items'>
+											<label for='input' class='text'> Firstname: </label>
+											<input type='text' value='$Firstname' name='Firstname' readonly>
+										</div>
+										<div class='Pending_items'>
+											<label for='input' class='text'> Lastname: </label>
+											<input type='text' value='$Lastname' name='Lastname'  readonly>
+										</div>
+									</div>										
 
-								<div class='Viewing-wrapper'>
-									<div class='View-details'>
-										<h3 class='h3 View-title'>Overview of $Lastname details</h3>
-										<span>A Summary of Important Details</span>
-										<div class='View-details-items'>
-											<input type='text' value='$Lastname' readonly>
-											<input type='text' value='$Firstname' readonly>
+									<div class='Pending_view_details_items'>
+										<div class='Pending_items'>
+											<label for='input' class='text'> Email: </label>
+											<input type='text' value='$Email' name='Email' readonly>
+										</div>
+										<div class='Pending_items'>
+											<label for='input' class='text'> Phone: </label>
+											<input type='text' value='$Phone' name='Phone' readonly>
+										</div>
+									</div>	
+
+									<div class='Pending_view_details_items'>
+										<div class='Pending_items'>
+											<label for='input' class='text'> Address: </label>
+											<input type='text' value='$Address' name='Address' readonly>
 										</div>										
 
-										<div class='View-details-items'>
-											<input type='text' value='$Email' readonly>
-											<input type='text' value='$Phone' readonly>
+										<div class='Pending_items'>
+											<label for='input' class='text'> Ocular visit: </label>
+											<input type='text' value='$ocular' name='Ocular' placeholder='ocular Visit' readonly>
 										</div>
+									</div>									
 
-										<div class='View-details-items'>
-											<input type='text' value='$Address' readonly>
-											<input type='text' value='$Selected' readonly>
-										</div>		
 
-										<div class='View-details-items'>
-											<input type='text' value='$Category' readonly>
-											<input type='text' placeholder='Category here...' value='$Status' readonly>
+									<div class='Pending_view_details_items'>
+										<div class='Pending_items'>
+											<label for='input' class='text'> Property: </label>
+											<input type='text' value='$Property' readonly>
+											<input type='hidden' value='$PropertyID' name='PropertyID' readonly>
 										</div>
-										<div class='View-details-items'>
+										<div class='Pending_items'>
+											<label for='input' class='text'> Block: </label>
+											<input type='text' value='$Block' readonly>
+										</div>
+									</div>										
+
+									<div class='Pending_view_details_items'>
+										<div class='Pending_items'>
+											<label for='input' class='text'> Level: </label>
+											<input type='text' value='$Stage' readonly>
+										</div>
+										<div class='Pending_items'>
+											<label for='input' class='text'> Date: </label>
 											<input type='text' value='$Date' readonly>
 										</div>
-										<div class='View-details-items'>
-											<textarea placeholder='User Message here...' readonly>$Message</textarea>
+									</div>	
+									<div class='Pending_view_details_items'>
+										<div class='Pending_items'>
+											<label for='input' class='text'> Message: </label>
+											<textarea rows='5'  >$Message</textarea>
 										</div>
-									</div>
-									<div class='View-images'>
-										<img src='$Receipt' alt='No Reservation fee'>
+									</div>	
+									<div class='Pending_view_details_items'>
+
+											<a href='./Assets/Php/Admin.php?MoveClient=".$PendingID."&StagePromote=".$Promote."' class='custom-tooltip' data-title='Promote'>
+												<i class='fa-solid fa-people-arrows'></i>
+												<span>Confirm client </span>
+											</a>									
 									</div>
 								</div>
 
-								";
-								
-							}
-						}
+								<div class='Pending_view_reservation'>
+									<h3 class='Pending_title'> Reservation details</h3>
+									<div class='Pending_items_reservation'>
+										<img src='$GovermentID1'  alt='Goverment ID'>
+										<img src='$GovermentID2' alt='Goverment ID'>
+									</div>									
+
+									<div class='Pending_items_reservation'>
+										<img src='$Billing' alt='Proof of Billing'>
+										<img src='$Income' alt='Proof of Income'>
+									</div>
+									<div class='Pending_items_reservation'>
+										<img src='$Reservation' alt='Proof of  Reservation'>
+										<input type='hidden' name='Payment' value='$Payment'>
+									</div>
+								</div>
+							</div>
+						";
+
+
 					}
-				?>
-			</div>
-		</section>
-		<section class="Update">
-			<div class="container">
-				<form method="POST">
-					<h3 class="Update-Title"> Send your Message </h3>
-					<span class="Update-Subtitle">Your Voice Matters: We Value Your Thoughts and Feedback. Share What's on Your Mind!</span>
-
-					<div class="Update-items">
-						<input list="options" id="Role" name="Status" placeholder="Select Status here" required>
-					    <datalist id="options">
-					        <option value="Pending">
-					        <option value="Verified">
-					        <option value="Declined">
-					    </datalist>
-					</div>
-					<div class="Update-items">
-						<input type="hidden" name="UpdateID" value="<?php $_GET['ViewID'] ?>">
-						<textarea name="Requirements" placeholder="Share your desire Message here..."></textarea>
-					</div>
-					<div class="Update-items">
-						<button type="submit" name="Send" class="btn">
-							<i class="fa-solid fa-paper-plane"></i>
-							Send
-						</button>
-					</div>
-				</form>
-			</div>
-			<?php
-
-				if(isset($_POST['Send']) && isset($_GET['ViewID'])){
-					$PendingID = $_GET['ViewID'];
-				    $Status = $_POST['Status'];
-				    $Requirements = $_POST['Requirements'];	
-
-				    $query = "
-				    UPDATE pending SET
-				    Seen = 0,	
-				    Status = '$Status',
-				    Requirements = '$Requirements'
-				    WHERE PendingID = '$PendingID'
-				    ";		
-				    mysqli_query($conn,$query);
-
-
-        		    
-				    echo "
-				    <script>
-				        alert('Message Successfully sent');
-				     setTimeout(function(){
-				        window.location.href = 'Admin-Pending.php';
-				        }, 50); 
-				    </script>"; 				    		    			
 				}
-			?>
-		</section>
+			}
+		?>
 	</main>
 
 

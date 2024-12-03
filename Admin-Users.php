@@ -42,10 +42,15 @@
 					<li class="nav-link">
 						<a href="./Admin-Pending.php">
 							<i class="fa-solid fa-chalkboard-user"></i>
-							<span class="text nav-text">Pendings</span>
+							<span class="text nav-text">Inquiries</span>
 						</a>
 					</li>					
-
+						<li class="nav-link">
+							<a href="./Admin-Client.php">
+								<i class="fa-solid fa-certificate"></i>
+								<span class="text nav-text">Clients</span>
+							</a>
+						</li>	
 					<li class="nav-link">
 						<a href="./Admin-Users.php" class="dashboard-list-item active" >
 							<i class="fa-solid fa-users"></i>
@@ -113,7 +118,7 @@
 						<th>Phone</th>
 						<th>Address</th>
 						<th>Start Date</th>
-						<th class="action-center">Action</th>
+
 					</tr>		
 					<?php
 
@@ -143,12 +148,6 @@
 									<td>".$Address."</td>
 									<td>".$Date."</td>
 
-									<td class='td-action'>
-
-									<a href='./Assets/Php/Admin.php?archiveID=".$UserID."&value=User' class='custom-tooltip delete-purchase' data-title='Archive'>
-
-									<i class='fa-solid fa-box-archive' ></i> 
-									</td>
 								</tr>
 
 								";

@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Real Estate Payment Computation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: center;
+        }
+        th {
+            background-color: #f4f4f4;
+        }
+        .input-container {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Real Estate Payment Computation</h1>
+
+    <div class="input-container">
+        <label>Total Contract Price (TCP): </label>
+        <input type="number" id="tcp" placeholder="Enter TCP (e.g., 5721410)" />
+        <br><br>
+        <label>Reservation Fee (LRF): </label>
+        <input type="number" id="reservationFee" placeholder="Enter LRF (e.g., 20000)" value="20000" />
+        <br><br>
+        <label>Annual Interest Rate (%): </label>
+        <input type="number" id="interestRate" placeholder="Enter interest rate (e.g., 17)" value="17" />
+        <br><br>
+        <button onclick="compute()">Compute</button>
+    </div>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Item</th>
+                <th>Value</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Total Contract Price (TCP)</td>
+                <td id="tcpValue">-</td>
+            </tr>
+            <tr>
+                <td>Reservation Fee (LRF)</td>
+                <td id="reservationFeeValue">-</td>
+            </tr>
+            <tr>
+                <td>20% Downpayment (After LRF)</td>
+                <td id="downPayment">-</td>
+            </tr>
+            <tr>
+                <td>Monthly Downpayment (24 months)</td>
+                <td id="monthlyDownPayment">-</td>
+            </tr>
+            <tr>
+                <td>80% Balance (Loan Amount)</td>
+                <td id="balance">-</td>
+            </tr>
+            <tr>
+                <td>Monthly Amortization (5 years @ 17% p.a.)</td>
+                <td id="monthlyAmortization5">-</td>
+            </tr>
+            <tr>
+                <td>Monthly Amortization (10 years @ 17% p.a.)</td>
+                <td id="monthlyAmortization10">-</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <script>
+        function compute() {
+            // Input values
+            const tcp = parseFloat(document.getElementById("tcp").value) || 0;
+            const reservationFee = parseFloat(document.getElementById("reservationFee").value) || 0;
+            const annualInterestRate = parseFloat(document.getElementById("interestRate").value) || 0;
+
+            // Downpayment computation
+            const downPayment = (tcp * 0.20) - reservationFee;
+            const balance = tcp - downPayment - reservationFee; // 80% balance
+            const monthlyDownPayment = downPayment / 24; // Spread over 24 months
+
+            // Amortization calculation
+            const monthlyInterestRate = (annualInterestRate / 100) / 12; // Convert annual rate to monthly
+            const totalMonths5 = 5 * 12; // 5 years
+            const totalMonths10 = 10 * 12; // 10 years
+
+            // Monthly Amortization for 5 years
+            const monthlyAmortization5 = balance * 
+                (monthlyInterestRate * Math.pow(1 + monthlyInterestRate, totalMonths5)) / 
+                (Math.pow(1 + monthlyInterestRate, totalMonths5) - 1);
+
+
+            
+
+            // Monthly Amortization for 10 years
+            const monthlyAmortization10 = balance * 
+                (monthlyInterestRate * Math.pow(1 + monthlyInterestRate, totalMonths10)) / 
+                (Math.pow(1 + monthlyInterestRate, totalMonths10) - 1);
+
+            // Display results
+            document.getElementById("tcpValue").innerText = `₱${tcp.toFixed(2)}`;
+            document.getElementById("reservationFeeValue").innerText = `₱${reservationFee.toFixed(2)}`;
+            document.getElementById("downPayment").innerText = `₱${downPayment.toFixed(2)}`;
+            document.getElementById("monthlyDownPayment").innerText = `₱${monthlyDownPayment.toFixed(2)}`;
+            document.getElementById("balance").innerText = `₱${balance.toFixed(2)}`;
+            document.getElementById("monthlyAmortization5").innerText = `₱${monthlyAmortization5.toFixed(2)}`;
+            document.getElementById("monthlyAmortization10").innerText = `₱${monthlyAmortization10.toFixed(2)}`;
+        }
+    </script>
+</body>
+</html>

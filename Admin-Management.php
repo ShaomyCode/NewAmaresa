@@ -41,10 +41,15 @@
 						<li class="nav-link">
 							<a href="./Admin-Pending.php">
 								<i class="fa-solid fa-chalkboard-user"></i>
-								<span class="text nav-text">Pendings</span>
+								<span class="text nav-text">Inquiries</span>
 							</a>
 						</li>					
-
+						<li class="nav-link">
+							<a href="./Admin-Client.php">
+								<i class="fa-solid fa-certificate"></i>
+								<span class="text nav-text">Clients</span>
+							</a>
+						</li>	
 						<li class="nav-link">
 							<a href="./Admin-Users.php" class="dashboard-list-item " >
 								<i class="fa-solid fa-users"></i>
@@ -192,6 +197,7 @@
 						    <datalist id="options">
 						        <option value="Admin">
 						        <option value="Staff">
+						        <option value="Agent">
 						    </datalist>						
 						</div>
 						<div class="form-items">

@@ -1,7 +1,15 @@
 <?php
-
 	include './Assets/Php/Connection.php';
 	session_start();
+
+	if(isset($_SESSION['Firstname']) && isset($_SESSION['Lastname']) && isset($_SESSION['UserID'])){
+		$Firstname = $_SESSION['Firstname'];
+		$Lastname = $_SESSION['Lastname'];
+		$ManagementID = $_SESSION['UserID'];        
+	}else{
+		header("location: ./index.php");
+
+	}	
 ?>
 <!DOCTYPE html>
 <html>
@@ -42,10 +50,15 @@
 					<li class="nav-link">
 						<a href="./Admin-Pending.php">
 							<i class="fa-solid fa-chalkboard-user"></i>
-							<span class="text nav-text">Pendings</span>
+							<span class="text nav-text">Inquiries</span>
 						</a>
 					</li>					
-
+						<li class="nav-link">
+							<a href="./Admin-Client.php">
+								<i class="fa-solid fa-certificate"></i>
+								<span class="text nav-text">Clients</span>
+							</a>
+						</li>	
 					<li class="nav-link">
 						<a href="./Admin-Users.php" class="dashboard-list-item " >
 							<i class="fa-solid fa-users"></i>
@@ -180,6 +193,7 @@
 					<div class="form-items">
 						<input type="text" name="Property" placeholder="Property name" required>
 						<input type="number" name="Price" placeholder="Price" required>	
+						<input type="hidden" name="Management" value="<?php echo $ManagementID?>">
 					</div>					
 
 					<div class="form-items">

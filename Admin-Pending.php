@@ -7,7 +7,7 @@
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<title>AMARESA - Pendings</title>
+		<title>AMARESA - Inquiries</title>
 		<!-- CUSTOM CSS  -->
 		<link rel="stylesheet" type="text/css" href="./Assets/Css/Admin.css?v=<?php echo time(); ?>">
 		<!-- WEBSITE ICON -->
@@ -40,7 +40,14 @@
 						<li class="nav-link">
 							<a href="./Admin-Pending.php" class="active">
 								<i class="fa-solid fa-chalkboard-user"></i>
-								<span class="text nav-text">Pendings</span>
+								<span class="text nav-text">Inquiries</span>
+							</a>
+						</li>	
+
+						<li class="nav-link">
+							<a href="./Admin-Client.php">
+								<i class="fa-solid fa-certificate"></i>
+								<span class="text nav-text">Clients</span>
 							</a>
 						</li>					
 
@@ -105,14 +112,15 @@
 					<table class="table" id="table">
 						<tr>	
 
+							<th>#</th>
 							<th>Lastname</th>
 							<th>Firstname</th>
 							<th>Email</th>
 							<th>Phone</th>
-							<th>Category</th>
-							<th>Receipt</th>
 							<th>Property</th>
-							<th>Status</th>
+							<th>Reservation</th>
+							<th>Stage</th>
+							<th>Ocular Visit</th>
 							<th>Date</th>
 							<th class="action-center">Actions</th>
 						</tr>	
@@ -135,7 +143,7 @@
 								$sql = "SELECT pending.*, properties.Property FROM pending JOIN properties ON pending.PropertyID = properties.PropertyID ORDER BY Category DESC";
 							}
 						}else{
-							$sql = "SELECT pending.*, properties.Property FROM pending JOIN properties ON pending.PropertyID = properties.PropertyID ";
+							$sql = "SELECT pending.*, properties.* FROM pending JOIN properties ON pending.PropertyID = properties.PropertyID ";
 						}
 							
 							$rs = mysqli_query($conn, $sql);
@@ -148,42 +156,43 @@
 									$Firstname = $row['Firstname'];
 									$Email = $row['Email'];
 									$Phone = $row['Phone'];
+									$Reservation = './Images/'.$row['Reservation'];
 									$Selected_Property = $row['Property'];
-									$Status = $row['Status'];
-									$Category = $row['Category'];
-									$Receipt = $row['Receipt'];
-									$Image = 'Images/'.$row['Receipt'];
+									$Selected_Property_block = $row['Block'];
+									$Stage = $row['Stage'];
+									$ocular = $row['ocular'];
 									$Date = $row['Date'];
-
-
+									$Promote = "Stage 2";
+									if(file_exists($Reservation)){
+										$Reservation = "Document found";
+									}else{
+										$Reservation = "No Document found";
+									}									
 									echo "
 
 									<tr>
 
+										<td>".$PendingID."</td>
 										<td>".$Lastname."</td>
 										<td>".$Firstname."</td>
 										<td>".$Email."</td>
 										<td>".$Phone."</td>
-										<td>".$Category."</td>
-										<td>".$Receipt."</td>
 										<td>".$Selected_Property."</td>
-										<td>".$Status."</td>
+										<td>".$Reservation."</td>
+										<td>".$Stage."</td>
+										<td>".$ocular."</td>
 										<td>".$Date."</td>
 										
 
 										<td class='td-action'>
-											<a href='./Admin-ViewPending.php?ViewID=".$PendingID."' class='custom-tooltip' data-title='View/Edit'>
-												<i class='fa-solid fa-comment-dots'></i>
-											</a>
-											
+											<a href='./Admin-ViewPending.php?ViewID=".$PendingID."' class='custom-tooltip' data-title='View'>
+												<i class='fa-solid fa-eye'></i>
+											</a>											
 
-											<a href='./Assets/Php/Admin.php?SelectedID=".$PendingID."' class='custom-tooltip confirm-pending' data-title='Confirm'>
-												<i class='fa-sharp fa-solid fa-check'></i> 
+											<a href='./Assets/Php/Admin.php?MoveClient=".$PendingID."&StagePromote=".$Promote."' class='custom-tooltip' data-title='Promote'>
+												<i class='fa-solid fa-people-arrows'></i>
+											</a>
 
-											</a>
-											<a href='./Assets/Php/Admin.php?archiveID=".$PendingID."&value=Pending' class='custom-tooltip delete-purchase' data-title='Archive'>
-												<i class='fa-solid fa-box-archive' ></i>
-											</a>
 										</td>
 									</tr>
 

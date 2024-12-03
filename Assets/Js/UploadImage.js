@@ -50,4 +50,4 @@ document.getElementById('file-upload-Diningroom').addEventListener('change', fun
     } else {
             label.textContent = 'Img here';
     }
-});  
+}); 

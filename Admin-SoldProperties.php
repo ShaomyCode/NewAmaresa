@@ -41,10 +41,15 @@
 					<li class="nav-link">
 						<a href="./Admin-Pending.php">
 							<i class="fa-solid fa-chalkboard-user"></i>
-							<span class="text nav-text">Pendings</span>
+							<span class="text nav-text">Inquiries</span>
 						</a>
 					</li>					
-
+						<li class="nav-link">
+							<a href="./Admin-Client.php">
+								<i class="fa-solid fa-certificate"></i>
+								<span class="text nav-text">Clients</span>
+							</a>
+						</li>	
 					<li class="nav-link">
 						<a href="./Admin-Users.php" class="dashboard-list-item " >
 							<i class="fa-solid fa-users"></i>
@@ -107,6 +112,7 @@
 						<th>Property</th>
 						<th>Current Owner</th>
 						<th>Previous Owner</th>
+						<th>Agent</th>
 						<th>Date Purchased</th>
 						<th>Transaction Date</th>
 
@@ -124,6 +130,7 @@
 								$Property = $row['Property'];
 								$Owner = $row['CurrentOwner'];
 								$Previous = $row['PreviousOwner'];
+								$Agent = $row['Agent'];
 								$Date_Purchased = $row['Date_Purchased'];
 								$Transaction = $row['TransactionDate'];
 							
@@ -134,6 +141,7 @@
 									<td>".$Property."</td>
 									<td>".$Owner."</td>
 									<td>".$Previous."</td>
+									<td>".$Agent	."</td>
 									<td>".$Date_Purchased."</td>
 									<td>".$Transaction."</td>
 								

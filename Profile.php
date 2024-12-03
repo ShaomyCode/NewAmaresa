@@ -4,7 +4,6 @@
     $Firstname = $_SESSION['Firstname'];
     $Lastname = $_SESSION['Lastname'];
     $UserID = $_SESSION['UserID'];
-
 ?>
 
 <!DOCTYPE html>
@@ -12,11 +11,12 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>AMARESA - User Profile</title>
+	<title>AMARESA - Profile</title>
 	<!-- Custom Css Link -->
-	<link rel="stylesheet" type="text/css" href="./Assets/Css/House.css?v=<?php echo time(); ?>">
+	<link rel="stylesheet" type="text/css" href="./Assets/Css/Profile.css?v=<?php echo time(); ?>">
 	<link rel="stylesheet" type="text/css" href="./Assets/Css/Index.css?v=<?php echo time(); ?>">
-	
+	<!-- LINK: FOR AMARESA FONT -->
+	<link rel="stylesheet" type="text/css" href="./Assets/Momoiro-Regular/style.css">	
 	<!-- Google font link -->
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -29,7 +29,7 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">	
 </head>
 <body>
-	<header class="header">
+	<header class="header-profile">
 			<div class="header-top"> 
 				<div class="container">
 					<ul class="header-top-list">
@@ -93,180 +93,263 @@
 			</div>
 	</header>
 	<main>
-		<section class="Profile-Wrapper" id="Profile-Wrapper">
-			<div class="Profile-present-info">
-				<h3 class="h3 Profile-title"> Present Information </h3>
-				<span class="Profile-subtitle">Presenting the most recent insights... </span>
-				<?php
+		<?php
 
-					if(isset($_GET['EditID'])){
-						$EditID = $_GET['EditID'];
-						
-						$sql = "SELECT * FROM user WHERE UserID = $EditID";
-						$rs = mysqli_query($conn,$sql);
-						if($rs){
-							while ($row = mysqli_fetch_assoc($rs)) {
-								$Firstname = $row['Firstname'];
-								$Lastname = $row['Lastname'];
-								$Email = $row['Email'];
-								$Phone = $row['Phone'];
-								$Address = $row['Address'];
-								$Password = $row['Password'];
-								$Date = $row['Date_Joined'];
-							
+			if(isset($_GET['EditID'])){
+				$UserID = $_GET['EditID'];
+				// View details and update
+				$sql = "SELECT * FROM user WHERE UserID = $UserID";
+				$rs = mysqli_query($conn,$sql);
+				if($rs){
+					while($row = mysqli_fetch_assoc($rs)){
+						$fname = $row['Firstname'];
+						$UserID = $row['UserID'];
+						$lname = $row['Lastname'];
+						$Email = $row['Email'];
+						$Phone = $row['Phone'];
+						$Address = $row['Address'];
+						$Password = $row['Password'];
+					echo "
+						<form action='./Assets/Php/Index.php' method='POST' autocomplete='on'>
+						<section class='Profile'>
+							<div class='Profile_information'>
+								<h3 class='h3 Profile_title'> PRESENT INFORMATION </h3>
+								<span> Presenting the most recent insights... </span> 
+								
+								<div class='Profile_information_table'>
 
-							echo "
-								<div class='Profile-present-items'>
-									<input type='text' value='$Firstname' readonly>
-									<input type='text' value='$Lastname' readonly>
-								</div>								
+									<div class='Profile_information_table_items'>
+										<div class='Information_items'>
+											<input type='text' value='$fname' class='Information_display' readonly>
+											<input type='hidden' value='$UserID' name='Update_UserID' class='Information_display' readonly>
+											<input type='text' name='Update_Firstname' placeholder='Update firstname' class='Information_edit'>
+										</div>										
 
-								<div class='Profile-present-items'>
-									<input type='text' value='$Email' readonly>
-									<input type='text' value='$Phone' readonly>
+										<div class='Information_items'>
+											<input type='text' value='$lname' class='Information_display' readonly>
+											<input type='text' name='Update_Lastname' placeholder='Update lastname' class='Information_edit'>
+										</div>
+									</div>									
+
+									<div class='Profile_information_table_items'>
+										<div class='Information_items'>
+											<input type='text' value='$Email' class='Information_display' readonly>
+											<input type='email' name='Update_Email' placeholder='Update email' class='Information_edit'>
+										</div>										
+
+										<div class='Information_items'>
+											<input type='text' value='$Phone' class='Information_display' readonly>
+											<input type='text' name='Update_Phone' placeholder='Update phone' class='Information_edit'>
+										</div>
+									</div>
+
+									<div class='Profile_information_table_items'>
+										<div class='Information_items'>
+											<input type='text' value='$Address' class='Information_display' readonly>
+											<input type='text' name='Update_Address' placeholder='Update address' class='Information_edit'>
+										</div>										
+
+										<div class='Information_items'>
+											<input type='text' value='$Password' class='Information_display' readonly>
+											<input type='password' name='Update_Password' placeholder='Update password' class='Information_edit'>
+										</div>
+									</div>
+
+									<div class='Profile_information_table_items'>
+										<button type='submit' name='Profile_Edit_update' class='btn'>
+											<span>Update</span>
+										</button>
+									</div>
 								</div>
-
-								<div class='Profile-present-items'>
-									<input type='text' value='$Address' readonly>
-									<input type='text' value='$Password' readonly>
-								</div>
-								<div class='Profile-present-items'>
-									<input type='text' value='$Date' readonly>
-								</div>
-							";								
-							}
-						}
+							</div>
+						</section>
+						</form>
+					";		
 					
-					}
-				?>
-			</div>
-			<div class="Profile-refresh">
-				<h3 class="h3 Profile-refresh-title"> Refreshing Your Profile </h3>
-				<span class="Profile-subtitle">Breathe New Life into Your Profile </span>
-				<form method='POST' >
-					<div class='Profile-refresh-items'>
-						<input type='text' name="Firstname" placeholder='Update your First name' required>
-						<input type='text' name="Lastname" placeholder='Update your Last name' required>
-					</div>								
-						<input type="hidden" name="UpdateID" value="$EditID">
-					<div class='Profile-refresh-items'>
-						<input type='text' name="Email" placeholder='Update your Email' required>
-						<input type="tel" maxlength="11" name="Phone" class="PhoneInput" id="PhoneInput" placeholder="Contact Number" required>	
-					</div>
-
-					<div class='Profile-refresh-items'>
-						<input type='text' name="Address" placeholder='Update your Address' required>
-						<input type='Password' name="Password" placeholder='Update your Password' required>
-					</div>
-					<div class='Profile-refresh-items'>
-						<button type='submit' name='Update-Profile' class='Profile-btn btn'>
-							<i class='fa-regular fa-pen-to-square'></i>
-							<span>Update</span>
-						</button>
-					</div>
-				</form>
-			</div>
-			<?php
-
-				if(isset($_POST['Update-Profile'])){
-					$ProfileID = $_GET['EditID'];
-					$Firstname = $_POST['Firstname'];
-					$Lastname = $_POST['Lastname'];
-					$Email = $_POST['Email'];
-					$Phone = $_POST['Phone'];
-					$Address = $_POST['Address'];
-					$Password = password_hash($_POST['Password'], PASSWORD_DEFAULT);
-
-					$sql = "
-					UPDATE user SET 
-					Firstname = '$Firstname',
-					Lastname = '$Lastname',
-					Email = '$Email',
-					Phone = '$Phone',
-					Address = '$Address',
-					Password = '$Password'
-					WHERE UserID = $ProfileID
-					";
-
-					if(mysqli_query($conn,$sql)){
-						echo "
-						<script>
-						alert('Updated Successfully');
-						setTimeout(function(){
-							window.location.href = './Login.php';
-							}, 50);
-						</script>";
-					}else{
-						echo "Error Updating User".mysqli_error($conn);
 					}
 				}
 
-
-			?>
-		</section>
-		<section class="Purchase-Wrapper" class='Purchase-Wrapper'>
-			<h3 class="h3 Purchase-title"> Ready to Purchase </h3>
-			<span class="Profile-subtitle"> Reach Out for More Information </span>
-			<div class="Purchase-title">
-				<table>
-					<thead>
-						<tr>
-							<th>Properties</th>
-							<th>Payment</th>
-							<th>Status</th>
-							<th>Message</th>
-							<th>Pending Date</th>
-							<th>Actions</th>
-						</tr>
-					</thead>
-
-			</div>
-			<?php
-			if (isset($_GET['EditID'])) {
-			    $ProfileID = $_GET['EditID'];
-				$sql = "SELECT pending.*, user.*, properties.Property 
-       			 FROM pending 
-       			 JOIN user ON pending.UserID = user.UserID
-        		 JOIN properties ON pending.PropertyID = properties.PropertyID
-       			 WHERE user.UserID = $ProfileID 
-       			 ORDER BY pending.Category ASC
+				// For viewing inquiry and agent
+				$PendingTable = "
+					 SELECT 
+					 	pending.*, 
+					 	user.*, 
+					 	properties.* 
+	       			 FROM 
+	       			 	pending
+	       			 JOIN 
+	       			 	user ON pending.UserID = user.UserID
+	        		 JOIN 
+	        		 	properties ON pending.PropertyID = properties.PropertyID
+	        		 WHERE 
+	        		 	pending.UserID = $UserID
        			";
+       				echo "
+       					<div class='Inquiry_container'>
+       						<table class='Table_Inquiry'>
+       						<caption> Inquiry - No requirements </caption>
+       						<thead>
+       							<tr>
+									<th>Property</th>
+									<th>Block</th>
+									<th>Lot</th>
+									<th>Phase</th>
+									<th>Stage</th>
+									<th>Agent</th>
+									<th>Payment</th>
+									<th>Reservation</th>
 
+									<th>Actions</th>       							
+       							</tr>
+       						</thead>
+       				";       			
+       			$Result_pending = mysqli_query($conn, $PendingTable);
+       			if($Result_pending && mysqli_num_rows($Result_pending) > 0){
 
-			    $rs = mysqli_query($conn, $sql);
-			    if ($rs) {
-			        while ($row = mysqli_fetch_assoc($rs)) {
-			            $Property = $row['Property'];
-			            $Category = $row['Category'];
-			            $PendingID = $row['PendingID'];
-			            $Date = $row['Date'];
-			            $Status = $row['Status'];
-			            $Requirements = $row['Requirements'];
+       				while($rw = mysqli_fetch_assoc($Result_pending)){
+						// PROPERTY
+						$Property = $rw['Property'];
+						$PendingID = $rw['PendingID'];
+						$Block = $rw['Block'];
+						$Lot = $rw['Lot'];
+						$Phase = $rw['Phase'];
+						$Payment = $rw['Payment'];
+						$Reservation = './Images/'.$rw['Reservation'];
+						$Agent = $rw['Agent'] ?? "No Agent yet";
+						// CLIENT
+						$Stage = $rw['Stage'];
+						if(file_exists($Reservation)){
+							$Reservation = "Document found!";
+						}else{
+							$Reservation = "No Document found";
+						}
+						echo "
+							<tbody>
+								<tr>
+									<td>$Property</td>
+									<td>$Block</td>
+									<td>$Lot</td>
+									<td>$Phase</td>
+									<td>$Stage</td>
+									<td>$Agent</td>
+									<td>$Payment</td>
+									<td>$Reservation</td>
+									<td class='td-action'>
+										<a href='./Profile_overview.php?ViewID=".$PendingID."' class='custom-tooltip' data-title='View'>
+											<i class='fa-solid fa-address-book'></i>										
+										</a>
+									</td>
+								</tr>
+							</tbody>
+						";
+       				}
+	       				echo "
+	       						</table>
+	       					</div>
+	       				";       				
+       			}else{
+       					echo "
+       						<tr>
+       							<td colspan='9'> No Data found </td>
+       						</tr>
+	       						</table>
+	       					</div>
+	       				";  
+       			}
 
+				// For viewing inquiry and agent  
+				$AgentTable = "
+					 SELECT 
+					 	management.Lastname AS MLastname, 
+					 	management.email AS MEmail, 
+					 	management.Phone AS MPhone,
+					 	clients.* , 
+					 	properties.* 
+	       			 FROM 
+	       			 	clients
+	       			 LEFT JOIN 
+	       			 	management ON management.managementID = clients.managementID
+	        		 LEFT JOIN 
+	        		 	properties ON properties.PropertyID = clients.PropertyID
+	        		 WHERE 
+	        		 	clients.UserID = $UserID
+       			";
+       			       				echo "
+       					<div class='Inquiry_container'>
+       						<table class='Table_Inquiry'>
+       						<caption> Inquiry - with requirements</caption>
+       						<thead>
+       							<tr>
+									<th>Agent</th>
+									<th>Email</th>
+									<th>Phone</th>
+									<th>Property</th>
+									<th>Block</th>
+									<th>Lot</th>
+									<th>Phase</th>
+									<th>Stage</th>
+									<th>Actions</th>       							
+       							</tr>
+       						</thead>
+       				";
+       			$Result_Agent = mysqli_query($conn, $AgentTable);
+       			if($Result_Agent  && mysqli_num_rows($Result_Agent) > 0){
+
+       				while($rw = mysqli_fetch_assoc($Result_Agent)){
+						// AGENT 
+						$AgentID = $rw['ClientID'];
+						$MLastname = $rw['MLastname'] ?? "No agent";
+						$MEmail = $rw['MEmail'] ?? "No agent";
+						$MPhone = $rw['MPhone'] ?? "No agent";
+						// PROPERTY
+						$Property = $rw['Property'];
+						$Block = $rw['Block'];
+						$Lot = $rw['Lot'];
+						$Phase = $rw['Phase'];
+						// $ocular = isset($_POST['ocular']) ? $_POST['ocular'] : "No visit";
+						// CLIENT
+						$Stage = $rw['Stages'];
 
 						echo "
-						<tbody>
-							<tr>
-								<td>  <input type='text' value='$Property' readonly> </td>
-								<td>  <input type='text' value='$Category' readonly> </td>
-								<td>  <input type='text' value='$Status' readonly> </td>
-								<td>
-			                  <div class='Purchase-items textarea'>
-			                  	<textarea placeholder='No Message from the Amaresa yet....' readonly>$Requirements</textarea>
-			                  </div></td>
-								<td>  <input type='text' value='$Date' readonly> </td>
-								<td>   <a href='./Assets/Php/index.php?DeleteID=$PendingID' class='delete-purchase'><i class='fa-solid fa-trash'></i></a></td>
-							</tr>
-						</tbody>
-									
-						";			                  
-			        }
-			    }
-			}
+							<tbody>
+								<tr>
+									<td>$MLastname</td>
+									<td>$MEmail</td>
+									<td>$MPhone</td>
+									<td>$Property</td>
+									<td>$Block</td>
+									<td>$Lot</td>
+									<td>$Phase</td>
+									<td>$Stage</td>
+								<td class='td-action'>
+								    <a href='https://mail.google.com/mail/?view=cm&fs=1&to=$MEmail' class='custom-tooltip' data-title='MEmail' target='_blank'>
+								        <i class='fa-solid fa-message'></i>
+								    </a>
+								</td>
 
-			?>
-				</table>	
-		</section>
+								</tr>
+							</tbody>
+						";
+       				}
+
+						echo "
+	       						</table>
+	       					</div>
+       				";	       				
+       			}else{
+       					echo "
+       						<tr>
+       							<td colspan='9'> No Data found </td>
+       						</tr>
+	       						</table>
+	       					</div>
+	       				";  
+       			}
+       					     				
+
+			}
+		?>
+
 	</main>
 	
 	

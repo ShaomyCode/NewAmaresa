@@ -88,7 +88,10 @@
 				$IBedroom = './Images/'.$row['IBedroom'];
 				$IAttic = './Images/'.$row['IAttic'];
 				$IDining = './Images/'.$row['IDining'];
-				$Properties = $row['Property'];		
+				$Properties = $row['Property'];
+				$Block = $row['Block'];
+				$Lot = $row['Lot'];
+				$Phase = $row['Phase'];
 				$Description = $row['Description'];		
 				$Price = $row['Price'];		
 				$Bedrooms = $row['Bedrooms'];
@@ -104,7 +107,7 @@
 				<figure class='Exterior'>
 					<img src='$ImageExterior' alt='Exterior'>
 					<div class='inner-btns-wrapper'>
-						<button onclick='ShowInquiry()' class='btn'> Make inquiry </button>
+						<a href='./Inquiry.php?UserID=".$UserID."&HouseID=".$Holder."' class='btn'> Make inquiry </button>
 						<a href='#VirtualTour' class='virtual-tour-btn btn'> Go to 3D </a>
 					</div>
 				</figure>
@@ -140,7 +143,6 @@
 			}
 
 			echo " 
-
 				<section class='HouseDetails-Container'>
 					<div class='container'>
 
@@ -181,30 +183,38 @@
 									<li class='Overview-list-items'>
 									<i class='fa-solid fa-layer-group'></i>
 									<span>Floor Area(sqm): $Area</span>
-									</li>							
+									</li>		
+
 									<li class='Overview-list-items'>
-									<i class='fa-solid fa-couch'></i>
-									<span>Furnishing: Fully furnished</span>
+									<i class='fa-solid fa-house-flag'></i>
+									<span>Block: $Block</span>
 									</li>							
 									
 									<li class='Overview-list-items'>
-									<i class='fa-solid fa-square-parking'></i>
-									<span>Parking Spaces: 1</span>
+									<i class='fa-solid fa-house-flag'></i>
+									<span>lot: $Lot</span>
+									</li>									
+									<li class='Overview-list-items'>
+									<i class='fa-solid fa-house-flag'></i>									
+									<span>Phase: $Phase</span>
 									</li>
 								</ul>
 							</div>
-
-						</div>
 						
-						<div class='RightHouse-Details'>
+					
 							<div class='Description-Details'>
 								<h3 class='h3 Titles'> Description </h3>
 								<span>$Description </span>
 							</div>
+				
+						</div>
+						<div class='RightHouse-Details'>
+							<div class='House_Map_Container'>
+								<img src='./Assets/Images/Amaresa_House_Map.jpg' alt='House-Map'>
+							</div>
 						</div>
 
 					</div>
-
 				</section>
 			";
 			echo "
@@ -212,7 +222,7 @@
 			<div class='Iframe-container' id='VirtualTour'>
 				<div class='left-iframe'>
 					<span> To move: </span>
-					<img src='./Assets/Images/Move.png' alt='Move tutorial'>
+					<img src='./Assets/Images/Move.png' alt='Move tutorial' >
 				</div>
 				<iframe src='$VirtualTour' class='VirtualTour' alt='No Virtual model.'>No Virtual Model</iframe>
 			</div>
@@ -221,126 +231,7 @@
 		}
 		?>
 
-
-       <dialog id="Inquiry-Modal" class="dialog dialog-user">
-            <button onclick="CloseInquiry()" class="closebtn">X</button>    
-
-            <div class="container">
-
-                <form class="form Inquiry-user" method="POST" enctype="multipart/form-data" action="./Assets/Php/Index.php" autocomplete="on">
-                    <?php 
-
-                    $query = "
-                    SELECT *
-                    FROM user
-                    WHERE UserID = $UserID
-                    ";
-                    $result = $conn->query($query);
-                    $row = $result->fetch_assoc();
-                    $firstname = $row['Firstname'];
-                    $UserID = $row['UserID'];
-                    $lastname = $row['Lastname'];
-                    $number = $row['Phone'];
-                    $Address = $row['Address'];
-                    $Email = $row['Email'];
-
-                     echo "	
-                 
-                    <div class='form-items'>
-
-	                    <input type='text' name='Firstname' placeholder='First name' value='$firstname' required>
-	                    <input type='text' name='Lastname' placeholder='Last name' value='$lastname'  required> 
-
-	                    <input type='tel' maxlength='11' name='Phone'  class='PhoneInput' id'PhoneInput' placeholder='Contact Number' value='$number' required autocomplete='off'>       
-
-                    </div>
-                    <div class='form-items'>
-                    <input type='text' name='Address' placeholder='Address' value='$Address' required>
-                    <input type='email' name='Email' placeholder='Email Address' value='$Email' required>
-                    </div> 
-                    <input type='hidden' name='UserID' value='$UserID'>
-                    <input type='hidden' name='PropertyID' id='propertyID'>
-           
-					<input list='options' id='Role' name='Property' placeholder='Select Property' required>
-					     <datalist id='options'>
-                    ";
-		  			  $sql = "SELECT * FROM properties";
-		                    $rs = $conn->query($sql);
-		                    if($rs){
-		                    	while($rw = mysqli_fetch_assoc($rs)){
-		                    		$status = $rw['Status'];
-		                    		if($status == "Sale"){
-		                    		echo "
-					                    <option value='$rw[PropertyID]'> $rw[Property] </option>
-
-		                    		";
-		                    		}
-		                    	}
-		                    	echo " </datalist>";
-
-		                    }
-		             echo " 
-	       				<div class='textarea-container'>
-							<textarea id='message' rows='5' name='Message' placeholder='Id like to inquire about this property...'></textarea>
-						</div>
-						<div class='form-items'>
-
-                    		</div>
-                    		<div>
-                    			<input type='checkbox' id='cbx2' onclick='ShowReservation()' style='display: none;'> 
-                    			<label for='cbx2' class='check'>
-                    				<svg width='18px' height='18px' viewBox='0 0 18 18'>
-                    					<path d='M 1 9 L 1 9 c 0 -5 3 -8 8 -8 L 9 1 C 14 1 17 5 17 9 L 17 9 c 0 4 -4 8 -8 8 L 9 17 C 5 17 1 14 1 9 L 1 9 Z'></path>
-                    					<polyline points='1 9 7 14 15 4'></polyline>
-                    				</svg>
-                    				Reservation Fee (optional)
-                    			</label>
-
-
-                    			<div class='payments' id='payments'>
-                    				<h3 class='h3 payment-title'> Gcash </h3>
-                    				<span class='payment-subtitle'> Please note that we cannot process refunds.  </span>
-                    				<img id='paymentImg' src='./Assets/Images/payment.png' >
-
-
-									<div class='Payments-upload'>
-										<label for='file-upload-payment' class='custom-file-upload'>Upload Payment</label>
-										<span id='show-text-payment' class='show-text'>Image shows here</span>
-										<input id='file-upload-payment' type='file'  name='Receipt' accept='image/*' >
-									</div>	
-                    			</div>
-
-		             ";
-                    ?>
-
-                    			<script>
-                    				const checkbox = document.getElementById('cbx2');
-                    				const div = document.getElementById('payments');
-
-                    				checkbox.addEventListener('change', function() {
-                    					if (this.checked) {
-                    						div.style.display = 'block'; 
-                    					} else {
-                    						div.style.display = 'none';
-                    					}
-                    				});
-                    			</script>
-                    		</div>
-                    	</div>
-
-                    	<div class="inquiry-buttons">
-                    		<div id="panel">
-                    			<span>Hello </span>
-                    		</div>
-                    		<span id="requirements" class="btn">Requirements</span>
-                    		<button type="submit" name="SentInquiry" onclick="ShowSignupInquiry()" class="btn">Send Inquiry</button>
-                    	</div>
-                    </form>
-
-             </div>
-            </dialog>
 	</main>
-
 
 			<!-- Script: Custom -->
 		<script src="./Assets/Js/script.js?v=<?php echo time(); ?>"></script>
